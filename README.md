@@ -3,7 +3,6 @@
 
 ---
 
-
 ![](https://cdn.leonardo.ai/users/f4cd596b-ba20-433e-acf3-974045f63090/generations/1915374d-6938-4bc8-a384-b0bda72a26a0/20a900d6-6c5e-41c6-9ddb-b67ae5ebf4a3.jpg?w=1024)
 
 [![trophy](https://github-profile-trophy.vercel.app/?username=ivan-meer&theme=tokyonight)](https://github.com/ryo-ma/github-profile-trophy)

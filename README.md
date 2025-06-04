@@ -4,6 +4,14 @@
 
 ![](https://cdn.leonardo.ai/users/f4cd596b-ba20-433e-acf3-974045f63090/generations/1915374d-6938-4bc8-a384-b0bda72a26a0/20a900d6-6c5e-41c6-9ddb-b67ae5ebf4a3.jpg?w=1024)
 
+
+![](https://komarev.com/ghpvc/?username=ivan-meer)
+
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=ivan-meer&show_icons=true&theme=transparent)
+
+[![GitHub Streak](https://streak-stats.demolab.com/?user=DenverCoder1&theme=dark)](https://git.io/streak-stats)
+
+
   <div id="badges">
   <a href="your-linkedin-URL">
     <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>

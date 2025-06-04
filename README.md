@@ -1,7 +1,6 @@
 # :warning: ПРОЕКТ НАХОДИТСЯ В РАЗРАБОТКЕ!
 <div id="header" align="center">
 
-![HOW2AI AGENCY](https://cdn.leonardo.ai/users/f4cd596b-ba20-433e-acf3-974045f63090/generations/4c5693d3-0b4c-4589-915e-3080c6943293/7090a7d9-671f-4a22-a6e6-3cda36de968d.jpg)
 
 ![](https://cdn.leonardo.ai/users/f4cd596b-ba20-433e-acf3-974045f63090/generations/1915374d-6938-4bc8-a384-b0bda72a26a0/20a900d6-6c5e-41c6-9ddb-b67ae5ebf4a3.jpg?w=1024)
 

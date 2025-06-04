@@ -1,6 +1,8 @@
 # :warning: ПРОЕКТ НАХОДИТСЯ В РАЗРАБОТКЕ!
 <div id="header" align="center">
 
+---
+
 
 ![](https://cdn.leonardo.ai/users/f4cd596b-ba20-433e-acf3-974045f63090/generations/1915374d-6938-4bc8-a384-b0bda72a26a0/20a900d6-6c5e-41c6-9ddb-b67ae5ebf4a3.jpg?w=1024)
 
@@ -37,6 +39,8 @@
 </div>
 
 ![](./profile-3d-contrib/profile-night-rainbow.svg)
+
+[![Ivan Meer's Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=ivan-meer&theme=tokyonight)](https://github.com/ashutosh00710/github-readme-activity-graph)
 <!--
 **ivan-meer/ivan-meer** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 

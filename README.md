@@ -7,9 +7,11 @@
 
 ![](https://komarev.com/ghpvc/?username=ivan-meer)
 
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=ivan-meer&show_icons=true&theme=transparent)
+![](http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ivan-meer&theme=tokyonight)  ![](http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=ivan-meer&theme=tokyonight)
+![](http://github-profile-summary-cards.vercel.app/api/cards/stats?username=ivan-meer&theme=tokyonight)    ![](http://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=ivan-meer&theme=tokyonight&utcOffset=8)    
 
-[![GitHub Streak](https://streak-stats.demolab.com/?user=DenverCoder1&theme=dark)](https://git.io/streak-stats)
+![](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ivan-meer&theme=tokyonight)
+
 
 
   <div id="badges">

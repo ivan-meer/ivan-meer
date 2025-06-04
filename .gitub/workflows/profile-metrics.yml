@@ -1,0 +1,16 @@
+name: Metrics
+on:
+  schedule:
+    - cron: "0 6 * * *" # раз в сутки
+  workflow_dispatch:
+
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: header, activity, community, repositories, metadata
+          plugin_isocalendar: yes

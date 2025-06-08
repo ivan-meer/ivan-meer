@@ -1,8 +1,6 @@
-# :warning: ПРОЕКТ НАХОДИТСЯ В РАЗРАБОТКЕ!
 <div id="header" align="center">
-
----
-
+<h1>📚 АКАДЕМИЯ ИСКУССТВЕННОГО ИНТЕЛЛЕКТА</h1>
+  
 ![](https://cdn.leonardo.ai/users/f4cd596b-ba20-433e-acf3-974045f63090/generations/1915374d-6938-4bc8-a384-b0bda72a26a0/20a900d6-6c5e-41c6-9ddb-b67ae5ebf4a3.jpg?w=1024)
 
 [![GitHub Streak](https://streak-stats.demolab.com?user=ivan-meer&theme=dark&border_radius=15&locale=ru&short_numbers=true&card_width=250&background=45%2C183236%2C000000&hide_current_streak=true&hide_longest_streak=true)](https://git.io/streak-stats)      [![GitHub Streak](https://streak-stats.demolab.com?user=ivan-meer&theme=dark&border_radius=15&locale=ru&short_numbers=true&card_width=250&background=45%2C183236%2C000000&hide_total_contributions=true&hide_longest_streak=true)](https://git.io/streak-stats)      [![GitHub Streak](https://streak-stats.demolab.com?user=ivan-meer&theme=dark&border_radius=15&locale=ru&short_numbers=true&card_width=250&background=45%2C183236%2C000000&hide_total_contributions=true&hide_current_streak=true)](https://git.io/streak-stats)

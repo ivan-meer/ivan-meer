@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Услуги — Ivan Meer</title>
 <base href="/ivan-meer/">
-<meta name="description" content="Услуги AI-инженера: разработка AI-агентов, MCP-интеграции, консультации, автоматизация.">
+<meta name="description" content="Full-stack AI разработка: агенты, оркестрация, харнесс, системы памяти, панели управления, MCP-серверы, оптимизация токенов. Не скрипты — системы.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
     <div class="nav-inner">
       <a href="/ivan-meer/" class="nav-logo">~/ivan-meer</a>
       <ul class="nav-links">
-        <li><a href="/">Главная</a></li>
+        <li><a href="/ivan-meer/">Главная</a></li>
         <li><a href="/ivan-meer/services" class="active">Услуги</a></li>
         <li><a href="/ivan-meer/blog">Блог</a></li>
         <li><a href="/ivan-meer/links">Ресурсы</a></li>
@@ -32,7 +32,7 @@
   <div class="page">
     <div class="page-header reveal">
       <h1>Мои <span>услуги</span></h1>
-      <p>Что я могу сделать для вас и вашего бизнеса</p>
+      <p>Не скрипты и разовые автоматизации. Целостные AI-системы — от архитектуры до продакшена</p>
     </div>
 
     <section>
@@ -41,38 +41,50 @@
 
           <div class="service-card reveal">
             <span class="icon">🤖</span>
-            <h3>Разработка AI-агентов</h3>
-            <p>Проектирую и разрабатываю автономных AI-агентов для решения бизнес-задач: от простых ассистентов до сложных мультиагентных систем с памятью, инструментами и обратной связью.</p>
+            <h3>AI-агенты и мультиагентные системы</h3>
+            <p>Проектирую и разрабатываю автономных AI-агентов — от одного ассистента до мультиагентной системы с разделением ролей, памятью и инструментами. Харнесс для надёжного исполнения, обработка ошибок, цепочки вызовов.</p>
+          </div>
+
+          <div class="service-card reveal">
+            <span class="icon">🎛️</span>
+            <h3>Оркестрация и харнесс</h3>
+            <p>Выстраиваю слой управления агентами: очереди задач, контроль исполнения, обработка сбоев, мониторинг, retry-логика. Ваши агенты не «падают молча», а работают предсказуемо.</p>
+          </div>
+
+          <div class="service-card reveal">
+            <span class="icon">🧠</span>
+            <h3>Системы памяти и RAG</h3>
+            <p>Проектирую и встраиваю долгосрочную память для AI-агентов: векторные базы (Supabase, Qdrant), семантический поиск, контекстные окна, иерархическая память. Ваш агент помнит, что было вчера.</p>
+          </div>
+
+          <div class="service-card reveal">
+            <span class="icon">🎓</span>
+            <h3>Обучение и файнтюнинг моделей</h3>
+            <p>Тонкая настройка LLM под конкретные задачи: файнтюнинг, LoRA-адаптеры, RLHF и GRPO. Модель, заточенная под ваш домен, работает точнее и расходует в разы меньше токенов.</p>
+          </div>
+
+          <div class="service-card reveal">
+            <span class="icon">📊</span>
+            <h3>Панели управления с современным интерфейсом</h3>
+            <p>Разрабатываю админ-панели и дашборды для AI-систем с современным дизайном: мониторинг агентов, управление задачами, аналитика токенов, визуализация процессов.</p>
           </div>
 
           <div class="service-card reveal">
             <span class="icon">🔌</span>
-            <h3>MCP-интеграции</h3>
-            <p>Создаю Model Context Protocol серверы и интеграции, расширяющие возможности AI-ассистентов. Подключаю кастомные инструменты, базы знаний и внешние API.</p>
-          </div>
-
-          <div class="service-card reveal">
-            <span class="icon">🏗️</span>
-            <h3>AI Engineering консалтинг</h3>
-            <p>Помогаю командам внедрять AI в процессы разработки: проектирую архитектуру, настраиваю пайплайны, выбираю инструменты и оптимизирую затраты на LLM.</p>
+            <h3>MCP-серверы и интеграции</h3>
+            <p>Создаю Model Context Protocol серверы — от простых до production-grade. Подключение кастомных инструментов, баз данных, внешних API к экосистеме Claude и другим AI-клиентам.</p>
           </div>
 
           <div class="service-card reveal">
             <span class="icon">⚡</span>
-            <h3>Автоматизация рабочих процессов</h3>
-            <p>Разрабатываю системы AI-автоматизации: CI/CD с AI-ревью, умная обработка документов, генерация кода и документации, автотестирование с AI.</p>
+            <h3>Оптимизация расхода токенов</h3>
+            <p>Анализирую и сокращаю расходы на LLM на 40–70%: умное кэширование, сжатие контекста, правильный промпт-дизайн, роутинг между моделями, файнтюнинг вместо few-shot.</p>
           </div>
 
           <div class="service-card reveal">
-            <span class="icon">📚</span>
-            <h3>Системы знаний и RAG</h3>
-            <p>Строю Retrieval-Augmented Generation (RAG) системы — корпоративные базы знаний с AI-поиском. Векторные БД (Supabase, Qdrant), семантический поиск, агентная память.</p>
-          </div>
-
-          <div class="service-card reveal">
-            <span class="icon">🧩</span>
-            <h3>Разработка инструментов</h3>
-            <p>Создаю расширения, плагины и CLI-инструменты для экосистемы Claude Code: кастомные команды, интеграции с внешними сервисами, оптимизация рабочих процессов.</p>
+            <span class="icon">🏗️</span>
+            <h3>Архитектура AI-решений и консалтинг</h3>
+            <p>Интегрирую AI в существующие бизнес-процессы. Проектирую архитектуру, выбираю стек, оцениваю риски и стоимость. Не «давайте добавим ChatGPT», а «давайте спроектируем систему, которая решит задачу».</p>
           </div>
 
         </div>
@@ -81,13 +93,13 @@
 
     <section>
       <div class="container">
-        <p class="section-label reveal">Как работать</p>
-        <h2 class="section-title reveal">Процесс <span>сотрудничества</span></h2>
+        <p class="section-label reveal">Мой подход</p>
+        <h2 class="section-title reveal">Как я <span>работаю</span></h2>
         <div class="focus-grid">
-          <div class="focus-card reveal"><span class="icon">🎯</span><h3>Анализ задачи</h3></div>
-          <div class="focus-card reveal"><span class="icon">📋</span><h3>Проектирование</h3></div>
-          <div class="focus-card reveal"><span class="icon">⚙️</span><h3>Разработка</h3></div>
-          <div class="focus-card reveal"><span class="icon">✅</span><h3>Сдача результата</h3></div>
+          <div class="focus-card reveal"><span class="icon">🎯</span><h3>Погружаюсь в задачу</h3></div>
+          <div class="focus-card reveal"><span class="icon">📐</span><h3>Проектирую архитектуру</h3></div>
+          <div class="focus-card reveal"><span class="icon">🔨</span><h3>Строю прототип</h3></div>
+          <div class="focus-card reveal"><span class="icon">🚀</span><h3>Довожу до продакшена</h3></div>
         </div>
       </div>
     </section>
@@ -96,9 +108,9 @@
       <div class="container" style="text-align:center;">
         <p class="section-label reveal">Свяжитесь со мной</p>
         <h2 class="section-title reveal" style="margin-bottom:24px;">Готовы обсудить <span>проект</span>?</h2>
-        <p style="color:var(--muted);margin-bottom:32px;font-size:1.05rem;">Напишите в Telegram — обсудим задачу и предложим решение</p>
-        <a href="https://t.me/ivan_meer" target="_blank" rel="noopener" class="hero-cta" style="display:inline-flex;">
-          Написать в Telegram
+        <p style="color:var(--muted);margin-bottom:32px;font-size:1.05rem;">Расскажите о задаче в Telegram — обсудим архитектуру, сроки и подход</p>
+        <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener" class="hero-cta" style="display:inline-flex;">
+          Написать в Telegram @phuketguruadmin
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -108,7 +120,7 @@
   <footer>
     <div class="container">
       <div class="footer-nav">
-        <a href="/">Главная</a>
+        <a href="/ivan-meer/">Главная</a>
         <a href="/ivan-meer/services">Услуги</a>
         <a href="/ivan-meer/blog">Блог</a>
         <a href="/ivan-meer/links">Ресурсы</a>

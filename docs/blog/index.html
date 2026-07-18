@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Блог — Ivan Meer</title>
 <base href="/ivan-meer/">
-<meta name="description" content="Блог об AI-инженерии, агентных системах, MCP, инструментах разработчика и AI-native разработке.">
+<meta name="description" content="Блог о full-stack AI-инженерии: агентные системы, архитектура, MCP, оптимизация токенов, системы памяти.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
     <div class="nav-inner">
       <a href="/ivan-meer/" class="nav-logo">~/ivan-meer</a>
       <ul class="nav-links">
-        <li><a href="/">Главная</a></li>
+        <li><a href="/ivan-meer/">Главная</a></li>
         <li><a href="/ivan-meer/services">Услуги</a></li>
         <li><a href="/ivan-meer/blog" class="active">Блог</a></li>
         <li><a href="/ivan-meer/links">Ресурсы</a></li>
@@ -32,7 +32,7 @@
   <div class="page">
     <div class="page-header reveal">
       <h1><span>Блог</span> об AI-инженерии</h1>
-      <p>Мысли, эксперименты и находки на пути создания AI-native инструментов</p>
+      <p>Почему я не делаю «скрипты для ChatGPT», что такое полноценная AI-архитектура и как она выглядит на практике</p>
     </div>
 
     <section>
@@ -41,20 +41,26 @@
 
           <div class="blog-card reveal">
             <div class="date">Скоро · 2026</div>
-            <h3>MCP-серверы: как расширить возможности Claude Code</h3>
-            <p>Разбираюсь с архитектурой Model Context Protocol, пишу первые серверы и интегрирую кастомные инструменты. Черновик заметки — будет дополняться.</p>
+            <h3>Скрипты не работают: почему AI-агентам нужна архитектура</h3>
+            <p>Если вы пробовали внедрить AI-автоматизацию и обнаружили, что через неделю она ломается, а счёт за токены вырос втрое — эта статья для вас. Разбираю разницу между «просто подключил API» и инженерным подходом с харнессом, памятью и оркестрацией.</p>
           </div>
 
           <div class="blog-card reveal">
             <div class="date">Скоро · 2026</div>
-            <h3>AI-агенты в продакшене: что я узнал</h3>
-            <p>Наблюдения и выводы после запуска нескольких AI-агентных систем. О надёжности, наблюдаемости и границах автономии.</p>
+            <h3>Проектируем систему памяти для AI-агента</h3>
+            <p>Память — ключевой компонент, превращающий статичный LLM-ответ в динамического агента. Векторные базы, семантический поиск, иерархическое хранение. Разбираю, куда сохранять, как искать и когда забывать.</p>
           </div>
 
           <div class="blog-card reveal">
             <div class="date">Скоро · 2026</div>
-            <h3>Сборка AI-инженера: инструменты и подходы</h3>
-            <p>Мой стек, рабочие процессы, найденные грабли и то, что реально помогает в повседневной AI-разработке.</p>
+            <h3>Оптимизация токенов: от х10 до х0.4 стоимости</h3>
+            <p>ChatGPT дорогой. Но производственная AI-система не обязана быть дорогой. Рассказываю методики, которые сокращают расход токенов на 40–70% без потери качества: кэширование, контекстное сжатие, роутинг, файнтюнинг.</p>
+          </div>
+
+          <div class="blog-card reveal">
+            <div class="date">Скоро · 2026</div>
+            <h3>MCP-сервер: с нуля за вечер</h3>
+            <p>Model Context Protocol меняет правила игры. Показываю, как спроектировать и развернуть production-ready MCP-сервер за один вечер: от идеи до интеграции с Claude Code.</p>
           </div>
 
         </div>
@@ -65,7 +71,7 @@
   <footer>
     <div class="container">
       <div class="footer-nav">
-        <a href="/">Главная</a>
+        <a href="/ivan-meer/">Главная</a>
         <a href="/ivan-meer/services">Услуги</a>
         <a href="/ivan-meer/blog">Блог</a>
         <a href="/ivan-meer/links">Ресурсы</a>

@@ -4,11 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ресурсы — Ivan Meer</title>
+<base href="/ivan-meer/">
 <meta name="description" content="Полезные ссылки, репозитории, awesome-списки и ресурсы по AI-инженерии, MCP, агентам и инструментам.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 </head>
 <body>
 
@@ -141,40 +143,6 @@
   </footer>
 </div>
 
-<script>
-const canvas = document.getElementById('particles');
-const ctx = canvas.getContext('2d');
-let particles = [];
-let mouse = { x: -1000, y: -1000 };
-function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-window.addEventListener('resize', resize);
-resize();
-class Particle {
-  constructor() { this.reset(); }
-  reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.vx = (Math.random() - 0.5) * 0.3; this.vy = (Math.random() - 0.5) * 0.3; this.size = Math.random() * 1.5 + 0.5; this.opacity = Math.random() * 0.4 + 0.1; }
-  update() { this.x += this.vx; this.y += this.vy; if (this.x < -20 || this.x > canvas.width + 20 || this.y < -20 || this.y > canvas.height + 20) this.reset(); }
-  draw() { const dx = this.x - mouse.x, dy = this.y - mouse.y; const glow = Math.max(0, 1 - Math.sqrt(dx*dx+dy*dy) / 200); ctx.fillStyle = `rgba(0, 229, 255, ${this.opacity + glow * 0.4})`; ctx.beginPath(); ctx.arc(this.x, this.y, this.size + glow * 1.5, 0, Math.PI * 2); ctx.fill(); }
-}
-for (let i = 0; i < 60; i++) particles.push(new Particle());
-document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach(p => { p.update(); p.draw(); });
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y, dist = Math.sqrt(dx*dx+dy*dy);
-      if (dist < 120) { ctx.strokeStyle = `rgba(0, 229, 255, ${(1 - dist / 120) * 0.06})`; ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke(); }
-    }
-  }
-  requestAnimationFrame(animate);
-}
-animate();
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver(entries => { entries.forEach((entry, i) => { if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 50); observer.unobserve(entry.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-reveals.forEach(el => observer.observe(el));
-let lastScroll = 0;
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => { const current = window.scrollY; if (current > lastScroll && current > 200) nav.classList.add('hidden'); else nav.classList.remove('hidden'); lastScroll = current; });
-</script>
+<!-- JS in script.js -->
 </body>
 </html>

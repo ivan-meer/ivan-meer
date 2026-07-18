@@ -1,146 +1,160 @@
 <!DOCTYPE html>
-<html lang="ru" class="no-js">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ресурсы — Ivan Meer, AI-инженер</title>
+<title>Ресурсы — Ivan Meer</title>
 <base href="/ivan-meer/">
-<meta name="description" content="Репозитории, подборки и материалы по AI-инженерии: агенты, MCP, Claude Code, RAG. Открытый код и гайды.">
+<meta name="description" content="Репозитории, подборки и материалы по AI-инженерии: агенты, MCP, Claude Code, RAG.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Onest:wght@400;500;600;700;800&family=PT+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script src="script.js" defer></script>
 </head>
 <body>
 
-<a class="skip-link" href="#main">К содержанию</a>
-
-<nav class="nav" aria-label="Основная навигация">
+<nav>
   <div class="nav-inner">
-    <a href="/ivan-meer/" class="nav-logo">ivan meer<span class="dot">.</span></a>
-    <ul class="nav-links">
-      <li><a href="/ivan-meer/">Главная</a></li>
-      <li><a href="/ivan-meer/services">Услуги</a></li>
-      <li><a href="/ivan-meer/blog">Блог</a></li>
-      <li><a href="/ivan-meer/links" class="active" aria-current="page">Ресурсы</a></li>
-      <li><a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener" class="nav-cta">Обсудить проект</a></li>
-    </ul>
+    <a href="/ivan-meer/" class="nav-logo">Ivan Meer<span>*</span></a>
+    <div class="nav-links">
+      <a href="/ivan-meer/">01 Главная</a>
+      <a href="/ivan-meer/services">02 Услуги</a>
+      <a href="/ivan-meer/blog">03 Блог</a>
+      <a href="/ivan-meer/links" class="active">04 Ресурсы</a>
+      <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener" data-magnet class="nav-cta">Обсудить проект ↗</a>
+    </div>
   </div>
 </nav>
 
-<main id="main">
+<div class="page-header">
+  <div class="inner">
+    <p class="sub">04 / ресурсы — код, подборки, гайды</p>
+    <h1>Код, подборки и <span>гайды</span></h1>
+    <p class="desc">Всё, что можно взять и использовать: открытые репозитории, curated-списки инструментов и практические материалы.</p>
+  </div>
+</div>
 
-  <header class="page-head">
-    <div class="container">
-      <h1>Код, подборки и <em>гайды</em></h1>
-      <p class="lead">Всё, что можно взять и использовать: открытые репозитории, curated-списки инструментов и практические материалы. Разделы «скоро» появятся вместе со статьями блога.</p>
+<!-- Open source -->
+<section>
+  <div class="wide">
+    <div data-reveal class="section-h">
+      <h2>Открытый<br>код</h2>
     </div>
-  </header>
-
-  <section>
-    <div class="container">
-
-      <div class="res-group">
-        <h2 data-reveal>Открытый код</h2>
-        <div class="res-list">
-          <a href="https://github.com/HOW2AI-AGENCY/aimusicverse" target="_blank" rel="noopener" class="res-row" data-reveal>
-            <h3>AI MusicVerse</h3>
-            <p>Платформа генерации музыки с агентными пайплайнами и Telegram-ботом</p>
-            <span class="sys">github <span class="tick">↗</span></span>
-          </a>
-          <a href="https://github.com/ivan-meer/mistral-ocr-app" target="_blank" rel="noopener" class="res-row" data-reveal>
-            <h3>Mistral OCR App</h3>
-            <p>Распознавание документов на vision-моделях Mistral AI</p>
-            <span class="sys">github <span class="tick">↗</span></span>
-          </a>
-          <a href="https://github.com/ivan-meer/claude-code-custom" target="_blank" rel="noopener" class="res-row" data-reveal>
-            <h3>Claude Code Custom</h3>
-            <p>Плагины, конфигурации и расширения для Claude Code CLI</p>
-            <span class="sys">github <span class="tick">↗</span></span>
-          </a>
-          <a href="https://github.com/ivan-meer" target="_blank" rel="noopener" class="res-row" data-reveal>
-            <h3>Все репозитории</h3>
-            <p>Профиль на GitHub — проекты, эксперименты, форки</p>
-            <span class="sys">github <span class="tick">↗</span></span>
-          </a>
-        </div>
-      </div>
-
-      <div class="res-group">
-        <h2 data-reveal>Подборки</h2>
-        <div class="res-list">
-          <div class="res-row soon" data-reveal>
-            <h3>Awesome AI Agents</h3>
-            <p>Фреймворки, инструменты и библиотеки для агентных систем — с комментариями, что реально работает</p>
-            <span class="sys">скоро</span>
-          </div>
-          <div class="res-row soon" data-reveal>
-            <h3>Awesome MCP</h3>
-            <p>Серверы, клиенты и паттерны Model Context Protocol</p>
-            <span class="sys">скоро</span>
-          </div>
-          <div class="res-row soon" data-reveal>
-            <h3>AI Engineering Stack</h3>
-            <p>Мой рабочий стек AI-native разработки: от IDE до деплоя</p>
-            <span class="sys">скоро</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="res-group">
-        <h2 data-reveal>Гайды</h2>
-        <div class="res-list">
-          <div class="res-row soon" data-reveal>
-            <h3>Настройка Claude Code</h3>
-            <p>Установка, конфигурация, плагины и оптимизация — полный практический гайд</p>
-            <span class="sys">скоро</span>
-          </div>
-          <div class="res-row soon" data-reveal>
-            <h3>MCP-сервер за 15 минут</h3>
-            <p>Быстрый старт с шаблонным репозиторием</p>
-            <span class="sys">скоро</span>
-          </div>
-          <div class="res-row soon" data-reveal>
-            <h3>RAG-система с нуля</h3>
-            <p>Корпоративная база знаний с AI-поиском: архитектура и сборка</p>
-            <span class="sys">скоро</span>
-          </div>
-        </div>
-      </div>
-
+    <div class="project-grid">
+      <a href="https://github.com/HOW2AI-AGENCY/aimusicverse" target="_blank" rel="noopener" data-reveal class="project-row">
+        <span class="num">R-01</span>
+        <h3>AI MusicVerse ↗</h3>
+        <p class="desc">Платформа генерации музыки с агентными пайплайнами и Telegram-ботом</p>
+        <span class="project-chip">GitHub</span>
+      </a>
+      <a href="https://github.com/ivan-meer/mistral-ocr-app" target="_blank" rel="noopener" data-reveal class="project-row">
+        <span class="num">R-02</span>
+        <h3>Mistral OCR ↗</h3>
+        <p class="desc">Распознавание документов на vision-моделях Mistral AI</p>
+        <span class="project-chip">GitHub</span>
+      </a>
+      <a href="https://github.com/ivan-meer/claude-code-custom" target="_blank" rel="noopener" data-reveal class="project-row">
+        <span class="num">R-03</span>
+        <h3>Claude Code Custom ↗</h3>
+        <p class="desc">Плагины, конфигурации и расширения для Claude Code CLI</p>
+        <span class="project-chip">GitHub</span>
+      </a>
+      <a href="https://github.com/ivan-meer" target="_blank" rel="noopener" data-reveal class="project-row">
+        <span class="num">R-04</span>
+        <h3>Все репозитории ↗</h3>
+        <p class="desc">Профиль на GitHub — проекты, эксперименты, форки</p>
+        <span class="project-chip">GitHub</span>
+      </a>
     </div>
-  </section>
+  </div>
+</section>
 
-</main>
+<!-- Awesome lists -->
+<section>
+  <div class="wide">
+    <div data-reveal class="section-h">
+      <h2>Подборки</h2>
+    </div>
+    <div class="project-grid">
+      <div data-reveal class="project-row" style="cursor:default;">
+        <span class="num">A-01</span>
+        <h3>Awesome AI Agents</h3>
+        <p class="desc">Фреймворки, инструменты и библиотеки для агентных систем</p>
+        <span class="project-chip">скоро</span>
+      </div>
+      <div data-reveal class="project-row" style="cursor:default;">
+        <span class="num">A-02</span>
+        <h3>Awesome MCP</h3>
+        <p class="desc">Серверы, клиенты и паттерны Model Context Protocol</p>
+        <span class="project-chip">скоро</span>
+      </div>
+      <div data-reveal class="project-row" style="cursor:default;">
+        <span class="num">A-03</span>
+        <h3>AI Engineering Stack</h3>
+        <p class="desc">Мой рабочий стек AI-native разработки: от IDE до деплоя</p>
+        <span class="project-chip">скоро</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-<footer>
-  <div class="container">
+<!-- Guides -->
+<section>
+  <div class="wide">
+    <div data-reveal class="section-h">
+      <h2>Гайды</h2>
+    </div>
+    <div class="project-grid">
+      <div data-reveal class="project-row" style="cursor:default;">
+        <span class="num">G-01</span>
+        <h3>Настройка Claude Code</h3>
+        <p class="desc">Установка, конфигурация, плагины и оптимизация</p>
+        <span class="project-chip">скоро</span>
+      </div>
+      <div data-reveal class="project-row" style="cursor:default;">
+        <span class="num">G-02</span>
+        <h3>MCP-сервер за 15 минут</h3>
+        <p class="desc">Быстрый старт с шаблонным репозиторием</p>
+        <span class="project-chip">скоро</span>
+      </div>
+      <div data-reveal class="project-row" style="cursor:default;">
+        <span class="num">G-03</span>
+        <h3>RAG-система с нуля</h3>
+        <p class="desc">Корпоративная база знаний с AI-поиском: архитектура и сборка</p>
+        <span class="project-chip">скоро</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="inner">
     <div class="footer-grid">
-      <div>
-        <p class="brand">ivan meer<span class="dot">.</span></p>
-        <p class="tagline">AI-инженер. Системы, а не скрипты. Архитектура, а не заплатки.</p>
+      <div class="footer-about">
+        <p class="logo-sm">Ivan Meer<span>*</span></p>
+        <p>AI-инженер. Системы, а не скрипты. Архитектура, а не заплатки.</p>
       </div>
       <div>
-        <h4>НАВИГАЦИЯ</h4>
-        <ul>
-          <li><a href="/ivan-meer/">Главная</a></li>
-          <li><a href="/ivan-meer/services">Услуги</a></li>
-          <li><a href="/ivan-meer/blog">Блог</a></li>
-          <li><a href="/ivan-meer/links">Ресурсы</a></li>
-        </ul>
+        <h4>Навигация</h4>
+        <div class="links">
+          <a href="/ivan-meer/">Главная</a>
+          <a href="/ivan-meer/services">Услуги</a>
+          <a href="/ivan-meer/blog">Блог</a>
+          <a href="/ivan-meer/links">Ресурсы</a>
+        </div>
       </div>
       <div>
-        <h4>КОНТАКТЫ</h4>
-        <ul>
-          <li><a href="https://github.com/ivan-meer" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="https://linkedin.com/in/ivan-meer" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener">Telegram</a></li>
-          <li><a href="https://t.me/AIMusicVerse" target="_blank" rel="noopener">AI MusicVerse</a></li>
-        </ul>
+        <h4>Контакты</h4>
+        <div class="links">
+          <a href="https://github.com/ivan-meer" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://linkedin.com/in/ivan-meer" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener">Telegram ↗</a>
+          <a href="https://t.me/AIMusicVerse" target="_blank" rel="noopener">AI MusicVerse ↗</a>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
+    <div class="bottom">
       <span>© 2026 Ivan Meer</span>
       <span>сделано руками и агентами</span>
     </div>

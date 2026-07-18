@@ -1,199 +1,164 @@
-// ── Ivan Meer — shared JS ──
-// Progressive enhancement: page is fully readable without any of this.
+// ── Shared JS for ivan-meer.github.io/ivan-meer/ ──
 
-document.documentElement.classList.remove('no-js');
-document.documentElement.classList.add('js');
-
-const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-// ── Nav border on scroll ──
-(function () {
-  const nav = document.querySelector('.nav');
+// Nav border & hide on scroll
+(function() {
+  const nav = document.querySelector('nav');
   if (!nav) return;
-  const update = () => nav.classList.toggle('scrolled', window.scrollY > 8);
-  window.addEventListener('scroll', update, { passive: true });
-  update();
+  let lastScroll = 0;
+  const onScroll = () => {
+    const y = window.scrollY;
+    nav.style.borderBottomColor = y > 20 ? 'oklch(26% 0.014 265)' : 'transparent';
+    if (y > lastScroll && y > 200) nav.classList.add('hidden');
+    else nav.classList.remove('hidden');
+    lastScroll = y;
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
 })();
 
-// ── Reveal on scroll (varied, per data-reveal) ──
-(function () {
-  const els = document.querySelectorAll('[data-reveal]');
+// Scroll reveals
+(function() {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) return;
+  const els = [...document.querySelectorAll('[data-reveal]')];
   if (!els.length) return;
-  if (REDUCED) { els.forEach(el => el.classList.add('in')); return; }
+  els.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(26px)';
+    el.style.transition = 'opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1)';
+  });
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'none';
+        io.unobserve(e.target);
+      }
     });
-  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+  }, { threshold: 0.08 });
   els.forEach(el => io.observe(el));
 })();
 
-// ── Hero headline line-mask reveal ──
-(function () {
-  const lines = document.querySelectorAll('.mask-line');
-  if (!lines.length) return;
-  if (REDUCED) { lines.forEach(l => l.classList.add('in')); return; }
-  lines.forEach((l, i) => {
-    l.querySelector('span').style.transitionDelay = `${0.08 + i * 0.09}s`;
-    requestAnimationFrame(() => requestAnimationFrame(() => l.classList.add('in')));
-  });
-})();
-
-// ── Layers accordion (home stack diagram) ──
-(function () {
-  const layers = document.querySelectorAll('.layer');
-  if (!layers.length) return;
-  layers.forEach(layer => {
-    const head = layer.querySelector('.layer-head');
-    head.addEventListener('click', () => {
-      const isOpen = layer.classList.contains('open');
-      layers.forEach(l => {
-        l.classList.remove('open');
-        l.querySelector('.layer-head').setAttribute('aria-expanded', 'false');
-      });
-      if (!isOpen) {
-        layer.classList.add('open');
-        head.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
-})();
-
-// ── Orchestration graph (hero canvas) ──
-// A layered DAG: nodes are agents/services, vermilion pulses travel the
-// edges. Static single render under prefers-reduced-motion.
-(function () {
-  const canvas = document.getElementById('orchestra');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const wrap = canvas.parentElement;
-
-  const css = getComputedStyle(document.documentElement);
-  const INK = css.getPropertyValue('--ink-3').trim() || '#7a7a85';
-  const LINE = css.getPropertyValue('--line').trim() || '#d4d4da';
-  const ACCENT = css.getPropertyValue('--accent').trim() || '#e05a2b';
-
-  let W = 0, H = 0, dpr = 1;
-  let nodes = [], edges = [], pulses = [];
-  const mouse = { x: -1e4, y: -1e4 };
-
-  // ponytail: fixed 4-column DAG, no physics — enough for a hero motif
-  function build() {
-    nodes = []; edges = [];
-    const cols = 4;
-    const rows = [3, 4, 3, 2];
-    const padX = W * 0.08, padY = H * 0.1;
-    const seeded = (i, j) => {
-      // deterministic jitter so layout is stable between resizes
-      const s = Math.sin(i * 127.1 + j * 311.7) * 43758.5453;
-      return s - Math.floor(s);
+// Accordion
+(function() {
+  document.querySelectorAll('[data-acc]').forEach((acc, i) => {
+    const head = acc.querySelector('[data-acc-head]');
+    const body = acc.querySelector('[data-acc-body]');
+    const icon = acc.querySelector('[data-acc-icon]');
+    if (!head || !body) return;
+    const set = open => {
+      body.style.gridTemplateRows = open ? '1fr' : '0fr';
+      if (icon) { icon.style.transform = open ? 'rotate(45deg)' : 'none'; icon.style.color = open ? 'var(--ac)' : 'oklch(66% 0.012 265)'; }
+      acc.dataset.open = open ? '1' : '';
     };
-    for (let c = 0; c < cols; c++) {
-      for (let r = 0; r < rows[c]; r++) {
-        nodes.push({
-          x: padX + (W - padX * 2) * (c / (cols - 1)) + (seeded(c, r) - 0.5) * W * 0.05,
-          y: padY + (H - padY * 2) * (rows[c] === 1 ? 0.5 : r / (rows[c] - 1)) + (seeded(r, c) - 0.5) * H * 0.06,
-          col: c,
-          rr: 3 + seeded(c, r + 9) * 2.5,
-        });
-      }
-    }
-    nodes.forEach((a, i) => {
-      nodes.forEach((b, j) => {
-        if (b.col === a.col + 1 && Math.abs(a.y - b.y) < H * 0.6) {
-          if (seeded(i, j) > 0.35) edges.push([i, j]);
-        }
-      });
-    });
-    // guarantee every node is connected
-    nodes.forEach((n, i) => {
-      if (n.col < cols - 1 && !edges.some(e => e[0] === i)) {
-        let best = -1, bd = 1e9;
-        nodes.forEach((m, j) => {
-          if (m.col === n.col + 1) { const d = Math.abs(m.y - n.y); if (d < bd) { bd = d; best = j; } }
-        });
-        if (best >= 0) edges.push([i, best]);
-      }
-    });
-  }
+    if (i === 0) set(true);
+    head.addEventListener('click', () => set(!acc.dataset.open));
+  });
+})();
 
-  function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    W = wrap.clientWidth; H = wrap.clientHeight;
-    canvas.width = W * dpr; canvas.height = H * dpr;
+// Magnetic buttons
+(function() {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) return;
+  document.querySelectorAll('[data-magnet]').forEach(btn => {
+    const mv = e => {
+      const r = btn.getBoundingClientRect();
+      const dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+      btn.style.transform = `translate(${dx * 0.12}px, ${dy * 0.18}px)`;
+    };
+    const out = () => { btn.style.transform = 'none'; };
+    btn.addEventListener('mousemove', mv);
+    btn.addEventListener('mouseleave', out);
+  });
+})();
+
+// FAQ rotate icons
+(function() {
+  document.querySelectorAll('.faq-item').forEach(d => {
+    const mark = d.querySelector('.faq-icon');
+    if (!mark) return;
+    const h = () => { mark.style.transform = d.open ? 'rotate(45deg)' : 'none'; };
+    d.addEventListener('toggle', h);
+  });
+})();
+
+// Orchestra canvas
+(function() {
+  const cv = document.querySelector('canvas.orchestra');
+  if (!cv) return;
+  const ctx = cv.getContext('2d');
+  let W, H;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const resize = () => {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    build();
-    if (REDUCED) draw(0);
-  }
+  };
+  resize();
+  window.addEventListener('resize', resize);
 
-  function spawnPulse() {
-    // cap + hidden-tab guard: rAF pauses draw, so unbounded spawns would
-    // burst all at once when the tab returns
-    if (!edges.length || document.hidden || pulses.length > 24) return;
-    pulses.push({ edge: edges[(Math.random() * edges.length) | 0], t: 0, speed: 0.004 + Math.random() * 0.006 });
-  }
+  const mouse = { x: -9999, y: -9999 };
+  cv.addEventListener('mousemove', e => { const r = cv.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
+  cv.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
 
-  function draw(now) {
+  const nodes = [
+    { x: 0.5, y: 0.5, r: 26, label: 'ORCH', core: true },
+    { x: 0.18, y: 0.28, r: 15, label: 'AGENT-01' },
+    { x: 0.3, y: 0.72, r: 15, label: 'AGENT-02' },
+    { x: 0.12, y: 0.52, r: 12, label: 'AGENT-03' },
+    { x: 0.72, y: 0.24, r: 16, label: 'MEM / RAG' },
+    { x: 0.86, y: 0.5, r: 14, label: 'MCP' },
+    { x: 0.74, y: 0.76, r: 14, label: 'MODEL' },
+    { x: 0.92, y: 0.22, r: 9, label: 'CRM' },
+    { x: 0.95, y: 0.68, r: 9, label: 'DB' },
+    { x: 0.4, y: 0.16, r: 10, label: 'UI' }
+  ];
+  const edges = [[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[4,5],[5,7],[5,8],[0,9],[6,4],[1,9]];
+  const pulses = edges.map((e, i) => ({ e, t: (i * 0.37) % 1, sp: 0.0022 + (i % 4) * 0.0007 }));
+  let time = 0;
+
+  const hue = 128;
+  const acColor = `oklch(88% 0.19 ${hue})`;
+
+  function draw() {
+    time += 1;
     ctx.clearRect(0, 0, W, H);
-
+    nodes.forEach((n, i) => {
+      let bx = n.x * W + Math.sin(time * 0.008 + i * 1.7) * 7;
+      let by = n.y * H + Math.cos(time * 0.007 + i * 2.3) * 7;
+      const dx = bx - mouse.x, dy = by - mouse.y, d = Math.hypot(dx, dy);
+      if (d < 140 && d > 0.01) { const f = (140 - d) / 140 * 24; bx += dx / d * f; by += dy / d * f; }
+      n.bx = bx; n.by = by;
+    });
     ctx.lineWidth = 1;
     edges.forEach(([a, b]) => {
-      const na = nodes[a], nb = nodes[b];
-      ctx.strokeStyle = LINE;
-      ctx.beginPath();
-      ctx.moveTo(na.x, na.y);
-      const mx = (na.x + nb.x) / 2;
-      ctx.bezierCurveTo(mx, na.y, mx, nb.y, nb.x, nb.y);
-      ctx.stroke();
+      ctx.strokeStyle = 'rgba(255,255,255,0.09)';
+      ctx.beginPath(); ctx.moveTo(nodes[a].bx, nodes[a].by); ctx.lineTo(nodes[b].bx, nodes[b].by); ctx.stroke();
     });
-
-    pulses = pulses.filter(p => p.t <= 1);
-    pulses.forEach(p => {
-      p.t += p.speed;
-      const na = nodes[p.edge[0]], nb = nodes[p.edge[1]];
-      const mx = (na.x + nb.x) / 2;
-      const t = p.t, u = 1 - t;
-      // cubic bezier point (same control points as the stroke)
-      const x = u * u * u * na.x + 3 * u * u * t * mx + 3 * u * t * t * mx + t * t * t * nb.x;
-      const y = u * u * u * na.y + 3 * u * u * t * na.y + 3 * u * t * t * nb.y + t * t * t * nb.y;
-      ctx.fillStyle = ACCENT;
-      ctx.globalAlpha = Math.sin(p.t * Math.PI);
-      ctx.beginPath(); ctx.arc(x, y, 2.6, 0, Math.PI * 2); ctx.fill();
-      ctx.globalAlpha = 1;
+    if (!reduced) pulses.forEach(p => {
+      p.t = (p.t + p.sp) % 1;
+      const [a, b] = p.e;
+      const x = nodes[a].bx + (nodes[b].bx - nodes[a].bx) * p.t;
+      const y = nodes[a].by + (nodes[b].by - nodes[a].by) * p.t;
+      ctx.fillStyle = acColor;
+      ctx.beginPath(); ctx.arc(x, y, 2.2, 0, Math.PI * 2); ctx.fill();
     });
-
+    ctx.font = '10.5px "JetBrains Mono", monospace';
     nodes.forEach(n => {
-      const dx = n.x - mouse.x, dy = n.y - mouse.y;
-      const near = Math.max(0, 1 - Math.hypot(dx, dy) / 120);
-      const wob = REDUCED ? 0 : Math.sin(now / 900 + n.x) * 1.2;
-      ctx.fillStyle = near > 0.05 ? ACCENT : INK;
-      ctx.beginPath();
-      ctx.arc(n.x, n.y + wob, n.rr + near * 2, 0, Math.PI * 2);
-      ctx.fill();
+      ctx.strokeStyle = n.core ? acColor : 'rgba(255,255,255,0.3)';
+      ctx.fillStyle = 'oklch(14.5% 0.012 265)';
+      ctx.lineWidth = n.core ? 1.5 : 1;
+      ctx.beginPath(); ctx.arc(n.bx, n.by, n.r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+      if (n.core) {
+        ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+        ctx.beginPath(); ctx.arc(n.bx, n.by, n.r + 6 + Math.sin(time * 0.05) * 2.5, 0, Math.PI * 2); ctx.stroke();
+      }
+      ctx.fillStyle = n.core ? acColor : 'oklch(60% 0.012 265)';
+      ctx.textAlign = 'center';
+      ctx.fillText(n.label, n.bx, n.by + n.r + 16);
     });
+    if (!reduced) requestAnimationFrame(draw);
   }
-
-  let raf;
-  function loop(now) {
-    draw(now);
-    raf = requestAnimationFrame(loop);
-  }
-
-  window.addEventListener('resize', resize);
-  canvas.addEventListener('pointermove', e => {
-    const r = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
-  });
-  canvas.addEventListener('pointerleave', () => { mouse.x = mouse.y = -1e4; });
-
-  resize();
-  if (!REDUCED) {
-    setInterval(spawnPulse, 420);
-    // pause when tab hidden
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) cancelAnimationFrame(raf);
-      else raf = requestAnimationFrame(loop);
-    });
-    raf = requestAnimationFrame(loop);
-  }
+  draw();
 })();

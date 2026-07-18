@@ -1,39 +1,53 @@
 <!DOCTYPE html>
-<html lang="ru" class="no-js">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>404 — Ivan Meer</title>
 <base href="/ivan-meer/">
-<meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Onest:wght@400;500;600;700;800&family=PT+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
 </head>
 <body>
 
-<nav class="nav" aria-label="Основная навигация">
+<nav>
   <div class="nav-inner">
-    <a href="/ivan-meer/" class="nav-logo">ivan meer<span class="dot">.</span></a>
-    <ul class="nav-links">
-      <li><a href="/ivan-meer/">Главная</a></li>
-      <li><a href="/ivan-meer/services">Услуги</a></li>
-      <li><a href="/ivan-meer/blog">Блог</a></li>
-      <li><a href="/ivan-meer/links">Ресурсы</a></li>
-    </ul>
+    <a href="/ivan-meer/" class="nav-logo">Ivan Meer<span>*</span></a>
+    <div class="nav-links">
+      <a href="/ivan-meer/" class="active">01 Главная</a>
+      <a href="/ivan-meer/services">02 Услуги</a>
+      <a href="/ivan-meer/blog">03 Блог</a>
+      <a href="/ivan-meer/links">04 Ресурсы</a>
+    </div>
   </div>
 </nav>
 
-<main class="err-wrap">
-  <p class="code-word">4<span>0</span>4</p>
-  <p class="sys">агент обошёл весь граф — такого маршрута нет</p>
-  <a href="/ivan-meer/" class="btn btn-primary">
-    Вернуться на главную
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </a>
-</main>
+<div style="min-height:80vh;display:flex;align-items:center;">
+  <div class="wide">
+    <p class="status"><span class="status-dot"></span> error 404</p>
+    <h1 style="margin:0;font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;font-size:clamp(52px,9.4vw,148px);line-height:0.96;color:oklch(94% 0.006 100);">
+      <span class="line"><span class="line-inner" style="animation-delay:0.1s">Страница</span></span>
+      <span class="line"><span class="line-inner accent" style="animation-delay:0.22s">не найдена</span></span>
+    </h1>
+    <div class="lead" style="margin-top:40px;">
+      <p>То, что вы ищете, никогда не существовало или было перемещено. Возможно, стоит начать с главной.</p>
+      <div class="lead-btns">
+        <a href="/ivan-meer/" data-magnet class="btn-primary">На главную</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site">
+  <div class="inner">
+    <div class="bottom" style="border-top:none;margin-top:0;padding-top:0;">
+      <span>© 2026 Ivan Meer</span>
+      <span>сделано руками и агентами</span>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>

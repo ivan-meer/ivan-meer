@@ -1,138 +1,109 @@
 <!DOCTYPE html>
-<html lang="ru" class="no-js">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Блог — Ivan Meer, AI-инженер</title>
+<title>Блог — Ivan Meer</title>
 <base href="/ivan-meer/">
-<meta name="description" content="Инженерные заметки об AI-системах: агенты, архитектура, память, MCP, экономика токенов. Без хайпа, с кодом и цифрами.">
+<meta name="description" content="Инженерные заметки об AI-системах: агенты, архитектура, память, MCP, экономика токенов.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Onest:wght@400;500;600;700;800&family=PT+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script src="script.js" defer></script>
 </head>
 <body>
 
-<a class="skip-link" href="#main">К содержанию</a>
-
-<nav class="nav" aria-label="Основная навигация">
+<nav>
   <div class="nav-inner">
-    <a href="/ivan-meer/" class="nav-logo">ivan meer<span class="dot">.</span></a>
-    <ul class="nav-links">
-      <li><a href="/ivan-meer/">Главная</a></li>
-      <li><a href="/ivan-meer/services">Услуги</a></li>
-      <li><a href="/ivan-meer/blog" class="active" aria-current="page">Блог</a></li>
-      <li><a href="/ivan-meer/links">Ресурсы</a></li>
-      <li><a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener" class="nav-cta">Обсудить проект</a></li>
-    </ul>
+    <a href="/ivan-meer/" class="nav-logo">Ivan Meer<span>*</span></a>
+    <div class="nav-links">
+      <a href="/ivan-meer/">01 Главная</a>
+      <a href="/ivan-meer/services">02 Услуги</a>
+      <a href="/ivan-meer/blog" class="active">03 Блог</a>
+      <a href="/ivan-meer/links">04 Ресурсы</a>
+      <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener" data-magnet class="nav-cta">Обсудить проект ↗</a>
+    </div>
   </div>
 </nav>
 
-<main id="main">
+<div class="page-header">
+  <div class="inner">
+    <p class="sub">03 / блог — инженерные заметки</p>
+    <h1>Заметки инженера,<br>а не <span>евангелиста</span></h1>
+    <p class="desc">Пишу о том, что строю руками: агентные архитектуры, память, MCP, экономика токенов. С кодом, цифрами и без обещаний, что AI заменит всех к пятнице. Первые статьи — в работе.</p>
+  </div>
+</div>
 
-  <header class="page-head">
-    <div class="container">
-      <h1>Заметки инженера, а не <em>евангелиста</em></h1>
-      <p class="lead">Пишу о том, что строю руками: агентные архитектуры, память, MCP, экономика токенов. С кодом, цифрами и без обещаний, что AI заменит всех к пятнице. Первые статьи — в работе.</p>
+<section>
+  <div class="wide">
+    <div class="blog-list">
+
+      <article class="blog-card" data-reveal>
+        <div class="date">в работе · архитектура · агенты</div>
+        <h3>Скрипты не работают: почему AI-агентам нужна архитектура</h3>
+        <p>Если ваша AI-автоматизация сломалась через неделю, а счёт за токены вырос втрое — это не невезение, это отсутствие харнесса. Разбираю разницу между «подключил API» и инженерным подходом: оркестрация, память, наблюдаемость — на примере реальной системы.</p>
+      </article>
+
+      <article class="blog-card" data-reveal>
+        <div class="date">в работе · память · RAG</div>
+        <h3>Проектируем систему памяти для AI-агента</h3>
+        <p>Память — то, что отличает агента от чата. Куда сохранять, как искать, когда забывать: векторные базы, гибридный поиск, иерархическое хранение. С архитектурными схемами и граблями, на которые я уже наступил за вас.</p>
+      </article>
+
+      <article class="blog-card" data-reveal>
+        <div class="date">в работе · экономика · оптимизация</div>
+        <h3>Оптимизация токенов: как срезать счёт на 40–70%</h3>
+        <p>Продакшен-система не обязана быть дорогой. Кэширование промптов, сжатие контекста, роутинг между моделями, файнтюнинг вместо few-shot — методики с замерами до и после на реальных логах.</p>
+      </article>
+
+      <article class="blog-card" data-reveal>
+        <div class="date">в работе · MCP · интеграции</div>
+        <h3>MCP-сервер: с нуля до продакшена за вечер</h3>
+        <p>Model Context Protocol — самый короткий путь подключить ваши данные к AI-инструментам. Пошагово: проектирование, разработка, авторизация, деплой и интеграция с Claude Code. С репозиторием-шаблоном.</p>
+      </article>
+
     </div>
-  </header>
+  </div>
+</section>
 
-  <section>
-    <div class="container">
-      <div class="post-list">
-
-        <article class="post-row" data-reveal>
-          <div class="meta">
-            <span class="soon">в работе</span><br>
-            архитектура · агенты
-          </div>
-          <div>
-            <h2>Скрипты не работают: почему AI-агентам нужна архитектура</h2>
-            <p>Если ваша AI-автоматизация сломалась через неделю, а счёт за токены вырос втрое — это не невезение, это отсутствие харнесса. Разбираю разницу между «подключил API» и инженерным подходом: оркестрация, память, наблюдаемость — на примере реальной системы.</p>
-          </div>
-        </article>
-
-        <article class="post-row" data-reveal>
-          <div class="meta">
-            <span class="soon">в работе</span><br>
-            память · RAG
-          </div>
-          <div>
-            <h2>Проектируем систему памяти для AI-агента</h2>
-            <p>Память — то, что отличает агента от чата. Куда сохранять, как искать, когда забывать: векторные базы, гибридный поиск, иерархическое хранение. С архитектурными схемами и граблями, на которые я уже наступил за вас.</p>
-          </div>
-        </article>
-
-        <article class="post-row" data-reveal>
-          <div class="meta">
-            <span class="soon">в работе</span><br>
-            экономика · оптимизация
-          </div>
-          <div>
-            <h2>Оптимизация токенов: как срезать счёт на 40–70%</h2>
-            <p>Продакшен-система не обязана быть дорогой. Кэширование промптов, сжатие контекста, роутинг между моделями, файнтюнинг вместо few-shot — методики с замерами до и после на реальных логах.</p>
-          </div>
-        </article>
-
-        <article class="post-row" data-reveal>
-          <div class="meta">
-            <span class="soon">в работе</span><br>
-            MCP · интеграции
-          </div>
-          <div>
-            <h2>MCP-сервер: с нуля до продакшена за вечер</h2>
-            <p>Model Context Protocol — самый короткий путь подключить ваши данные к AI-инструментам. Пошагово: проектирование, разработка, авторизация, деплой и интеграция с Claude Code. С репозиторием-шаблоном.</p>
-          </div>
-        </article>
-
-      </div>
+<section class="cta-section">
+  <div class="cta-inner">
+    <p class="mini">// анонсы выходят в Telegram</p>
+    <h2 data-reveal>Не хотите проверять вручную?</h2>
+    <div class="cta-bottom">
+      <p>Напишите мне в Telegram — добавлю вас в список и пришлю первую статью, когда она выйдет.</p>
+      <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener" data-magnet class="cta-btn">Написать в Telegram →</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="band-accent">
-    <div class="container">
-      <div class="cta-inner">
-        <p class="sys">// анонсы выходят в Telegram</p>
-        <h2 data-reveal>Не хотите проверять вручную?</h2>
-        <p class="cta-sub" data-reveal style="--d:0.1s">Напишите мне в Telegram — добавлю вас в список и пришлю первую статью, когда она выйдет.</p>
-        <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener" class="btn btn-on-accent" data-reveal style="--d:0.2s">
-          Написать в Telegram
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="container">
+<footer class="site">
+  <div class="inner">
     <div class="footer-grid">
-      <div>
-        <p class="brand">ivan meer<span class="dot">.</span></p>
-        <p class="tagline">AI-инженер. Системы, а не скрипты. Архитектура, а не заплатки.</p>
+      <div class="footer-about">
+        <p class="logo-sm">Ivan Meer<span>*</span></p>
+        <p>AI-инженер. Системы, а не скрипты. Архитектура, а не заплатки.</p>
       </div>
       <div>
-        <h4>НАВИГАЦИЯ</h4>
-        <ul>
-          <li><a href="/ivan-meer/">Главная</a></li>
-          <li><a href="/ivan-meer/services">Услуги</a></li>
-          <li><a href="/ivan-meer/blog">Блог</a></li>
-          <li><a href="/ivan-meer/links">Ресурсы</a></li>
-        </ul>
+        <h4>Навигация</h4>
+        <div class="links">
+          <a href="/ivan-meer/">Главная</a>
+          <a href="/ivan-meer/services">Услуги</a>
+          <a href="/ivan-meer/blog">Блог</a>
+          <a href="/ivan-meer/links">Ресурсы</a>
+        </div>
       </div>
       <div>
-        <h4>КОНТАКТЫ</h4>
-        <ul>
-          <li><a href="https://github.com/ivan-meer" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="https://linkedin.com/in/ivan-meer" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener">Telegram</a></li>
-          <li><a href="https://t.me/AIMusicVerse" target="_blank" rel="noopener">AI MusicVerse</a></li>
-        </ul>
+        <h4>Контакты</h4>
+        <div class="links">
+          <a href="https://github.com/ivan-meer" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://linkedin.com/in/ivan-meer" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener">Telegram ↗</a>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
+    <div class="bottom">
       <span>© 2026 Ivan Meer</span>
       <span>сделано руками и агентами</span>
     </div>

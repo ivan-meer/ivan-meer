@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" fill="none">
+  <rect width="600" height="360" rx="12" fill="#f8f8f8"/>
+  
+  <!-- Script side -->
+  <rect x="30" y="20" width="250" height="320" rx="8" fill="#fff" stroke="#ddd" stroke-width="1"/>
+  <text x="155" y="50" text-anchor="middle" font-family="Oswald, sans-serif" font-size="16" font-weight="600" fill="#b33">// СКРИПТ</text>
+  
+  <rect x="55" y="70" width="200" height="44" rx="6" fill="#f0f0f0"/>
+  <text x="155" y="97" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#555">запрос → LLM → ответ</text>
+  
+  <rect x="55" y="130" width="200" height="44" rx="6" fill="#fce4e4" stroke="#e88" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="155" y="157" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#b33">падение при ошибке</text>
+  
+  <rect x="55" y="190" width="200" height="44" rx="6" fill="#fce4e4" stroke="#e88" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="155" y="217" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#b33">нет истории сессии</text>
+  
+  <rect x="55" y="250" width="200" height="44" rx="6" fill="#fce4e4" stroke="#e88" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="155" y="277" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#b33">скрытые расходы</text>
+
+  <!-- System side -->
+  <rect x="320" y="20" width="250" height="320" rx="8" fill="#fff" stroke="#ddd" stroke-width="1"/>
+  <text x="445" y="50" text-anchor="middle" font-family="Oswald, sans-serif" font-size="16" font-weight="600" fill="#b33">// СИСТЕМА</text>
+  
+  <rect x="350" y="70" width="200" height="38" rx="6" fill="#e4f0e4" stroke="#8b8" stroke-width="1"/>
+  <text x="450" y="94" text-anchor="middle" font-family="Golos Text, sans-serif" font-size="13" fill="#282">оркестрация + retry</text>
+  
+  <rect x="350" y="118" width="200" height="38" rx="6" fill="#e4f0e4" stroke="#8b8" stroke-width="1"/>
+  <text x="450" y="142" text-anchor="middle" font-family="Golos Text, sans-serif" font-size="13" fill="#282">память (3 слоя)</text>
+  
+  <rect x="350" y="166" width="200" height="38" rx="6" fill="#e4f0e4" stroke="#8b8" stroke-width="1"/>
+  <text x="450" y="190" text-anchor="middle" font-family="Golos Text, sans-serif" font-size="13" fill="#282">наблюдаемость</text>
+  
+  <rect x="350" y="214" width="200" height="38" rx="6" fill="#e4f0e4" stroke="#8b8" stroke-width="1"/>
+  <text x="450" y="238" text-anchor="middle" font-family="Golos Text, sans-serif" font-size="13" fill="#282">маршрутизация моделей</text>
+
+  <rect x="350" y="262" width="200" height="38" rx="6" fill="#e4f0e4" stroke="#8b8" stroke-width="1"/>
+  <text x="450" y="286" text-anchor="middle" font-family="Golos Text, sans-serif" font-size="13" fill="#282">экономия токенов −60%</text>
+
+  <rect x="350" y="310" width="200" height="24" rx="6" fill="#b33"/>
+  <text x="450" y="327" text-anchor="middle" font-family="Oswald, sans-serif" font-size="12" fill="#fff">переживает рост и смену модели</text>
+</svg>

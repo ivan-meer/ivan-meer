@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 420" fill="none">
+  <rect width="500" height="420" rx="12" fill="#f8f8f8"/>
+  
+  <text x="250" y="35" text-anchor="middle" font-family="Oswald, sans-serif" font-size="18" font-weight="600" fill="#1a1a1a">Память AI-агента: три слоя</text>
+  
+  <!-- Layer 1: Short-term -->
+  <rect x="80" y="60" width="340" height="80" rx="8" fill="#fff" stroke="#ddd" stroke-width="1"/>
+  <rect x="80" y="60" width="340" height="28" rx="8" fill="#e8d4d4"/>
+  <text x="250" y="79" text-anchor="middle" font-family="Oswald, sans-serif" font-size="12" fill="#822">L1 · Краткосрочная</text>
+  <text x="250" y="105" text-anchor="middle" font-family="Golos Text, sans-serif" font-size="13" fill="#444">Текущий диалог · контекстное окно · session ID</text>
+  <text x="250" y="125" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#888">TTL: 1 час · объём: 200K токенов</text>
+  
+  <line x1="250" y1="140" x2="250" y2="165" stroke="#ccc" stroke-width="1" stroke-dasharray="4,3"/>
+  <polygon points="244,163 250,170 256,163" fill="#ccc"/>
+
+  <!-- Layer 2: Long-term -->
+  <rect x="80" y="170" width="340" height="80" rx="8" fill="#fff" stroke="#ddd" stroke-width="1"/>
+  <rect x="80" y="170" width="340" height="28" rx="8" fill="#d4d4e8"/>
+  <text x="250" y="189" text-anchor="middle" font-family="Oswald, sans-serif" font-size="12" fill="#228">L2 · Долгосрочная</text>
+  <text x="250" y="215" text-anchor="middle" font-family="Golos Text, sans-serif" font-size="13" fill="#444">Векторная БД · истории проектов · профили</text>
+  <text x="250" y="235" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#888">TTL: бессрочно · pgvector / Qdrant</text>
+
+  <line x1="250" y1="250" x2="250" y2="275" stroke="#ccc" stroke-width="1" stroke-dasharray="4,3"/>
+  <polygon points="244,273 250,280 256,273" fill="#ccc"/>
+
+  <!-- Layer 3: Semantic -->
+  <rect x="80" y="280" width="340" height="80" rx="8" fill="#fff" stroke="#ddd" stroke-width="1"/>
+  <rect x="80" y="280" width="340" height="28" rx="8" fill="#d4e8d4"/>
+  <text x="250" y="299" text-anchor="middle" font-family="Oswald, sans-serif" font-size="12" fill="#282">L3 · Семантическая</text>
+  <text x="250" y="325" text-anchor="middle" font-family="Golos Text, sans-serif" font-size="13" fill="#444">Извлечённые факты · знания · связи (граф)</text>
+  <text x="250" y="345" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#888">обновляется асинхронно · суммаризация</text>
+
+  <!-- Arrow to agent -->
+  <rect x="190" y="380" width="120" height="28" rx="6" fill="#b33"/>
+  <text x="250" y="399" text-anchor="middle" font-family="Oswald, sans-serif" font-size="13" fill="#fff">агент</text>
+  <line x1="250" y1="360" x2="250" y2="378" stroke="#b33" stroke-width="2"/>
+  <polygon points="244,376 250,383 256,376" fill="#b33"/>
+</svg>

@@ -12,7 +12,7 @@
 
 > Building the infrastructure where humans and AI create software together.
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-000?style=for-the-badge&logo=globe&logoColor=white)](https://ivan-meer.github.io)
+[![Portfolio](https://img.shields.io/badge/Portfolio-000?style=for-the-badge&logo=globe&logoColor=white)](https://ivan-meer.github.io/ivan-meer/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/ivan-meer)
 [![Telegram](https://img.shields.io/badge/Telegram-0088cc?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/ivan_meer)
 [![Resume](https://img.shields.io/badge/Resume-FF6B6B?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://ivan-meer.github.io/resume)

@@ -63,7 +63,6 @@ Rather than simply writing code, I build **systems that augment human creativity
 
 ### 🚀 AdminHero
 Control center for AI agents, automations and business operations.
-<br clear="left"/>
 *AI Agents · Business Automation · Command Center*
 
 ### 🎵 AI MusicVerse

@@ -2,9 +2,9 @@
 
 ![](banner.png)
 
-# 🚀 Ivan Meer
+# Ivan Meer
 
-### AI Engineer • AI Agent Systems • AI-Native Software Engineering
+### AI Engineer — системы, которые доживают до продакшена
 
 ![Claude](https://img.shields.io/badge/Claude-D97757?style=for-the-badge&logo=claude&logoColor=white)
 ![Google Gemini](https://img.shields.io/badge/google%20gemini-8E75B2?style=for-the-badge&logo=google%20gemini&logoColor=white)
@@ -17,12 +17,12 @@
 ![Google Deepmind](https://img.shields.io/badge/deepmind-%234285F4.svg?style=for-the-badge&logo=deepmind&logoColor=white)
 ![DeepSeek](https://img.shields.io/badge/DeepSeek-5786FE?style=for-the-badge&logo=deepseek&logoColor=white)
 
-> Building the infrastructure where humans and AI create software together.
+> Большинство AI-внедрений — скрипты, которые ломаются через неделю.
+> Я строю **системы**: с памятью, оркестрацией и наблюдаемостью.
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-000?style=for-the-badge&logo=globe&logoColor=white)](https://ivan-meer.github.io/ivan-meer/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/ivan-meer)
-[![Telegram](https://img.shields.io/badge/Telegram-0088cc?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/ivan_meer)
-[![Resume](https://img.shields.io/badge/Resume-FF6B6B?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://ivan-meer.github.io/resume)
+[![Telegram](https://img.shields.io/badge/Telegram-0088cc?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/phuketguruadmin)
 
 [![GitHub Streak](https://streak-stats.demolab.com?user=ivan-meer&theme=dark&border_radius=40&locale=ru&date_format=n%2Fj%5B%2FY%5D&card_width=550&background=46%2C1D1A61%2C000000&border=00C9FF&stroke=34608972&ring=EB7000&fire=FF1818&sideNums=FFFFFF&currStreakLabel=EBEBEB&sideLabels=B2B2B2C4&dates=DADEFF60)](https://git.io/streak-stats)
 
@@ -30,72 +30,52 @@
 
 ---
 
-## 👋 About Me
+## Обо мне
 
-I'm an **AI Engineer** passionate about designing developer tools, autonomous agents, and infrastructure that makes software engineering itself more intelligent.
+Я — **AI-инженер полного цикла**: проектирую и строю AI-системы целиком, от агентного ядра до панели управления. Не «подключаю ChatGPT к API», а выстраиваю архитектуру, в которой агенты работают предсказуемо, помнят контекст и не съедают бюджет впустую.
 
-Rather than simply writing code, I build **systems that augment human creativity** with AI capabilities — creating workflows where humans and machines collaborate seamlessly.
+**Один инженер — весь стек:**
 
-<details open>
-<summary><b>🎯 Core Focus Areas</b></summary>
+| Слой | Что делаю |
+|------|-----------|
+| `L5 · UI` | Панели управления AI-системами: мониторинг агентов, аналитика токенов, ручное вмешательство |
+| `L4 · ORCH` | Оркестрация и харнесс: очереди, retry-логика, трейсинг, маршрутизация моделей |
+| `L3 · MEM` | Память и RAG: векторный поиск, иерархическое хранение, корпоративные базы знаний |
+| `L2 · MODEL` | Файнтюнинг, LoRA, оптимизация токенов — типовой результат −40–70% расходов |
+| `L1 · INFRA` | MCP-серверы, интеграции с CRM/базами/API, деплой и CI |
 
-- 🤖 **AI Coding Agents** — Autonomous systems for intelligent development
-- 🧠 **Agent Architecture** — Reliable, observable AI systems
-- 🏗️ **AI Engineering** — Best practices for AI-native applications
-- 🔌 **MCP Ecosystem** — Model Context Protocol integration
-- ⚡ **AI Automation** — Intelligent workflow automation
-- 📚 **Knowledge Systems** — Context and memory for AI
-- 🧩 **Developer Tooling** — Next-gen IDE & workflow tools
-- ☁️ **Cloud Infrastructure** — Scalable AI backends
-
-</details>
+Подробно об услугах и форматах работы — на [ivan-meer.github.io/ivan-meer/services](https://ivan-meer.github.io/ivan-meer/services).
 
 ---
 
-## 🚀 Currently Building
+## Сейчас в работе
 
-| 🚀 Project | 📝 Description | 🔧 Status |
-|-----------|---------------|----------|
-| **AdminHero** | AI command center for business operations | `In Progress` |
-| **Agent Harness** | Runtime layer for AI coding agents | `Active Development` |
-| **VibeOS** | Operating system for AI-native engineering | `Research Phase` |
-| **AI Engineering Lab** | Experimental AI projects & research | `Ongoing` |
-
----
-
-## ⭐ Featured Projects
-
-### 🚀 AdminHero
-
-Control center for AI agents, automations and business operations.
-*AI Agents · Business Automation · Command Center*
-
-### 🎵 AI MusicVerse
-
-AI-powered music creation platform with agentic workflows.
-[`HOW2AI-AGENCY/aimusicverse`](https://github.com/HOW2AI-AGENCY/aimusicverse)
-*AI Music · Audio Generation · Agentic Workflows*
-
-### 📄 Mistral OCR App
-
-Document OCR application powered by Mistral AI vision models.
-[`ivan-meer/mistral-ocr-app`](https://github.com/ivan-meer/mistral-ocr-app)
-*OCR · Mistral AI · Document Processing*
-
-### 🤖 Claude Code Custom
-
-Custom configurations, plugins and extensions for Claude Code CLI.
-[`ivan-meer/claude-code-custom`](https://github.com/ivan-meer/claude-code-custom)
-*Claude Code · Developer Tooling · AI-Assisted Development*
-
-### 🧪 AI Engineering Lab
-
-Collection of experimental AI projects, research notes, and awesome resources.
-*AI Research · Experiments · Awesome Lists*
+| Проект | Описание | Статус |
+|--------|----------|--------|
+| **AdminHero** | Командный центр для AI-агентов и бизнес-операций | `In Progress` |
+| **Agent Harness** | Runtime-слой для AI coding-агентов | `Active Development` |
+| **VibeOS** | Операционная система AI-native инженерии | `Research` |
+| **AI Engineering Lab** | Эксперименты и исследования | `Ongoing` |
 
 ---
 
-## 📊 GitHub Analytics
+## Избранные проекты
+
+### AI MusicVerse
+AI-платформа генерации музыки с агентными пайплайнами. Живой демо-бот: [@AIMusicVerse](https://t.me/AIMusicVerse)
+[`HOW2AI-AGENCY/aimusicverse`](https://github.com/HOW2AI-AGENCY/aimusicverse) — *AI Music · Agentic Workflows · Python*
+
+### Mistral OCR App
+Распознавание документов на vision-моделях Mistral AI: из PDF и сканов — в структурированные данные.
+[`ivan-meer/mistral-ocr-app`](https://github.com/ivan-meer/mistral-ocr-app) — *OCR · Vision · Document Processing*
+
+### Claude Code Custom
+Плагины, конфигурации и расширения для Claude Code CLI — инструменты, которые экономят часы каждый день.
+[`ivan-meer/claude-code-custom`](https://github.com/ivan-meer/claude-code-custom) — *Claude Code · DevTools · TypeScript*
+
+---
+
+## GitHub Analytics
 
 <div align="center">
 
@@ -109,12 +89,11 @@ Collection of experimental AI projects, research notes, and awesome resources.
 
 ---
 
-## 📫 Let's Connect
+## Контакты
 
-- 🌐 **Portfolio**: [ivan-meer.github.io](https://ivan-meer.github.io) — coming soon
-- 💼 **LinkedIn**: [ivan-meer](https://linkedin.com/in/ivan-meer)
-- ✈️ **Telegram**: [@ivan_meer](https://t.me/ivan_meer)
-- 📄 **Resume**: [View my CV](https://ivan-meer.github.io/resume)
+- **Портфолио**: [ivan-meer.github.io/ivan-meer](https://ivan-meer.github.io/ivan-meer/)
+- **LinkedIn**: [ivan-meer](https://linkedin.com/in/ivan-meer)
+- **Telegram**: [@phuketguruadmin](https://t.me/phuketguruadmin)
 
 ---
 
@@ -124,10 +103,4 @@ Collection of experimental AI projects, research notes, and awesome resources.
 
 <p align="center">
   <img src="metrics.svg" width="600" alt="Metrics"/>
-</p>
-
----
-
-<p align="center">
-  <i>Generated with ❤️ by AI</i>
 </p>

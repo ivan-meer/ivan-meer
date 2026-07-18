@@ -1,217 +1,293 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ivan Meer — Full-stack AI Engineer</title>
+<title>Ivan Meer — AI-инженер. Системы, которые доживают до продакшена</title>
 <base href="/ivan-meer/">
-<meta name="description" content="Full-stack AI инженер. Создаю не скрипты, а полноценные AI-системы: агенты, оркестрация, харнесс, память, панели управления, MCP-серверы.">
+<meta name="description" content="Проектирую и строю AI-системы целиком: агенты, оркестрация, память, MCP-интеграции, панели управления. От архитектуры до продакшена — и с понятной экономикой токенов.">
+<meta property="og:title" content="Ivan Meer — AI-инженер">
+<meta property="og:description" content="AI-системы, которые доживают до продакшена: агенты, оркестрация, память, MCP, интерфейсы.">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Onest:wght@400;500;600;700;800&family=PT+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script src="script.js" defer></script>
 </head>
 <body>
 
-<canvas id="particles"></canvas>
+<a class="skip-link" href="#main">К содержанию</a>
 
-<div class="wrap">
-  <nav id="nav">
-    <div class="nav-inner">
-      <a href="/ivan-meer/" class="nav-logo">~/ivan-meer</a>
-      <ul class="nav-links">
-        <li><a href="/ivan-meer/" class="active">Главная</a></li>
-        <li><a href="/ivan-meer/services">Услуги</a></li>
-        <li><a href="/ivan-meer/blog">Блог</a></li>
-        <li><a href="/ivan-meer/links">Ресурсы</a></li>
-      </ul>
-    </div>
-  </nav>
+<nav class="nav" aria-label="Основная навигация">
+  <div class="nav-inner">
+    <a href="/ivan-meer/" class="nav-logo">ivan meer<span class="dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="/ivan-meer/" class="active" aria-current="page">Главная</a></li>
+      <li><a href="/ivan-meer/services">Услуги</a></li>
+      <li><a href="/ivan-meer/blog">Блог</a></li>
+      <li><a href="/ivan-meer/links">Ресурсы</a></li>
+      <li><a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener" class="nav-cta">Обсудить проект</a></li>
+    </ul>
+  </div>
+</nav>
 
-  <!-- Hero -->
-  <section class="hero">
+<main id="main">
+
+  <!-- ── Hero ── -->
+  <header class="hero">
     <div class="container">
       <div class="hero-grid">
-        <div class="hero-content reveal">
-          <p class="hero-eyebrow">Full-stack AI Engineer & Systems Architect</p>
-          <h1>От идеи до <span class="accent">продакшена</span>: целостные <span class="accent2">AI-системы</span></h1>
-          <p class="lead">Не скрипты. Не разовые автоматизации. Архитектура, агенты, память, оркестрация, интерфейсы — всё, что делает AI работающим и безопасным в реальном бизнесе.</p>
-          <div class="terminal" id="terminal">
-            <span class="prompt">$</span> whoami<br>
-            <span class="output">ivan-meer — Full-stack AI Engineer</span><br>
-            <span class="prompt">$</span> cat /etc/motd<br>
-            <span class="output">Системы, а не скрипты. Архитектура, а не заплатки.</span><br>
-            <span class="prompt">$</span> <span class="cursor"></span>
-          </div>
-          <a href="/ivan-meer/services" class="hero-cta">
-            Что я делаю
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-        <div class="hero-visual reveal">
-          <div class="hero-card" id="hero-card">
-            <div class="stat-row">
-              <div class="stat"><h3>Full</h3><p>Stack: agent → UI → infra</p></div>
-              <div class="stat"><h3>Prod</h3><p>От прототипа до продакшена</p></div>
-            </div>
-            <div class="stack-row">
-              <span class="tag">AI Agents</span>
-              <span class="tag">Orchestration</span>
-              <span class="tag">MCP</span>
-              <span class="tag">Memory Systems</span>
-              <span class="tag">Dashboards</span>
-              <span class="tag">Python</span>
-              <span class="tag">TypeScript</span>
-              <span class="tag">Token Ops</span>
-            </div>
+        <div>
+          <p class="hero-status">открыт к проектам · 2026</p>
+          <h1>
+            <span class="mask-line"><span>Строю AI-системы,</span></span>
+            <span class="mask-line"><span>которые доживают</span></span>
+            <span class="mask-line"><span>до <em>продакшена</em></span></span>
+          </h1>
+          <p class="lead">Агенты, оркестрация, память, MCP-интеграции и панели управления — как единая архитектура, а не набор скриптов. С предсказуемым поведением и понятной экономикой токенов.</p>
+          <div class="hero-actions">
+            <a href="/ivan-meer/services" class="btn btn-primary">
+              Услуги и форматы работы
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener" class="btn btn-ghost">Написать в Telegram</a>
           </div>
         </div>
+        <div class="hero-canvas-wrap" aria-hidden="true">
+          <canvas id="orchestra"></canvas>
+          <p class="hero-canvas-caption">fig. 1 — оркестрация агентов, живая схема</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Facts strip ── -->
+  <div class="strip">
+    <div class="container">
+      <div class="strip-inner">
+        <div class="strip-cell" data-reveal style="--d:0s">
+          <b>Full-stack AI</b>
+          <span>от агентного ядра до интерфейса</span>
+        </div>
+        <div class="strip-cell" data-reveal style="--d:0.08s">
+          <b>−40–70% токенов</b>
+          <span>после оптимизации типовой системы</span>
+        </div>
+        <div class="strip-cell" data-reveal style="--d:0.16s">
+          <b>MCP-нативно</b>
+          <span>интеграции по открытому протоколу</span>
+        </div>
+        <div class="strip-cell" data-reveal style="--d:0.24s">
+          <b>Python · TypeScript</b>
+          <span>Supabase, векторные БД, LLM-стек</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Manifesto ── -->
+  <section class="manifesto">
+    <div class="container">
+      <p class="big" data-reveal>Большинство AI-внедрений — это <s>скрипты</s>, которые ломаются через неделю. Я проектирую <em>системы</em>: с памятью, контролем исполнения и наблюдаемостью.</p>
+      <div class="manifesto-cols">
+        <p data-reveal style="--d:0.1s"><strong>Скрипт</strong> отвечает на запрос, пока всё идёт по плану. Он молча падает на нестандартном входе, теряет контекст между сессиями и незаметно съедает бюджет на повторных вызовах. Через месяц его боятся трогать, через три — выключают.</p>
+        <p data-reveal style="--d:0.2s"><strong>Система</strong> знает, что делает: у неё есть слой оркестрации с retry-логикой, долгосрочная память, метрики расхода токенов и панель, где видно каждый шаг агента. Она переживает смену модели, рост нагрузки и передачу другой команде.</p>
       </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section id="about">
+  <!-- ── Stack layers ── -->
+  <section>
     <div class="container">
-      <p class="section-label reveal">01. Обо мне</p>
-      <h2 class="section-title reveal">AI-системы, а <span>не скрипты</span></h2>
-      <div class="hero-grid" style="min-height:0;padding:0;">
-        <div class="reveal">
-          <p style="font-size:1.05rem;line-height:1.8;margin-bottom:20px;">Большинство AI-автоматизаций сегодня — это набор разрозненных скриптов, которые ломаются через неделю и съедают токены на пустых операциях. Я создаю <strong>целостные AI-системы</strong>: от агентного ядра и систем памяти до панелей управления с современным интерфейсом и MCP-интеграций.</p>
-          <p style="font-size:1.05rem;line-height:1.8;">Full-stack подход означает, что я не просто «подключаю ChatGPT к API». Я проектирую архитектуру, выстраиваю харнесс для надёжного исполнения, оптимизирую расход токенов на 40–70%, обучаю модели под конкретные задачи, строю панели управления и интегрирую AI в существующие бизнес-процессы — целиком.</p>
+      <div class="section-head">
+        <h2 data-reveal>Один инженер — весь стек</h2>
+        <p class="side" data-reveal style="--d:0.1s">Каждый слой AI-системы я проектирую и строю сам — поэтому они стыкуются без швов. Раскройте слой, чтобы посмотреть, что внутри.</p>
+      </div>
+      <div class="layers">
+
+        <div class="layer open">
+          <button class="layer-head" aria-expanded="true">
+            <span class="code">L5 · UI</span>
+            <h3>Интерфейсы и панели управления</h3>
+            <span class="toggle" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+          </button>
+          <div class="layer-body"><div class="layer-body-inner"><div class="layer-body-content">
+            <p>Дашборды, где видно каждый шаг агента: очереди задач, логи рассуждений, расход токенов, ручное вмешательство в один клик. AI-система без панели управления — чёрный ящик, которому бизнес не доверяет.</p>
+            <p class="layer-tools">React · TypeScript · Tailwind · Vite<br>realtime-подписки · графики расхода</p>
+          </div></div></div>
         </div>
-        <div class="reveal">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-            <div class="highlight"><div class="num">AI</div><div class="label">Агенты + оркестрация</div></div>
-            <div class="highlight"><div class="num">MCP</div><div class="label">Серверы + протокол</div></div>
-            <div class="highlight"><div class="num">DB</div><div class="label">Системы памяти</div></div>
-            <div class="highlight"><div class="num">UI</div><div class="label">Панели управления</div></div>
-          </div>
+
+        <div class="layer">
+          <button class="layer-head" aria-expanded="false">
+            <span class="code">L4 · ORCH</span>
+            <h3>Оркестрация и харнесс</h3>
+            <span class="toggle" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+          </button>
+          <div class="layer-body"><div class="layer-body-inner"><div class="layer-body-content">
+            <p>Слой, который превращает «умный чат» в надёжного работника: очереди, retry-политики, тайм-ауты, изоляция сбоев, маршрутизация между моделями. Агент не «падает молча» — система знает о каждой ошибке и умеет её пережить.</p>
+            <p class="layer-tools">мультиагентные топологии · workflow-движки<br>наблюдаемость: трейсы, метрики, алерты</p>
+          </div></div></div>
         </div>
+
+        <div class="layer">
+          <button class="layer-head" aria-expanded="false">
+            <span class="code">L3 · MEM</span>
+            <h3>Память и знания</h3>
+            <span class="toggle" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+          </button>
+          <div class="layer-body"><div class="layer-body-inner"><div class="layer-body-content">
+            <p>Долгосрочная память агентов и корпоративный RAG: векторный и гибридный поиск, иерархическое хранение, стратегии забывания. Агент помнит клиента, проект и вчерашние решения — и не тащит весь архив в каждый запрос.</p>
+            <p class="layer-tools">Supabase · pgvector · Qdrant<br>семантический поиск · чанкинг · реранжирование</p>
+          </div></div></div>
+        </div>
+
+        <div class="layer">
+          <button class="layer-head" aria-expanded="false">
+            <span class="code">L2 · MODEL</span>
+            <h3>Модели и экономика токенов</h3>
+            <span class="toggle" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+          </button>
+          <div class="layer-body"><div class="layer-body-inner"><div class="layer-body-content">
+            <p>Подбор и настройка моделей под задачу: файнтюнинг и LoRA-адаптеры, кэширование промптов, сжатие контекста, роутинг «дешёвая модель → дорогая по необходимости». Типовой результат — минус 40–70% расходов без потери качества.</p>
+            <p class="layer-tools">Claude · GPT · Mistral · открытые веса<br>LoRA · GRPO · prompt caching · роутинг</p>
+          </div></div></div>
+        </div>
+
+        <div class="layer">
+          <button class="layer-head" aria-expanded="false">
+            <span class="code">L1 · INFRA</span>
+            <h3>Интеграции и инфраструктура</h3>
+            <span class="toggle" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+          </button>
+          <div class="layer-body"><div class="layer-body-inner"><div class="layer-body-content">
+            <p>MCP-серверы, подключающие ваши базы, CRM и внутренние API к экосистеме AI-клиентов, плюс деплой, секреты и CI. Один протокол — и инструменты доступны из Claude, IDE и ваших собственных агентов.</p>
+            <p class="layer-tools">Model Context Protocol · REST/GraphQL<br>Docker · GitHub Actions · edge-функции</p>
+          </div></div></div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Focus -->
-  <section id="focus">
+  <!-- ── Projects ── -->
+  <section class="projects">
     <div class="container">
-      <p class="section-label reveal">02. Направления</p>
-      <h2 class="section-title reveal">Что я <span>разрабатываю</span> и <span>исследую</span></h2>
-      <div class="focus-grid">
-        <div class="focus-card reveal"><span class="icon">🤖</span><h3>AI-агенты</h3></div>
-        <div class="focus-card reveal"><span class="icon">🎛️</span><h3>Оркестрация</h3></div>
-        <div class="focus-card reveal"><span class="icon">🧠</span><h3>Системы памяти</h3></div>
-        <div class="focus-card reveal"><span class="icon">🔌</span><h3>MCP-серверы</h3></div>
-        <div class="focus-card reveal"><span class="icon">🎓</span><h3>Обучение моделей</h3></div>
-        <div class="focus-card reveal"><span class="icon">📊</span><h3>Панели управления</h3></div>
-        <div class="focus-card reveal"><span class="icon">⚡</span><h3>Token-оптимизация</h3></div>
-        <div class="focus-card reveal"><span class="icon">🏗️</span><h3>Архитектура AI</h3></div>
+      <div class="section-head">
+        <h2 data-reveal>Избранные проекты</h2>
+        <p class="side" data-reveal style="--d:0.1s">Собственные продукты и открытый код — то, на чём я проверяю подход, прежде чем предлагать его клиентам.</p>
       </div>
-    </div>
-  </section>
+      <div>
 
-  <!-- Projects -->
-  <section id="projects">
-    <div class="container">
-      <p class="section-label reveal">03. Проекты</p>
-      <h2 class="section-title reveal">Избранные <span>работы</span></h2>
-      <div class="projects-list">
-
-        <div class="project reveal">
-          <div class="project-inner">
-            <div class="project-main">
-              <h3>AdminHero</h3>
-              <p>AI-центр управления агентами, автоматизациями и бизнес-операциями — полноценная оркестрация, а не набор скриптов.</p>
-            </div>
-            <div class="project-meta">
-              <div class="project-tags"><span class="project-tag">AI Agents</span><span class="project-tag">Orchestration</span><span class="project-tag">Enterprise</span></div>
-            </div>
-          </div>
+        <div class="project-row static" data-reveal>
+          <div><h3>AdminHero <span class="badge">в разработке</span></h3></div>
+          <p>Командный центр для AI-агентов и бизнес-операций: оркестрация, мониторинг, управление задачами — в одной панели.</p>
+          <span class="arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
 
-        <a href="https://t.me/AIMusicVerse" target="_blank" rel="noopener" class="project reveal" style="text-decoration:none;color:inherit;">
-          <div class="project-inner">
-            <div class="project-main">
-              <h3>AI MusicVerse</h3>
-              <p>AI-платформа для генерации музыки. Демо-бот доступен в Telegram: <span style="color:var(--cyan);">@AIMusicVerse</span></p>
-            </div>
-            <div class="project-meta">
-              <span class="project-link">@AIMusicVerse</span>
-              <div class="project-tags"><span class="project-tag">AI Music</span><span class="project-tag">Telegram Bot</span><span class="project-tag">Python</span></div>
-            </div>
-          </div>
+        <a href="https://t.me/AIMusicVerse" target="_blank" rel="noopener" class="project-row" data-reveal>
+          <div><h3>AI MusicVerse <span class="badge">живой бот</span></h3></div>
+          <p>Платформа генерации музыки с агентными пайплайнами. Работающий демо-бот в Telegram — можно попробовать прямо сейчас.</p>
+          <span class="arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
 
-        <a href="https://github.com/ivan-meer/mistral-ocr-app" target="_blank" rel="noopener" class="project reveal" style="text-decoration:none;color:inherit;">
-          <div class="project-inner">
-            <div class="project-main">
-              <h3>Mistral OCR App</h3>
-              <p>Распознавание документов через vision-модели Mistral AI. Быстро, точно, с интеграцией в рабочий процесс.</p>
-            </div>
-            <div class="project-meta">
-              <span class="project-link"><svg viewBox="0 0 16 16" fill="currentColor" width="12" height="12" style="margin-right:4px;"><path d="M3.75 2h8.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm2.97 9.22 4.5-4.5a.75.75 0 0 0-1.06-1.06L6.5 9.323 4.72 7.543a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.06 0Z"/></svg> ivan-meer/mistral-ocr-app</span>
-              <div class="project-tags"><span class="project-tag">OCR</span><span class="project-tag">Mistral AI</span><span class="project-tag">Vision</span></div>
-            </div>
-          </div>
+        <a href="https://github.com/ivan-meer/mistral-ocr-app" target="_blank" rel="noopener" class="project-row" data-reveal>
+          <div><h3>Mistral OCR App <span class="badge">open source</span></h3></div>
+          <p>Распознавание документов на vision-моделях Mistral AI: из PDF и сканов — в структурированные данные.</p>
+          <span class="arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
 
-        <a href="https://github.com/ivan-meer/claude-code-custom" target="_blank" rel="noopener" class="project reveal" style="text-decoration:none;color:inherit;">
-          <div class="project-inner">
-            <div class="project-main">
-              <h3>Claude Code Custom</h3>
-              <p>Конфигурации, плагины и расширения для Claude Code CLI. Инструменты, которые экономят часы разработки.</p>
-            </div>
-            <div class="project-meta">
-              <span class="project-link"><svg viewBox="0 0 16 16" fill="currentColor" width="12" height="12" style="margin-right:4px;"><path d="M3.75 2h8.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm2.97 9.22 4.5-4.5a.75.75 0 0 0-1.06-1.06L6.5 9.323 4.72 7.543a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.06 0Z"/></svg> ivan-meer/claude-code-custom</span>
-              <div class="project-tags"><span class="project-tag">Claude Code</span><span class="project-tag">DevTools</span><span class="project-tag">TypeScript</span></div>
-            </div>
-          </div>
+        <a href="https://github.com/ivan-meer/claude-code-custom" target="_blank" rel="noopener" class="project-row" data-reveal>
+          <div><h3>Claude Code Custom <span class="badge">open source</span></h3></div>
+          <p>Плагины, конфигурации и расширения для Claude Code CLI — инструменты, которые экономят часы разработки каждый день.</p>
+          <span class="arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
 
-        <div class="project reveal">
-          <div class="project-inner">
-            <div class="project-main">
-              <h3>AI Engineering Lab</h3>
-              <p>Коллекция экспериментальных AI-проектов, заметок и полезных подборок.</p>
-            </div>
-            <div class="project-meta">
-              <div class="project-tags"><span class="project-tag">Research</span><span class="project-tag">Awesome Lists</span><span class="project-tag">Experiments</span></div>
-            </div>
-          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Process ── -->
+  <section class="band-dark">
+    <div class="container">
+      <div class="section-head">
+        <h2 data-reveal>Как устроена работа</h2>
+        <p class="side" data-reveal style="--d:0.1s">Четыре шага от первого разговора до системы в продакшене. На каждом шаге у вас есть осязаемый результат — не «прогресс в чате».</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step" data-reveal style="--d:0s">
+          <span class="num">01</span>
+          <h3>Погружение</h3>
+          <p>Разбираю задачу, данные и процессы. Формулирую, где AI реально даст эффект, а где честнее обойтись без него. Результат — короткий документ с постановкой.</p>
         </div>
-
+        <div class="process-step" data-reveal style="--d:0.08s">
+          <span class="num">02</span>
+          <h3>Архитектура</h3>
+          <p>Проектирую систему: слои, модели, память, интеграции, оценка стоимости токенов. Вы видите схему и смету до того, как написана первая строка кода.</p>
+        </div>
+        <div class="process-step" data-reveal style="--d:0.16s">
+          <span class="num">03</span>
+          <h3>Рабочий прототип</h3>
+          <p>За 2–4 недели — работающий вертикальный срез на реальных данных. Его можно потрогать, показать команде и принять решение о полной сборке.</p>
+        </div>
+        <div class="process-step" data-reveal style="--d:0.24s">
+          <span class="num">04</span>
+          <h3>Продакшен</h3>
+          <p>Довожу до боевого режима: наблюдаемость, обработка сбоев, панель управления, документация и передача команде. Дальше — сопровождение по договорённости.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Connect -->
-  <section id="connect">
+  <!-- ── CTA ── -->
+  <section class="band-accent">
     <div class="container">
-      <p class="section-label reveal">04. Контакты</p>
-      <h2 class="section-title reveal">Давайте <span>создавать</span> вместе</h2>
-      <div class="connect-grid">
-        <a href="https://github.com/ivan-meer" target="_blank" rel="noopener" class="connect-card reveal"><span class="icon">💻</span><span class="label">GitHub</span><span class="handle">ivan-meer</span></a>
-        <a href="https://linkedin.com/in/ivan-meer" target="_blank" rel="noopener" class="connect-card reveal"><span class="icon">🔗</span><span class="label">LinkedIn</span><span class="handle">ivan-meer</span></a>
-        <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener" class="connect-card reveal"><span class="icon">✈️</span><span class="label">Telegram</span><span class="handle">@phuketguruadmin</span></a>
-        <a href="https://t.me/AIMusicVerse" target="_blank" rel="noopener" class="connect-card reveal"><span class="icon">🎵</span><span class="label">AI MusicVerse</span><span class="handle">@AIMusicVerse</span></a>
+      <div class="cta-inner">
+        <p class="sys">// свободные слоты на этот квартал — есть</p>
+        <h2 data-reveal>Есть задача под AI? Давайте спроектируем систему</h2>
+        <p class="cta-sub" data-reveal style="--d:0.1s">Опишите задачу в двух абзацах — отвечу в течение дня с первыми соображениями по архитектуре и оценкой, стоит ли вообще браться.</p>
+        <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener" class="btn btn-on-accent" data-reveal style="--d:0.2s">
+          Написать в Telegram
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
     </div>
   </section>
 
-  <footer>
-    <div class="container">
-      <div class="footer-nav">
-        <a href="/ivan-meer/">Главная</a>
-        <a href="/ivan-meer/services">Услуги</a>
-        <a href="/ivan-meer/blog">Блог</a>
-        <a href="/ivan-meer/links">Ресурсы</a>
-      </div>
-      <p class="footer-text">© 2026 Ivan Meer</p>
-    </div>
-  </footer>
-</div>
+</main>
 
-<!-- JS in script.js -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <p class="brand">ivan meer<span class="dot">.</span></p>
+        <p class="tagline">AI-инженер. Системы, а не скрипты. Архитектура, а не заплатки.</p>
+      </div>
+      <div>
+        <h4>НАВИГАЦИЯ</h4>
+        <ul>
+          <li><a href="/ivan-meer/">Главная</a></li>
+          <li><a href="/ivan-meer/services">Услуги</a></li>
+          <li><a href="/ivan-meer/blog">Блог</a></li>
+          <li><a href="/ivan-meer/links">Ресурсы</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>КОНТАКТЫ</h4>
+        <ul>
+          <li><a href="https://github.com/ivan-meer" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/ivan-meer" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener">Telegram</a></li>
+          <li><a href="https://t.me/AIMusicVerse" target="_blank" rel="noopener">AI MusicVerse</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Ivan Meer</span>
+      <span>сделано руками и агентами</span>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>

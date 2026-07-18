@@ -1,135 +1,331 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Услуги — Ivan Meer</title>
+<title>Услуги — Ivan Meer, AI-инженер</title>
 <base href="/ivan-meer/">
-<meta name="description" content="Full-stack AI разработка: агенты, оркестрация, харнесс, системы памяти, панели управления, MCP-серверы, оптимизация токенов. Не скрипты — системы.">
+<meta name="description" content="AI-агенты, оркестрация, системы памяти и RAG, MCP-серверы, файнтюнинг, оптимизация токенов, панели управления и архитектурный консалтинг. Форматы: аудит, прототип, система под ключ, сопровождение.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Onest:wght@400;500;600;700;800&family=PT+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script src="script.js" defer></script>
 </head>
 <body>
 
-<canvas id="particles"></canvas>
+<a class="skip-link" href="#main">К содержанию</a>
 
-<div class="wrap">
-  <nav id="nav">
-    <div class="nav-inner">
-      <a href="/ivan-meer/" class="nav-logo">~/ivan-meer</a>
-      <ul class="nav-links">
-        <li><a href="/ivan-meer/">Главная</a></li>
-        <li><a href="/ivan-meer/services" class="active">Услуги</a></li>
-        <li><a href="/ivan-meer/blog">Блог</a></li>
-        <li><a href="/ivan-meer/links">Ресурсы</a></li>
-      </ul>
+<nav class="nav" aria-label="Основная навигация">
+  <div class="nav-inner">
+    <a href="/ivan-meer/" class="nav-logo">ivan meer<span class="dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="/ivan-meer/">Главная</a></li>
+      <li><a href="/ivan-meer/services" class="active" aria-current="page">Услуги</a></li>
+      <li><a href="/ivan-meer/blog">Блог</a></li>
+      <li><a href="/ivan-meer/links">Ресурсы</a></li>
+      <li><a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener" class="nav-cta">Обсудить проект</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="page-head">
+    <div class="container">
+      <h1>Что я делаю — и что вы <em>получаете</em></h1>
+      <p class="lead">Каждая услуга ниже описана одинаково честно: когда она нужна, что конкретно входит в работу и какой результат вы держите в руках в конце. Если сомневаетесь, с чего начать, — начните с аудита или напишите мне: скажу прямо, нужна ли вам вообще AI-система.</p>
     </div>
-  </nav>
+  </header>
 
-  <div class="page">
-    <div class="page-header reveal">
-      <h1>Мои <span>услуги</span></h1>
-      <p>Не скрипты и разовые автоматизации. Целостные AI-системы — от архитектуры до продакшена</p>
+  <!-- ── Services ── -->
+  <section>
+    <div class="container">
+
+      <article class="service">
+        <div class="service-intro">
+          <span class="code">SVC-01 / AGENTS</span>
+          <h2>AI-агенты и мультиагентные системы</h2>
+          <p class="promise">Автономные работники для конкретных процессов: от одного ассистента до команды агентов с ролями, инструментами и общей памятью.</p>
+        </div>
+        <div class="service-detail">
+          <h3>КОГДА НУЖНО</h3>
+          <ul>
+            <li>Процесс упирается в рутину, которую делают люди: разбор заявок, документов, переписки, отчётов</li>
+            <li>Пробовали «подключить ChatGPT» — работает нестабильно и без контекста</li>
+            <li>Нужен не чат, а исполнитель: получил задачу → сделал → отчитался</li>
+          </ul>
+          <h3>ЧТО ВХОДИТ</h3>
+          <ul>
+            <li>Проектирование ролей, инструментов и границ ответственности агентов</li>
+            <li>Харнесс исполнения: обработка ошибок, тайм-ауты, цепочки вызовов, guardrails</li>
+            <li>Подключение к вашим данным и системам (CRM, базы, API, мессенджеры)</li>
+            <li>Сценарии эскалации к человеку — агент знает, чего он не знает</li>
+          </ul>
+          <p class="outcome"><b>Результат:</b> агент, который стабильно закрывает процесс, а не демо для презентации. С логами каждого шага и метриками качества.</p>
+        </div>
+      </article>
+
+      <article class="service">
+        <div class="service-intro">
+          <span class="code">SVC-02 / ORCH</span>
+          <h2>Оркестрация и наблюдаемость</h2>
+          <p class="promise">Управляющий слой, который превращает набор агентов и автоматизаций в предсказуемую систему.</p>
+        </div>
+        <div class="service-detail">
+          <h3>КОГДА НУЖНО</h3>
+          <ul>
+            <li>Автоматизации уже есть, но «падают молча» — об ошибке узнаёте от клиентов</li>
+            <li>Несколько агентов и скриптов конфликтуют за данные и дублируют работу</li>
+            <li>Никто не может сказать, сколько система тратит и на что</li>
+          </ul>
+          <h3>ЧТО ВХОДИТ</h3>
+          <ul>
+            <li>Очереди задач, retry-политики, изоляция сбоев, приоритезация</li>
+            <li>Трейсинг каждого запуска: что агент думал, что вызвал, что получилось</li>
+            <li>Метрики и алерты: расход токенов, задержки, доля ошибок</li>
+            <li>Маршрутизация между моделями — дорогая модель только там, где оправдана</li>
+          </ul>
+          <p class="outcome"><b>Результат:</b> система, за которой можно следить как за обычным сервисом — и которой можно доверить процесс без дежурного «оператора ChatGPT».</p>
+        </div>
+      </article>
+
+      <article class="service">
+        <div class="service-intro">
+          <span class="code">SVC-03 / MEMORY</span>
+          <h2>Системы памяти и RAG</h2>
+          <p class="promise">Долгосрочная память для агентов и поиск по корпоративным знаниям, который отвечает по вашим документам, а не фантазирует.</p>
+        </div>
+        <div class="service-detail">
+          <h3>КОГДА НУЖНО</h3>
+          <ul>
+            <li>Агент каждый раз «знакомится заново» — не помнит клиента, проект, договорённости</li>
+            <li>Знания компании разбросаны по вики, чатам и папкам — искать дольше, чем спросить коллегу</li>
+            <li>Готовые RAG-решения отвечают красиво, но мимо</li>
+          </ul>
+          <h3>ЧТО ВХОДИТ</h3>
+          <ul>
+            <li>Архитектура памяти: что хранить, как искать, когда забывать</li>
+            <li>Векторный и гибридный поиск (Supabase/pgvector, Qdrant), реранжирование</li>
+            <li>Чанкинг и подготовка документов под ваш тип контента</li>
+            <li>Оценка качества ответов на реальных вопросах — до и после</li>
+          </ul>
+          <p class="outcome"><b>Результат:</b> агент с накопительным контекстом и база знаний, которой пользуются, потому что она отвечает точно и со ссылками на источники.</p>
+        </div>
+      </article>
+
+      <article class="service">
+        <div class="service-intro">
+          <span class="code">SVC-04 / MCP</span>
+          <h2>MCP-серверы и интеграции</h2>
+          <p class="promise">Ваши базы, CRM и внутренние API — как инструменты для любого AI-клиента, по открытому протоколу Model Context Protocol.</p>
+        </div>
+        <div class="service-detail">
+          <h3>КОГДА НУЖНО</h3>
+          <ul>
+            <li>Команда работает в Claude/IDE-агентах, но корпоративные данные им недоступны</li>
+            <li>Каждая новая интеграция пишется заново под каждый инструмент</li>
+            <li>Нужен контролируемый доступ AI к внутренним системам — с правами и аудитом</li>
+          </ul>
+          <h3>ЧТО ВХОДИТ</h3>
+          <ul>
+            <li>Проектирование и разработка MCP-серверов под ваши источники данных</li>
+            <li>Авторизация, ограничение прав, журналирование вызовов</li>
+            <li>Деплой: локально, в облаке или как edge-функции</li>
+            <li>Документация и примеры — команда подключает сервер за минуты</li>
+          </ul>
+          <p class="outcome"><b>Результат:</b> одна интеграция вместо пяти: инструменты доступны из Claude, Cursor, ваших агентов и всего, что говорит на MCP.</p>
+        </div>
+      </article>
+
+      <article class="service">
+        <div class="service-intro">
+          <span class="code">SVC-05 / MODEL</span>
+          <h2>Файнтюнинг и оптимизация токенов</h2>
+          <p class="promise">Модель, заточенная под ваш домен, и счёт за LLM, который перестал пугать финдиректора.</p>
+        </div>
+        <div class="service-detail">
+          <h3>КОГДА НУЖНО</h3>
+          <ul>
+            <li>Расходы на API растут быстрее пользы — а куда уходят токены, непонятно</li>
+            <li>Универсальная модель ошибается в вашей терминологии и форматах</li>
+            <li>Длинные промпты с примерами повторяются в каждом запросе</li>
+          </ul>
+          <h3>ЧТО ВХОДИТ</h3>
+          <ul>
+            <li>Аудит расхода: разбор реальных логов, карта затрат по операциям</li>
+            <li>Кэширование промптов, сжатие контекста, роутинг между моделями</li>
+            <li>Файнтюнинг и LoRA-адаптеры вместо километровых few-shot промптов</li>
+            <li>Замеры до/после на ваших задачах — качество не должно просесть</li>
+          </ul>
+          <p class="outcome"><b>Результат:</b> типовое снижение расходов на 40–70% и модель, которая говорит на языке вашего домена. Цифры — в отчёте, не на словах.</p>
+        </div>
+      </article>
+
+      <article class="service">
+        <div class="service-intro">
+          <span class="code">SVC-06 / UI</span>
+          <h2>Панели управления AI-системами</h2>
+          <p class="promise">Интерфейс, в котором ваша команда видит и контролирует всё, что делают агенты.</p>
+        </div>
+        <div class="service-detail">
+          <h3>КОГДА НУЖНО</h3>
+          <ul>
+            <li>AI-система работает, но для бизнеса это чёрный ящик</li>
+            <li>Чтобы поправить или перезапустить задачу, зовут разработчика</li>
+            <li>Отчётность по AI собирается вручную из логов</li>
+          </ul>
+          <h3>ЧТО ВХОДИТ</h3>
+          <ul>
+            <li>Дашборд: статусы агентов, очереди, история запусков в реальном времени</li>
+            <li>Аналитика: расход токенов, качество, узкие места</li>
+            <li>Ручное управление: пауза, повтор, вмешательство в диалог агента</li>
+            <li>Современный интерфейс на React/TypeScript — быстрый и понятный без обучения</li>
+          </ul>
+          <p class="outcome"><b>Результат:</b> команда управляет AI-системой сама. Разработчик нужен для развития, а не для каждой кнопки.</p>
+        </div>
+      </article>
+
+      <article class="service">
+        <div class="service-intro">
+          <span class="code">SVC-07 / ARCH</span>
+          <h2>Архитектура и консалтинг</h2>
+          <p class="promise">Инженерный взгляд до того, как потрачен бюджет: что строить, из чего и сколько это будет стоить в токенах и месяцах.</p>
+        </div>
+        <div class="service-detail">
+          <h3>КОГДА НУЖНО</h3>
+          <ul>
+            <li>Есть идея «внедрить AI», но нет уверенности, где он окупится</li>
+            <li>Команда спорит о стеке: свои модели или API, какой фреймворк, какая память</li>
+            <li>Проект уже буксует, и нужен внешний разбор без политики</li>
+          </ul>
+          <h3>ЧТО ВХОДИТ</h3>
+          <ul>
+            <li>Разбор процессов и данных: где AI даст эффект, а где — нет (и я так и скажу)</li>
+            <li>Архитектурная схема системы с выбором стека и обоснованием</li>
+            <li>Оценка стоимости: разработка, токены, сопровождение</li>
+            <li>Дорожная карта: что строить первым, что можно отложить</li>
+          </ul>
+          <p class="outcome"><b>Результат:</b> документ, по которому можно строить — со мной или с любой другой командой. Решения обоснованы, риски названы, смета честная.</p>
+        </div>
+      </article>
+
     </div>
+  </section>
 
-    <section>
-      <div class="container">
-        <div class="services-grid">
-
-          <div class="service-card reveal">
-            <span class="icon">🤖</span>
-            <h3>AI-агенты и мультиагентные системы</h3>
-            <p>Проектирую и разрабатываю автономных AI-агентов — от одного ассистента до мультиагентной системы с разделением ролей, памятью и инструментами. Харнесс для надёжного исполнения, обработка ошибок, цепочки вызовов.</p>
-          </div>
-
-          <div class="service-card reveal">
-            <span class="icon">🎛️</span>
-            <h3>Оркестрация и харнесс</h3>
-            <p>Выстраиваю слой управления агентами: очереди задач, контроль исполнения, обработка сбоев, мониторинг, retry-логика. Ваши агенты не «падают молча», а работают предсказуемо.</p>
-          </div>
-
-          <div class="service-card reveal">
-            <span class="icon">🧠</span>
-            <h3>Системы памяти и RAG</h3>
-            <p>Проектирую и встраиваю долгосрочную память для AI-агентов: векторные базы (Supabase, Qdrant), семантический поиск, контекстные окна, иерархическая память. Ваш агент помнит, что было вчера.</p>
-          </div>
-
-          <div class="service-card reveal">
-            <span class="icon">🎓</span>
-            <h3>Обучение и файнтюнинг моделей</h3>
-            <p>Тонкая настройка LLM под конкретные задачи: файнтюнинг, LoRA-адаптеры, RLHF и GRPO. Модель, заточенная под ваш домен, работает точнее и расходует в разы меньше токенов.</p>
-          </div>
-
-          <div class="service-card reveal">
-            <span class="icon">📊</span>
-            <h3>Панели управления с современным интерфейсом</h3>
-            <p>Разрабатываю админ-панели и дашборды для AI-систем с современным дизайном: мониторинг агентов, управление задачами, аналитика токенов, визуализация процессов.</p>
-          </div>
-
-          <div class="service-card reveal">
-            <span class="icon">🔌</span>
-            <h3>MCP-серверы и интеграции</h3>
-            <p>Создаю Model Context Protocol серверы — от простых до production-grade. Подключение кастомных инструментов, баз данных, внешних API к экосистеме Claude и другим AI-клиентам.</p>
-          </div>
-
-          <div class="service-card reveal">
-            <span class="icon">⚡</span>
-            <h3>Оптимизация расхода токенов</h3>
-            <p>Анализирую и сокращаю расходы на LLM на 40–70%: умное кэширование, сжатие контекста, правильный промпт-дизайн, роутинг между моделями, файнтюнинг вместо few-shot.</p>
-          </div>
-
-          <div class="service-card reveal">
-            <span class="icon">🏗️</span>
-            <h3>Архитектура AI-решений и консалтинг</h3>
-            <p>Интегрирую AI в существующие бизнес-процессы. Проектирую архитектуру, выбираю стек, оцениваю риски и стоимость. Не «давайте добавим ChatGPT», а «давайте спроектируем систему, которая решит задачу».</p>
-          </div>
-
+  <!-- ── Engagement formats ── -->
+  <section class="band-dark">
+    <div class="container">
+      <div class="section-head">
+        <h2 data-reveal>Форматы работы</h2>
+        <p class="side" data-reveal style="--d:0.1s">Четыре формата под разную степень готовности — от «хотим понять, надо ли» до «нужна система под ключ». Сроки типовые и уточняются после погружения.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step" data-reveal>
+          <span class="num">A</span>
+          <h3>Аудит · 1–2 недели</h3>
+          <p>Разбор текущей системы или идеи: архитектура, расход токенов, риски. Отчёт с конкретными шагами — даже если дальше вы пойдёте без меня.</p>
+        </div>
+        <div class="process-step" data-reveal style="--d:0.08s">
+          <span class="num">B</span>
+          <h3>Прототип · 2–4 недели</h3>
+          <p>Работающий вертикальный срез на ваших данных: один процесс, закрытый агентом от и до. Основание для решения о полной сборке.</p>
+        </div>
+        <div class="process-step" data-reveal style="--d:0.16s">
+          <span class="num">C</span>
+          <h3>Система под ключ</h3>
+          <p>Полный цикл: архитектура, разработка, панель управления, наблюдаемость, документация и передача команде. Сроки — от масштаба, обычно 1–3 месяца.</p>
+        </div>
+        <div class="process-step" data-reveal style="--d:0.24s">
+          <span class="num">D</span>
+          <h3>Сопровождение</h3>
+          <p>Развитие живой системы: новые сценарии, смена моделей, оптимизация расходов. Фиксированные часы в месяц, приоритетная реакция.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section>
-      <div class="container">
-        <p class="section-label reveal">Мой подход</p>
-        <h2 class="section-title reveal">Как я <span>работаю</span></h2>
-        <div class="focus-grid">
-          <div class="focus-card reveal"><span class="icon">🎯</span><h3>Погружаюсь в задачу</h3></div>
-          <div class="focus-card reveal"><span class="icon">📐</span><h3>Проектирую архитектуру</h3></div>
-          <div class="focus-card reveal"><span class="icon">🔨</span><h3>Строю прототип</h3></div>
-          <div class="focus-card reveal"><span class="icon">🚀</span><h3>Довожу до продакшена</h3></div>
-        </div>
+  <!-- ── FAQ ── -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2 data-reveal>Частые вопросы</h2>
+        <p class="side" data-reveal style="--d:0.1s">Короткие честные ответы. Остальное — при первом разговоре.</p>
       </div>
-    </section>
+      <div class="faq">
+        <details data-reveal>
+          <summary>Сколько это стоит?</summary>
+          <p>Зависит от масштаба, поэтому первым шагом я даю оценку по вилке — после короткого разговора о задаче, бесплатно. Аудит и прототип — фиксированная цена до старта. Система под ключ — по этапам, каждый этап с осязаемым результатом, за который вы платите отдельно.</p>
+        </details>
+        <details data-reveal>
+          <summary>У нас уже есть разработчики. Как вы с ними работаете?</summary>
+          <p>Отлично работаю в связке: беру на себя AI-слой (агенты, память, оркестрация, экономика токенов), ваша команда — продукт и домен. Код, документация и схемы остаются у вас; цель — чтобы команда могла развивать систему без меня.</p>
+        </details>
+        <details data-reveal>
+          <summary>Что если AI для нашей задачи — плохая идея?</summary>
+          <p>Скажу об этом на первом разговоре и объясню почему. Треть обращений закрывается советом «вам нужен обычный скрипт/справочник/человек» — это дешевле для вас и честнее для меня.</p>
+        </details>
+        <details data-reveal>
+          <summary>С какими моделями и стеком вы работаете?</summary>
+          <p>Модели: Claude, GPT, Mistral, открытые веса (Llama, Qwen) — выбор от задачи и бюджета, не от привычки. Стек: Python и TypeScript, Supabase и векторные БД, MCP для интеграций, React для интерфейсов. Если у вас свой стек — адаптируюсь.</p>
+        </details>
+        <details data-reveal>
+          <summary>Как передаются результаты?</summary>
+          <p>Код в вашем репозитории с первого дня, архитектурные решения — в документах, а не в голове. В конце — сессия передачи для команды. Вы не привязаны ко мне как к единственному носителю знаний.</p>
+        </details>
+      </div>
+    </div>
+  </section>
 
-    <section>
-      <div class="container" style="text-align:center;">
-        <p class="section-label reveal">Свяжитесь со мной</p>
-        <h2 class="section-title reveal" style="margin-bottom:24px;">Готовы обсудить <span>проект</span>?</h2>
-        <p style="color:var(--muted);margin-bottom:32px;font-size:1.05rem;">Расскажите о задаче в Telegram — обсудим архитектуру, сроки и подход</p>
-        <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener" class="hero-cta" style="display:inline-flex;">
-          Написать в Telegram @phuketguruadmin
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <!-- ── CTA ── -->
+  <section class="band-accent">
+    <div class="container">
+      <div class="cta-inner">
+        <p class="sys">// первый разговор и оценка — бесплатно</p>
+        <h2 data-reveal>Расскажите о задаче — я скажу, как её решить</h2>
+        <p class="cta-sub" data-reveal style="--d:0.1s">Два абзаца о процессе, который хотите улучшить, — и в ответ вы получите первые соображения по архитектуре и честную оценку перспектив.</p>
+        <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener" class="btn btn-on-accent" data-reveal style="--d:0.2s">
+          Написать в Telegram
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
-    </section>
-  </div>
-
-  <footer>
-    <div class="container">
-      <div class="footer-nav">
-        <a href="/ivan-meer/">Главная</a>
-        <a href="/ivan-meer/services">Услуги</a>
-        <a href="/ivan-meer/blog">Блог</a>
-        <a href="/ivan-meer/links">Ресурсы</a>
-      </div>
-      <p class="footer-text">© 2026 Ivan Meer</p>
     </div>
-  </footer>
-</div>
+  </section>
 
-<!-- JS in script.js -->
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <p class="brand">ivan meer<span class="dot">.</span></p>
+        <p class="tagline">AI-инженер. Системы, а не скрипты. Архитектура, а не заплатки.</p>
+      </div>
+      <div>
+        <h4>НАВИГАЦИЯ</h4>
+        <ul>
+          <li><a href="/ivan-meer/">Главная</a></li>
+          <li><a href="/ivan-meer/services">Услуги</a></li>
+          <li><a href="/ivan-meer/blog">Блог</a></li>
+          <li><a href="/ivan-meer/links">Ресурсы</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>КОНТАКТЫ</h4>
+        <ul>
+          <li><a href="https://github.com/ivan-meer" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/ivan-meer" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener">Telegram</a></li>
+          <li><a href="https://t.me/AIMusicVerse" target="_blank" rel="noopener">AI MusicVerse</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Ivan Meer</span>
+      <span>сделано руками и агентами</span>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>

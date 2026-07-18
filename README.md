@@ -6,16 +6,23 @@
 
 ### AI Engineer • AI Agent Systems • AI-Native Software Engineering
 
-![Claude Code](https://img.shields.io/badge/Claude_Code-orange?style=flat-square&logo=claude&logoColor=white)
-![Claude Code Plugins](https://img.shields.io/badge/Claude_Code-Plugins_&_Skills-orange?style=flat-square&logo=anthropic&logoColor=white)
-![Model Context Protocol](https://img.shields.io/badge/Model_Context_Protocol-1.0-0f766e?style=flat-square&logo=modelcontextprotocol&logoColor=white)
+![Claude](https://img.shields.io/badge/Claude-D97757?style=for-the-badge&logo=claude&logoColor=white)
+![Google Gemini](https://img.shields.io/badge/google%20gemini-8E75B2?style=for-the-badge&logo=google%20gemini&logoColor=white)
+![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white)
+![Qwen](https://img.shields.io/badge/Qwen-6950EF?style=for-the-badge&logo=qwen&logoColor=white)
+![Perplexity](https://img.shields.io/badge/perplexity-000000?style=for-the-badge&logo=perplexity&logoColor=088F8F)
+![Ollama](https://img.shields.io/badge/ollama-%23000000.svg?style=for-the-badge&logo=ollama&logoColor=white)
+![MistralAI](https://img.shields.io/badge/mistralai-FA520F?style=for-the-badge&logo=mistralai&logoColor=white)
+![Minimax](https://img.shields.io/badge/minimax-B4393C?style=for-the-badge&logo=minimax&logoColor=white)
+![Google Deepmind](https://img.shields.io/badge/deepmind-%234285F4.svg?style=for-the-badge&logo=deepmind&logoColor=white)
+![DeepSeek](https://img.shields.io/badge/DeepSeek-5786FE?style=for-the-badge&logo=deepseek&logoColor=white)
 
 > Building the infrastructure where humans and AI create software together.
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-000?style=for-the-badge&logo=globe&logoColor=white)](https://ivan-meer.github.io/ivan-meer/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/ivan-meer)
 [![Telegram](https://img.shields.io/badge/Telegram-0088cc?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/ivan_meer)
-[![Resume](https://img.shields.io/badge/Resume-FF6B6B?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://ivan-meer.github.io/ivan-meer/)
+[![Resume](https://img.shields.io/badge/Resume-FF6B6B?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://ivan-meer.github.io/resume)
 
 [![GitHub Streak](https://streak-stats.demolab.com?user=ivan-meer&theme=dark&border_radius=40&locale=ru&date_format=n%2Fj%5B%2FY%5D&card_width=550&background=46%2C1D1A61%2C000000&border=00C9FF&stroke=34608972&ring=EB7000&fire=FF1818&sideNums=FFFFFF&currStreakLabel=EBEBEB&sideLabels=B2B2B2C4&dates=DADEFF60)](https://git.io/streak-stats)
 
@@ -59,25 +66,30 @@ Rather than simply writing code, I build **systems that augment human creativity
 ## ⭐ Featured Projects
 
 ### 🚀 AdminHero
+
 Control center for AI agents, automations and business operations.
 *AI Agents · Business Automation · Command Center*
 
 ### 🎵 AI MusicVerse
+
 AI-powered music creation platform with agentic workflows.
 [`HOW2AI-AGENCY/aimusicverse`](https://github.com/HOW2AI-AGENCY/aimusicverse)
 *AI Music · Audio Generation · Agentic Workflows*
 
 ### 📄 Mistral OCR App
+
 Document OCR application powered by Mistral AI vision models.
 [`ivan-meer/mistral-ocr-app`](https://github.com/ivan-meer/mistral-ocr-app)
 *OCR · Mistral AI · Document Processing*
 
 ### 🤖 Claude Code Custom
+
 Custom configurations, plugins and extensions for Claude Code CLI.
 [`ivan-meer/claude-code-custom`](https://github.com/ivan-meer/claude-code-custom)
 *Claude Code · Developer Tooling · AI-Assisted Development*
 
 ### 🧪 AI Engineering Lab
+
 Collection of experimental AI projects, research notes, and awesome resources.
 *AI Research · Experiments · Awesome Lists*
 

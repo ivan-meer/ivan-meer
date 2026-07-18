@@ -10,12 +10,12 @@
 ![Google Gemini](https://img.shields.io/badge/google%20gemini-8E75B2?style=for-the-badge&logo=google%20gemini&logoColor=white)
 ![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white)
 ![Qwen](https://img.shields.io/badge/Qwen-6950EF?style=for-the-badge&logo=qwen&logoColor=white)
-![Perplexity](https://img.shields.io/badge/perplexity-000000?style=for-the-badge&logo=perplexity&logoColor=088F8F)
-![Ollama](https://img.shields.io/badge/ollama-%23000000.svg?style=for-the-badge&logo=ollama&logoColor=white)
 ![MistralAI](https://img.shields.io/badge/mistralai-FA520F?style=for-the-badge&logo=mistralai&logoColor=white)
 ![Minimax](https://img.shields.io/badge/minimax-B4393C?style=for-the-badge&logo=minimax&logoColor=white)
 ![Google Deepmind](https://img.shields.io/badge/deepmind-%234285F4.svg?style=for-the-badge&logo=deepmind&logoColor=white)
 ![DeepSeek](https://img.shields.io/badge/DeepSeek-5786FE?style=for-the-badge&logo=deepseek&logoColor=white)
+![Perplexity](https://img.shields.io/badge/perplexity-000000?style=for-the-badge&logo=perplexity&logoColor=088F8F)
+![Ollama](https://img.shields.io/badge/ollama-%23000000.svg?style=for-the-badge&logo=ollama&logoColor=white)
 
 > Большинство AI-внедрений — скрипты, которые ломаются через неделю.
 > Я строю **системы**: с памятью, оркестрацией и наблюдаемостью.

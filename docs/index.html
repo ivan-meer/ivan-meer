@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ivan Meer — AI Engineer</title>
+    <style>
+        :root {
+            --bg: #0a0a1a;
+            --card-bg: #12122a;
+            --text: #e0e0e0;
+            --accent: #00C9FF;
+            --accent2: #EB7000;
+            --muted: #8888aa;
+            --border: #1a1a3a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 100px 0 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: var(--muted);
+            margin-top: 12px;
+        }
+
+        .hero .tagline {
+            font-style: italic;
+            color: var(--muted);
+            margin-top: 16px;
+            font-size: 1.1rem;
+        }
+
+        /* Badges */
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid var(--border);
+        }
+
+        .badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 201, 255, 0.2);
+        }
+
+        .badge-portfolio { background: #1a1a2e; color: #fff; }
+        .badge-linkedin { background: #0A66C2; color: #fff; }
+        .badge-telegram { background: #0088cc; color: #fff; }
+        .badge-resume { background: #FF6B6B; color: #fff; }
+
+        /* Sections */
+        section { padding: 60px 0; }
+
+        section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 24px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        section h2::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* Focus areas */
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .focus-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: border-color 0.2s;
+        }
+
+        .focus-card:hover { border-color: var(--accent); }
+        .focus-card .icon { font-size: 1.5rem; margin-bottom: 8px; }
+        .focus-card h3 { font-size: 1.05rem; color: var(--text); }
+
+        /* Projects */
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: border-color 0.2s;
+        }
+
+        .project-card:hover { border-color: var(--accent2); }
+
+        .project-card h3 {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .project-card .repo {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .project-card .repo a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .project-card .repo a:hover { text-decoration: underline; }
+
+        .project-card .tags {
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        /* Links section */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+
+        .link-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text);
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .link-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .link-card .icon { font-size: 1.5rem; margin-bottom: 8px; }
+        .link-card .label { font-weight: 600; }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero -->
+        <header class="hero">
+            <h1>Ivan Meer</h1>
+            <p class="subtitle">AI Engineer • AI Agent Systems • AI-Native Software Engineering</p>
+            <p class="tagline">Building the infrastructure where humans and AI create software together.</p>
+
+            <div class="badges">
+                <a href="https://linkedin.com/in/ivan-meer" class="badge badge-linkedin">🔗 LinkedIn</a>
+                <a href="https://t.me/ivan_meer" class="badge badge-telegram">✈️ Telegram</a>
+                <a href="https://github.com/ivan-meer" class="badge badge-portfolio">💻 GitHub</a>
+                <a href="#" class="badge badge-resume">📄 Resume</a>
+            </div>
+        </header>
+
+        <!-- About -->
+        <section>
+            <h2>👋 About</h2>
+            <p>
+                I'm an AI Engineer passionate about designing developer tools, autonomous agents, and infrastructure that makes software engineering itself more intelligent. Rather than simply writing code, I build systems that augment human creativity with AI capabilities — creating workflows where humans and machines collaborate seamlessly.
+            </p>
+        </section>
+
+        <!-- Focus -->
+        <section>
+            <h2>🎯 Focus Areas</h2>
+            <div class="focus-grid">
+                <div class="focus-card">
+                    <div class="icon">🤖</div>
+                    <h3>AI Coding Agents</h3>
+                </div>
+                <div class="focus-card">
+                    <div class="icon">🧠</div>
+                    <h3>Agent Architecture</h3>
+                </div>
+                <div class="focus-card">
+                    <div class="icon">🏗️</div>
+                    <h3>AI Engineering</h3>
+                </div>
+                <div class="focus-card">
+                    <div class="icon">🔌</div>
+                    <h3>MCP Ecosystem</h3>
+                </div>
+                <div class="focus-card">
+                    <div class="icon">⚡</div>
+                    <h3>AI Automation</h3>
+                </div>
+                <div class="focus-card">
+                    <div class="icon">📚</div>
+                    <h3>Knowledge Systems</h3>
+                </div>
+                <div class="focus-card">
+                    <div class="icon">🧩</div>
+                    <h3>Developer Tooling</h3>
+                </div>
+                <div class="focus-card">
+                    <div class="icon">☁️</div>
+                    <h3>Cloud Infrastructure</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section>
+            <h2>⭐ Featured Projects</h2>
+
+            <div class="project-card">
+                <h3>🚀 AdminHero</h3>
+                <p>AI command center for business operations — control center for AI agents, automations and business operations.</p>
+                <p class="tags">AI Agents · Business Automation · Command Center</p>
+            </div>
+
+            <div class="project-card">
+                <h3>🎵 AI MusicVerse</h3>
+                <p>AI-powered music creation platform with agentic workflows.</p>
+                <p class="repo"><a href="https://github.com/HOW2AI-AGENCY/aimusicverse">HOW2AI-AGENCY/aimusicverse</a></p>
+                <p class="tags">AI Music · Audio Generation · Agentic Workflows</p>
+            </div>
+
+            <div class="project-card">
+                <h3>📄 Mistral OCR App</h3>
+                <p>Document OCR application powered by Mistral AI vision models.</p>
+                <p class="repo"><a href="https://github.com/ivan-meer/mistral-ocr-app">ivan-meer/mistral-ocr-app</a></p>
+                <p class="tags">OCR · Mistral AI · Document Processing</p>
+            </div>
+
+            <div class="project-card">
+                <h3>🤖 Claude Code Custom</h3>
+                <p>Custom configurations, plugins and extensions for Claude Code CLI.</p>
+                <p class="repo"><a href="https://github.com/ivan-meer/claude-code-custom">ivan-meer/claude-code-custom</a></p>
+                <p class="tags">Claude Code · Developer Tooling · AI-Assisted Development</p>
+            </div>
+
+            <div class="project-card">
+                <h3>🧪 AI Engineering Lab</h3>
+                <p>Collection of experimental AI projects, research notes, and awesome resources.</p>
+                <p class="tags">AI Research · Experiments · Awesome Lists</p>
+            </div>
+        </section>
+
+        <!-- Links -->
+        <section>
+            <h2>🔗 Links</h2>
+            <div class="links-grid">
+                <a href="https://github.com/ivan-meer" class="link-card">
+                    <div class="icon">💻</div>
+                    <div class="label">GitHub</div>
+                </a>
+                <a href="https://linkedin.com/in/ivan-meer" class="link-card">
+                    <div class="icon">🔗</div>
+                    <div class="label">LinkedIn</div>
+                </a>
+                <a href="https://t.me/ivan_meer" class="link-card">
+                    <div class="icon">✈️</div>
+                    <div class="label">Telegram</div>
+                </a>
+                <a href="mailto:ivan@meer.dev" class="link-card">
+                    <div class="icon">📧</div>
+                    <div class="label">Email</div>
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Ivan Meer — Generated with ❤️ by AI</p>
+        </footer>
+    </div>
+</body>
+</html>

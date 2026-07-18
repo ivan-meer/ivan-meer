@@ -13,6 +13,8 @@
 [![Telegram](https://img.shields.io/badge/Telegram-0088cc?style=for-the-badge&logo=telegram&logoColor=white)](https://...)
 [![Resume](https://img.shields.io/badge/Resume-FF6B6B?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://...)
 
+[![GitHub Streak](https://streak-stats.demolab.com?user=ivan-meer&theme=dark&border_radius=40&locale=ru&date_format=n%2Fj%5B%2FY%5D&card_width=550&background=46%2C1D1A61%2C000000&border=00C9FF&stroke=34608972&ring=EB7000&fire=FF1818&sideNums=FFFFFF&currStreakLabel=EBEBEB&sideLabels=B2B2B2C4&dates=DADEFF60)](https://git.io/streak-stats)
+
 </div>
 
 ---

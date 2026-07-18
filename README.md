@@ -1,7 +1,7 @@
 <div id="header" align="center">
 <h1>📚 АКАДЕМИЯ ИСКУССТВЕННОГО ИНТЕЛЛЕКТА</h1>
   
-![](https://cdn.leonardo.ai/users/f4cd596b-ba20-433e-acf3-974045f63090/generations/1915374d-6938-4bc8-a384-b0bda72a26a0/20a900d6-6c5e-41c6-9ddb-b67ae5ebf4a3.jpg?w=1024)
+![](https://chatgpt.com/s/m_6a5b5f843df081918f2bcf30968865a6)
 
 [![GitHub Streak](https://streak-stats.demolab.com?user=ivan-meer&theme=dark&border_radius=40&locale=ru&date_format=n%2Fj%5B%2FY%5D&card_width=550&background=46%2C1D1A61%2C000000&border=00C9FF&stroke=34608972&ring=EB7000&fire=FF1818&sideNums=FFFFFF&currStreakLabel=EBEBEB&sideLabels=B2B2B2C4&dates=DADEFF60)](https://git.io/streak-stats)
 

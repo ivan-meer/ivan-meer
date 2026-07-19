@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Блог — Ivan Meer</title>
+<title>Инженерный журнал — Ivan Meer</title>
 <base href="/ivan-meer/">
-<meta name="description" content="Инженерные заметки об AI-системах: агенты, архитектура, память, MCP, экономика токенов.">
+<meta name="description" content="Инженерные заметки об AI-системах: агенты, архитектура, память, MCP, экономика токенов. Статьи с кодом, схемами и реальными цифрами.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style-article.css">
 <script src="script.js" defer></script>
 </head>
 <body>
@@ -20,7 +21,7 @@
     <div class="nav-links">
       <a href="/ivan-meer/">01 Главная</a>
       <a href="/ivan-meer/services">02 Услуги</a>
-      <a href="/ivan-meer/blog" class="active">03 Блог</a>
+      <a href="/ivan-meer/blog" class="active">03 Журнал</a>
       <a href="/ivan-meer/links">04 Ресурсы</a>
       <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener" data-magnet class="nav-cta">Обсудить проект ↗</a>
     </div>
@@ -29,40 +30,22 @@
 
 <div class="page-header">
   <div class="inner">
-    <p class="sub">03 / блог — инженерные заметки</p>
-    <h1>Заметки инженера,<br>а не <span>евангелиста</span></h1>
-    <p class="desc">Пишу о том, что строю руками: агентные архитектуры, память, MCP, экономика токенов. С кодом, цифрами и без обещаний, что AI заменит всех к пятнице. Первые статьи — в работе.</p>
+    <p class="sub">03 / журнал — инженерные заметки</p>
+    <h1>Инженерный журнал</h1>
+    <p class="desc">Пишу о том, что строю руками: агентные архитектуры, память, MCP, экономика токенов. С кодом, цифрами и без обещаний, что AI заменит всех к пятнице.</p>
   </div>
 </div>
 
 <section>
   <div class="wide">
-    <div class="blog-list">
+    <!-- Фильтр по тегам -->
+    <div class="tag-filter-bar" id="tag-filter-bar">
+      <button class="tag-filter active" data-tag="all">Все</button>
+    </div>
 
-      <article class="blog-card" data-reveal>
-        <div class="date">в работе · архитектура · агенты</div>
-        <h3>Скрипты не работают: почему AI-агентам нужна архитектура</h3>
-        <p>Если ваша AI-автоматизация сломалась через неделю, а счёт за токены вырос втрое — это не невезение, это отсутствие харнесса. Разбираю разницу между «подключил API» и инженерным подходом: оркестрация, память, наблюдаемость — на примере реальной системы.</p>
-      </article>
-
-      <article class="blog-card" data-reveal>
-        <div class="date">в работе · память · RAG</div>
-        <h3>Проектируем систему памяти для AI-агента</h3>
-        <p>Память — то, что отличает агента от чата. Куда сохранять, как искать, когда забывать: векторные базы, гибридный поиск, иерархическое хранение. С архитектурными схемами и граблями, на которые я уже наступил за вас.</p>
-      </article>
-
-      <article class="blog-card" data-reveal>
-        <div class="date">в работе · экономика · оптимизация</div>
-        <h3>Оптимизация токенов: как срезать счёт на 40–70%</h3>
-        <p>Продакшен-система не обязана быть дорогой. Кэширование промптов, сжатие контекста, роутинг между моделями, файнтюнинг вместо few-shot — методики с замерами до и после на реальных логах.</p>
-      </article>
-
-      <article class="blog-card" data-reveal>
-        <div class="date">в работе · MCP · интеграции</div>
-        <h3>MCP-сервер: с нуля до продакшена за вечер</h3>
-        <p>Model Context Protocol — самый короткий путь подключить ваши данные к AI-инструментам. Пошагово: проектирование, разработка, авторизация, деплой и интеграция с Claude Code. С репозиторием-шаблоном.</p>
-      </article>
-
+    <!-- Список статей (заполняется из JS) -->
+    <div class="blog-list" id="blog-list">
+      <p style="color:#999;text-align:center;padding:2rem 0;">Загрузка статей…</p>
     </div>
   </div>
 </section>
@@ -90,7 +73,7 @@
         <div class="links">
           <a href="/ivan-meer/">Главная</a>
           <a href="/ivan-meer/services">Услуги</a>
-          <a href="/ivan-meer/blog">Блог</a>
+          <a href="/ivan-meer/blog">Инженерный журнал</a>
           <a href="/ivan-meer/links">Ресурсы</a>
         </div>
       </div>
@@ -109,6 +92,92 @@
     </div>
   </div>
 </footer>
+
+<script>
+(function() {
+  const blogList = document.getElementById('blog-list');
+  const filterBar = document.getElementById('tag-filter-bar');
+
+  // Собираем все уникальные теги из статей
+  function collectTags(articles) {
+    const tagSet = new Set();
+    articles.forEach(a => a.tags.forEach(t => tagSet.add(t)));
+    return Array.from(tagSet).sort();
+  }
+
+  // Рендер фильтра
+  function renderFilter(articles, activeTag) {
+    const tags = collectTags(articles);
+    let html = '<button class="tag-filter' + (activeTag === 'all' ? ' active' : '') + '" data-tag="all">Все</button>';
+    tags.forEach(t => {
+      html += '<button class="tag-filter' + (activeTag === t ? ' active' : '') + '" data-tag="' + t + '">#' + t + '</button>';
+    });
+    filterBar.innerHTML = html;
+
+    // Клик по фильтру
+    filterBar.querySelectorAll('.tag-filter').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const tag = this.dataset.tag;
+        filterBar.querySelectorAll('.tag-filter').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        renderArticles(articles, tag);
+      });
+    });
+  }
+
+  // Рендер карточек статей
+  function renderArticles(articles, activeTag) {
+    const filtered = activeTag === 'all'
+      ? articles
+      : articles.filter(a => a.tags.includes(activeTag));
+
+    if (filtered.length === 0) {
+      blogList.innerHTML = '<p style="color:#999;text-align:center;padding:2rem 0;">Нет статей с таким тегом.</p>';
+      return;
+    }
+
+    // Сортировка: published раньше draft, потом по дате
+    const sorted = [...filtered].sort((a, b) => {
+      if (a.status === 'published' && b.status !== 'published') return -1;
+      if (a.status !== 'published' && b.status === 'published') return 1;
+      return b.date.localeCompare(a.date);
+    });
+
+    blogList.innerHTML = sorted.map(a => {
+      const statusBadge = a.status === 'draft'
+        ? '<span style="display:inline-block;padding:0.1rem 0.4rem;font-size:0.7rem;font-family:JetBrains Mono,monospace;background:rgba(187,187,51,0.12);color:#990;border-radius:3px;margin-right:0.5rem;">в работе</span>'
+        : '';
+      const noteBadge = a.type === 'research-note'
+        ? '<span style="display:inline-block;padding:0.1rem 0.4rem;font-size:0.7rem;font-family:JetBrains Mono,monospace;background:rgba(187,51,51,0.08);color:#b33;border-radius:3px;margin-right:0.5rem;">⏱ ' + a.readingTime + ' мин</span>'
+        : '';
+      const tagsHtml = a.tags.map(t => '<span style="font-size:0.7rem;color:#888;margin-right:0.4rem;">' + t + '</span>').join('');
+
+      return '<article class="blog-card" data-reveal>' +
+        '<div class="date">' + statusBadge + noteBadge + tagsHtml + '</div>' +
+        '<h3><a href="/ivan-meer/blog/article.html?id=' + a.id + '" style="text-decoration:none;color:inherit;">' + a.title + '</a></h3>' +
+        '<p>' + a.desc + '</p>' +
+        '</article>';
+    }).join('');
+
+    // Trigger reveal animations
+    if (typeof revealElements === 'function') {
+      setTimeout(revealElements, 50);
+    }
+  }
+
+  // Загрузка статей
+  fetch('/ivan-meer/blog/articles.json')
+    .then(r => r.json())
+    .then(articles => {
+      renderFilter(articles, 'all');
+      renderArticles(articles, 'all');
+    })
+    .catch(e => {
+      blogList.innerHTML = '<p style="color:#b33;text-align:center;padding:2rem 0;">Не удалось загрузить статьи. Обновите страницу.</p>';
+      console.error('Articles load error:', e);
+    });
+})();
+</script>
 
 </body>
 </html>

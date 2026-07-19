@@ -1,0 +1,389 @@
+/* ===========================================
+   style-article.css — Типографика для чтения
+   Тёмная тема (OKLCH)
+   =========================================== */
+
+.article-wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 6rem;
+}
+
+/* Мета-информация */
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.article-meta .date,
+.article-meta .time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: oklch(55% 0.015 265);
+}
+
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.article-tag {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--ac);
+  background: oklch(25% 0.015 140);
+  border-radius: 4px;
+  text-transform: lowercase;
+}
+
+/* Заголовок статьи */
+.article-title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 2.6rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 2.5rem;
+  color: oklch(94% 0.006 100);
+}
+
+/* Hero-изображение */
+.article-hero {
+  margin: 0 -2rem 2.5rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background: oklch(18% 0.008 265);
+}
+
+.article-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.article-hero figcaption {
+  padding: 0.75rem 2rem;
+  font-size: 0.8rem;
+  color: oklch(55% 0.015 265);
+  font-style: italic;
+  border-top: 1px solid oklch(25% 0.01 265);
+}
+
+/* ===========================================
+   ТИПОГРАФИКА ОСНОВНОГО ТЕКСТА
+   =========================================== */
+
+.article-body {
+  font-family: 'Golos Text', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: oklch(88% 0.01 265);
+}
+
+/* Абзацы */
+.article-body p {
+  margin: 0 0 1.4rem;
+}
+
+.article-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Заголовки внутри статьи */
+.article-body h2 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 1.8rem;
+  line-height: 1.2;
+  margin: 2.5rem 0 1rem;
+  color: oklch(94% 0.006 100);
+  letter-spacing: -0.01em;
+}
+
+.article-body h3 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  font-size: 1.35rem;
+  line-height: 1.3;
+  margin: 2rem 0 0.75rem;
+  color: oklch(94% 0.006 100);
+}
+
+.article-body h4 {
+  font-family: 'Golos Text', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin: 1.5rem 0 0.5rem;
+  color: oklch(88% 0.01 265);
+}
+
+/* Списки */
+.article-body ul,
+.article-body ol {
+  margin: 0 0 1.4rem;
+  padding-left: 1.5rem;
+}
+
+.article-body li {
+  margin-bottom: 0.4rem;
+}
+
+.article-body li:last-child {
+  margin-bottom: 0;
+}
+
+/* Блок кода */
+.article-body pre {
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.5rem;
+  background: oklch(12% 0.012 265);
+  border-radius: 10px;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: oklch(92% 0.006 100);
+  border: 1px solid oklch(22% 0.01 265);
+}
+
+.article-body code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+  padding: 0.15em 0.35em;
+  background: oklch(22% 0.01 265);
+  border-radius: 4px;
+  color: var(--ac);
+}
+
+.article-body pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* Изображения */
+.article-body figure {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.article-body figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 0 auto;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+
+.article-body figure figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: oklch(55% 0.015 265);
+  font-style: italic;
+}
+
+/* Блок-цитаты */
+.article-body blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 3px solid var(--ac);
+  background: oklch(16% 0.01 265);
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: oklch(75% 0.01 265);
+}
+
+.article-body blockquote p {
+  margin: 0;
+}
+
+/* Врезки / callout */
+.article-body .callout {
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.5rem;
+  background: oklch(16% 0.01 140);
+  border: 1px solid oklch(25% 0.015 140);
+  border-radius: 10px;
+}
+
+.article-body .callout-title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ac);
+  margin-bottom: 0.5rem;
+}
+
+.article-body .callout p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: oklch(80% 0.01 265);
+}
+
+/* Инфографика / таблицы */
+.article-body .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.article-body .stat-card {
+  padding: 1.25rem;
+  background: oklch(18% 0.008 265);
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid oklch(25% 0.01 265);
+}
+
+.article-body .stat-number {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 2.2rem;
+  color: var(--ac);
+  line-height: 1;
+}
+
+.article-body .stat-label {
+  font-size: 0.85rem;
+  color: oklch(60% 0.015 265);
+  margin-top: 0.4rem;
+}
+
+/* Таблицы */
+.article-body table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.article-body th {
+  background: oklch(18% 0.008 265);
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid oklch(28% 0.01 265);
+  color: oklch(94% 0.006 100);
+}
+
+.article-body td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid oklch(22% 0.01 265);
+  color: oklch(85% 0.01 265);
+}
+
+.article-body tr:last-child td {
+  border-bottom: none;
+}
+
+/* Разделитель */
+.article-body hr {
+  margin: 2.5rem 0;
+  border: none;
+  border-top: 1px solid oklch(22% 0.01 265);
+}
+
+/* Нав-линки "назад" */
+.article-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: oklch(55% 0.015 265);
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: color 0.2s;
+}
+
+.article-back:hover {
+  color: var(--ac);
+}
+
+/* Подвал статьи */
+.article-footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid oklch(22% 0.01 265);
+}
+
+.article-footer .cta-box {
+  padding: 1.5rem;
+  background: oklch(16% 0.01 265);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.article-footer .cta-box p {
+  font-size: 0.95rem;
+  color: oklch(70% 0.01 265);
+  margin: 0 0 0.75rem;
+}
+
+.article-footer .cta-box a {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  background: var(--ac);
+  color: oklch(15% 0.02 128);
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.article-footer .cta-box a:hover {
+  background: var(--ac-dim);
+}
+
+/* Адаптивность */
+@media (max-width: 860px) {
+  .article-wrap {
+    padding: 1.5rem 1rem 4rem;
+  }
+  .article-title {
+    font-size: 2rem;
+  }
+  .article-body {
+    font-size: 1.05rem;
+  }
+  .article-hero {
+    margin: 0 -1rem 2rem;
+    border-radius: 8px;
+  }
+  .article-hero figcaption {
+    padding: 0.6rem 1rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .article-title {
+    font-size: 1.6rem;
+  }
+  .article-body {
+    font-size: 1rem;
+  }
+  .article-body h2 {
+    font-size: 1.4rem;
+  }
+  .article-body pre {
+    padding: 1rem;
+    font-size: 0.8rem;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Статья — Ivan Meer</title>
+<base href="/ivan-meer/">
+<meta name="description" content="" id="page-desc">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style-article.css">
+<script src="script.js" defer></script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/ivan-meer/" class="nav-logo">Ivan Meer<span>*</span></a>
+    <div class="nav-links">
+      <a href="/ivan-meer/">01 Главная</a>
+      <a href="/ivan-meer/services">02 Услуги</a>
+      <a href="/ivan-meer/blog">03 Журнал</a>
+      <a href="/ivan-meer/links">04 Ресурсы</a>
+      <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener" data-magnet class="nav-cta">Обсудить проект ↗</a>
+    </div>
+  </div>
+</nav>
+
+<main class="article-wrap" id="article-root">
+  <!-- Сюда JS подгружает статью -->
+  <div id="article-placeholder" style="text-align:center;padding:4rem 0;color:#999;">
+    <p>Загрузка статьи…</p>
+  </div>
+</main>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <p class="mini">// анонсы выходят в Telegram</p>
+    <h2>Не хотите проверять вручную?</h2>
+    <div class="cta-bottom">
+      <p>Напишите мне в Telegram — добавлю вас в список и пришлю первую статью, когда она выйдет.</p>
+      <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener" data-magnet class="cta-btn">Написать в Telegram →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="inner">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <p class="logo-sm">Ivan Meer<span>*</span></p>
+        <p>AI-инженер. Системы, а не скрипты. Архитектура, а не заплатки.</p>
+      </div>
+      <div>
+        <h4>Навигация</h4>
+        <div class="links">
+          <a href="/ivan-meer/">Главная</a>
+          <a href="/ivan-meer/services">Услуги</a>
+          <a href="/ivan-meer/blog">Инженерный журнал</a>
+          <a href="/ivan-meer/links">Ресурсы</a>
+        </div>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <div class="links">
+          <a href="https://github.com/ivan-meer" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://linkedin.com/in/ivan-meer" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener">Telegram ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Ivan Meer</span>
+      <span>сделано руками и агентами</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Загрузчик статьи
+(async function() {
+  const params = new URLSearchParams(window.location.search);
+  const articleId = params.get('id');
+  if (!articleId) {
+    document.getElementById('article-root').innerHTML = '<p style="text-align:center;padding:4rem 0;color:#999;">Статья не указана. <a href="/ivan-meer/blog">Вернуться в журнал</a>.</p>';
+    document.getElementById('article-placeholder').style.display = 'none';
+    return;
+  }
+
+  try {
+    // Загружаем метаданные
+    const metaRes = await fetch('/ivan-meer/blog/articles.json');
+    const articles = await metaRes.json();
+    const article = articles.find(a => a.id === articleId);
+
+    if (!article) {
+      document.getElementById('article-root').innerHTML = '<p style="text-align:center;padding:4rem 0;color:#999;">Статья не найдена. <a href="/ivan-meer/blog">Вернуться в журнал</a>.</p>';
+      return;
+    }
+
+    // Обновляем title и meta
+    document.title = article.title + ' — Инженерный журнал — Ivan Meer';
+    document.querySelector('#page-desc').setAttribute('content', article.desc);
+
+    // Загружаем контент
+    const contentRes = await fetch('/ivan-meer/blog/content/' + articleId + '.html');
+    if (!contentRes.ok) throw new Error('Content not found');
+    const contentHtml = await contentRes.text();
+
+    // Формируем мета-блок
+    const statusLabel = article.status === 'published' ? '' : '<span class="article-tag" style="background:rgba(187,187,51,0.12);color:#990;">в работе</span>';
+    const tagsHtml = article.tags.map(t => '<span class="article-tag">#' + t + '</span>').join(' ');
+    const heroHtml = article.heroImage
+      ? '<figure class="article-hero"><img src="' + article.heroImage + '" alt="' + article.title + '"><figcaption>иллюстрация</figcaption></figure>'
+      : '';
+
+    // Собираем страницу
+    document.getElementById('article-root').innerHTML =
+      '<a href="/ivan-meer/blog" class="article-back">← Назад к журналу</a>' +
+      '<div class="article-meta">' +
+        statusLabel +
+        '<span class="date">' + article.date + '</span>' +
+        '<span class="time">' + article.readingTime + ' мин · чтение</span>' +
+        '<div class="article-tags">' + tagsHtml + '</div>' +
+      '</div>' +
+      '<h1 class="article-title">' + article.title + '</h1>' +
+      heroHtml +
+      '<div class="article-body">' + contentHtml + '</div>' +
+      '<div class="article-footer">' +
+        '<div class="cta-box">' +
+          '<p>Понравилась статья? Напишите в Telegram — обсудим вашу задачу.</p>' +
+          '<a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener">Написать в Telegram →</a>' +
+        '</div>' +
+      '</div>';
+
+    // Scroll reveal для новых элементов
+    if (typeof revealElements === 'function') {
+      revealElements();
+    }
+
+  } catch (e) {
+    document.getElementById('article-root').innerHTML =
+      '<p style="text-align:center;padding:4rem 0;color:#999;">Не удалось загрузить статью. <a href="/ivan-meer/blog">Вернуться в журнал</a>.</p>';
+    console.error('Article load error:', e);
+  }
+})();
+</script>
+
+</body>
+</html>

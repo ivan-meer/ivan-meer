@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="380" viewBox="0 0 1200 380"
+     role="img" aria-labelledby="hero-title hero-desc">
+  <title id="hero-title">AdminHero — Панель управления для Claude Code</title>
+  <desc id="hero-desc">Визуальный дашборд для проектов, спринтов, задач и GitHub внутри экосистемы Claude Code. Тёмная тема с золотыми акцентами.</desc>
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a0e"/>
+      <stop offset="100%" stop-color="#121218"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#e0c56e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="380" rx="28" fill="url(#bgGrad)"/>
+  <g opacity="0.03" stroke="#ffffff">
+    <line x1="0" y1="60" x2="1200" y2="60" stroke-width="0.5"/>
+    <line x1="0" y1="120" x2="1200" y2="120" stroke-width="0.5"/>
+    <line x1="0" y1="180" x2="1200" y2="180" stroke-width="0.5"/>
+    <line x1="0" y1="240" x2="1200" y2="240" stroke-width="0.5"/>
+    <line x1="0" y1="300" x2="1200" y2="300" stroke-width="0.5"/>
+    <line x1="0" y1="360" x2="1200" y2="360" stroke-width="0.5"/>
+  </g>
+  <rect x="52" y="314" width="96" height="3" rx="1.5" fill="url(#goldGrad)"/>
+  <rect x="52" y="322" width="48" height="2" rx="1" fill="#c9a84c" opacity="0.4"/>
+  <g transform="translate(52 52)">
+    <rect x="0" y="0" width="164" height="28" rx="6" fill="#c9a84c" opacity="0.12"/>
+    <text x="12" y="19" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#c9a84c" text-anchor="start" letter-spacing="1.4" font-weight="500">CLAUDE CODE CONTROL</text>
+    <text x="0" y="76" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="64" font-weight="700" fill="#f0f0f0" letter-spacing="-1">AdminHero</text>
+    <text x="0" y="118" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="20" fill="#8b8b96" letter-spacing="-0.2">Дашборд · Спринты · Задачи · GitHub · Live Context</text>
+    <text x="0" y="150" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="20" fill="#8b8b96" letter-spacing="-0.2">Чат · Команды · AI-помощник · MCP-мост</text>
+    <g transform="translate(0 198)">
+      <rect x="0" y="0" width="128" height="42" rx="10" fill="#1a1a24"/>
+      <text x="16" y="16" font-family="ui-monospace" font-size="10" fill="#6b6b78" letter-spacing="1">ПРОЕКТОВ</text>
+      <text x="16" y="32" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="16" font-weight="600" fill="#c9a84c">29+</text>
+      <rect x="140" y="0" width="128" height="42" rx="10" fill="#1a1a24"/>
+      <text x="156" y="16" font-family="ui-monospace" font-size="10" fill="#6b6b78" letter-spacing="1">ТАБЛИЦ</text>
+      <text x="156" y="32" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="16" font-weight="600" fill="#c9a84c">5</text>
+      <rect x="280" y="0" width="128" height="42" rx="10" fill="#1a1a24"/>
+      <text x="296" y="16" font-family="ui-monospace" font-size="10" fill="#6b6b78" letter-spacing="1">АГЕНТОВ</text>
+      <text x="296" y="32" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="16" font-weight="600" fill="#c9a84c">50+</text>
+    </g>
+  </g>
+  <g transform="translate(716 40)">
+    <rect x="0" y="0" width="444" height="300" rx="16" fill="#0f0f16" stroke="#1e1e2a" stroke-width="1.5"/>
+    <rect x="0" y="0" width="444" height="44" rx="16" fill="#15151e"/>
+    <rect x="0" y="28" width="444" height="16" fill="#15151e"/>
+    <rect x="16" y="60" width="92" height="224" rx="10" fill="#0e0e14" stroke="#1a1a26" stroke-width="1"/>
+    <rect x="22" y="70" width="80" height="24" rx="6" fill="#c9a84c" opacity="0.12"/>
+    <text x="30" y="86" font-family="ui-monospace" font-size="9" fill="#c9a84c">Дашборд</text>
+    <text x="30" y="118" font-family="ui-monospace" font-size="9" fill="#4a4a58">Проекты</text>
+    <text x="30" y="148" font-family="ui-monospace" font-size="9" fill="#4a4a58">Задачи</text>
+    <text x="30" y="178" font-family="ui-monospace" font-size="9" fill="#4a4a58">GitHub</text>
+    <text x="30" y="208" font-family="ui-monospace" font-size="9" fill="#4a4a58">Агенты</text>
+    <text x="30" y="238" font-family="ui-monospace" font-size="9" fill="#4a4a58">Чат</text>
+    <g transform="translate(120 60)">
+      <rect x="0" y="0" width="148" height="66" rx="10" fill="#111118" stroke="#1a1a28" stroke-width="1"/>
+      <text x="10" y="18" font-family="ui-monospace" font-size="8" fill="#5a5a6a" letter-spacing="1">СЕССИЙ</text>
+      <text x="10" y="36" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="20" font-weight="600" fill="#e0c56e">142</text>
+      <text x="10" y="52" font-family="ui-monospace" font-size="8" fill="#3a3a4a">+8 за неделю</text>
+      <rect x="160" y="0" width="148" height="66" rx="10" fill="#111118" stroke="#1a1a28" stroke-width="1"/>
+      <text x="170" y="18" font-family="ui-monospace" font-size="8" fill="#5a5a6a" letter-spacing="1">ЗАДАЧ</text>
+      <text x="170" y="36" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="20" font-weight="600" fill="#e0c56e">38</text>
+      <text x="170" y="52" font-family="ui-monospace" font-size="8" fill="#3a3a4a">3 активных спринта</text>
+      <rect x="0" y="78" width="308" height="50" rx="8" fill="#0e0e16" stroke="#1a1a28" stroke-width="0.5"/>
+      <text x="12" y="94" font-family="ui-monospace" font-size="8" fill="#4a4a5a" letter-spacing="1">АКТИВНОСТЬ</text>
+      <rect x="16" y="102" width="14" height="18" rx="3" fill="#c9a84c" opacity="0.3"/>
+      <rect x="34" y="106" width="14" height="14" rx="3" fill="#c9a84c" opacity="0.4"/>
+      <rect x="52" y="100" width="14" height="20" rx="3" fill="#c9a84c" opacity="0.5"/>
+      <rect x="70" y="108" width="14" height="12" rx="3" fill="#c9a84c" opacity="0.5"/>
+      <rect x="88" y="98" width="14" height="22" rx="3" fill="#c9a84c" opacity="0.6"/>
+      <rect x="106" y="104" width="14" height="16" rx="3" fill="#c9a84c" opacity="0.4"/>
+      <rect x="124" y="96" width="14" height="24" rx="3" fill="#c9a84c" opacity="0.7"/>
+      <rect x="142" y="102" width="14" height="18" rx="3" fill="#c9a84c" opacity="0.5"/>
+      <rect x="160" y="112" width="14" height="8" rx="3" fill="#c9a84c" opacity="0.3"/>
+      <rect x="178" y="108" width="14" height="12" rx="3" fill="#c9a84c" opacity="0.6"/>
+      <rect x="196" y="100" width="14" height="20" rx="3" fill="#c9a84c" opacity="0.7"/>
+      <rect x="214" y="98" width="14" height="22" rx="3" fill="#c9a84c" opacity="0.8"/>
+      <rect x="232" y="92" width="14" height="28" rx="3" fill="#c9a84c" opacity="0.9"/>
+      <rect x="250" y="104" width="14" height="16" rx="3" fill="#c9a84c" opacity="0.6"/>
+      <rect x="268" y="100" width="14" height="20" rx="3" fill="#c9a84c" opacity="0.7"/>
+      <rect x="286" y="110" width="14" height="10" rx="3" fill="#c9a84c" opacity="0.4"/>
+      <g transform="translate(0 140)">
+        <text x="0" y="12" font-family="ui-monospace" font-size="8" fill="#4a4a5a" letter-spacing="1">КАНБАН</text>
+        <rect x="0" y="20" width="98" height="58" rx="8" fill="#0e0e16" stroke="#1a1a28" stroke-width="0.5"/>
+        <text x="8" y="36" font-family="ui-monospace" font-size="8" fill="#5a5a6a" letter-spacing="1">TODO</text>
+        <rect x="4" y="42" width="90" height="14" rx="4" fill="#111118" stroke="#1c1c2c" stroke-width="0.5"/>
+        <rect x="8" y="46" width="8" height="6" rx="1" fill="#c9a84c" opacity="0.3"/>
+        <rect x="20" y="46" width="64" height="6" rx="2" fill="#1e1e30"/>
+        <rect x="4" y="58" width="90" height="14" rx="4" fill="#111118" stroke="#1c1c2c" stroke-width="0.5"/>
+        <rect x="8" y="62" width="8" height="6" rx="1" fill="#c9a84c" opacity="0.3"/>
+        <rect x="20" y="62" width="52" height="6" rx="2" fill="#1e1e30"/>
+        <rect x="106" y="20" width="98" height="58" rx="8" fill="#0e0e16" stroke="#1a1a28" stroke-width="0.5"/>
+        <text x="114" y="36" font-family="ui-monospace" font-size="8" fill="#5a5a6a" letter-spacing="1">IN PROGRESS</text>
+        <rect x="110" y="42" width="90" height="14" rx="4" fill="#111118" stroke="#1c2c1c" stroke-width="0.5"/>
+        <rect x="114" y="46" width="8" height="6" rx="1" fill="#4caf50" opacity="0.4"/>
+        <rect x="126" y="46" width="58" height="6" rx="2" fill="#1e3020"/>
+        <rect x="212" y="20" width="96" height="58" rx="8" fill="#0e0e16" stroke="#1a1a28" stroke-width="0.5"/>
+        <text x="220" y="36" font-family="ui-monospace" font-size="8" fill="#5a5a6a" letter-spacing="1">DONE</text>
+        <rect x="216" y="42" width="88" height="14" rx="4" fill="#111118" stroke="#1c1c2c" stroke-width="0.5"/>
+        <rect x="220" y="46" width="8" height="6" rx="1" fill="#c9a84c" opacity="0.3"/>
+        <rect x="232" y="46" width="54" height="6" rx="2" fill="#1e1e30"/>
+        <rect x="216" y="58" width="88" height="14" rx="4" fill="#111118" stroke="#1c1c2c" stroke-width="0.5"/>
+        <rect x="220" y="62" width="8" height="6" rx="1" fill="#c9a84c" opacity="0.3"/>
+        <rect x="232" y="62" width="60" height="6" rx="2" fill="#1e1e30"/>
+      </g>
+    </g>
+  </g>
+</svg>

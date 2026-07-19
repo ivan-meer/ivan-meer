@@ -1,16 +1,26 @@
 name: Metrics
 on:
   schedule:
-    - cron: "0 20 22 * *" # раз в сутки
+    - cron: "0 20 * * *" # ежедневно
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   github-metrics:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - uses: lowlighter/metrics@latest
         with:
           filename: metrics.svg
           token: ${{ secrets.GITHUB_TOKEN }}
           base: header, activity, community, repositories, metadata
           plugin_isocalendar: yes
+      - name: Commit & Push
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add metrics.svg
+          git diff --cached --quiet || git commit -m "chore: update metrics" && git push || true

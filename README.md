@@ -62,14 +62,35 @@
 ## Избранные проекты
 
 ### AI MusicVerse
+
+<p align="center">
+  <img src="aimusicverse.svg" width="800" alt="AI MusicVerse Banner"/>
+</p>
+
 AI-платформа генерации музыки с агентными пайплайнами. Живой демо-бот: [@AIMusicVerse](https://t.me/AIMusicVerse)
 [`HOW2AI-AGENCY/aimusicverse`](https://github.com/HOW2AI-AGENCY/aimusicverse) — *AI Music · Agentic Workflows · Python*
 
 ### Mistral OCR App
+
+<p align="center">
+  <img src="mistral-ocr.svg" width="800" alt="Mistral OCR App Banner"/>
+</p>
+
 Распознавание документов на vision-моделях Mistral AI: из PDF и сканов — в структурированные данные.
 [`ivan-meer/mistral-ocr-app`](https://github.com/ivan-meer/mistral-ocr-app) — *OCR · Vision · Document Processing*
 
+### AdminHero
+
+<p align="center">
+  <img src="adminhero.svg" width="800" alt="AdminHero Banner"/>
+</p>
+
 ### Claude Code Custom
+
+<p align="center">
+  <img src="github-brand.svg" width="800" alt="github-brand Banner"/>
+</p>
+
 Плагины, конфигурации и расширения для Claude Code CLI — инструменты, которые экономят часы каждый день.
 [`ivan-meer/claude-code-custom`](https://github.com/ivan-meer/claude-code-custom) — *Claude Code · DevTools · TypeScript*
 

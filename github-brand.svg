@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="380" viewBox="0 0 1200 380"
+     role="img" aria-labelledby="hero-title hero-desc">
+  <title id="hero-title">github-brand — one-command repo branding</title>
+  <desc id="hero-desc">CLI tool that scans your repo, generates SVG badges and banner, and injects them into your readme.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#080a0f"/>
+      <stop offset="100%" stop-color="#11131a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3178c6"/>
+      <stop offset="100%" stop-color="#4a9eff"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="380" fill="url(#bg)" rx="16"/>
+
+  <!-- Terminal prompt line -->
+  <g transform="translate(56 52)">
+    <rect x="-2" y="-2" width="8" height="32" rx="2" fill="#3178c6" opacity="0.6"/>
+    <text x="16" y="22" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+          font-size="14" fill="#555" letter-spacing="1">CLI · README BUILDER</text>
+  </g>
+
+  <!-- Project name -->
+  <g transform="translate(56 108)">
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, sans-serif"
+          font-size="72" font-weight="700" fill="#f4f4f5" letter-spacing="-1.5">github-brand</text>
+    <!-- Cursor blink -->
+    <rect x="490" y="-10" width="4" height="52" rx="2" fill="#3178c6" opacity="0.8"/>
+  </g>
+
+  <!-- Description line 1 -->
+  <g transform="translate(56 168)">
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, sans-serif"
+          font-size="22" fill="#888" font-weight="400">Auto-detect your tech stack · generate SVG badges</text>
+  </g>
+  <g transform="translate(56 202)">
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, sans-serif"
+          font-size="22" fill="#888" font-weight="400">and a social preview banner · inject into README.</text>
+  </g>
+
+  <!-- Command block -->
+  <g transform="translate(56 268)">
+    <rect x="0" y="0" width="340" height="44" rx="8" fill="#1c1e26"/>
+    <text x="16" y="28" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+          font-size="16" fill="#3178c6">$</text>
+    <text x="36" y="28" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+          font-size="16" fill="#e0e0e0">npx github-brand init</text>
+  </g>
+
+  <!-- Right side: real badge previews -->
+  <g transform="translate(640 56)">
+    <!-- Terminal window frame -->
+    <rect x="0" y="0" width="500" height="276" rx="10" fill="#1a1c25"/>
+    <rect x="0" y="0" width="500" height="32" rx="10" fill="#252832"/>
+    <circle cx="16" cy="16" r="5" fill="#ff5f57"/>
+    <circle cx="32" cy="16" r="5" fill="#ffbd2e"/>
+    <circle cx="48" cy="16" r="5" fill="#2dc84d"/>
+
+    <!-- Badge output lines -->
+    <text x="16" y="60" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+          font-size="12" fill="#888">$ npx github-brand init</text>
+
+    <text x="16" y="82" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+          font-size="11" fill="#3178c6">  →  Scanning repo...</text>
+
+    <!-- Badge shapes -->
+    <g transform="translate(16 108)">
+      <!-- TypeScript -->
+      <rect x="0" y="0" width="80" height="20" rx="3" fill="#555"/>
+      <rect x="0" y="0" width="80" height="20" rx="3" fill="#3178c6" opacity="0"/>
+      <text x="40" y="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+            font-size="10" fill="#fff" text-anchor="middle">TypeScript</text>
+    </g>
+
+    <g transform="translate(16 136)">
+      <rect x="0" y="0" width="60" height="20" rx="3" fill="#555"/>
+      <rect x="60" y="0" width="40" height="20" rx="0 3 3 0" fill="#3178c6"/>
+      <text x="30" y="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+            font-size="10" fill="#fff" text-anchor="middle">npm</text>
+      <text x="82" y="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+            font-size="10" fill="#fff" text-anchor="middle">1.0.0</text>
+    </g>
+
+    <g transform="translate(16 164)">
+      <rect x="0" y="0" width="56" height="20" rx="3" fill="#555"/>
+      <rect x="56" y="0" width="34" height="20" rx="0 3 3 0" fill="#2dc84d"/>
+      <text x="28" y="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+            font-size="10" fill="#fff" text-anchor="middle">license</text>
+      <text x="75" y="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+            font-size="10" fill="#fff" text-anchor="middle">MIT</text>
+    </g>
+
+    <g transform="translate(16 192)">
+      <rect x="0" y="0" width="80" height="20" rx="3" fill="#555"/>
+      <rect x="80" y="0" width="60" height="20" rx="0 3 3 0" fill="#2dc84d"/>
+      <text x="40" y="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+            font-size="10" fill="#fff" text-anchor="middle">coverage</text>
+      <text x="112" y="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+            font-size="10" fill="#fff" text-anchor="middle">92%</text>
+    </g>
+
+    <!-- Success message -->
+    <text x="16" y="234" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+          font-size="11" fill="#2dc84d">  ✓  badges generated</text>
+    <text x="16" y="252" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+          font-size="11" fill="#2dc84d">  ✓  banner.svg created</text>
+    <text x="16" y="270" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+          font-size="11" fill="#2dc84d">  ✓  README updated</text>
+  </g>
+
+  <!-- Bottom metadata bar -->
+  <g transform="translate(56 340)">
+    <circle cx="0" cy="0" r="5" fill="#3178c6"/>
+    <text x="14" y="5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+          font-size="13" fill="#555">TypeScript</text>
+    <text x="120" y="5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+          font-size="13" fill="#444">★ 0</text>
+    <text x="190" y="5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+          font-size="13" fill="#444">v1.0.0</text>
+    <text x="1120" y="5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+          font-size="12" fill="#333">MIT License</text>
+  </g>
+</svg>

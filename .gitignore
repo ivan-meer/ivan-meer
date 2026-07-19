@@ -1,0 +1,12 @@
+# claude-flow runtime files
+.claude-flow/
+.claude/
+preview-server.py
+CHANGELOG.md
+
+# code workspace
+*.code-workspace
+
+# docs junk
+docs/.agents/
+docs/skills-lock.json

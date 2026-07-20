@@ -43,7 +43,8 @@ def main() -> None:
         sys.exit(__doc__ or "usage: python new-article.py <id> \"Заголовок\"")
 
     article_id, title = sys.argv[1], sys.argv[2]
-    if not article_id.replace("-", "").isalnum() or article_id != article_id.lower():
+    import re
+    if not re.match(r"^[a-z0-9]+(-[a-z0-9]+)*$", article_id):
         sys.exit("id должен быть в kebab-case латиницей: naprimer-tak")
 
     articles_path = ROOT / "articles.json"

@@ -17,6 +17,7 @@
 ![Perplexity](https://img.shields.io/badge/perplexity-000000?style=for-the-badge&logo=perplexity&logoColor=088F8F)
 ![Ollama](https://img.shields.io/badge/ollama-%23000000.svg?style=for-the-badge&logo=ollama&logoColor=white)
 
+
 > Большинство AI-внедрений — скрипты, которые ломаются через неделю.
 > Я строю **системы**: с памятью, оркестрацией и наблюдаемостью.
 

@@ -5,10 +5,13 @@
 #
 # Что делает:
 #   1. Добавляет запись-черновик в docs/blog/articles.json
-#   2. Создаёт docs/blog/content/<id>.md с шаблоном (Markdown рендерится на лету)
+#   2. Создаёт docs/blog/content/<id>.html с шаблоном (HTML с компонентами дизайн-системы)
 #
-# Дальше: пишете текст в .md, кладёте картинки в docs/blog/images/,
+# Дальше: пишете текст в .html, кладёте картинки в docs/blog/images/,
 # ссылаетесь на них как blog/images/имя.png (префикс blog/ обязателен из-за <base>).
+# Компоненты: <figure><figcaption></figcaption></figure> для иллюстраций,
+# <div class="callout"><div class="callout-title">...</div><p>...</p></div> для врезок,
+# <div class="stats-grid"><div class="stat-card">...</div></div> для цифр.
 # Когда статья готова — меняете "status": "draft" на "published" в articles.json.
 import json
 import sys
@@ -17,25 +20,43 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent / "docs" / "blog"
 
-TEMPLATE = """<!-- Черновик. Markdown: **жирный**, `код`, ## заголовки, списки, таблицы. -->
+TEMPLATE = """<!-- Черновик: HTML-фрагмент с компонентами дизайн-системы -->
+<!-- Компоненты: <figure><figcaption/>, .callout, .stats-grid, <pre><code> -->
 
-Первый абзац — о чём статья и почему это важно.
+<p>Первый абзац — о чём статья и почему это важно.</p>
 
-![Описание схемы](blog/images/{id}-hero.png)
+<figure>
+  <img src="blog/images/{id}-hero.svg" alt="Описание схемы" style="max-width:600px;">
+  <figcaption>Подпись к иллюстрации.</figcaption>
+</figure>
 
-## Первый раздел
+<h2>Первый раздел</h2>
 
-Текст раздела.
+<p>Текст раздела. <strong>Важный акцент</strong> и <code>встроенный код</code>.</p>
 
-```python
-# блоки кода подсвечиваются моноширинным
-print("hello")
-```
+<pre><code>def example():
+    # блоки кода подсвечиваются моноширинным
+    print("hello")</code></pre>
 
-## Выводы
+<div class="callout">
+  <div class="callout-title">Практика</div>
+  <p>Врезка с практическим примером или граблями.</p>
+</div>
 
-Главная мысль статьи.
-"""
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-number">70%</div>
+    <div class="stat-label">первая метрика</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">3×</div>
+    <div class="stat-label">вторая метрика</div>
+  </div>
+</div>
+
+<h2>Выводы</h2>
+
+<p>Главная мысль статьи.</p>"""
 
 
 def main() -> None:
@@ -67,7 +88,7 @@ def main() -> None:
         json.dumps(articles, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
 
-    content_path = ROOT / "content" / f"{article_id}.md"
+    content_path = ROOT / "content" / f"{article_id}.html"
     content_path.write_text(TEMPLATE.format(id=article_id), encoding="utf-8")
 
     print(f"Создано:\n  {content_path}\n  запись в {articles_path}")

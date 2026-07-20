@@ -104,10 +104,26 @@
     document.title = article.title + ' — Инженерный журнал — Ivan Meer';
     document.querySelector('#page-desc').setAttribute('content', article.desc);
 
-    // Загружаем контент
-    const contentRes = await fetch('/ivan-meer/blog/content/' + articleId + '.html');
-    if (!contentRes.ok) throw new Error('Content not found');
-    const contentHtml = await contentRes.text();
+    // Загружаем контент: сначала Markdown, затем HTML-фрагмент
+    let contentHtml;
+    const mdRes = await fetch('/ivan-meer/blog/content/' + articleId + '.md');
+    if (mdRes.ok) {
+      const mdText = await mdRes.text();
+      if (!window.marked) {
+        await new Promise((resolve, reject) => {
+          const s = document.createElement('script');
+          s.src = 'https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js';
+          s.onload = resolve;
+          s.onerror = reject;
+          document.head.appendChild(s);
+        });
+      }
+      contentHtml = marked.parse(mdText);
+    } else {
+      const contentRes = await fetch('/ivan-meer/blog/content/' + articleId + '.html');
+      if (!contentRes.ok) throw new Error('Content not found');
+      contentHtml = await contentRes.text();
+    }
 
     // Формируем мета-блок
     const statusLabel = article.status === 'published' ? '' : '<span class="article-tag" style="background:rgba(187,187,51,0.12);color:#990;">в работе</span>';
@@ -134,6 +150,9 @@
           '<a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener">Написать в Telegram →</a>' +
         '</div>' +
       '</div>';
+
+    // Ленивая загрузка изображений в теле статьи (исключая hero-изображение для лучшего LCP)
+    document.querySelectorAll('#article-root .article-body img').forEach(img => { img.loading = 'lazy'; });
 
     // Scroll reveal для новых элементов
     if (typeof revealElements === 'function') {

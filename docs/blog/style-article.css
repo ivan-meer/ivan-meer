@@ -170,7 +170,19 @@
   font-size: inherit;
 }
 
-/* Изображения */
+/* Изображения (включая Markdown ![alt](src) вне figure) */
+.article-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.article-body p > img {
+  display: block;
+  margin: 1.5rem auto;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+
 .article-body figure {
   margin: 2rem 0;
   text-align: center;

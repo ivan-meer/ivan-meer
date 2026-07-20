@@ -152,10 +152,17 @@
         : '';
       const tagsHtml = a.tags.map(t => '<span style="font-size:0.7rem;color:#888;margin-right:0.4rem;">' + t + '</span>').join('');
 
-      return '<article class="blog-card" data-reveal>' +
-        '<div class="date">' + statusBadge + noteBadge + tagsHtml + '</div>' +
-        '<h3><a href="/ivan-meer/blog/article.html?id=' + a.id + '" style="text-decoration:none;color:inherit;">' + a.title + '</a></h3>' +
-        '<p>' + a.desc + '</p>' +
+      const thumbHtml = a.heroImage
+        ? '<a href="/ivan-meer/blog/article.html?id=' + a.id + '" class="blog-card-thumb"><img src="' + a.heroImage + '" alt="" loading="lazy"></a>'
+        : '';
+
+      return '<article class="blog-card' + (a.heroImage ? ' has-thumb' : '') + '" data-reveal>' +
+        '<div class="blog-card-text">' +
+          '<div class="date">' + statusBadge + noteBadge + tagsHtml + '</div>' +
+          '<h3><a href="/ivan-meer/blog/article.html?id=' + a.id + '" style="text-decoration:none;color:inherit;">' + a.title + '</a></h3>' +
+          '<p>' + a.desc + '</p>' +
+        '</div>' +
+        thumbHtml +
         '</article>';
     }).join('');
 

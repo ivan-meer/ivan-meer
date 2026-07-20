@@ -506,6 +506,31 @@ footer.site .bottom {
   color: var(--ac);
 }
 
+.blog-card.has-thumb {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.blog-card-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.blog-card-thumb {
+  flex: 0 0 160px;
+}
+
+.blog-card-thumb img {
+  display: block;
+  width: 160px;
+  height: 104px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: oklch(18% 0.008 265);
+  border: 1px solid oklch(25% 0.01 265);
+}
+
 .blog-card p {
   margin: 0;
   font-size: 0.92rem;
@@ -582,6 +607,15 @@ footer.site .bottom {
 @media (max-width: 640px) {
   .blog-card {
     padding: 1.25rem 1rem;
+  }
+  .blog-card.has-thumb {
+    flex-direction: column-reverse;
+    gap: 0.75rem;
+  }
+  .blog-card-thumb,
+  .blog-card-thumb img {
+    width: 100%;
+    height: 140px;
   }
   .blog-card h3 {
     font-size: 1.15rem;

@@ -151,8 +151,8 @@
         '</div>' +
       '</div>';
 
-    // Ленивая загрузка изображений в статье
-    document.querySelectorAll('#article-root img').forEach(img => { img.loading = 'lazy'; });
+    // Ленивая загрузка изображений в теле статьи (исключая hero-изображение для лучшего LCP)
+    document.querySelectorAll('#article-root .article-body img').forEach(img => { img.loading = 'lazy'; });
 
     // Scroll reveal для новых элементов
     if (typeof revealElements === 'function') {

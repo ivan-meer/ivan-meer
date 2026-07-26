@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Панель управления · Hermes Agent</title>
+<style>
+  :root {
+    --bg:            oklch(0.145 0.015 262);
+    --bg-card:       oklch(0.19 0.016 262);
+    --bg-hover:      oklch(0.23 0.02 265);
+    --border:        oklch(0.27 0.02 265);
+    --border-light:  oklch(0.30 0.02 265);
+    --text:          oklch(0.93 0 0);
+    --text-secondary:oklch(0.66 0.02 260);
+    --text-muted:    oklch(0.46 0.02 260);
+    --accent:        oklch(0.64 0.21 265);
+    --green:         oklch(0.62 0.17 152);
+    --green-bg:      oklch(0.25 0.06 152 / 0.3);
+    --yellow:        oklch(0.72 0.14 85);
+    --red:           oklch(0.55 0.19 22);
+    --red-bg:        oklch(0.25 0.06 22 / 0.3);
+    --purple:        oklch(0.58 0.17 295);
+    --blue:          oklch(0.60 0.15 240);
+    --radius:        12px; --radius-sm: 8px;
+    --font:          'Segoe UI', system-ui, sans-serif;
+    --mono:          'Cascadia Code', 'Fira Code', monospace;
+    --transition:    0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font); background: var(--bg); color: var(--text); height: 100vh; overflow: hidden; line-height: 1.5; }
+  .app { display: flex; height: 100vh; }
+  .sidebar {
+    width: 240px; background: oklch(0.17 0.014 262); border-right: 1px solid var(--border);
+    display: flex; flex-direction: column; flex-shrink: 0;
+  }
+  .sidebar-header { padding: 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+  .sidebar-logo { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--purple)); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .sidebar-title { font-size: 15px; font-weight: 700; }
+  .sidebar-subtitle { font-size: 10px; color: var(--text-muted); }
+  .nav-section { padding: 12px 12px 0; }
+  .nav-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-muted); padding: 0 12px 6px; }
+  .nav-item {
+    display: flex; align-items: center; gap: 10px; padding: 9px 12px; cursor: pointer;
+    color: var(--text-secondary); font-size: 13px; border: none; background: none;
+    width: 100%; text-align: left; font-family: inherit; border-radius: 8px; transition: var(--transition); margin-bottom: 1px;
+  }
+  .nav-item:hover { background: var(--bg-hover); color: var(--text); }
+  .nav-item.active { color: var(--accent); background: oklch(0.22 0.05 265 / 0.35); font-weight: 500; }
+  .nav-item .kbd { margin-left: auto; font-size: 10px; font-family: var(--mono); color: var(--text-muted); background: var(--bg-hover); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border); }
+  .sidebar-footer { margin-top: auto; padding: 16px 20px; border-top: 1px solid var(--border); font-size: 10px; color: var(--text-muted); }
+  .status-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+  .dot-online { background: var(--green); box-shadow: 0 0 6px var(--green); animation: pulse 2s infinite; }
+  .dot-offline { background: var(--red); }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+  .main { flex: 1; overflow-y: auto; }
+  .page { display: none; padding: 32px 40px; max-width: 960px; animation: fadeIn 0.25s ease; }
+  .page.active { display: block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+  h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 4px; }
+  .subtitle { color: var(--text-secondary); font-size: 13px; margin-bottom: 28px; display: flex; align-items: center; gap: 10px; }
+  .badge { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; padding: 3px 10px; border-radius: 20px; font-weight: 600; }
+  .badge-success { background: var(--green-bg); color: var(--green); }
+  .badge-warn { background: oklch(0.25 0.05 85 / 0.25); color: var(--yellow); }
+  .badge-accent { background: oklch(0.22 0.05 265 / 0.35); color: var(--accent); }
+  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 16px; transition: var(--transition); }
+  .card:hover { border-color: var(--border-light); }
+  .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; font-weight: 600; font-size: 14px; }
+  .btn-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px;
+    border: none; border-radius: var(--radius-sm); cursor: pointer; font-size: 12.5px;
+    font-weight: 500; font-family: inherit; color: #fff; transition: var(--transition); white-space: nowrap;
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
+  .btn:active { transform: scale(0.97); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+  .btn-accent { background: var(--accent); }
+  .btn-green { background: var(--green); }
+  .btn-purple { background: var(--purple); }
+  .btn-red { background: var(--red); }
+  .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-secondary); }
+  .btn-outline:hover { background: var(--bg-hover); color: var(--text); box-shadow: none; }
+  .btn-sm { padding: 5px 12px; font-size: 11px; border-radius: 6px; }
+  .btn-xs { padding: 3px 8px; font-size: 10px; border-radius: 5px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
+  .stat-card { background: var(--bg-hover); border-radius: var(--radius-sm); padding: 16px; text-align: center; border: 1px solid transparent; transition: var(--transition); }
+  .stat-card:hover { border-color: var(--border); }
+  .stat-value { font-size: 24px; font-weight: 700; font-family: var(--mono); letter-spacing: -1px; }
+  .stat-label { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+  .row { display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 12.5px; color: var(--text-secondary); border-bottom: 1px solid oklch(0.25 0.01 260); }
+  .row:last-child { border-bottom: none; }
+  .row-label { flex: 1; }
+  .row-val { font-family: var(--mono); font-size: 11px; color: var(--text); }
+  .task-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid oklch(0.25 0.01 260); font-size: 13px; transition: var(--transition); }
+  .task-item:last-child { border-bottom: none; }
+  .task-item:hover { background: oklch(0.20 0.01 260); margin: 0 -8px; padding: 10px 8px; border-radius: 6px; }
+  .task-check { width: 20px; height: 20px; border-radius: 6px; border: 2px solid var(--border); cursor: pointer; flex-shrink: 0; transition: var(--transition); display: flex; align-items: center; justify-content: center; font-size: 12px; }
+  .task-check.done { background: var(--green); border-color: var(--green); color: #fff; }
+  .task-title { flex: 1; } .task-title.done { text-decoration: line-through; color: var(--text-muted); }
+  .task-meta { font-size: 10px; color: var(--text-muted); font-family: var(--mono); }
+  .task-del { cursor: pointer; color: var(--text-muted); padding: 2px 6px; border-radius: 4px; opacity: 0; transition: var(--transition); }
+  .task-item:hover .task-del { opacity: 1; } .task-del:hover { color: var(--red); background: var(--red-bg); }
+  textarea { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 14px; color: var(--text); font-family: var(--font); font-size: 13px; outline: none; resize: vertical; min-height: 80px; line-height: 1.6; transition: var(--transition); }
+  textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px oklch(0.40 0.1 265 / 0.15); }
+  input[type="text"] { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 9px 14px; color: var(--text); font-family: var(--font); font-size: 13px; outline: none; transition: var(--transition); }
+  input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px oklch(0.40 0.1 265 / 0.15); }
+  .input-row { display: flex; gap: 8px; } .input-row input { flex: 1; }
+  .log { background: oklch(0.12 0.01 260); border-radius: var(--radius-sm); padding: 16px; font-family: var(--mono); font-size: 11px; color: var(--text-secondary); max-height: 450px; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid var(--border); }
+  .log .ts { color: var(--text-muted); } .log .ok { color: var(--green); } .log .err { color: var(--red); } .log .info { color: var(--blue); }
+  .toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 999; display: flex; flex-direction: column-reverse; gap: 8px; }
+  .toast { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 18px; font-size: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.3); animation: slideUp 0.3s ease; display: flex; align-items: center; gap: 8px; max-width: 380px; }
+  @keyframes slideUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+  .empty { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 13px; }
+  .empty-icon { font-size: 36px; margin-bottom: 10px; opacity: 0.4; }
+  .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.6s linear infinite; vertical-align: middle; margin-right: 8px; }
+  @keyframes spin { to{transform:rotate(360deg)} }
+  ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  .dot-s { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .d-green { background: var(--green); } .d-yellow { background: var(--yellow); } .d-red { background: var(--red); } .d-blue { background: var(--blue); }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">⚡</div>
+      <div><div class="sidebar-title">Hermes CP</div><div class="sidebar-subtitle">Control Panel v2</div></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Управление</div>
+      <button class="nav-item active" data-page="chat">💬 Чат <span class="kbd">⌘1</span></button>
+      <button class="nav-item" data-page="kanban">📋 Канбан <span class="kbd">⌘2</span></button>
+      <button class="nav-item" data-page="tasks">✅ Задачи <span class="kbd">⌘3</span></button>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Автоматизация</div>
+      <button class="nav-item" data-page="cron">⏰ Cron <span class="kbd">⌘4</span></button>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Система</div>
+      <button class="nav-item" data-page="system">⚙️ Статус <span class="kbd">⌘5</span></button>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Конфигурация</div>
+      <button class="nav-item" data-page="skills">🧠 Навыки</button>
+      <button class="nav-item" data-page="profiles">👤 Профили</button>
+      <button class="nav-item" data-page="providers">🔑 Провайдеры</button>
+    </div>
+    <div class="sidebar-footer">
+      <div><span class="status-dot dot-online" id="api-dot"></span><span id="api-label">API 127.0.0.1:2210</span></div>
+      <div style="margin-top:3px;font-size:9px">DeepSeek V4 Pro</div>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <!-- CHAT -->
+    <div class="page active" id="page-chat">
+      <h1>Чат с Hermes</h1>
+      <div class="subtitle"><span class="badge badge-success" id="chat-badge">● онлайн</span> Прямая связь с агентом</div>
+      <div class="card">
+        <div class="card-header">💬 Сообщение</div>
+        <textarea id="chat-input" placeholder="Напиши что угодно... Например: «Проверь состояние системы» или «Создай задачу в канбане»" rows="3"></textarea>
+        <div class="btn-group" style="margin-top:10px">
+          <button class="btn btn-accent" id="btn-chat">▶ Отправить</button>
+          <button class="btn btn-outline btn-sm" id="btn-clear-chat">Очистить</button>
+        </div>
+        <div id="chat-log" class="log" style="margin-top:14px;min-height:60px">⌨ Готов. Введи сообщение или выбери шаблон ниже.</div>
+      </div>
+      <div class="card">
+        <div class="card-header">⚡ Шаблоны</div>
+        <div class="btn-group">
+          <button class="btn btn-outline btn-sm" data-chat="Проверь состояние системы: какие плагины активны, что с gateway, есть ли ошибки">🩺 Статус</button>
+          <button class="btn btn-outline btn-sm" data-chat="Какие задачи сейчас в канбане? Покажи статистику.">📊 Канбан</button>
+          <button class="btn btn-outline btn-sm" data-chat="Покажи список активных cron-задач">⏰ Cron</button>
+          <button class="btn btn-outline btn-sm" data-chat="Какие плагины установлены и включены?">🔌 Плагины</button>
+          <button class="btn btn-outline btn-sm" data-chat="Покажи последние 5 сессий">📜 Сессии</button>
+          <button class="btn btn-outline btn-sm" data-chat="Сколько навыков (skills) установлено?">🧠 Навыки</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- KANBAN -->
+    <div class="page" id="page-kanban">
+      <h1>Канбан-доска</h1>
+      <div class="subtitle"><span class="badge badge-accent" id="kanban-badge">Загрузка...</span> kanban.db · диспетчер 60s</div>
+      <div class="card">
+        <div class="card-header">📊 Статистика</div>
+        <div class="stats-grid" id="kanban-stats">
+          <div class="stat-card"><div class="stat-value" style="color:var(--accent)">—</div><div class="stat-label">К выполнению</div></div>
+          <div class="stat-card"><div class="stat-value" style="color:var(--yellow)">—</div><div class="stat-label">Готовы</div></div>
+          <div class="stat-card"><div class="stat-value" style="color:var(--blue)">—</div><div class="stat-label">В работе</div></div>
+          <div class="stat-card"><div class="stat-value" style="color:var(--green)">—</div><div class="stat-label">Выполнено</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">📋 Список задач</div>
+        <div class="btn-group">
+          <button class="btn btn-accent btn-sm" id="btn-kanban-load"><span class="spinner" style="display:none;width:12px;height:12px"></span>🔄 Загрузить из Hermes</button>
+          <button class="btn btn-outline btn-sm" data-chat="Создай новую задачу в канбане">＋ Создать</button>
+        </div>
+        <div id="kanban-list"><div class="empty"><span class="empty-icon">📋</span>Нажми «Загрузить» для получения данных</div></div>
+      </div>
+    </div>
+
+    <!-- TASKS -->
+    <div class="page" id="page-tasks">
+      <h1>Локальные задачи</h1>
+      <div class="subtitle">Сохраняются в браузере</div>
+      <div class="card">
+        <div class="card-header">＋ Новая</div>
+        <div class="input-row" style="margin-bottom:12px">
+          <input type="text" id="new-task" placeholder="Что нужно сделать?" onkeydown="if(event.key==='Enter')addTask()">
+          <button class="btn btn-accent btn-sm" onclick="addTask()">Добавить</button>
+        </div>
+        <div class="stats-grid" style="margin-bottom:14px">
+          <div class="stat-card"><div class="stat-value" style="color:var(--accent)" id="t-active">0</div><div class="stat-label">Активно</div></div>
+          <div class="stat-card"><div class="stat-value" style="color:var(--green)" id="t-done">0</div><div class="stat-label">Выполнено</div></div>
+          <div class="stat-card"><div class="stat-value" style="color:var(--text-muted)" id="t-total">0</div><div class="stat-label">Всего</div></div>
+        </div>
+        <div id="task-list"><div class="empty">Нет задач</div></div>
+        <div class="btn-group" style="margin-top:12px">
+          <button class="btn btn-outline btn-xs" onclick="clearDone()">🧹 Очистить ✓</button>
+          <button class="btn btn-outline btn-xs" onclick="exportTasks()">📋 Копировать</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRON -->
+    <div class="page" id="page-cron">
+      <h1>Cron-задачи</h1>
+      <div class="subtitle"><span class="badge badge-accent" id="cron-badge">Загрузка...</span> Планировщик Hermes</div>
+      <div class="card">
+        <div class="card-header">📋 Список</div>
+        <div class="btn-group">
+          <button class="btn btn-accent btn-sm" id="btn-cron-load"><span class="spinner" style="display:none;width:12px;height:12px"></span>🔄 Загрузить</button>
+          <button class="btn btn-outline btn-sm" data-chat="Создай новую cron-задачу">＋ Создать</button>
+        </div>
+        <div id="cron-list"><div class="empty"><span class="empty-icon">⏰</span>Нажми «Загрузить»</div></div>
+      </div>
+    </div>
+
+    <!-- SYSTEM -->
+    <div class="page" id="page-system">
+      <h1>Состояние системы</h1>
+      <div class="subtitle">Компоненты Hermes Agent</div>
+      <div class="card">
+        <div class="card-header">🖥️ Инфраструктура</div>
+        <div class="row"><span class="row-label">API сервер</span><span class="badge badge-success">● 127.0.0.1:2210</span></div>
+        <div class="row"><span class="row-label">Gateway + Telegram</span><span class="badge badge-success">● Активен</span></div>
+        <div class="row"><span class="row-label">Модель</span><span class="row-val">DeepSeek V4 Pro</span></div>
+        <div class="row"><span class="row-label">Канбан БД</span><span class="row-val">kanban.db</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header">🔌 Плагины</div>
+        <div class="row"><span class="row-label">web-ddgs</span><span class="badge badge-success">DuckDuckGo</span></div>
+        <div class="row"><span class="row-label">telegram-platform</span><span class="badge badge-success">Активен</span></div>
+        <div class="row"><span class="row-label">spotify</span><span class="badge badge-warn">hermes auth</span></div>
+        <div class="row"><span class="row-label">security-guidance</span><span class="badge badge-success">Активен</span></div>
+        <div class="row"><span class="row-label">disk-cleanup</span><span class="badge badge-success">Активен</span></div>
+        <div class="row"><span class="row-label">google_meet</span><span class="badge badge-warn">Настроить</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header">🔧 Команды</div>
+        <div class="btn-group">
+          <button class="btn btn-red btn-sm" data-chat="/reset">🔄 /reset</button>
+          <button class="btn btn-outline btn-sm" data-chat="hermes doctor">🩺 doctor</button>
+          <button class="btn btn-outline btn-sm" data-chat="hermes plugins list --plain">📦 plugins</button>
+          <button class="btn btn-outline btn-sm" data-chat="hermes skills list">🧠 skills</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="page" id="page-skills">
+      <h1>Навыки (Skills)</h1>
+      <div class="subtitle"><span class="badge badge-accent" id="skills-badge">Загрузка...</span> Управление навыками Hermes</div>
+      <div class="card">
+        <div class="card-header">📋 Установленные навыки</div>
+        <div class="btn-group">
+          <button class="btn btn-accent btn-sm" id="btn-skills-load"><span class="spinner" style="display:none;width:12px;height:12px"></span>🔄 Загрузить</button>
+          <button class="btn btn-outline btn-sm" data-chat="Найди и установи полезные навыки для Hermes Agent">🔍 Поиск новых</button>
+        </div>
+        <div id="skills-list"><div class="empty"><span class="empty-icon">🧠</span>Нажми «Загрузить»</div></div>
+      </div>
+    </div>
+
+    <!-- PROFILES -->
+    <div class="page" id="page-profiles">
+      <h1>Профили</h1>
+      <div class="subtitle"><span class="badge badge-accent" id="profiles-badge">Загрузка...</span> Управление профилями Hermes</div>
+      <div class="card">
+        <div class="card-header">👤 Список профилей</div>
+        <div class="btn-group">
+          <button class="btn btn-accent btn-sm" id="btn-profiles-load"><span class="spinner" style="display:none;width:12px;height:12px"></span>🔄 Загрузить</button>
+          <button class="btn btn-outline btn-sm" data-chat="Создай новый профиль Hermes">＋ Создать</button>
+        </div>
+        <div id="profiles-list"><div class="empty"><span class="empty-icon">👤</span>Нажми «Загрузить»</div></div>
+      </div>
+    </div>
+
+    <!-- PROVIDERS -->
+    <div class="page" id="page-providers">
+      <h1>Провайдеры и ключи</h1>
+      <div class="subtitle"><span class="badge badge-accent" id="providers-badge">Загрузка...</span> Настройка моделей и API-ключей</div>
+      <div class="card">
+        <div class="card-header">🔑 Конфигурация</div>
+        <div class="btn-group">
+          <button class="btn btn-accent btn-sm" id="btn-providers-load"><span class="spinner" style="display:none;width:12px;height:12px"></span>🔄 Загрузить</button>
+          <button class="btn btn-outline btn-sm" data-chat="Покажи текущую конфигурацию модели и провайдера: hermes config model">📋 Конфиг</button>
+          <button class="btn btn-outline btn-sm" data-chat="Покажи список доступных провайдеров и их статус">🔌 Провайдеры</button>
+          <button class="btn btn-outline btn-sm" data-chat="Проверь аутентификацию: hermes auth list">🔐 Auth</button>
+        </div>
+        <div id="providers-list"><div class="empty"><span class="empty-icon">🔑</span>Нажми «Загрузить» для просмотра конфигурации</div></div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="toast-container" id="toasts"></div>
+
+<script>
+const API = 'http://127.0.0.1:2210';
+const KEY = 'hermes-local-75a4f780';
+let apiOnline = false;
+
+// ── helpers ──
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const LS = { get(k,d){try{const v=localStorage.getItem('hcp_'+k);return v?JSON.parse(v):d}catch{return d}}, set(k,v){localStorage.setItem('hcp_'+k,JSON.stringify(v))} };
+
+function toast(msg, icon='✓'){
+  const el=document.createElement('div'); el.className='toast';
+  el.innerHTML=`<span style="font-size:16px">${icon}</span>${msg}`;
+  $('#toasts').appendChild(el);
+  setTimeout(()=>{el.style.opacity='0';el.style.transition='opacity .25s';setTimeout(()=>el.remove(),250)},2500);
+}
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+function ts(){return new Date().toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit',second:'2-digit'});}
+
+// ── API ──
+async function apiCall(msg){
+  const r=await fetch(API+'/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+KEY},body:JSON.stringify({model:'hermes-agent',messages:[{role:'user',content:msg}],stream:false})});
+  if(!r.ok){const e=await r.json().catch(()=>({}));throw new Error(e.error?.message||r.status);}
+  return (await r.json()).choices?.[0]?.message?.content||'(пусто)';
+}
+
+async function sendChat(msg,logEl){
+  logEl.innerHTML='<span class="spinner"></span> <span class="info">Отправка...</span>';
+  try{
+    const reply=await apiCall(msg);
+    logEl.innerHTML=`<span class="ok">✅ Hermes [${ts()}]:</span>\n\n${esc(reply)}`;
+    return reply;
+  }catch(e){
+    logEl.innerHTML=`<span class="err">❌ ${esc(e.message)}</span>\nСкопировано в буфер.`;
+    navigator.clipboard.writeText(msg).catch(()=>{});
+    return null;
+  }
+}
+
+async function checkAPI(){
+  try{const r=await fetch(API+'/v1/models',{headers:{'Authorization':'Bearer '+KEY}});apiOnline=r.ok;}catch{apiOnline=false;}
+  updateStatus();
+}
+function updateStatus(){
+  const dot=$('#api-dot'),label=$('#api-label'),badge=$('#chat-badge');
+  if(dot)dot.className='status-dot '+(apiOnline?'dot-online':'dot-offline');
+  if(label)label.textContent='API '+(apiOnline?'● онлайн':'○ офлайн');
+  if(badge){badge.className='badge '+(apiOnline?'badge-success':'badge-warn');badge.textContent=apiOnline?'● онлайн':'○ офлайн';}
+}
+
+// ── navigation ──
+$$('.nav-item').forEach(b=>b.addEventListener('click',()=>{
+  $$('.nav-item').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  $$('.page').forEach(p=>p.classList.remove('active'));
+  const page=$('#page-'+b.dataset.page);if(page)page.classList.add('active');
+  if(b.dataset.page==='tasks')renderTasks();
+}));
+
+document.addEventListener('keydown',e=>{
+  if(e.ctrlKey||e.metaKey){const m={'1':'chat','2':'kanban','3':'tasks','4':'cron','5':'system'};if(m[e.key]){e.preventDefault();$$('.nav-item').forEach(b=>{if(b.dataset.page===m[e.key])b.click();});}}
+});
+
+// ── chat ──
+$('#btn-chat').addEventListener('click',async function(){
+  const msg=$('#chat-input').value.trim();if(!msg){toast('Введи сообщение','💬');return;}
+  this.disabled=true;await sendChat(msg,$('#chat-log'));this.disabled=false;$('#chat-input').value='';
+});
+$('#btn-clear-chat').addEventListener('click',()=>{$('#chat-log').innerHTML='⌨ Готов.';$('#chat-input').value='';});
+$$('[data-chat]').forEach(el=>el.addEventListener('click',async function(){
+  const msg=this.dataset.chat;$('#chat-input').value=msg;
+  $$('.nav-item').forEach(b=>{if(b.dataset.page==='chat')b.click();});
+  await sendChat(msg,$('#chat-log'));
+}));
+
+// ── kanban ──
+async function loadKanban(){
+  const list=$('#kanban-list'),stats=$('#kanban-stats'),sp=$('#btn-kanban-load .spinner'),badge=$('#kanban-badge');
+  if(sp)sp.style.display='inline-block';list.innerHTML='<div class="empty"><span class="spinner"></span> Загрузка...</div>';
+  try{
+    const r=await fetch(API+'/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+KEY},body:JSON.stringify({model:'hermes-agent',messages:[{role:'user',content:'Покажи список задач канбана через hermes kanban list и выведи в формате JSON: [{"title":"...","status":"...","assignee":"..."}]. Только JSON, без лишнего текста.'}],stream:false})});
+    if(!r.ok)throw new Error('API offline');
+    const text=(await r.json()).choices?.[0]?.message?.content||'';
+    const m=text.match(/\[[\s\S]*\]/);
+    if(m){
+      const tasks=JSON.parse(m[0]);const c={todo:0,ready:0,in_progress:0,done:0,blocked:0};
+      tasks.forEach(t=>{if(c[t.status]!==undefined)c[t.status]++;});
+      stats.innerHTML=`<div class="stat-card"><div class="stat-value" style="color:var(--accent)">${c.todo}</div><div class="stat-label">К выполнению</div></div><div class="stat-card"><div class="stat-value" style="color:var(--yellow)">${c.ready}</div><div class="stat-label">Готовы</div></div><div class="stat-card"><div class="stat-value" style="color:var(--blue)">${c.in_progress}</div><div class="stat-label">В работе</div></div><div class="stat-card"><div class="stat-value" style="color:var(--green)">${c.done}</div><div class="stat-label">Выполнено</div></div>`;
+      const colors={todo:'var(--accent)',ready:'var(--yellow)',in_progress:'var(--blue)',done:'var(--green)',blocked:'var(--red)'};
+      list.innerHTML=tasks.length?tasks.map(t=>`<div class="task-item"><span class="dot-s" style="background:${colors[t.status]||'var(--text-muted)'}"></span><span class="task-title">${esc(t.title||'—')}</span><span class="task-meta">${t.status} · ${t.assignee||'—'}</span></div>`).join(''):'<div class="empty">Нет задач</div>';
+      if(badge){badge.className='badge badge-success';badge.textContent=`● ${tasks.length} задач`;}
+    }else{list.innerHTML=`<div class="log" style="margin:0;max-height:200px">${esc(text.slice(0,500))}</div>`;}
+    toast('Канбан загружен','📊');
+  }catch(e){list.innerHTML='<div class="empty">Ошибка загрузки</div>';if(badge){badge.className='badge badge-warn';badge.textContent='Ошибка';}}
+  if(sp)sp.style.display='none';
+}
+$('#btn-kanban-load').addEventListener('click',loadKanban);
+
+// ── cron ──
+async function loadCron(){
+  const el=$('#cron-list'),sp=$('#btn-cron-load .spinner'),badge=$('#cron-badge');
+  if(sp)sp.style.display='inline-block';el.innerHTML='<div class="empty"><span class="spinner"></span> Загрузка...</div>';
+  try{
+    const r=await fetch(API+'/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+KEY},body:JSON.stringify({model:'hermes-agent',messages:[{role:'user',content:'Выведи список cron-задач через hermes cron list в JSON: [{"name":"...","schedule":"...","paused":true/false}]. Только JSON.'}],stream:false})});
+    if(!r.ok)throw new Error('API offline');
+    const text=(await r.json()).choices?.[0]?.message?.content||'';
+    const m=text.match(/\[[\s\S]*\]/);
+    if(m){
+      const jobs=JSON.parse(m[0]);
+      el.innerHTML=jobs.length?jobs.map(j=>`<div class="row"><span class="dot-s ${j.paused?'d-yellow':'d-green'}"></span><span class="row-label">${esc(j.name||'—')}</span><span class="row-val">${esc(j.schedule||'—')}</span></div>`).join(''):'<div class="empty">Нет cron-задач</div>';
+      if(badge){badge.className='badge badge-success';badge.textContent=`● ${jobs.length} задач`;}
+    }else{el.innerHTML=`<div class="log" style="margin:0;max-height:200px">${esc(text.slice(0,300))}</div>`;}
+    toast('Cron загружен','⏰');
+  }catch(e){el.innerHTML='<div class="empty">Ошибка загрузки</div>';}
+  if(sp)sp.style.display='none';
+}
+$('#btn-cron-load').addEventListener('click',loadCron);
+
+// ── tasks ──
+function getTasks(){return LS.get('tasks',[]);}
+function saveTasks(t){LS.set('tasks',t);renderTasks();}
+function addTask(){const v=$('#new-task').value.trim();if(!v)return;saveTasks([...getTasks(),{id:Date.now(),title:v,done:false,ts:new Date().toISOString()}]);$('#new-task').value='';}
+function toggleTask(id){const ts=getTasks();const t=ts.find(t=>t.id===id);if(t){t.done=!t.done;saveTasks(ts);}}
+function deleteTask(id){saveTasks(getTasks().filter(t=>t.id!==id));}
+function clearDone(){saveTasks(getTasks().filter(t=>!t.done));}
+function exportTasks(){const t=getTasks().map((t,i)=>`${i+1}.[${t.done?'x':' '}] ${t.title}`).join('\n');navigator.clipboard.writeText(t).then(()=>toast('Скопировано','📋'));}
+function renderTasks(){
+  const tasks=getTasks();$('#t-active').textContent=tasks.filter(t=>!t.done).length;$('#t-done').textContent=tasks.filter(t=>t.done).length;$('#t-total').textContent=tasks.length;
+  const el=$('#task-list');if(!el)return;
+  if(!tasks.length){el.innerHTML='<div class="empty">Нет задач</div>';return;}
+  el.innerHTML=tasks.map(t=>`<div class="task-item"><div class="task-check ${t.done?'done':''}" onclick="toggleTask(${t.id})">${t.done?'✓':''}</div><span class="task-title ${t.done?'done':''}">${esc(t.title)}</span><span class="task-meta">${new Date(t.ts).toLocaleDateString('ru')}</span><span class="task-del" onclick="deleteTask(${t.id})">✕</span></div>`).join('');
+}
+
+// ── autosave chat ──
+let saveTimer;$('#chat-input')?.addEventListener('input',()=>{clearTimeout(saveTimer);saveTimer=setTimeout(()=>LS.set('chat_draft',$('#chat-input').value),800);});
+const draft=LS.get('chat_draft','');if(draft)$('#chat-input').value=draft;
+
+// ── Expandable item helper ──
+function expandItem(el, html){ el.querySelectorAll('.item-detail').forEach(d=>d.remove()); const detail=document.createElement('div'); detail.className='item-detail'; detail.style.cssText='padding:8px 0 8px 20px;margin-top:4px;border-top:1px solid var(--border)'; detail.innerHTML=html; el.appendChild(detail); }
+function collapseAll(parent){ parent.querySelectorAll('.item-detail').forEach(d=>d.remove()); }
+
+// ── SKILLS ──
+let skillsData=[];
+async function loadSkills(){
+  const el=$('#skills-list'),sp=$('#btn-skills-load .spinner'),badge=$('#skills-badge');
+  if(sp)sp.style.display='inline-block';el.innerHTML='<div class="empty"><span class="spinner"></span> Загрузка...</div>';
+  try{
+    const r=await fetch(API+'/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+KEY},body:JSON.stringify({model:'hermes-agent',messages:[{role:'user',content:'Выведи список установленных навыков через hermes skills list в JSON: [{"name":"...","category":"...","description":"..."}]. Только JSON, без лишнего текста.'}],stream:false})});
+    if(!r.ok)throw new Error('API offline');
+    const text=(await r.json()).choices?.[0]?.message?.content||'';
+    const clean=text.replace(/```json\n?/g,'').replace(/```\n?/g,'').trim();
+    const m=clean.match(/\[[\s\S]*\]/);
+    if(m){skillsData=JSON.parse(m[0]);renderSkills();if(badge){badge.className='badge badge-success';badge.textContent=`● ${skillsData.length} навыков`;}}
+    else{el.innerHTML=`<div class="log" style="margin:0;max-height:200px">${esc(text.slice(0,500))}</div>`;}
+  }catch(e){el.innerHTML=`<div class="empty">Ошибка: ${esc(e.message)}</div>`;}
+  if(sp)sp.style.display='none';
+}
+function renderSkills(){
+  const el=$('#skills-list');
+  el.innerHTML=skillsData.length?skillsData.map((s,i)=>`<div class="row" style="cursor:pointer" onclick="toggleSkill(this,${i})"><span class="dot-s d-green"></span><span class="row-label">${esc(s.name||'—')}</span><span class="row-val" style="font-size:10px">${esc(s.category||'')}</span></div>`).join(''):'<div class="empty">Нет навыков</div>';
+}
+function toggleSkill(row,i){
+  collapseAll(row.parentElement);
+  const s=skillsData[i]; if(!s)return;
+  expandItem(row,`<div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px">${esc(s.description||'Нет описания')}</div><div class="btn-group" style="margin-bottom:0"><button class="btn btn-accent btn-xs" data-chat="Загрузи навык ${esc(s.name)} через /skill ${esc(s.name)}">📥 Загрузить</button><button class="btn btn-outline btn-xs" data-chat="Расскажи подробнее о навыке ${esc(s.name)}">ℹ️ Подробнее</button></div>`);
+  bindChatButtons(row);
+}
+$('#btn-skills-load').addEventListener('click',loadSkills);
+
+// ── PROFILES ──
+let profilesData=[];
+async function loadProfiles(){
+  const el=$('#profiles-list'),sp=$('#btn-profiles-load .spinner'),badge=$('#profiles-badge');
+  if(sp)sp.style.display='inline-block';el.innerHTML='<div class="empty"><span class="spinner"></span> Загрузка...</div>';
+  try{
+    const r=await fetch(API+'/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+KEY},body:JSON.stringify({model:'hermes-agent',messages:[{role:'user',content:'Выведи список профилей через hermes profile list в JSON: [{"name":"...","active":true/false}]. Только JSON, без лишнего текста.'}],stream:false})});
+    if(!r.ok)throw new Error('API offline');
+    const text=(await r.json()).choices?.[0]?.message?.content||'';
+    const clean=text.replace(/```json\n?/g,'').replace(/```\n?/g,'').trim();
+    const m=clean.match(/\[[\s\S]*\]/);
+    if(m){profilesData=JSON.parse(m[0]);renderProfiles();if(badge){badge.className='badge badge-success';badge.textContent=`● ${profilesData.length} профилей`;}}
+    else{el.innerHTML=`<div class="log" style="margin:0;max-height:200px">${esc(text.slice(0,500))}</div>`;}
+  }catch(e){el.innerHTML=`<div class="empty">Ошибка: ${esc(e.message)}</div>`;}
+  if(sp)sp.style.display='none';
+}
+function renderProfiles(){
+  const el=$('#profiles-list');
+  el.innerHTML=profilesData.length?profilesData.map((p,i)=>`<div class="row" style="cursor:pointer" onclick="toggleProfile(this,${i})"><span class="dot-s ${p.active?'d-green':'d-yellow'}"></span><span class="row-label">${esc(p.name||'—')}</span><span class="row-val">${p.active?'▶ активный':'—'}</span></div>`).join(''):'<div class="empty">Нет профилей</div>';
+}
+function toggleProfile(row,i){
+  collapseAll(row.parentElement);
+  const p=profilesData[i]; if(!p)return;
+  expandItem(row,`<div class="btn-group" style="margin-bottom:0"><button class="btn btn-accent btn-xs" data-chat="Переключись на профиль ${esc(p.name)}: hermes profile use ${esc(p.name)}">🔄 Сделать активным</button><button class="btn btn-outline btn-xs" data-chat="Покажи детальную информацию о профиле ${esc(p.name)}: hermes profile show ${esc(p.name)}">ℹ️ Детали</button>${!p.active?`<button class="btn btn-red btn-xs" data-chat="Удали профиль ${esc(p.name)}: hermes profile delete ${esc(p.name)}">🗑 Удалить</button>`:''}</div>`);
+  bindChatButtons(row);
+}
+$('#btn-profiles-load').addEventListener('click',loadProfiles);
+
+// ── PROVIDERS ──
+async function loadProviders(){
+  const el=$('#providers-list'),sp=$('#btn-providers-load .spinner'),badge=$('#providers-badge');
+  if(sp)sp.style.display='inline-block';el.innerHTML='<div class="empty"><span class="spinner"></span> Загрузка...</div>';
+  try{
+    const r=await fetch(API+'/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+KEY},body:JSON.stringify({model:'hermes-agent',messages:[{role:'user',content:'Покажи текущую конфигурацию: модель, провайдер, активные API-ключи (без вывода самих ключей). Выведи в JSON: {"model":"...","provider":"...","auth_methods":["..."]}. Только JSON, без лишнего текста.'}],stream:false})});
+    if(!r.ok)throw new Error('API offline');
+    const text=(await r.json()).choices?.[0]?.message?.content||'';
+    const clean=text.replace(/```json\n?/g,'').replace(/```\n?/g,'').trim();
+    const m=clean.match(/\{[\s\S]*\}/);
+    if(m){
+      const cfg=JSON.parse(m[0]);
+      el.innerHTML=`<div class="row"><span class="row-label">Модель</span><span class="badge badge-accent">${esc(cfg.model||'—')}</span></div><div class="row"><span class="row-label">Провайдер</span><span class="badge badge-success">${esc(cfg.provider||'—')}</span></div>${(cfg.auth_methods||[]).map(a=>`<div class="row" style="cursor:pointer" onclick="toggleAuth(this,'${esc(a)}')"><span class="row-label">🔐 ${esc(a)}</span><span class="badge badge-success">OK</span></div>`).join('')}`;
+      if(badge){badge.className='badge badge-success';badge.textContent='● Загружено';}
+    }else{el.innerHTML=`<div class="log" style="margin:0;max-height:200px">${esc(text.slice(0,500))}</div>`;}
+  }catch(e){el.innerHTML=`<div class="empty">Ошибка: ${esc(e.message)}</div>`;}
+  if(sp)sp.style.display='none';
+}
+function toggleAuth(row,provider){
+  collapseAll(row.parentElement);
+  expandItem(row,`<div class="btn-group" style="margin-bottom:0"><button class="btn btn-accent btn-xs" data-chat="Добавь или обнови ключ для ${esc(provider)}: hermes auth add ${esc(provider)}">🔑 Добавить ключ</button><button class="btn btn-outline btn-xs" data-chat="Проверь статус аутентификации ${esc(provider)}: hermes auth list">ℹ️ Статус</button><button class="btn btn-red btn-xs" data-chat="Смени модель через hermes model">🔄 Сменить модель</button></div>`);
+  bindChatButtons(row);
+}
+$('#btn-providers-load').addEventListener('click',loadProviders);
+
+// ── KANBAN ──
+let kanbanData=[];
+async function loadKanban(){
+  const list=$('#kanban-list'),stats=$('#kanban-stats'),sp=$('#btn-kanban-load .spinner'),badge=$('#kanban-badge');
+  if(sp)sp.style.display='inline-block';list.innerHTML='<div class="empty"><span class="spinner"></span> Загрузка...</div>';
+  try{
+    const r=await fetch(API+'/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+KEY},body:JSON.stringify({model:'hermes-agent',messages:[{role:'user',content:'Покажи список задач канбана через hermes kanban list и выведи в JSON: [{"id":...,"title":"...","status":"...","assignee":"..."}]. Только JSON, без лишнего текста.'}],stream:false})});
+    if(!r.ok)throw new Error('API offline');
+    const text=(await r.json()).choices?.[0]?.message?.content||'';
+    const clean=text.replace(/```json\n?/g,'').replace(/```\n?/g,'').trim();
+    const m=clean.match(/\[[\s\S]*\]/);
+    if(m){kanbanData=JSON.parse(m[0]);renderKanban();if(badge){badge.className='badge badge-success';badge.textContent=`● ${kanbanData.length} задач`;}}
+    else{list.innerHTML=`<div class="log" style="margin:0;max-height:200px">${esc(text.slice(0,500))}</div>`;}
+    toast('Канбан загружен','📊');
+  }catch(e){list.innerHTML=`<div class="empty">Ошибка: ${esc(e.message)}</div>`;if(badge){badge.className='badge badge-warn';badge.textContent='Ошибка';}}
+  if(sp)sp.style.display='none';
+}
+function renderKanban(){
+  const list=$('#kanban-list'),stats=$('#kanban-stats');
+  const c={todo:0,ready:0,in_progress:0,done:0,blocked:0};
+  kanbanData.forEach(t=>{if(c[t.status]!==undefined)c[t.status]++;});
+  if(stats)stats.innerHTML=`<div class="stat-card"><div class="stat-value" style="color:var(--accent)">${c.todo}</div><div class="stat-label">К выполнению</div></div><div class="stat-card"><div class="stat-value" style="color:var(--yellow)">${c.ready}</div><div class="stat-label">Готовы</div></div><div class="stat-card"><div class="stat-value" style="color:var(--blue)">${c.in_progress}</div><div class="stat-label">В работе</div></div><div class="stat-card"><div class="stat-value" style="color:var(--green)">${c.done}</div><div class="stat-label">Выполнено</div></div>`;
+  const colors={todo:'var(--accent)',ready:'var(--yellow)',in_progress:'var(--blue)',done:'var(--green)',blocked:'var(--red)'};
+  list.innerHTML=kanbanData.length?kanbanData.map((t,i)=>`<div class="task-item" style="cursor:pointer" onclick="toggleKanban(this,${i})"><span class="dot-s" style="background:${colors[t.status]||'var(--text-muted)'}"></span><span class="task-title">${esc(t.title||'—')}</span><span class="task-meta">${t.status} · ${t.assignee||'—'}</span></div>`).join(''):'<div class="empty">Нет задач</div>';
+}
+function toggleKanban(row,i){
+  collapseAll(row.parentElement);
+  const t=kanbanData[i]; if(!t)return;
+  expandItem(row,`<div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px">ID: ${t.id||'—'} · Статус: ${t.status||'—'} · Исполнитель: ${t.assignee||'—'}</div><div class="btn-group" style="margin-bottom:0"><button class="btn btn-green btn-xs" data-chat="Заверши задачу канбана #${t.id}: hermes kanban complete ${t.id}">✅ Завершить</button><button class="btn btn-yellow btn-xs" data-chat="Заблокируй задачу канбана #${t.id}: hermes kanban block ${t.id}">🚫 Блокировать</button><button class="btn btn-outline btn-xs" data-chat="Покажи детали задачи канбана #${t.id}: hermes kanban show ${t.id}">ℹ️ Детали</button></div>`);
+  bindChatButtons(row);
+}
+$('#btn-kanban-load').addEventListener('click',loadKanban);
+
+// ── CRON ──
+let cronData=[];
+async function loadCron(){
+  const el=$('#cron-list'),sp=$('#btn-cron-load .spinner'),badge=$('#cron-badge');
+  if(sp)sp.style.display='inline-block';el.innerHTML='<div class="empty"><span class="spinner"></span> Загрузка...</div>';
+  try{
+    const r=await fetch(API+'/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+KEY},body:JSON.stringify({model:'hermes-agent',messages:[{role:'user',content:'Выведи список cron-задач через hermes cron list в JSON: [{"name":"...","schedule":"...","paused":true/false}]. Только JSON, без лишнего текста.'}],stream:false})});
+    if(!r.ok)throw new Error('API offline');
+    const text=(await r.json()).choices?.[0]?.message?.content||'';
+    const clean=text.replace(/```json\n?/g,'').replace(/```\n?/g,'').trim();
+    const m=clean.match(/\[[\s\S]*\]/);
+    if(m){cronData=JSON.parse(m[0]);renderCron();if(badge){badge.className='badge badge-success';badge.textContent=`● ${cronData.length} задач`;}}
+    else{el.innerHTML=`<div class="log" style="margin:0;max-height:200px">${esc(text.slice(0,300))}</div>`;}
+    toast('Cron загружен','⏰');
+  }catch(e){el.innerHTML=`<div class="empty">Ошибка: ${esc(e.message)}</div>`;}
+  if(sp)sp.style.display='none';
+}
+function renderCron(){
+  const el=$('#cron-list');
+  el.innerHTML=cronData.length?cronData.map((j,i)=>`<div class="row" style="cursor:pointer" onclick="toggleCron(this,${i})"><span class="dot-s ${j.paused?'d-yellow':'d-green'}"></span><span class="row-label">${esc(j.name||'—')}</span><span class="row-val">${esc(j.schedule||'—')}</span></div>`).join(''):'<div class="empty">Нет cron-задач</div>';
+}
+function toggleCron(row,i){
+  collapseAll(row.parentElement);
+  const j=cronData[i]; if(!j)return;
+  expandItem(row,`<div class="btn-group" style="margin-bottom:0">${j.paused?`<button class="btn btn-green btn-xs" data-chat="Возобнови cron-задачу ${esc(j.name)}: hermes cron resume ${esc(j.name)}">▶ Возобновить</button>`:`<button class="btn btn-yellow btn-xs" data-chat="Приостанови cron-задачу ${esc(j.name)}: hermes cron pause ${esc(j.name)}">⏸ Пауза</button>`}<button class="btn btn-accent btn-xs" data-chat="Запусти cron-задачу ${esc(j.name)} сейчас: hermes cron run ${esc(j.name)}">▶ Выполнить сейчас</button><button class="btn btn-red btn-xs" data-chat="Удали cron-задачу ${esc(j.name)}: hermes cron remove ${esc(j.name)}">🗑 Удалить</button></div>`);
+  bindChatButtons(row);
+}
+$('#btn-cron-load').addEventListener('click',loadCron);
+
+// ── Bind chat buttons inside expanded items ──
+function bindChatButtons(container){
+  container.querySelectorAll('[data-chat]').forEach(el=>el.addEventListener('click',async function(){
+    const msg=this.dataset.chat;
+    $$('.nav-item').forEach(b=>{if(b.dataset.page==='chat')b.click();});
+    $('#chat-input').value=msg;
+    await sendChat(msg,$('#chat-log'));
+  }));
+}
+
+// ── init ──
+(async()=>{await checkAPI();updateStatus();renderTasks();setInterval(checkAPI,30000);})();
+</script>
+</body>
+</html>

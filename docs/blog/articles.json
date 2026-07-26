@@ -22,6 +22,17 @@
     "heroImage": "blog/images/memory-hero.svg"
   },
   {
+    "id": "lyrics-harness",
+    "title": "Харнесс AI-ассистента: как Lyrics Studio понимает контекст альбома",
+    "tags": ["AI engineering", "архитектура", "MusicVerse"],
+    "type": "full",
+    "status": "published",
+    "date": "2026-07",
+    "readingTime": 14,
+    "desc": "Девять инструментов, один Edge Function и Gemini 2.5 Flash. Как харнесс Lyrics Studio собирает контекст проекта, передаёт его модели и возвращает структурированный результат. Блокировки в РФ, борьба за скорость загрузки в Telegram Mini App и почему action-пресеты стабильнее function-calling.",
+    "heroImage": "blog/images/lyrics-harness-hero.svg"
+  },
+  {
     "id": "optimizatsiya-tokenov",
     "title": "Оптимизация токенов: как срезать счёт на 40–70%",
     "tags": ["экономика", "оптимизация"],

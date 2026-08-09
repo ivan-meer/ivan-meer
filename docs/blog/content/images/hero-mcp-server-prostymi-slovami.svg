@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" fill="none">
+  <rect width="720" height="480" rx="12" fill="oklch(0.12 0.012 265)"/>
+  <text x="360" y="36" font-family="Oswald,sans-serif" font-size="18" fill="oklch(0.94 0.006 100)" text-anchor="middle" letter-spacing="2">MCP EXPLAINED</text>
+  <line x1="120" y1="50" x2="600" y2="50" stroke="oklch(0.25 0.01 265)" stroke-width="1"/>
+
+  <!-- User Perspective -->
+  <rect x="40" y="90" width="300" height="120" rx="8" fill="oklch(0.16 0.01 140)" stroke="oklch(0.88 0.19 128)" stroke-width="1"/>
+  <text x="190" y="116" font-family="Oswald,sans-serif" font-size="14" fill="oklch(0.94 0.006 100)" text-anchor="middle" font-weight="500">Для пользователя</text>
+  <text x="60" y="140" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">Это как USB-C для AI</text>
+  <text x="60" y="160" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">Подключи — и инструмент работает</text>
+  <text x="60" y="180" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">Без настройки, без API-ключей</text>
+
+  <!-- Developer Perspective -->
+  <rect x="380" y="90" width="300" height="120" rx="8" fill="oklch(0.16 0.01 140)" stroke="oklch(0.88 0.19 128)" stroke-width="1"/>
+  <text x="530" y="116" font-family="Oswald,sans-serif" font-size="14" fill="oklch(0.94 0.006 100)" text-anchor="middle" font-weight="500">Для разработчика</text>
+  <text x="400" y="140" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">Это JSON-RPC сервер</text>
+  <text x="400" y="160" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">Стандартный протокол</text>
+  <text x="400" y="180" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">Поддерживает любые транспорты</text>
+
+  <!-- Analogy -->
+  <rect x="40" y="240" width="640" height="120" rx="8" fill="oklch(0.18 0.008 265)" stroke="oklch(0.32 0.014 265)" stroke-width="1"/>
+  <text x="360" y="266" font-family="Oswald,sans-serif" font-size="14" fill="oklch(0.94 0.006 100)" text-anchor="middle" font-weight="500">Аналогия</text>
+  <text x="60" y="290" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">REST — это доставка, MCP — это ресторан</text>
+  <text x="60" y="310" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">Вы заказываете через универсальный интерфейс</text>
+  <text x="60" y="330" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">А сервер сам решает, как это приготовить</text>
+
+  <!-- Comparison -->
+  <rect x="40" y="380" width="640" height="70" rx="8" fill="oklch(0.16 0.01 140)" stroke="oklch(0.88 0.19 128)" stroke-width="1"/>
+  <text x="360" y="406" font-family="Oswald,sans-serif" font-size="14" fill="oklch(0.94 0.006 100)" text-anchor="middle" font-weight="500">MCP vs API vs плагины</text>
+  <text x="60" y="430" font-family="Golos Text,sans-serif" font-size="11" fill="oklch(0.6 0.015 265)">API — это меню, MCP — это универсальный интерфейс для всех сервисов</text>
+</svg>

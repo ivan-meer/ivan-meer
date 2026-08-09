@@ -1,6 +1,5 @@
-<!-- Первая статья: Скрипты не работают -->
-<!-- Это HTML-фрагмент для подгрузки в article.html -->
-<!-- Каждую секцию можно сопровождать скриншотами/схемами -->
+<!-- Статья 3: Скрипты не работают: почему AI-агентам нужна архитектура -->
+<!-- HTML-фрагмент с кастомными компонентами дизайн-системы -->
 
 <p>Сценарий, знакомый каждому, кто хоть раз внедрял AI-автоматизацию: вы подключаете LLM к API, пишете 200 строк на Python, демонстрируете заказчику — и система работает… ровно до первого нестандартного запроса.</p>
 
@@ -9,13 +8,31 @@
 <p>Это не невезение. Это отсутствие <strong>инженерного подхода</strong>.</p>
 
 <figure>
-  <img src="blog/images/placeholder-script-vs-system.svg" alt="Скрипт vs Система: сравнительная схема" style="max-width:600px;">
-  <figcaption>Скрипт делает одну задачу, пока всё идёт по плану. Система проектируется как набор слоёв с предсказуемым поведением.</figcaption>
+  <img src="blog/content/images/hero-skripty-ne-rabotayut.svg" alt="Скрипт vs Система: сравнительная схема" style="max-width:600px;">
+  <figcaption>Архитектура AI-системы: 5 слоёв от интерфейсов до инфраструктуры. Каждый слой изолирован.</figcaption>
 </figure>
 
 <h2>Чем скрипт отличается от системы</h2>
 
 <p>Скрипт — это линейная последовательность действий. Он отвечает на запрос, пока запрос укладывается в ожидания автора. Система — это набор слоёв, каждый из которых решает свою задачу и умеет обрабатывать сбои.</p>
+
+<p>Вот полное сравнение:</p>
+
+<table>
+  <thead>
+    <tr><th>Характеристика</th><th>Скрипт</th><th>Система</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Поток выполнения</strong></td><td>Линейный, сверху вниз</td><td>Событийно-ориентированный, асинхронный</td></tr>
+    <tr><td><strong>Обработка ошибок</strong></td><td>try/except вокруг всего</td><td>Retry-политики, fallback, circuit breaker</td></tr>
+    <tr><td><strong>Состояние</strong></td><td>Глобальные переменные</td><td>Слои памяти с TTL и стратегией забывания</td></tr>
+    <tr><td><strong>Наблюдаемость</strong></td><td>print() / console.log()</td><td>Структурированное логирование, трейсинг, метрики</td></tr>
+    <tr><td><strong>Масштабирование</strong></td><td>Запуск в другом потоке</td><td>Горизонтальное, очереди, шардирование</td></tr>
+    <tr><td><strong>Тестирование</strong></td><td>Ручное, «запусти и смотри»</td><td>Unit, integration, E2E, нагрузочное</td></tr>
+    <tr><td><strong>Время жизни</strong></td><td>Один запуск</td><td>Недели, месяцы постоянной работы</td></tr>
+    <tr><td><strong>Стоимость доработки</strong></td><td>Переписать скрипт</td><td>Добавить слой / заменить компонент</td></tr>
+  </tbody>
+</table>
 
 <div class="stats-grid">
   <div class="stat-card">
@@ -40,41 +57,453 @@
 
 <p>Он работает. Пока query — «привет, как дела». Но когда приходит «найди в базе заказы Иванова за прошлый месяц, сверь с накладными и отправь отчёт в Telegram» — начинается хаос.</p>
 
-<h2>Что добавляет архитектура</h2>
+<h2>Архитектура харнесса: компоненты и потоки данных</h2>
 
-<h3>1. Оркестрация</h3>
-
-<p>Вместо одного вызова LLM — маршрутизация запроса, разбиение на подзадачи, retry-логика и тайм-ауты. Если модель не справилась с первой попытки — система пробует другую стратегию, а не падает.</p>
-
-<div class="callout">
-  <div class="callout-title">Практика</div>
-  <p>В AdminHero очередь задач агента устроена так: при сбое одного шага система не перезапускает весь пайплайн, а перезапрашивает только упавший шаг с изменённым промптом. Экономия токенов — до 40% на сложных запросах.</p>
-</div>
-
-<h3>2. Память</h3>
-
-<p>Скрипт не помнит, что было пять сообщений назад. Система хранит историю сессии в структурированном виде: краткосрочная память (текущий диалог), долгосрочная (проекты, клиенты, прошлые решения), семантическая (извлечённые факты).</p>
-
-<p>Без памяти каждый запрос агента — «привет, я ничего о тебе не знаю, расскажи заново». С памятью — «я помню ваш проект, вот статус по прошлой задаче».</p>
+<p>Харнесс — это «операционная система» для AI-агента. Он управляет жизненным циклом запроса, от приёма до ответа, проходя через пять слоёв архитектуры.</p>
 
 <figure>
-  <img src="blog/images/placeholder-memory-layers.svg" alt="Слои памяти AI-агента" style="max-width:500px;">
-  <figcaption>Три слоя памяти: краткосрочная (сессия), долгосрочная (проекты), семантическая (факты).</figcaption>
+  <img src="blog/content/images/layers.svg" alt="Пять слоёв архитектуры AI-системы" style="max-width:600px;">
+  <figcaption>Пять слоёв: Интерфейсы → Оркестрация → Логика → Инструменты → Инфраструктура</figcaption>
 </figure>
 
-<h3>3. Наблюдаемость</h3>
+<h3>Поток запроса через харнесс</h3>
 
-<p>Скрипт молча падает. Система логирует каждый шаг: какой промпт ушёл в модель, сколько токенов потрачено, что вернулось, сколько времени заняло. Когда что-то идёт не так — вы видите где, а не гадаете.</p>
+<pre><code>      Запрос пользователя
+            │
+            ▼
+    ┌───────────────────────┐
+    │ 1. Интерфейсы         │  ← REST / WebSocket / CLI
+    │    (валидация, auth)  │
+    └───────┬───────────────┘
+            │
+            ▼
+    ┌───────────────────────┐
+    │ 2. Оркестрация         │  ← Планировщик задач
+    │    (роутинг, очередь,  │  ← TaskQueue с приоритетами
+    │     retry, таймауты)   │  ← RetryHandler
+    └───────┬───────────────┘
+            │
+            ▼
+    ┌───────────────────────┐
+    │ 3. Логика              │  ← Бизнес-логика агента
+    │    (пайплайны, шаги,   │  ← Промпт-инженерия
+    │     контекст)          │  ← Memory Manager
+    └───────┬───────────────┘
+            │
+            ▼
+    ┌───────────────────────┐
+    │ 4. Инструменты         │  ← LLM, API, БД, файлы
+    │    (вызовы, кэш,      │  ← MCP-серверы
+    │     rate limiting)     │  ← Cache layer
+    └───────┬───────────────┘
+            │
+            ▼
+    ┌───────────────────────┐
+    │ 5. Инфраструктура      │  ← Очереди (Redis/RabbitMQ)
+    │    (мониторинг,        │  ← Логирование
+    │     метрики, алерты)   │  ← Health checks
+    └───────┬───────────────┘
+            │
+            ▼
+         Ответ пользователю</code></pre>
 
-<pre><code>{
-  "step": "search_orders",
-  "model": "claude-3.5-sonnet",
-  "tokens_in": 1250,
-  "tokens_out": 340,
-  "duration_ms": 2800,
-  "status": "retry_1",
-  "error": "date_parse_failed"
-}</code></pre>
+<h2>Пример на Python: от скрипта к системе с оркестрацией</h2>
+
+<p>Посмотрим, как превратить скрипт в настоящую систему. Начнём с проблемы — тот самый «простой агент» из демо:</p>
+
+<pre><code># ❌ Проблема: линейный скрипт без обработки ошибок
+def simple_agent(user_input: str) -> str:
+    """Простой агент — работает ровно до первой ошибки."""
+    prompt = f"Ты помощник. Ответь: {user_input}"
+
+    # Если модель временно недоступна — скрипт падает
+    response = llm.invoke(prompt)
+
+    # Если ответ содержит JSON, который нужно распарсить — но не содержит
+    if "{" in response:
+        import json
+        data = json.loads(response)  # ValueError: невалидный JSON
+
+    return response</code></pre>
+
+<p>Теперь — то же самое, но как архитектура с харнессом:</p>
+
+<pre><code># ✅ Система: харнесс с оркестрацией
+from enum import Enum
+from dataclasses import dataclass, field
+from typing import Optional
+import asyncio
+import logging
+import json
+
+logger = logging.getLogger("agent.harness")
+
+class TaskStatus(Enum):
+    PENDING = "pending"
+    RUNNING = "running"
+    RETRYING = "retrying"
+    COMPLETED = "completed"
+    FAILED = "failed"
+    FALLBACK = "fallback"
+
+@dataclass
+class Task:
+    id: str
+    payload: dict
+    status: TaskStatus = TaskStatus.PENDING
+    retry_count: int = 0
+    max_retries: int = 3
+    result: Optional[str] = None
+    error: Optional[str] = None
+    metadata: dict = field(default_factory=dict)
+
+class RetryHandler:
+    """Обработчик retry-политик с exponential backoff."""
+
+    def __init__(self, base_delay: float = 1.0, max_delay: float = 60.0):
+        self.base_delay = base_delay
+        self.max_delay = max_delay
+
+    async def execute_with_retry(
+        self, task: Task, action, fallback=None
+    ) -> Task:
+        while task.status in {TaskStatus.PENDING, TaskStatus.RETRYING}:
+            try:
+                task.status = TaskStatus.RUNNING
+                task.result = await action(task)
+                task.status = TaskStatus.COMPLETED
+                return task
+
+            except Exception as e:
+                task.retry_count += 1
+                task.error = str(e)
+                logger.warning(
+                    f"Task {task.id} failed (attempt {task.retry_count}): {e}"
+                )
+
+                if task.retry_count >= task.max_retries:
+                    if fallback:
+                        task.status = TaskStatus.FALLBACK
+                        task.result = await fallback(task)
+                        task.status = TaskStatus.COMPLETED
+                        return task
+                    task.status = TaskStatus.FAILED
+                    return task
+
+                task.status = TaskStatus.RETRYING
+                delay = min(
+                    self.base_delay * (2 ** (task.retry_count - 1)),
+                    self.max_delay
+                )
+                await asyncio.sleep(delay)
+
+        return task
+
+class TaskQueue:
+    """Очередь задач с приоритетами."""
+
+    def __init__(self, max_concurrent: int = 5):
+        self.queue: asyncio.PriorityQueue = asyncio.PriorityQueue()
+        self.max_concurrent = max_concurrent
+        self.active_tasks: set = set()
+
+    async def enqueue(self, task: Task, priority: int = 0):
+        await self.queue.put((priority, task))
+        logger.info(f"Task {task.id} enqueued (priority={priority})")
+
+    async def worker(self, processor):
+        while True:
+            _, task = await self.queue.get()
+            self.active_tasks.add(task.id)
+            try:
+                await processor(task)
+            finally:
+                self.active_tasks.discard(task.id)
+                self.queue.task_done()
+
+    async def process_all(self, processor):
+        workers = [
+            asyncio.create_task(self.worker(processor))
+            for _ in range(self.max_concurrent)
+        ]
+        await self.queue.join()
+        for w in workers:
+            w.cancel()
+
+class AgentHarness:
+    """Харнесс AI-агента — объединяет оркестрацию, retry и наблюдаемость."""
+
+    def __init__(self):
+        self.queue = TaskQueue(max_concurrent=5)
+        self.retry = RetryHandler(base_delay=1.0, max_delay=30.0)
+        self.metrics = MetricsCollector()
+
+    async def process_task(self, task: Task):
+        """Обработка задачи с полным циклом: retry, fallback, метрики."""
+        start = asyncio.get_event_loop().time()
+
+        await self.retry.execute_with_retry(
+            task,
+            action=self._execute_task,
+            fallback=self._fallback_response,
+        )
+
+        duration = asyncio.get_event_loop().time() - start
+        self.metrics.record(
+            task_id=task.id,
+            status=task.status.value,
+            duration_ms=int(duration * 1000),
+            retries=task.retry_count,
+        )
+        logger.info(
+            f"Task {task.id} completed: {task.status.value} "
+            f"({duration:.2f}s, {task.retry_count} retries)"
+        )
+
+    async def _execute_task(self, task: Task) -> str:
+        """Основная логика выполнения задачи."""
+        prompt = f"Ты помощник. Ответь: {task.payload['query']}"
+
+        response = await llm.invoke(prompt)
+        task.metadata["tokens"] = estimate_tokens(response)
+
+        if task.payload.get("parse_json") and "{" in response:
+            try:
+                json.loads(response)
+            except ValueError:
+                raise ValueError("Invalid JSON in response")
+
+        return response
+
+    async def _fallback_response(self, task: Task) -> str:
+        """Fallback при исчерпании retry."""
+        logger.warning(f"Using fallback for task {task.id}")
+        return (
+            "Извините, я временно не могу обработать запрос. "
+            "Пожалуйста, попробуйте позже."
+        )
+
+    async def run(self, query: str, parse_json: bool = False) -> str:
+        """Запускает задачу через харнесс."""
+        task = Task(
+            id=generate_id(),
+            payload={"query": query, "parse_json": parse_json},
+        )
+        await self.queue.enqueue(task, priority=0)
+        await self.process_task(task)
+        return task.result or task.error or "Unknown error"
+
+    def get_metrics(self) -> dict:
+        return self.metrics.summary()</code></pre>
+
+<h2>Retry-политики: exponential backoff и circuit breaker</h2>
+
+<p>Retry — не просто «повтори попытку». Это целая наука. Две основные стратегии:</p>
+
+<h3>Exponential Backoff</h3>
+
+<p>Каждая следующая попытка ждёт вдвое дольше предыдущей. Базовая задержка 1с, максимальная — 60с. Попытки: 1с → 2с → 4с → 8с → 16с → 32с → 60с (cap).</p>
+
+<pre><code>class ExponentialBackoff:
+    """Exponential backoff с jitter для предотвращения thundering herd."""
+
+    def __init__(self, base: float = 1.0, max_delay: float = 60.0):
+        self.base = base
+        self.max_delay = max_delay
+
+    def get_delay(self, attempt: int) -> float:
+        import random
+        delay = min(self.base * (2 ** attempt), self.max_delay)
+        jitter = random.uniform(0, delay * 0.1)
+        return delay + jitter
+
+    async def wait(self, attempt: int):
+        delay = self.get_delay(attempt)
+        await asyncio.sleep(delay)
+        return delay</code></pre>
+
+<h3>Circuit Breaker</h3>
+
+<p>Если сервис падает слишком часто — перестаём его дёргать и возвращаем fallback. После тайм-аута пробуем снова.</p>
+
+<pre><code>class CircuitBreaker:
+    """Circuit breaker: защита от каскадных сбоев."""
+
+    def __init__(self, threshold: int = 5, reset_timeout: float = 30.0):
+        self.threshold = threshold
+        self.reset_timeout = reset_timeout
+        self.failures = 0
+        self.state = "closed"  # closed / open / half-open
+        self.last_failure_time = 0.0
+
+    async def call(self, action, fallback=None):
+        if self.state == "open":
+            if time.time() - self.last_failure_time > self.reset_timeout:
+                self.state = "half-open"
+            else:
+                return await fallback() if fallback else None
+
+        try:
+            result = await action()
+            self.failures = 0
+            self.state = "closed"
+            return result
+        except Exception as e:
+            self.failures += 1
+            self.last_failure_time = time.time()
+            if self.failures >= self.threshold:
+                self.state = "open"
+                logger.error(
+                    f"Circuit breaker opened after {self.failures} failures"
+                )
+            raise</code></pre>
+
+<div class="callout">
+  <div class="callout-title">Когда использовать circuit breaker</div>
+  <p>Circuit breaker имеет смысл при интеграции с внешними API, БД, LLM-провайдерами. Если сервис упал, нет смысла долбить его retry'ми — это только усугубит проблему. Лучше вернуть fallback и попробовать позже.</p>
+</div>
+
+<h2>Очереди задач: in-memory vs Redis vs RabbitMQ</h2>
+
+<p>Выбор очереди зависит от требований к надёжности и масштабу.</p>
+
+<table>
+  <thead>
+    <tr><th>Характеристика</th><th>In-memory (asyncio.Queue)</th><th>Redis (RQ / Celery)</th><th>RabbitMQ / Kafka</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Персистентность</strong></td><td>Нет — теряет при перезапуске</td><td>Да — RDB/AOF</td><td>Да — дисковый лог</td></tr>
+    <tr><td><strong>Скорость</strong></td><td>Микросекунды</td><td>Миллисекунды (1–5ms)</td><td>Миллисекунды (1–10ms)</td></tr>
+    <tr><td><strong>Масштабирование</strong></td><td>Один процесс</td><td>Несколько воркеров</td><td>Кластер, партиции</td></tr>
+    <tr><td><strong>Dead letter queue</strong></td><td>Нет</td><td>Есть (через Redis)</td><td>Встроенная</td></tr>
+    <tr><td><strong>Задержка задач</strong></td><td>Нет</td><td>Есть (через sorted sets)</td><td>Есть (TTL, delayed)</td></tr>
+    <tr><td><strong>Приоритеты</strong></td><td>Есть (PriorityQueue)</td><td>Ограниченно</td><td>Есть (через очереди)</td></tr>
+    <tr><td><strong>Когда выбрать</strong></td><td>Прототипы, dev, малая нагрузка</td><td>Mid-size продакшен</td><td>High-load, гарантии доставки</td></tr>
+  </tbody>
+</table>
+
+<pre><code># In-memory очередь для прототипа (asyncio.Queue)
+class InMemoryTaskQueue:
+    """Простая очередь для разработки и тестов."""
+
+    def __init__(self):
+        self.queue = asyncio.PriorityQueue()
+        self.processed = []
+
+    async def add(self, task: Task, priority: int = 0):
+        await self.queue.put((priority, task))
+
+    async def get(self) -> Task:
+        _, task = await self.queue.get()
+        return task
+
+# Redis-очередь для продакшена
+class RedisTaskQueue:
+    """Очередь через Redis — персистентность и масштабирование."""
+
+    def __init__(self, redis_client, queue_name: str = "agent_tasks"):
+        self.redis = redis_client
+        self.queue_name = queue_name
+
+    async def add(self, task: Task, priority: int = 0):
+        await self.redis.zadd(
+            self.queue_name,
+            {task.id: priority},
+        )
+        await self.redis.hset(
+            f"{self.queue_name}:data",
+            task.id,
+            json.dumps(asdict(task)),
+        )
+
+    async def get(self) -> Optional[Task]:
+        # Получаем задачу с наивысшим приоритетом (наименьшее число)
+        result = await self.redis.zpopmin(self.queue_name, count=1)
+        if not result:
+            return None
+        task_id, _ = result[0]
+        data = await self.redis.hget(f"{self.queue_name}:data", task_id)
+        return Task(**json.loads(data)) if data else None</code></pre>
+
+<h2>Наблюдаемость: логирование, трейсинг, метрики</h2>
+
+<p>Без наблюдаемости вы летите вслепую. Три уровня — минимум для продакшена:</p>
+
+<h3>1. Структурированное логирование</h3>
+
+<pre><code>import structlog
+
+logger = structlog.get_logger()
+
+def log_step(step_name: str, task: Task, **extra):
+    """Логирование шага с контекстом задачи."""
+    logger.info(
+        "agent_step",
+        step=step_name,
+        task_id=task.id,
+        retry_count=task.retry_count,
+        status=task.status.value,
+        **extra,
+    )</code></pre>
+
+<h3>2. Трейсинг запросов (OpenTelemetry)</h3>
+
+<pre><code>from opentelemetry import trace
+
+tracer = trace.get_tracer("agent.harness")
+
+async def traced_process(task: Task):
+    with tracer.start_as_current_span("process_task") as span:
+        span.set_attribute("task.id", task.id)
+        span.set_attribute("task.retries", task.retry_count)
+
+        with tracer.start_as_current_span("llm_call") as llm_span:
+            response = await llm.invoke(task.payload["query"])
+            llm_span.set_attribute("response.tokens", estimate_tokens(response))
+
+        span.set_attribute("task.status", task.status.value)
+        return response</code></pre>
+
+<h3>3. Метрики для мониторинга (Prometheus)</h3>
+
+<pre><code>from prometheus_client import Counter, Histogram, Gauge
+
+# Метрики
+TASKS_TOTAL = Counter("agent_tasks_total", "Total tasks processed", ["status"])
+TASK_DURATION = Histogram(
+    "agent_task_duration_seconds",
+    "Task processing duration",
+    buckets=[0.1, 0.5, 1.0, 2.0, 5.0, 10.0, 30.0, 60.0],
+)
+ACTIVE_TASKS = Gauge("agent_active_tasks", "Currently active tasks")
+RETRY_COUNT = Counter("agent_retries_total", "Total retry attempts", ["service"])
+
+class MetricsCollector:
+    """Сборщик метрик для AI-агента."""
+
+    def record(self, task_id: str, status: str, duration_ms: int, retries: int):
+        TASKS_TOTAL.labels(status=status).inc()
+        TASK_DURATION.observe(duration_ms / 1000.0)
+
+        if retries > 0:
+            RETRY_COUNT.labels(service="llm").inc(retries)</code></pre>
+
+<h2>Что измерять в продакшене</h2>
+
+<table>
+  <thead>
+    <tr><th>Метрика</th><th>Что показывает</th><th>Норма</th><th>Тревога</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Время ответа</strong></td><td>Скорость обработки запроса</td><td>&lt; 5с</td><td>&gt; 15с</td></tr>
+    <tr><td><strong>Токены на запрос</strong></td><td>Стоимость и эффективность</td><td>&lt; 4000</td><td>&gt; 15000</td></tr>
+    <tr><td><strong>Retry rate</strong></td><td>Стабильность LLM-провайдера</td><td>&lt; 5%</td><td>&gt; 20%</td></tr>
+    <tr><td><strong>Cache hit rate</strong></td><td>Эффективность кэширования</td><td>&gt; 40%</td><td>&lt; 10%</td></tr>
+    <tr><td><strong>Error rate</strong></td><td>Доля неуспешных запросов</td><td>&lt; 1%</td><td>&gt; 5%</td></tr>
+    <tr><td><strong>Очередь задач</strong></td><td>Загрузка системы</td><td>&lt; 10</td><td>&gt; 100</td></tr>
+    <tr><td><strong>Context window usage</strong></td><td>Эффективность контекста</td><td>40–70%</td><td>&gt; 90%</td></tr>
+  </tbody>
+</table>
 
 <h2>Главный вывод</h2>
 
@@ -82,8 +511,22 @@
 
 <p>Без этих трёх слоёв вы получаете не агента, а дорогой скрипт, который ломается при первой нестандартной ситуации. С ними — инженерный продукт, который можно передать команде, масштабировать и не бояться трогать.</p>
 
+<div class="callout">
+  <div class="callout-title">Минимальный чеклист для продакшен-агента</div>
+  <p>Прежде чем выпускать агента в продакшен, проверьте:</p>
+  <ol>
+    <li>Есть ли retry-политика с exponential backoff?</li>
+    <li>Есть ли circuit breaker для внешних сервисов?</li>
+    <li>Логируется ли каждый шаг с контекстом?</li>
+    <li>Собираются ли метрики latency, error rate, token usage?</li>
+    <li>Есть ли fallback при недоступности LLM?</li>
+    <li>Работает ли очередь задач (не блокирующая)?</li>
+    <li>Можно ли перезапустить систему без потери контекста?</li>
+  </ol>
+</div>
+
 <p>В следующей статье разберём, как спроектировать систему памяти для агента — с кодом, схемами и граблями, на которые я уже наступил.</p>
 
 <hr>
 
-<p style="color:#888;font-size:0.9rem;"><em>Эта статья — первая из цикла «Архитектура AI-агентов». Если хотите получить следующую сразу после публикации — напишите в Telegram.</em></p>
+<p style="color:#888;font-size:0.9rem;"><em>Эта статья — из цикла «Архитектура AI-агентов». Если хотите получить следующую сразу после публикации — напишите в Telegram.</em></p>

@@ -1,0 +1,374 @@
+<!-- Статья 1: Контекст — новая база данных -->
+<!-- HTML-фрагмент с кастомными компонентами дизайн-системы -->
+
+<p>В 2024 году мы перешли от SQL-запросов к RAG-системам. В 2025 — к агентам. В 2026 — к контекстной инженерии. Но что, если контекст — это не просто дополнение к базе данных, а <strong>принципиально новая парадигма управления данными</strong>?</p>
+
+<p>Когда я говорю «контекст», я имею в виду не историю диалога и не техническое задание для LLM. Я говорю об <strong>управлении вниманием</strong> — о том, что модель «видит» в каждый конкретный момент. Это не CRUD, это <strong>context engineering</strong>.</p>
+
+<figure>
+  <img src="blog/content/images/hero-kontekst-novaya-baza-dannyh.svg" alt="Контекстный пайплайн" style="max-width:700px;">
+  <figcaption>Контекстный пайплайн: от извлечения данных до подачи в LLM</figcaption>
+</figure>
+
+<h2>Почему управление контекстом важнее CRUD</h2>
+
+<p>CRUD-системы работают с записями. Context engineering работает с <strong>аттеншеном</strong> — тем, что модель «смотрит» в данный момент. Разница принципиальна: запись в БД лежит там, пока её не прочитают. Токен в контексте — это дефицитный ресурс, который потребляется за миллисекунды.</p>
+
+<p>В CRUD важна консистентность данных. В context engineering важна <strong>релевантность и приоритизация</strong>. 50 000 токенов контекста — это не «больше данных», это «меньше внимания на каждый токен». Чем длиннее контекст, тем хуже модель фокусируется на ключевом.</p>
+
+<div class="callout">
+  <div class="callout-title">Эксперимент</div>
+  <p>В статье «Needle in a Haystack» (2023) показано: при контексте 4K токенов модель находит «иголку» в 98% случаев. При 128K токенов — в 65%. При 200K — в 45%. Это не теория, это измеренный факт.</p>
+</div>
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-number">98%</div>
+    <div class="stat-label">точность при 4K токенов</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">65%</div>
+    <div class="stat-label">точность при 128K токенов</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">45%</div>
+    <div class="stat-label">точность при 200K токенов</div>
+  </div>
+</div>
+
+<h2>От записей к вниманию — смена парадигмы</h2>
+
+<p>В традиционных базах данных мы оперируем записями. SELECT, INSERT, UPDATE, DELETE — всё это про отдельные атомарные единицы. LLM не работает с записями. Она работает с <strong>токенами и их взаимным вниманием</strong>.</p>
+
+<p>Это меняет всё. Вместо того чтобы думать «какие данные мне нужны», мы думаем «какое внимание я хочу направить модели в данный момент». Это как перейти от библиотечного каталога к персональному ассистенту, который решает, что вам показать.</p>
+
+<p>Вот как выглядит смена парадигмы на практике:</p>
+
+<table>
+  <thead>
+    <tr><th>CRUD-системы</th><th>Context Engineering</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Управление записями</td><td>Управление вниманием</td></tr>
+    <tr><td>Данные — это ресурс</td><td>Данные — это контекст</td></tr>
+    <tr><td>Важна консистентность</td><td>Важна релевантность</td></tr>
+    <tr><td>Запись живёт вечно</td><td>Токен живёт миллисекунды</td></tr>
+    <tr><td>Манипуляция строками</td><td>Манипуляция вниманием</td></tr>
+    <tr><td>Индексы для скорости</td><td>Кэши для внимания</td></tr>
+    <tr><td>Блокировки для согласованности</td><td>Промпты для направления</td></tr>
+    <tr><td>Транзакции</td><td>Контекстные пайплайны</td></tr>
+  </tbody>
+</table>
+
+<h2>Контекстный пайплайн: извлечение, трансформация, подача</h2>
+
+<p>Контекст — это не один процесс, а <strong>пайплайн из трёх этапов</strong>. Каждый этап решает свою задачу и имеет собственные параметры.</p>
+
+<h3>Этап 1: Извлечение</h3>
+
+<p>Сбор данных из всех источников. Это могут быть базы данных, API сторонних сервисов, файлы на диске, веб-страницы. Главная задача — собрать максимум релевантных данных с минимальной задержкой.</p>
+
+<pre><code>class Extractor:
+    """Извлекает данные из всех источников."""
+
+    def __init__(self, sources: list[DataSource]):
+        self.sources = sources
+
+    async def extract(self, query: str) -> list[RawData]:
+        results = []
+        for source in self.sources:
+            try:
+                data = await source.fetch(query)
+                results.append(data)
+            except SourceUnavailable:
+                logger.warning(f"Source {source.name} unavailable")
+                continue
+        return results</code></pre>
+
+<h3>Этап 2: Трансформация</h3>
+
+<p>Превращение сырых данных в контекст, который модель может эффективно использовать. Чанкинг, саммаризация, фильтрация, токенизация, эмбеддинги.</p>
+
+<pre><code>class Transformer:
+    """Трансформирует сырые данные в контекст."""
+
+    def __init__(self, strategy: ChunkStrategy, compressor: Compressor):
+        self.strategy = strategy
+        self.compressor = compressor
+
+    def transform(self, data: list[RawData], budget: int) -> Context:
+        chunks = []
+        for item in data:
+            chunks.extend(self.strategy.chunk(item.content))
+
+        # Сжимаем, если превышен бюджет
+        if sum(len(c) for c in chunks) > budget:
+            chunks = self.compressor.compress(chunks, budget)
+
+        return Context(chunks=chunks, metadata=self._build_metadata(data))</code></pre>
+
+<h3>Этап 3: Подача в LLM</h3>
+
+<p>Финальная сборка контекста с учётом бюджета токенов, резервирование места под ответ, добавление системного промпта.</p>
+
+<pre><code>class ContextBuilder:
+    """Собирает финальный контекст для подачи в LLM."""
+
+    def build(
+        self,
+        system_prompt: str,
+        working_memory: list[Message],
+        retrieved_chunks: list[str],
+        facts: list[Fact],
+        max_tokens: int = 32000,
+        reserve_output: int = 4000,
+    ) -> list[dict]:
+        budget = max_tokens - reserve_output
+        context = [{"role": "system", "content": system_prompt}]
+
+        # Рабочая память: последние сообщения
+        token_usage = count_tokens(system_prompt)
+        for msg in reversed(working_memory):
+            if token_usage + msg.tokens > budget:
+                break
+            context.append(msg.to_dict())
+            token_usage += msg.tokens
+
+        # Чанки из RAG
+        for chunk in retrieved_chunks:
+            if token_usage + count_tokens(chunk) > budget:
+                break
+            context.append({
+                "role": "user",
+                "content": f"Контекст: {chunk}"
+            })
+
+        # Факты из семантической памяти
+        fact_text = "\n".join(f"• {f.subject} — {f.predicate} — {f.object}" for f in facts)
+        context.append({
+            "role": "user",
+            "content": f"Известные факты:\n{fact_text}"
+        })
+
+        return context</code></pre>
+
+<figure>
+  <img src="blog/content/images/context-pipeline.svg" alt="Контекстный пайплайн" style="max-width:700px;">
+  <figcaption>Контекстный пайплайн: три этапа превращения сырых данных в релевантный контекст</figcaption>
+</figure>
+
+<h2>Стратегии управления контекстом</h2>
+
+<p>Для разных задач нужны разные стратегии. Ниже — четыре основные, с примерами кода и реальными метриками.</p>
+
+<h3>1. Sliding Window (Скользящее окно)</h3>
+
+<p>Лучшая стратегия для последовательных данных: логи, чаты, потоки событий. Идея проста: храним только N последних элементов, остальное либо выбрасываем, либо суммаризируем.</p>
+
+<pre><code>class SlidingWindow:
+    """Скользящее окно с суммаризацией старого."""
+
+    def __init__(self, window_size: int = 6, summary_threshold: int = 32000):
+        self.window_size = window_size
+        self.summary_threshold = summary_threshold
+
+    def build_context(self, history: list[Message]) -> list[Message]:
+        recent = history[-self.window_size:]
+        older = history[:-self.window_size]
+
+        if not older:
+            return recent
+
+        # Суммаризируем старое, если превышен порог
+        if token_count(older) > self.summary_threshold:
+            summary = self._summarize(older)
+            return [summary] + recent
+
+        return older + recent
+
+    def _summarize(self, messages: list[Message]) -> Message:
+        """Сжатие истории в одно сообщение."""
+        text = "\n".join(m.content for m in messages)
+        summary_prompt = f"Суммаризируй этот диалог в 2-3 предложения:\n{text}"
+        # Вызов дешёвой модели для суммаризации
+        summary = cheap_llm.invoke(summary_prompt)
+        return Message(role="system", content=f"История: {summary}")</code></pre>
+
+<h3>2. Саммаризация (Summarization)</h3>
+
+<p>Для долгосрочных документов, которые нужно хранить в сжатом виде. Отличается от sliding window тем, что мы не храним оригиналы — только сжатое представление.</p>
+
+<pre><code>class SummarizationStrategy:
+    """Стратегия саммаризации с сохранением структуры."""
+
+    def summarize_chapter(self, chapter_text: str, level: str = "detailed") -> str:
+        if level == "detailed":
+            # 70% сжатие: сохраняем все ключевые факты
+            prompt = f"""Сократи этот текст до 30% объёма,
+            сохранив все числовые данные, имена, даты и ключевые выводы:
+
+            {chapter_text}"""
+        elif level == "brief":
+            # 90% сжатие: только суть
+            prompt = f"Выдели 3 главных факта из этого текста:\n{chapter_text}"
+
+        return fast_llm.invoke(prompt)</code></pre>
+
+<h3>3. RAG (Retrieval-Augmented Generation)</h3>
+
+<p>Стандартный подход для динамических знаний. Поиск по документам + реранжировка. Здесь важно: RAG — это не просто «поиск + LLM», это целая экосистема с query rewriting, hybrid search, reranking.</p>
+
+<pre><code>class RAGStrategy:
+    """Полноценный RAG с гибридным поиском и реранжировкой."""
+
+    def retrieve(self, query: str, k: int = 5) -> list[Chunk]:
+        # 1. Query rewriting
+        rewritten = self._rewrite_query(query)
+
+        # 2. Параллельный поиск
+        vector_results = self.vector_store.search(rewritten, k=k * 2)
+        keyword_results = self.keyword_store.search(rewritten, k=k * 2)
+
+        # 3. RRF слияние
+        merged = self._rrf_merge(vector_results, keyword_results)
+
+        # 4. Реранжировка кросс-энкодером
+        reranked = self.reranker.rerank(query, merged)
+
+        return reranked[:k]
+
+    def _rewrite_query(self, query: str) -> str:
+        """Уточнение запроса через дешёвую LLM."""
+        prompt = f"Перепиши запрос для поиска, сделав его более конкретным:\n{query}"
+        return cheap_llm.invoke(prompt)</code></pre>
+
+<h3>4. Structured Output (Структурированный вывод)</h3>
+
+<p>Когда ответ должен соответствовать строгой схеме. JSON Schema, Pydantic модели — это не просто валидация, это <strong>способ управления вниманием</strong> модели. Чем жёстче схема, тем меньше модель «галлюцинирует».</p>
+
+<pre><code>from pydantic import BaseModel
+from typing import Literal
+
+class OrderExtraction(BaseModel):
+    """Схема для извлечения данных из заказа."""
+    order_id: str
+    customer_name: str
+    items: list[OrderItem]
+    total_amount: float
+    currency: str = "RUB"
+    status: Literal["new", "processing", "completed", "cancelled"]
+
+class OrderItem(BaseModel):
+    name: str
+    quantity: int
+    price: float
+
+def extract_order(text: str) -> OrderExtraction:
+    """Извлекает структурированные данные из текста заказа."""
+    prompt = f"Извлеки данные заказа из текста:\n{text}\n\nОтветь строго по JSON-схеме."
+    response = llm.invoke(prompt, response_model=OrderExtraction)
+    return response</code></pre>
+
+<h2>Prompt caching как новая норма</h2>
+
+<p>В 2026 году prompt caching — это не экспериментальная фича, а стандарт. Anthropic, OpenAI, Google — все провайдеры поддерживают кэширование системных промптов и общих частей контекста.</p>
+
+<div class="callout">
+  <div class="callout-title">Экономия токенов</div>
+  <p>В AdminHero prompt caching даёт экономию 30–50% токенов на частых запросах. Для сложных задач с повторяющимся системным промптом — до 70%. При цене $3/M токенов Claude 3.5 Sonnet это $500–1200 экономии в месяц на 1000 активных пользователей.</p>
+</div>
+
+<pre><code>class CachedContextBuilder:
+    """Контекстный билдер с кэшированием системного промпта."""
+
+    SYSTEM_PROMPT = """
+    Ты — AI-ассистент для разработчиков в AdminHero.
+    Отвечай кратко, по делу, с кодом.
+    Характер: технический, прямой, без воды.
+    """
+
+    def build(self, query: str, context: list[str]) -> list[dict]:
+        messages = [
+            {
+                "role": "system",
+                "content": self.SYSTEM_PROMPT,
+                # Кэшируем системный промпт на 5 минут
+                "cache_control": {"type": "ephemeral", "ttl": 300}
+            }
+        ]
+
+        for ctx in context:
+            messages.append({
+                "role": "user",
+                "content": ctx
+            })
+
+        messages.append({
+            "role": "user",
+            "content": query
+        })
+
+        return messages</code></pre>
+
+<p>Кэширование работает, когда:</p>
+<ul>
+  <li><strong>Системный промпт статичен</strong> — не меняется между запросами</li>
+  <li><strong>Примеры в контексте повторяются</strong> — few-shot примеры можно кэшировать</li>
+  <li><strong>Большие документы</strong> — кодовая база, документация API</li>
+</ul>
+
+<p>Не работает, когда:</p>
+<ul>
+  <li><strong>Каждый запрос уникален</strong> — нет повторяющихся частей</li>
+  <li><strong>Контекст меняется случайным образом</strong> — нет предсказуемости</li>
+</ul>
+
+<h2>Разница между контекстом для разных моделей</h2>
+
+<p>Для разных моделей нужны разные стратегии контекста. Слепое копирование подходов между моделями — одна из самых дорогих ошибок.</p>
+
+<table>
+  <thead>
+    <tr><th>Модель</th><th>Лимит контекста</th><th>Стратегия</th><th>Бюджет на ответ</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Claude 3.5 Sonnet</strong></td><td>200K токенов</td><td>Баланс: окно + RAG</td><td>4–8K токенов</td></tr>
+    <tr><td><strong>Claude 3.5 Haiku</strong></td><td>128K токенов</td><td>Максимальное сжатие</td><td>2–4K токенов</td></tr>
+    <tr><td><strong>Claude 3.5 Opus</strong></td><td>1M токенов</td><td>Сложные задачи, длинный контекст</td><td>8–16K токенов</td></tr>
+    <tr><td><strong>GPT-4o</strong></td><td>128K токенов</td><td>Агрессивное сжатие</td><td>4–8K токенов</td></tr>
+    <tr><td><strong>Gemini 1.5 Pro</strong></td><td>2M токенов</td><td>Минимальная фильтрация</td><td>8–16K токенов</td></tr>
+  </tbody>
+</table>
+
+<p>Ключевое наблюдение: чем больше контекст модели, тем <strong>меньше</strong> нужно его фильтровать — модель сама разберётся. Но тем дороже каждый запрос. Оптимальная точка — найти баланс между качеством ответа и стоимостью.</p>
+
+<h2>Когда контекст НЕ нужен</h2>
+
+<p>Не все задачи требуют контекста. Вот честные критерии, когда можно (и нужно) обойтись без context engineering:</p>
+
+<ul>
+  <li><strong>Математические задачи</strong> — если ответ зависит только от входных данных, а не от истории</li>
+  <li><strong>Простые вопросы</strong> — «как тебя зовут?», «какая сегодня погода?» — здесь контекст не добавляет ценности</li>
+  <li><strong>Задачи с фиксированным ответом</strong> — «переведи на русский: hello», «напиши формулу площади круга»</li>
+  <li><strong>Классификация без истории</strong> — если каждый запрос классифицируется независимо</li>
+  <li><strong>Валидация данных</strong> — проверка формата, типов, схем — не требует контекста</li>
+</ul>
+
+<div class="callout">
+  <div class="callout-title">Практическое правило</div>
+  <p>Если запрос можно обработать без LLM — обработай без LLM. Context engineering имеет смысл, когда задача требует понимания, обобщения или генерации. Для всего остального — регулярные выражения, схемы валидации, lookup-таблицы.</p>
+</div>
+
+<h2>Выводы</h2>
+
+<ol>
+  <li><strong>Контекст — это не просто история диалога.</strong> Это управление вниманием LLM. Разница между CRUD и context engineering — как между библиотекой и персональным ассистентом.</li>
+  <li><strong>Контекстный пайплайн — три этапа.</strong> Извлечение, трансформация, подача. Каждый этап имеет свои параметры и стратегии.</li>
+  <li><strong>Для каждой модели — своя стратегия.</strong> Sonnet, Haiku, Opus — у каждой свой бюджет токенов и своя оптимальная стратегия.</li>
+  <li><strong>Prompt caching — стандарт 2026 года.</strong> Экономия 30–70% токенов. Если не используете — переплачиваете.</li>
+  <li><strong>Не все задачи требуют контекста.</strong> Математика, простые вопросы, фиксированные ответы — используйте более дешёвые подходы.</li>
+</ol>
+
+<hr>
+
+<p style="color:#888;font-size:0.9rem;"><em>Следующая статья цикла: MCP Server простыми словами — как это работает и зачем это нужно. Если хотите получить следующую сразу после публикации — напишите в Telegram.</em></p>

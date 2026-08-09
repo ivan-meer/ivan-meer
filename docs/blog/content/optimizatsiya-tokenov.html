@@ -1,0 +1,192 @@
+<!-- Статья 2: Оптимизация токенов: как срезать счёт на 40–70% -->
+<!-- HTML-фрагмент с кастомными компонентами дизайн-системы -->
+
+<p>Каждый токен — это деньги. В AI-системах токены — это не просто ресурс, это <strong>прямые деньги</strong>. Оптимизация токенов — это не экономия на мелочах, это <strong>стратегия</strong>.</p>
+
+<figure>
+  <img src="blog/content/images/token-optimization.svg" alt="График снижения расходов на токены" style="max-width:700px;">
+  <figcaption>Снижение расходов на токены: от наивного подхода до продакшен-оптимизации</figcaption>
+</figure>
+
+<h2>Проблема</h2>
+
+<p>Когда я вижу систему, которая тратит 100 токенов на простой вопрос, я понимаю: здесь есть куда копать.</p>
+
+<div class="callout">
+  <div class="callout-title">Факт</div>
+  <p>В AdminHero токены на RAG-систему ушли с 30% до 10% бюджета после оптимизации.</p>
+</div>
+
+<p>Где же копать?</p>
+
+<h2>1. Prompt caching — первый и самый простой шаг</h2>
+
+<p>Prompt caching — это когда вы кешируете промпты и не отправляете их каждый раз на сервер. Это <strong>самый быстрый</strong> способ сэкономить токены.</p>
+
+<pre><code># Настройка кэширования в Anthropic API
+client = Anthropic(
+    api_key=os.getenv("ANTHROPIC_API_KEY"),
+    default_headers={
+        "anthropic-beta": "prompt-caching-2024-07-31"
+    }
+)
+
+# Использование кэшированных промптов
+response = client.messages.create(
+    model="claude-3-5-sonnet-20240620",
+    max_tokens=1024,
+    system=[
+        {
+            "type": "text",
+            "text": SYSTEM_PROMPT,
+            "cache_control": {"type": "ephemeral"}
+        }
+    ],
+    messages=[
+        {
+            "role": "user",
+            "content": user_query
+        }
+    ]
+)</code></pre>
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-number">40%</div>
+    <div class="stat-label">сэкономлено на системных промптах</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">20%</div>
+    <div class="stat-label">сэкономлено на шаблонах</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">10%</div>
+    <div class="stat-label">сэкономлено на инструкциях</div>
+  </div>
+</div>
+
+<h2>2. Сжатие контекста — когда история не нужна</h2>
+
+<p>История диалога — это не память, это <strong>шум</strong>. В 90% случаев вам не нужна вся история, вам нужен <strong>контекст</strong>.</p>
+
+<pre><code>def compress_history(history, max_tokens=8000):
+    """Сжимает историю до ключевых фактов."""
+    key_events = [
+        msg for msg in history
+        if msg.get("role") == "user" or
+           msg.get("role") == "assistant" and
+           msg.get("content").startswith("FACT:")
+    ]
+
+    if token_count(key_events) > max_tokens:
+        return summarize_history(key_events)
+    return key_events</code></pre>
+
+<div class="callout">
+  <div class="callout-title">Паттерн</div>
+  <p>В AdminHero мы используем <strong>семантическое сжатие</strong>: сохраняем только ключевые события и факты, а остальное суммаризируем.</p>
+</div>
+
+<h2>3. Роутинг между моделями — когда не нужна мощь</h2>
+
+<p>Не все задачи требуют мощных моделей. Многие задачи можно решить на <strong>Haiku</strong> или <strong>Sonnet</strong>.</p>
+
+<table>
+  <thead>
+    <tr><th>Модель</th><th>Цена ($/1M токенов)</th><th>Использование</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Haiku</td><td>$0.25</td><td>Чат, генерация, простые задачи</td></tr>
+    <tr><td>Sonnet</td><td>$3.00</td><td>Кодинг, анализ, сложные задачи</td></tr>
+    <tr><td>Opus</td><td>$15.00</td><td>Только для самых сложных задач</td></tr>
+  </tbody>
+</table>
+
+<pre><code>def route_to_model(task_type):
+    """Выбирает модель в зависимости от типа задачи."""
+    if task_type in ["chat", "generate", "simple_analysis"]:
+        return "claude-3-haiku-20240307"
+    elif task_type in ["coding", "complex_analysis"]:
+        return "claude-3-5-sonnet-20240620"
+    else:
+        return "claude-3-opus-20240229"</code></pre>
+
+<h2>4. Файнтюнинг vs few-shot — когда окупается</h2>
+
+<p>Файнтюнинг — это когда вы обучаете модель на ваших данных. Few-shot — это когда вы даёте модели примеры.</p>
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-number">3×</div>
+    <div class="stat-label">эффективнее few-shot для сложных задач</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">10×</div>
+    <div class="stat-label">эффективнее few-shot для простых задач</div>
+  </div>
+</div>
+
+<p><strong>Правило:</strong> если задача повторяется больше 5 раз — файнтюнинг. Если меньше — few-shot.</p>
+
+<h2>5. Мульти-шаговые пайплайны — когда нужно меньше токенов</h2>
+
+<p>Один большой запрос — это не всегда оптимально. Иногда лучше разбить задачу на несколько шагов.</p>
+
+<pre><code>def analyze_code(code):
+    """Анализирует код в несколько шагов."""
+    # Шаг 1: Извлечение структуры
+    structure = extract_structure(code)
+
+    # Шаг 2: Анализ сложности
+    complexity = analyze_complexity(structure)
+
+    # Шаг 3: Проверка на антипаттерны
+    antipatterns = check_antipatterns(structure)
+
+    return {
+        "structure": structure,
+        "complexity": complexity,
+        "antipatterns": antipatterns
+    }</code></pre>
+
+<div class="callout">
+  <div class="callout-title">Экономия</div>
+  <p>В AdminHero мульти-шаговые пайплайны сэкономили 25% токенов на анализе кода.</p>
+</div>
+
+<h2>Грамли, на которые я наступил</h2>
+
+<h3>1. «Модели всё понимают — давайте просто давать больше контекста»</h3>
+
+<p>Контекст — это не память. Модель не может понять всё, что вы ей даёте. Чем больше контекста, тем больше шум.</p>
+
+<p><strong>Решение:</strong> сжимайте контекст до ключевых фактов.</p>
+
+<h3>2. «Файнтюнинг — это дорого, давайте обойдёмся few-shot»</h3>
+
+<p>Файнтюнинг — это инвестиция. Если задача повторяется больше 5 раз — файнтюнинг окупается.</p>
+
+<p><strong>Решение:</strong> анализируйте частоту задач перед выбором подхода.</p>
+
+<h3>3. «Один запрос — это всегда лучше»</h3>
+
+<p>Иногда один большой запрос — это не оптимально. Иногда лучше разбить задачу на несколько шагов.</p>
+
+<p><strong>Решение:</strong> тестируйте разные подходы и выбирайте лучший.</p>
+
+<h2>Выводы</h2>
+
+<ol>
+  <li><strong>Токены — это деньги.</strong> Оптимизация токенов — это стратегия.</li>
+  <li><strong>Prompt caching — первый и самый простой шаг.</strong> Начните с него.</li>
+  <li><strong>Сжимайте контекст.</strong> Модель не может понять всё, что вы ей даёте.</li>
+  <li><strong>Выбирайте модели в зависимости от задачи.</strong> Не все задачи требуют мощных моделей.</li>
+  <li><strong>Файнтюнинг — это инвестиция.</strong> Если задача повторяется больше 5 раз — файнтюнинг окупается.</li>
+  <li><strong>Разбивайте сложные задачи на шаги.</strong> Иногда один большой запрос — это не оптимально.</li>
+</ol>
+
+<p>Готовый сценарий: берёте <strong>prompt caching</strong>, добавляете <strong>сжатие контекста</strong>, навешиваете <strong>роутинг между моделями</strong> и <strong>мульти-шаговые пайплайны</strong> сверху. Это — база. На этой базе можно строить систему, которая экономит токены.</p>
+
+<hr>
+
+<p style="color:#888;font-size:0.9rem;"><em>Следующая статья цикла: MCP-сервер — как построить свой сервер для инструментов за вечер. Если хотите получить следующую сразу после публикации — напишите в Telegram.</em></p>

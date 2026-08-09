@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="100%" height="100%" fill="#f8f9fa"/>
+  <rect x="100" y="100" width="1000" height="430" rx="20" fill="#ffffff" stroke="#dee2e6" stroke-width="2"/>
+  <text x="600" y="180" font-family="Arial" font-size="48" font-weight="bold" text-anchor="middle" fill="#212529">Система памяти для AI-агента</text>
+  <g transform="translate(300, 250)">
+    <rect x="0" y="0" width="200" height="100" rx="10" fill="#e9ecef" stroke="#adb5bd" stroke-width="2"/>
+    <text x="100" y="50" font-family="Arial" font-size="24" text-anchor="middle" fill="#212529">STM</text>
+    <text x="100" y="80" font-family="Arial" font-size="16" text-anchor="middle" fill="#6c757d">Краткосрочная</text>
+  </g>
+  <g transform="translate(500, 250)">
+    <rect x="0" y="0" width="200" height="100" rx="10" fill="#e9ecef" stroke="#adb5bd" stroke-width="2"/>
+    <text x="100" y="50" font-family="Arial" font-size="24" text-anchor="middle" fill="#212529">LTM</text>
+    <text x="100" y="80" font-family="Arial" font-size="16" text-anchor="middle" fill="#6c757d">Долгосрочная</text>
+  </g>
+  <g transform="translate(700, 250)">
+    <rect x="0" y="0" width="200" height="100" rx="10" fill="#e9ecef" stroke="#adb5bd" stroke-width="2"/>
+    <text x="100" y="50" font-family="Arial" font-size="24" text-anchor="middle" fill="#212529">Semantic</text>
+    <text x="100" y="80" font-family="Arial" font-size="16" text-anchor="middle" fill="#6c757d">Семантическая</text>
+  </g>
+  <line x1="300" y1="350" x2="500" y2="350" stroke="#6c757d" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="500" y1="350" x2="700" y2="350" stroke="#6c757d" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="700" y1="350" x2="900" y2="350" stroke="#6c757d" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="600" y="450" font-family="Arial" font-size="24" text-anchor="middle" fill="#212529">Трёхслойная архитектура памяти</text>
+</svg>

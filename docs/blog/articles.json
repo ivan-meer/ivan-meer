@@ -5,10 +5,10 @@
     "tags": ["архитектура", "агенты"],
     "type": "full",
     "status": "published",
-    "date": "2026-07",
-    "readingTime": 12,
-    "desc": "Если ваша AI-автоматизация сломалась через неделю, а счёт за токены вырос втрое — это не невезение, это отсутствие харнесса. Разбираю разницу между «подключил API» и инженерным подходом: оркестрация, память, наблюдаемость.",
-    "heroImage": ""
+    "date": "2026-08",
+    "readingTime": 18,
+    "desc": "Если ваша AI-автоматизация сломалась через неделю, а счёт за токены вырос втрое — это не невезение, это отсутствие харнесса. Разбираю разницу между «подключил API» и инженерным подходом: оркестрация, память, наблюдаемость. С кодом на Python, архитектурными схемами и готовыми паттернами.",
+    "heroImage": "blog/content/images/hero-skripty-ne-rabotayut.svg"
   },
   {
     "id": "proektiruem-pamyat",
@@ -16,64 +16,53 @@
     "tags": ["память", "RAG", "архитектура"],
     "type": "full",
     "status": "published",
-    "date": "2026-07",
-    "readingTime": 15,
-    "desc": "Память — то, что отличает агента от чата. Разбираю трехуровневую архитектуру: рабочая память для сессии, RAG с гибридным поиском для долгосрочных знаний, семантический граф для фактов. С кодом, схемами и граблями, на которые я уже наступил.",
-    "heroImage": "blog/images/memory-hero.svg"
-  },
-  {
-    "id": "lyrics-harness",
-    "title": "Харнесс AI-ассистента: как Lyrics Studio понимает контекст альбома",
-    "tags": ["AI engineering", "архитектура", "MusicVerse"],
-    "type": "full",
-    "status": "published",
-    "date": "2026-07",
-    "readingTime": 14,
-    "desc": "Девять инструментов, один Edge Function и Gemini 2.5 Flash. Как харнесс Lyrics Studio собирает контекст проекта, передаёт его модели и возвращает структурированный результат. Блокировки в РФ, борьба за скорость загрузки в Telegram Mini App и почему action-пресеты стабильнее function-calling.",
-    "heroImage": "blog/images/lyrics-harness-hero.svg"
+    "date": "2026-08",
+    "readingTime": 20,
+    "desc": "Память — то, что отличает агента от чата. Разбираю трехуровневую архитектуру: краткосрочная (сессия), долгосрочная (RAG с гибридным поиском), семантическая (граф фактов). Стратегии чанкинга, векторные БД, реранжирование и забывание. С кодом, схемами и граблями.",
+    "heroImage": "blog/content/images/hero-proektiruem-pamyat.svg"
   },
   {
     "id": "optimizatsiya-tokenov",
     "title": "Оптимизация токенов: как срезать счёт на 40–70%",
     "tags": ["экономика", "оптимизация"],
     "type": "full",
-    "status": "draft",
-    "date": "2026-07",
-    "readingTime": 10,
-    "desc": "Продакшен-система не обязана быть дорогой. Кэширование промптов, сжатие контекста, роутинг между моделями, файнтюнинг вместо few-shot — методики с замерами до и после на реальных логах.",
-    "heroImage": ""
+    "status": "published",
+    "date": "2026-08",
+    "readingTime": 15,
+    "desc": "Продакшен-система не обязана быть дорогой. Кэширование промптов, сжатие контекста, роутинг между моделями, файнтюнинг вместо few-shot — методики с замерами до и после на реальных логах. Сравнительные таблицы и конфиги.",
+    "heroImage": "blog/content/images/hero-optimizatsiya-tokenov.svg"
   },
   {
     "id": "mcp-server-s-nulya",
     "title": "MCP-сервер: с нуля до продакшена за вечер",
     "tags": ["MCP", "интеграции"],
     "type": "full",
-    "status": "draft",
-    "date": "2026-07",
-    "readingTime": 20,
-    "desc": "Model Context Protocol — самый короткий путь подключить ваши данные к AI-инструментам. Пошагово: проектирование, разработка, авторизация, деплой и интеграция с Claude Code.",
-    "heroImage": ""
+    "status": "published",
+    "date": "2026-08",
+    "readingTime": 25,
+    "desc": "Model Context Protocol — самый короткий путь подключить ваши данные к AI-инструментам. Пошагово: проектирование, разработка на Python, tools/resources, авторизация, Docker-деплой и интеграция с Claude Code. С полным кодом сервера.",
+    "heroImage": "blog/content/images/hero-mcp-server-s-nulya.svg"
   },
   {
     "id": "kontekst-novaya-baza-dannyh",
     "title": "Контекст — новая база данных",
     "tags": ["AI engineering", "архитектура"],
     "type": "full",
-    "status": "draft",
+    "status": "published",
     "date": "2026-08",
-    "readingTime": 8,
-    "desc": "Почему управление контекстом становится важнее классических CRUD-операций. Разбираю, как контекстная инженерия меняет подход к проектированию AI-систем.",
-    "heroImage": ""
+    "readingTime": 14,
+    "desc": "Почему управление контекстом становится важнее классических CRUD-операций. Контекстный пайплайн: извлечение → трансформация → подача в LLM. Sliding window, саммаризация, RAG, structured output. Сравнение CRUD vs Context Engineering.",
+    "heroImage": "blog/content/images/hero-kontekst-novaya-baza-dannyh.svg"
   },
   {
     "id": "mcp-server-prostymi-slovami",
     "title": "MCP Server простыми словами",
     "tags": ["MCP"],
     "type": "research-note",
-    "status": "draft",
+    "status": "published",
     "date": "2026-08",
-    "readingTime": 3,
-    "desc": "Model Context Protocol — что это, зачем нужно и как устроен. Без сложной теории.",
-    "heroImage": ""
+    "readingTime": 6,
+    "desc": "Model Context Protocol — что это, зачем нужно и как устроен. MCP как USB-C для AI-инструментов. Аналогии, схема работы, сценарии использования. Без сложной теории, но с реальными примерами.",
+    "heroImage": "blog/content/images/hero-mcp-server-prostymi-slovami.svg"
   }
 ]

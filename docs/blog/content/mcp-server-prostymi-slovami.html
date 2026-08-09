@@ -1,0 +1,316 @@
+<!-- Статья 2: MCP Server простыми словами -->
+<!-- HTML-фрагмент с кастомными компонентами дизайн-системы -->
+
+<p>Model Context Protocol (MCP) — это не просто протокол. Это <strong>USB-C для AI-инструментов</strong>. Стандарт, который позволяет подключать любые инструменты к LLM без настройки API-ключей, без написания кода адаптеров, без ручного конфигурирования каждого сервиса.</p>
+
+<p>Разберёмся, как это работает, на пальцах — от пользовательского опыта до внутреннего устройства протокола.</p>
+
+<figure>
+  <img src="blog/content/images/hero-mcp-server-prostymi-slovami.svg" alt="MCP explained" style="max-width:700px;">
+  <figcaption>MCP — универсальный интерфейс для AI-инструментов</figcaption>
+</figure>
+
+<h2>Как это выглядит со стороны пользователя</h2>
+
+<p>Для пользователя MCP — это как USB-C. Вы подключаете инструмент — и он работает. Без настройки, без API-ключей, без кода.</p>
+
+<p>Вот как это выглядит в Claude Code:</p>
+
+<ol>
+  <li>Пользователь пишет: «найди в проекте все функции, связанные с авторизацией, и покажи их сигнатуры»</li>
+  <li>Claude Code определяет, что нужен MCP-сервер для работы с файловой системой</li>
+  <li>MCP-клиент отправляет запрос серверу</li>
+  <li>Сервер читает файлы, находит нужные функции, возвращает результат</li>
+  <li>Пользователь видит результат — как будто это сделал сам Claude</li>
+</ol>
+
+<div class="callout">
+  <div class="callout-title">Пример из AdminHero</div>
+  <p>Я подключаю MCP-сервер для базы знаний Postgres. Одна строка в конфиге — и агент может выполнять SQL-запросы, анализировать схемы таблиц, генерировать миграции. Без настройки ORM, без написания API-эндпоинтов, без риска SQL-инъекций — MCP-сервер сам контролирует, какие запросы разрешены.</p>
+</div>
+
+<h2>Как это выглядит со стороны разработчика</h2>
+
+<p>Для разработчика MCP — это JSON-RPC сервер с универсальным протоколом. Вот минимальная реализация:</p>
+
+<pre><code># mcp_demo.py — минимальный MCP-сервер
+from mcp.server import Server, NotificationOptions
+from mcp.server.models import InitializationOptions
+from mcp.types import Tool, TextContent
+import mcp.server.stdio
+
+class FilesystemMCPServer:
+    """MCP-сервер для работы с файловой системой."""
+
+    def __init__(self):
+        self.server = Server("filesystem-mcp")
+        self._register_tools()
+
+    def _register_tools(self):
+        """Регистрация инструментов, доступных через MCP."""
+
+        @self.server.list_tools()
+        async def list_tools() -> list[Tool]:
+            return [
+                Tool(
+                    name="read_file",
+                    description="Читает содержимое файла по пути",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "path": {"type": "string", "description": "Путь к файлу"}
+                        },
+                        "required": ["path"]
+                    }
+                ),
+                Tool(
+                    name="list_directory",
+                    description="Списывает содержимое директории",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "path": {"type": "string", "description": "Путь к директории"},
+                            "recursive": {"type": "boolean", "description": "Рекурсивный обход", "default": False}
+                        },
+                        "required": ["path"]
+                    }
+                )
+            ]
+
+        @self.server.call_tool()
+        async def call_tool(name: str, arguments: dict) -> list[TextContent]:
+            if name == "read_file":
+                content = self._read_file(arguments["path"])
+                return [TextContent(type="text", text=content)]
+            elif name == "list_directory":
+                entries = self._list_directory(arguments["path"], arguments.get("recursive", False))
+                return [TextContent(type="text", text="\n".join(entries))]
+
+    def _read_file(self, path: str) -> str:
+        with open(path, "r", encoding="utf-8") as f:
+            return f.read()
+
+    def _list_directory(self, path: str, recursive: bool = False) -> list[str]:
+        import os
+        results = []
+        for root, dirs, files in os.walk(path):
+            level = root.replace(path, "").count(os.sep)
+            indent = "  " * level
+            results.append(f"{indent}{os.path.basename(root)}/")
+            for file in files:
+                results.append(f"{indent}  {file}")
+            if not recursive:
+                break
+        return results
+
+    async def run(self):
+        async with mcp.server.stdio.stdio_server() as (read_stream, write_stream):
+            await self.server.run(
+                read_stream,
+                write_stream,
+                InitializationOptions(
+                    server_name="filesystem-mcp",
+                    server_version="1.0.0",
+                    capabilities=self.server.get_capabilities(
+                        notification_options=NotificationOptions(),
+                        experimental_capabilities={},
+                    ),
+                ),
+            )
+
+if __name__ == "__main__":
+    import asyncio
+    server = FilesystemMCPServer()
+    asyncio.run(server.run())</code></pre>
+
+<p>Вот и весь сервер. 70 строк. Подключается в Claude Code одной строкой конфига:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "python",
+      "args": ["mcp_demo.py"]
+    }
+  }
+}</code></pre>
+
+<h2>Аналогия: REST — это доставка, MCP — это ресторан</h2>
+
+<p>REST — это доставка. Вы заказываете через API — и получаете ответ. Каждый раз вы сами выбираете, что заказать. Разные рестораны — разные API. Чтобы заказать из трёх ресторанов, нужно знать три разных API.</p>
+
+<p>MCP — это ресторан. Вы садитесь за стол, берёте меню (инструменты), делаете заказ (JSON-RPC запрос) — и официант (MCP-сервер) сам разбирается, как это приготовить. Один интерфейс для любого «ресторана».</p>
+
+<p>Разница ключевая: <strong>REST интегрирует данные, MCP интегрирует возможности</strong>. REST говорит «дай мне данные по этому URL». MCP говорит «сделай это для меня».</p>
+
+<h2>Демо: MCP-сервер для файловой системы</h2>
+
+<p>Выше я показал код сервера. Теперь — как это выглядит со стороны клиента (Claude Code или другого MCP-хоста). Запрос к MCP-серверу — это JSON-RPC сообщение:</p>
+
+<pre><code>// Запрос к MCP-серверу (со стороны клиента)
+{
+  "jsonrpc": "2.0",
+  "method": "tools/call",
+  "params": {
+    "name": "list_directory",
+    "arguments": {
+      "path": "/data/projects/adminhero",
+      "recursive": true
+    }
+  },
+  "id": 1
+}
+
+// Ответ от MCP-сервера
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "docs/\n  architecture.md\n  api-spec.md\n  README.md\nsrc/\n  main.py\n  utils/"
+      }
+    ]
+  },
+  "id": 1
+}</code></pre>
+
+<p>Вся магия в том, что <strong>клиенту не нужно знать, как реализован сервер</strong>. Он просто вызывает инструменты по имени. Сервер сам решает, как выполнить запрос — через локальную файловую систему, S3, SSH или что угодно.</p>
+
+<h2>Что внутри протокола</h2>
+
+<p>MCP — это не просто JSON-RPC. Это полноценный протокол с несколькими уровнями:</p>
+
+<h3>Транспортный уровень</h3>
+
+<table>
+  <thead>
+    <tr><th>Транспорт</th><th>Когда использовать</th><th>Пример</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>stdio (stdin/stdout)</strong></td><td>Локальные серверы, максимальная скорость</td><td>Claude Code, локальные инструменты</td></tr>
+    <tr><td><strong>HTTP + SSE</strong></td><td>Удалённые серверы, обратная связь</td><td>Сервер в кластере, потоковые ответы</td></tr>
+    <tr><td><strong>WebSocket</strong></td><td>Дуплексная связь, реальное время</td><td>Дашборды, мониторинг</td></tr>
+    <tr><td><strong>IPC</strong></td><td>Межпроцессное взаимодействие</td><td>Сервисы на одной машине</td></tr>
+  </tbody>
+</table>
+
+<h3>Прикладной уровень</h3>
+
+<p>MCP определяет три основных типа возможностей (capabilities):</p>
+
+<ul>
+  <li><strong>tools</strong> — исполняемые инструменты (чтение файлов, запуск команд, вызов API)</li>
+  <li><strong>resources</strong> — чтение данных (файлы, конфиги, схемы БД)</li>
+  <li><strong>prompts</strong> — шаблоны промптов с динамическими параметрами</li>
+</ul>
+
+<p>Каждый запрос проходит стандартный жизненный цикл:</p>
+
+<pre><code># Жизненный цикл MCP-запроса
+1. Инициализация — клиент и сервер обмениваются возможностями
+2. Список инструментов — клиент запрашивает, что умеет сервер
+3. Вызов инструмента — клиент вызывает конкретный инструмент
+4. Выполнение — сервер выполняет операцию
+5. Ответ — сервер возвращает результат (текст, ресурс, ошибку)
+6. Завершение — соединение закрывается</code></pre>
+
+<figure>
+  <img src="blog/content/images/mcp-architecture.svg" alt="MCP Architecture" style="max-width:700px;">
+  <figcaption>MCP архитектура: Host → Client → Server. Три компонента, стандартный протокол, любые транспорты.</figcaption>
+</figure>
+
+<h2>MCP vs API vs плагины</h2>
+
+<p>Часто спрашивают: «Чем MCP отличается от обычного API? От плагинов? От SDK?». Давайте разложим.</p>
+
+<table>
+  <thead>
+    <tr><th>Технология</th><th>Что делает</th><th>Кто инициирует</th><th>Универсальность</th><th>Пример</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>REST API</strong></td><td>Предоставляет доступ к данным</td><td>Клиент</td><td>Низкая — на сервис</td><td>REST API для работы с заказами</td></tr>
+    <tr><td><strong>GraphQL</strong></td><td>Гибкий доступ к данным</td><td>Клиент</td><td>Средняя — на БД</td><td>GraphQL для интернет-магазина</td></tr>
+    <tr><td><strong>gRPC</strong></td><td>Вызов удалённых процедур</td><td>Клиент</td><td>Средняя — на сервис</td><td>gRPC для микросервисов</td></tr>
+    <tr><td><strong>MCP</strong></td><td>Предоставляет доступ к возможностям</td><td>Любой MCP-клиент</td><td>Высокая — универсальный</td><td>MCP-сервер для файловой системы</td></tr>
+    <tr><td><strong>Плагины</strong></td><td>Расширяют функционал приложения</td><td>Приложение</td><td>Низкая — на приложение</td><td>VS Code плагин для работы с Git</td></tr>
+    <tr><td><strong>SDK</strong></td><td>Библиотека для работы с сервисом</td><td>Разработчик</td><td>Низкая — на сервис</td><td>AWS SDK для Python</td></tr>
+  </tbody>
+</table>
+
+<p>MCP не заменяет API. MCP — это <strong>универсальный слой поверх API</strong>. Вместо того чтобы писать клиент для каждого сервиса отдельно, вы подключаете MCP-сервер, а он уже разбирается с конкретной реализацией.</p>
+
+<h2>Зачем MCP именно сейчас</h2>
+
+<p>MCP появился не на пустом месте. К 2025 году стало очевидно, что интеграция LLM с внешними инструментами — главный bottleneck. Каждый раз писать adapter под новый сервис — путь в никуда.</p>
+
+<p>Четыре причины, почему MCP нужен именно сейчас:</p>
+
+<h3>1. Универсальный интерфейс</h3>
+<p>Один интерфейс для всех сервисов. Разработчик не пишет код интеграции — он конфигурирует MCP-сервер. LLM-агент не знает, как устроен сервис — он просто вызывает инструмент через MCP.</p>
+
+<h3>2. Безопасность</h3>
+<p>MCP-сервер работает в изолированной среде. Он сам контролирует, какие запросы разрешены, какие операции доступны. Агент не может выполнить SQL-инъекцию или прочитать файл вне разрешённой директории — MCP-сервер этого не позволит.</p>
+
+<h3>3. Масштабируемость</h3>
+<p>Добавление нового инструмента = добавление одной функции в MCP-сервер. Не нужно писать API, документировать эндпоинты, настраивать авторизацию. MCP-сервер сам регистрирует инструменты.</p>
+
+<h3>4. Интеграция с экосистемой</h3>
+<p>Claude Code, VS Code, Cursor, JetBrains — все IDE поддерживают MCP «из коробки». Подключил сервер — и он доступен везде, где есть MCP-клиент.</p>
+
+<h2>Экосистема MCP</h2>
+
+<p>MCP — это не просто протокол, а целая экосистема. На момент написания статьи (август 2026):</p>
+
+<ul>
+  <li><strong>Claude Code</strong> — полноценная поддержка MCP, автодетект доступных инструментов</li>
+  <li><strong>VS Code</strong> — встроенная поддержка через GitHub Copilot Chat</li>
+  <li><strong>JetBrains</strong> — плагин MCP Explorer для всех IDE</li>
+  <li><strong>Cursor</strong> — нативная интеграция с MCP-серверами</li>
+  <li><strong>OpenAI</strong> — анонсирована поддержка MCP в ChatGPT Plugins</li>
+</ul>
+
+<p>Количество публичных MCP-серверов на GitHub превысило 500. От интеграции с Jira и Confluence до управления Kubernetes и AWS.</p>
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-number">500+</div>
+    <div class="stat-label">MCP-серверов на GitHub</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">6</div>
+    <div class="stat-label">основных платформ с поддержкой</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">80%</div>
+    <div class="stat-label">экономии времени на интеграцию</div>
+  </div>
+</div>
+
+<h2>Сценарии использования MCP</h2>
+
+<table>
+  <thead>
+    <tr><th>Сценарий</th><th>Что даёт MCP</th><th>Без MCP</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Интеграция с CRM</strong></td><td>Один MCP-сервер на все CRM</td><td>Отдельный API-клиент на каждую CRM</td></tr>
+    <tr><td><strong>Работа с файлами</strong></td><td>Чтение/запись через единый интерфейс</td><td>os.open / boto3 / paramiko</td></tr>
+    <tr><td><strong>Базы данных</strong></td><td>SQL-запросы через MCP-сервер</td><td>Отдельный драйвер под каждую БД</td></tr>
+    <tr><td><strong>DevOps</strong></td><td>Kubernetes, Terraform, Ansible через MCP</td><td>CLI-утилиты, SDK, API каждого инструмента</td></tr>
+    <tr><td><strong>AI-агенты</strong></td><td>Единый интерфейс для всех инструментов</td><td>Свой adapter для каждого инструмента агента</td></tr>
+  </tbody>
+</table>
+
+<h2>Выводы</h2>
+
+<ol>
+  <li><strong>MCP — это USB-C для AI-инструментов.</strong> Универсальный интерфейс, который решает проблему интеграции один раз и навсегда.</li>
+  <li><strong>MCP — это не замена API, а слой поверх.</strong> MCP-сервер инкапсулирует сложность конкретной реализации за стандартным протоколом.</li>
+  <li><strong>MCP меняет модель разработки.</strong> Вместо «написать код интеграции» → «сконфигурировать MCP-сервер».</li>
+  <li><strong>Экосистема MCP растёт экспоненциально.</strong> 500+ серверов, поддержка во всех основных IDE, стандарт де-факто для AI-инструментов.</li>
+  <li><strong>MCP — это безопасность.</strong> Изолированная среда, контроль доступа, защита от инъекций — встроены в протокол, а не добавляются постфактум.</li>
+</ol>
+
+<hr>
+
+<p style="color:#888;font-size:0.9rem;"><em>Следующая статья цикла: Скрипты не работают — почему AI-агентам нужна архитектура. Если хотите получить следующую сразу после публикации — напишите в Telegram.</em></p>

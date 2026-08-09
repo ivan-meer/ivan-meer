@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" fill="none">
+  <rect width="720" height="480" rx="12" fill="oklch(0.12 0.012 265)"/>
+  <text x="360" y="36" font-family="Oswald,sans-serif" font-size="18" fill="oklch(0.94 0.006 100)" text-anchor="middle" letter-spacing="2">СЛОИ СИСТЕМЫ</text>
+  <line x1="120" y1="50" x2="600" y2="50" stroke="oklch(0.25 0.01 265)" stroke-width="1"/>
+
+  <!-- Layer 1: Interfaces -->
+  <rect x="40" y="80" width="640" height="60" rx="8" fill="oklch(0.16 0.01 140)" stroke="oklch(0.88 0.19 128)" stroke-width="1.5"/>
+  <text x="360" y="116" font-family="Oswald,sans-serif" font-size="14" fill="oklch(0.94 0.006 100)" text-anchor="middle" font-weight="500">Интерфейсы</text>
+  <text x="60" y="140" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">Веб, мобильные, CLI, API</text>
+  <text x="60" y="160" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">Обработка ввода/вывода</text>
+  <text x="60" y="180" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">Валидация запросов</text>
+
+  <!-- Layer 2: Orchestration -->
+  <rect x="40" y="160" width="640" height="60" rx="8" fill="oklch(0.16 0.01 140)" stroke="oklch(0.88 0.19 128)" stroke-width="1.5"/>
+  <text x="360" y="196" font-family="Oswald,sans-serif" font-size="14" fill="oklch(0.94 0.006 100)" text-anchor="middle" font-weight="500">Оркестрация</text>
+  <text x="60" y="220" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">Маршрутизация запросов</text>
+  <text x="60" y="240" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">Очереди задач</text>
+  <text x="60" y="260" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">Retry-политики</text>
+
+  <!-- Layer 3: Logic -->
+  <rect x="40" y="240" width="640" height="60" rx="8" fill="oklch(0.16 0.01 140)" stroke="oklch(0.88 0.19 128)" stroke-width="1.5"/>
+  <text x="360" y="276" font-family="Oswald,sans-serif" font-size="14" fill="oklch(0.94 0.006 100)" text-anchor="middle" font-weight="500">Логика</text>
+  <text x="60" y="300" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">Бизнес-логика</text>
+  <text x="60" y="320" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">Обработка ошибок</text>
+  <text x="60" y="340" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">Транзакции</text>
+
+  <!-- Layer 4: Tools -->
+  <rect x="40" y="320" width="640" height="60" rx="8" fill="oklch(0.16 0.01 140)" stroke="oklch(0.88 0.19 128)" stroke-width="1.5"/>
+  <text x="360" y="356" font-family="Oswald,sans-serif" font-size="14" fill="oklch(0.94 0.006 100)" text-anchor="middle" font-weight="500">Инструменты</text>
+  <text x="60" y="380" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">LLM, API, БД, файлы</text>
+  <text x="60" y="400" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">Внешние сервисы</text>
+  <text x="60" y="420" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">Интеграции</text>
+
+  <!-- Layer 5: Infrastructure -->
+  <rect x="40" y="400" width="640" height="60" rx="8" fill="oklch(0.16 0.01 140)" stroke="oklch(0.88 0.19 128)" stroke-width="1.5"/>
+  <text x="360" y="436" font-family="Oswald,sans-serif" font-size="14" fill="oklch(0.94 0.006 100)" text-anchor="middle" font-weight="500">Инфраструктура</text>
+  <text x="60" y="460" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">Серверы, БД, кэши, очереди</text>
+  <text x="60" y="480" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)">Мониторинг, логирование</text>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" fill="none">
+  <rect width="640" height="480" rx="12" fill="oklch(0.12 0.012 265)"/>
+  <text x="320" y="36" font-family="Oswald,sans-serif" font-size="18" fill="oklch(0.94 0.006 100)" text-anchor="middle" letter-spacing="2">СИСТЕМА ПАМЯТИ АГЕНТА</text>
+  <line x1="100" y1="50" x2="540" y2="50" stroke="oklch(0.25 0.01 265)" stroke-width="1"/>
+
+  <!-- STM Ring (inner) -->
+  <circle cx="320" cy="280" r="100" fill="none" stroke="oklch(0.88 0.19 128)" stroke-width="2"/>
+  <circle cx="320" cy="280" r="100" fill="oklch(0.88 0.19 128)" fill-opacity="0.06"/>
+  <text x="320" y="270" font-family="Oswald,sans-serif" font-size="20" fill="oklch(0.94 0.006 100)" text-anchor="middle" font-weight="600">КРАТКОСРОЧНАЯ</text>
+  <text x="320" y="294" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)" text-anchor="middle">текущий диалог · сессия</text>
+  <text x="320" y="312" font-family="JetBrains Mono,monospace" font-size="10" fill="oklch(0.55 0.015 265)" text-anchor="middle">контекстное окно LLM</text>
+
+  <!-- LTM Ring (middle) -->
+  <circle cx="320" cy="280" r="170" fill="none" stroke="oklch(0.32 0.014 265)" stroke-width="1.5"/>
+  <text x="320" y="109" font-family="Oswald,sans-serif" font-size="18" fill="oklch(0.94 0.006 100)" text-anchor="middle" font-weight="600">ДОЛГОСРОЧНАЯ</text>
+  <text x="320" y="131" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.015 265)" text-anchor="middle">проекты · клиенты · прошлые решения</text>
+  <text x="320" y="149" font-family="JetBrains Mono,monospace" font-size="10" fill="oklch(0.55 0.015 265)" text-anchor="middle">векторная БД · Supabase pgvector</text>
+
+  <!-- Semantic Ring (outer) -->
+  <circle cx="320" cy="280" r="235" fill="none" stroke="oklch(0.25 0.01 265)" stroke-width="1"/>
+  <text x="320" y="38" font-family="Oswald,sans-serif" font-size="16" fill="oklch(0.88 0.19 128)" text-anchor="middle" font-weight="500" letter-spacing="1">СЕМАНТИЧЕСКАЯ</text>
+  <text x="320" y="58" font-family="Golos Text,sans-serif" font-size="11" fill="oklch(0.55 0.015 265)" text-anchor="middle">извлечённые факты · связи · обобщения</text>
+  <text x="320" y="74" font-family="JetBrains Mono,monospace" font-size="10" fill="oklch(0.5 0.015 265)" text-anchor="middle">гибридный поиск · реранжирование</text>
+
+  <!-- Labels at bottom -->
+  <rect x="80" y="430" width="480" height="36" rx="6" fill="oklch(0.16 0.01 265)" stroke="oklch(0.25 0.01 265)" stroke-width="1" stroke-dasharray="3"/>
+  <text x="320" y="453" font-family="JetBrains Mono,monospace" font-size="11" fill="oklch(0.55 0.015 265)" text-anchor="middle">fig. 02 — три слоя памяти: от быстрых сессионных данных к глубоким обобщениям</text>
+</svg>

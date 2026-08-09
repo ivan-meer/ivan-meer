@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 500" fill="none">
+  <rect width="720" height="500" rx="12" fill="oklch(0.12 0.012 265)"/>
+  <text x="360" y="36" font-family="Oswald,sans-serif" font-size="18" fill="oklch(0.94 0.006 100)" text-anchor="middle" letter-spacing="2">MCP-СЕРВЕР: АРХИТЕКТУРА</text>
+  <line x1="120" y1="50" x2="600" y2="50" stroke="oklch(0.25 0.01 265)" stroke-width="1"/>
+
+  <!-- Claude Code / Client -->
+  <rect x="250" y="80" width="220" height="60" rx="8" fill="oklch(0.18 0.008 265)" stroke="oklch(0.88 0.19 128)" stroke-width="1.5"/>
+  <text x="360" y="106" font-family="Oswald,sans-serif" font-size="16" fill="oklch(0.94 0.006 100)" text-anchor="middle" font-weight="500">Claude Code</text>
+  <text x="360" y="126" font-family="JetBrains Mono,monospace" font-size="11" fill="oklch(0.6 0.015 265)" text-anchor="middle">MCP-клиент</text>
+  <!-- MCP Protocol -->
+  <rect x="290" y="170" width="140" height="36" rx="18" fill="oklch(0.88 0.19 128)"/>
+  <text x="360" y="193" font-family="JetBrains Mono,monospace" font-size="12" fill="oklch(0.15 0.02 128)" text-anchor="middle" font-weight="600">MCP PROTOCOL</text>
+
+  <!-- Arrow down -->
+  <line x1="360" y1="140" x2="360" y2="168" stroke="oklch(0.88 0.19 128)" stroke-width="1.5"/>
+  <polygon points="360,170 354,160 366,160" fill="oklch(0.88 0.19 128)"/>
+  <line x1="360" y1="206" x2="360" y2="240" stroke="oklch(0.88 0.19 128)" stroke-width="1.5"/>
+  <polygon points="360,242 354,232 366,232" fill="oklch(0.88 0.19 128)"/>
+
+  <!-- MCP Server -->
+  <rect x="210" y="244" width="300" height="60" rx="8" fill="oklch(0.16 0.01 140)" stroke="oklch(0.25 0.015 140)" stroke-width="1.5"/>
+  <text x="360" y="270" font-family="Oswald,sans-serif" font-size="16" fill="oklch(0.94 0.006 100)" text-anchor="middle" font-weight="500">MCP-сервер</text>
+  <text x="360" y="290" font-family="JetBrains Mono,monospace" font-size="11" fill="oklch(0.6 0.015 265)" text-anchor="middle">ваш Python/TypeScript процесс</text>
+
+  <!-- Connections to resources -->
+  <line x1="210" y1="274" x2="120" y2="360" stroke="oklch(0.32 0.014 265)" stroke-width="1"/>
+  <line x1="360" y1="304" x2="360" y2="360" stroke="oklch(0.32 0.014 265)" stroke-width="1"/>
+  <line x1="510" y1="274" x2="600" y2="360" stroke="oklch(0.32 0.014 265)" stroke-width="1"/>
+
+  <!-- Resources -->
+  <rect x="50" y="360" width="160" height="50" rx="6" fill="oklch(0.18 0.008 265)" stroke="oklch(0.32 0.014 265)" stroke-width="1"/>
+  <text x="130" y="386" font-family="Golos Text,sans-serif" font-size="14" fill="oklch(0.94 0.006 100)" text-anchor="middle">База данных</text>
+  <text x="130" y="402" font-family="JetBrains Mono,monospace" font-size="10" fill="oklch(0.55 0.015 265)" text-anchor="middle">Supabase / PostgreSQL</text>
+
+  <rect x="280" y="360" width="160" height="50" rx="6" fill="oklch(0.18 0.008 265)" stroke="oklch(0.32 0.014 265)" stroke-width="1"/>
+  <text x="360" y="386" font-family="Golos Text,sans-serif" font-size="14" fill="oklch(0.94 0.006 100)" text-anchor="middle">CRM / API</text>
+  <text x="360" y="402" font-family="JetBrains Mono,monospace" font-size="10" fill="oklch(0.55 0.015 265)" text-anchor="middle">Внутренние сервисы</text>
+
+  <rect x="510" y="360" width="160" height="50" rx="6" fill="oklch(0.18 0.008 265)" stroke="oklch(0.32 0.014 265)" stroke-width="1"/>
+  <text x="590" y="386" font-family="Golos Text,sans-serif" font-size="14" fill="oklch(0.94 0.006 100)" text-anchor="middle">Файлы / Документы</text>
+  <text x="590" y="402" font-family="JetBrains Mono,monospace" font-size="10" fill="oklch(0.55 0.015 265)" text-anchor="middle">PDF, DOCX, CSV</text>
+
+  <!-- Note -->
+  <text x="360" y="450" font-family="JetBrains Mono,monospace" font-size="11" fill="oklch(0.55 0.015 265)" text-anchor="middle">fig. 04 — MCP: единый протокол для любых источников данных</text>
+  <text x="360" y="476" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.01 265)" text-anchor="middle">Сервер может подключать БД, API, файлы — клиент работает через единый интерфейс</text>
+</svg>

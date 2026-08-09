@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" fill="none">
+  <rect width="720" height="520" rx="12" fill="oklch(0.12 0.012 265)"/>
+  <text x="360" y="36" font-family="Oswald,sans-serif" font-size="18" fill="oklch(0.94 0.006 100)" text-anchor="middle" letter-spacing="2">МЕТОДЫ ОПТИМИЗАЦИИ ТОКЕНОВ</text>
+  <line x1="100" y1="50" x2="620" y2="50" stroke="oklch(0.25 0.01 265)" stroke-width="1"/>
+
+  <!-- Method 1 -->
+  <rect x="40" y="76" width="304" height="76" rx="8" fill="oklch(0.18 0.008 265)" stroke="oklch(0.32 0.014 265)" stroke-width="1"/>
+  <circle cx="68" cy="104" r="8" fill="oklch(0.88 0.19 128)"/>
+  <text x="86" y="108" font-family="Oswald,sans-serif" font-size="15" fill="oklch(0.94 0.006 100)" font-weight="500">Кэширование промптов</text>
+  <text x="56" y="132" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.65 0.015 265)">Системная часть промпта кэшируется →</text>
+  <text x="56" y="148" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.65 0.015 265)">не пересчитывается на каждом запросе</text>
+  <text x="344" y="110" font-family="JetBrains Mono,monospace" font-size="14" fill="oklch(0.88 0.19 128)" font-weight="600">– 30–50%</text>
+
+  <!-- Method 2 -->
+  <rect x="374" y="76" width="304" height="76" rx="8" fill="oklch(0.18 0.008 265)" stroke="oklch(0.32 0.014 265)" stroke-width="1"/>
+  <circle cx="402" cy="104" r="8" fill="oklch(0.88 0.19 128)"/>
+  <text x="420" y="108" font-family="Oswald,sans-serif" font-size="15" fill="oklch(0.94 0.006 100)" font-weight="500">Сжатие контекста</text>
+  <text x="390" y="132" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.65 0.015 265)">Саммаризация истории диалога →</text>
+  <text x="390" y="148" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.65 0.015 265)">вместо сырых логов передаём суть</text>
+  <text x="678" y="110" font-family="JetBrains Mono,monospace" font-size="14" fill="oklch(0.88 0.19 128)" font-weight="600">– 40–70%</text>
+
+  <!-- Method 3 -->
+  <rect x="40" y="172" width="304" height="76" rx="8" fill="oklch(0.18 0.008 265)" stroke="oklch(0.32 0.014 265)" stroke-width="1"/>
+  <circle cx="68" cy="200" r="8" fill="oklch(0.88 0.19 128)"/>
+  <text x="86" y="204" font-family="Oswald,sans-serif" font-size="15" fill="oklch(0.94 0.006 100)" font-weight="500">Роутинг между моделями</text>
+  <text x="56" y="228" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.65 0.015 265)">Простые запросы → Haiku, сложные → Opus</text>
+  <text x="56" y="244" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.65 0.015 265)">Распределение нагрузки по сложности</text>
+  <text x="344" y="206" font-family="JetBrains Mono,monospace" font-size="14" fill="oklch(0.88 0.19 128)" font-weight="600">– 50–80%</text>
+
+  <!-- Method 4 -->
+  <rect x="374" y="172" width="304" height="76" rx="8" fill="oklch(0.18 0.008 265)" stroke="oklch(0.32 0.014 265)" stroke-width="1"/>
+  <circle cx="402" cy="200" r="8" fill="oklch(0.88 0.19 128)"/>
+  <text x="420" y="204" font-family="Oswald,sans-serif" font-size="15" fill="oklch(0.94 0.006 100)" font-weight="500">Файнтюнинг вместо few-shot</text>
+  <text x="390" y="228" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.65 0.015 265)">Обучаем модель на своих примерах →</text>
+  <text x="390" y="244" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.65 0.015 265)">выкидываем многостраничные промпты</text>
+  <text x="678" y="206" font-family="JetBrains Mono,monospace" font-size="14" fill="oklch(0.88 0.19 128)" font-weight="600">– 60–90%</text>
+
+  <!-- Bottom summary -->
+  <rect x="40" y="280" width="638" height="120" rx="10" fill="oklch(0.16 0.01 140)" stroke="oklch(0.25 0.015 140)" stroke-width="1"/>
+  <text x="360" y="306" font-family="Oswald,sans-serif" font-size="15" fill="oklch(0.88 0.19 128)" text-anchor="middle" font-weight="500">КОМБИНАЦИЯ ВСЕХ МЕТОДОВ</text>
+  <!-- Bar chart simulation -->
+  <rect x="100" y="322" width="60" height="50" rx="4" fill="oklch(0.88 0.19 128)" fill-opacity="0.3"/>
+  <rect x="100" y="322" width="60" height="50" rx="4" fill="oklch(0.88 0.19 128)" fill-opacity="0.3" stroke="oklch(0.88 0.19 128)" stroke-width="1"/>
+  <text x="130" y="392" font-family="JetBrains Mono,monospace" font-size="10" fill="oklch(0.55 0.015 265)" text-anchor="middle">без оптимизации</text>
+  <text x="130" y="362" font-family="JetBrains Mono,monospace" font-size="12" fill="oklch(0.88 0.19 128)" text-anchor="middle">100%</text>
+
+  <rect x="240" y="342" width="60" height="30" rx="4" fill="oklch(0.88 0.19 128)" fill-opacity="0.6"/>
+  <text x="270" y="392" font-family="JetBrains Mono,monospace" font-size="10" fill="oklch(0.55 0.015 265)" text-anchor="middle">с кэшированием</text>
+  <text x="270" y="372" font-family="JetBrains Mono,monospace" font-size="12" fill="oklch(0.88 0.19 128)" text-anchor="middle">60%</text>
+
+  <rect x="380" y="352" width="60" height="20" rx="4" fill="oklch(0.88 0.19 128)" fill-opacity="0.8"/>
+  <text x="410" y="392" font-family="JetBrains Mono,monospace" font-size="10" fill="oklch(0.55 0.015 265)" text-anchor="middle">+ роутинг</text>
+  <text x="410" y="372" font-family="JetBrains Mono,monospace" font-size="12" fill="oklch(0.88 0.19 128)" text-anchor="middle">40%</text>
+
+  <rect x="520" y="362" width="60" height="10" rx="4" fill="oklch(0.88 0.19 128)" fill-opacity="1"/>
+  <text x="550" y="392" font-family="JetBrains Mono,monospace" font-size="10" fill="oklch(0.55 0.015 265)" text-anchor="middle">все методы</text>
+  <text x="550" y="372" font-family="JetBrains Mono,monospace" font-size="12" fill="oklch(0.88 0.19 128)" text-anchor="middle">20%</text>
+
+  <!-- Note -->
+  <text x="360" y="450" font-family="JetBrains Mono,monospace" font-size="11" fill="oklch(0.55 0.015 265)" text-anchor="middle">fig. 03 — сравнение расхода токенов: каждый метод даёт синергетический эффект</text>
+  <text x="360" y="476" font-family="Golos Text,sans-serif" font-size="12" fill="oklch(0.6 0.01 265)" text-anchor="middle">Цифры усреднённые по реальным проектам. Индивидуальный результат зависит от сценария.</text>
+</svg>

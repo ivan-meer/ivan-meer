@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" fill="none">
+  <rect width="720" height="480" rx="12" fill="oklch(0.12 0.012 265)"/>
+  <text x="360" y="36" font-family="Oswald,sans-serif" font-size="18" fill="oklch(0.94 0.006 100)" text-anchor="middle" letter-spacing="2">КОНТЕКСТНЫЙ ПАЙПЛАЙН</text>
+  <line x1="120" y1="50" x2="600" y2="50" stroke="oklch(0.25 0.01 265)" stroke-width="1"/>
+
+  <!-- Stage 1 -->
+  <rect x="40" y="90" width="200" height="70" rx="8" fill="oklch(0.18 0.008 265)" stroke="oklch(0.32 0.014 265)" stroke-width="1"/>
+  <circle cx="60" cy="112" r="6" fill="oklch(0.88 0.19 128)"/>
+  <text x="76" y="116" font-family="Oswald,sans-serif" font-size="14" fill="oklch(0.94 0.006 100)" font-weight="500">Извлечение</text>
+  <text x="56" y="140" font-family="Golos Text,sans-serif" font-size="11" fill="oklch(0.6 0.015 265)">Сбор данных из всех источников</text>
+  <text x="56" y="155" font-family="JetBrains Mono,monospace" font-size="10" fill="oklch(0.5 0.015 265)">БД, API, файлы, веб</text>
+
+  <!-- Arrow -->
+  <line x1="240" y1="125" x2="290" y2="125" stroke="oklch(0.88 0.19 128)" stroke-width="1.5"/>
+  <polygon points="292,125 284,119 284,131" fill="oklch(0.88 0.19 128)"/>
+
+  <!-- Stage 2 -->
+  <rect x="296" y="90" width="200" height="70" rx="8" fill="oklch(0.18 0.008 265)" stroke="oklch(0.32 0.014 265)" stroke-width="1"/>
+  <circle cx="316" cy="112" r="6" fill="oklch(0.88 0.19 128)"/>
+  <text x="332" y="116" font-family="Oswald,sans-serif" font-size="14" fill="oklch(0.94 0.006 100)" font-weight="500">Трансформация</text>
+  <text x="312" y="140" font-family="Golos Text,sans-serif" font-size="11" fill="oklch(0.6 0.015 265)">Чанкинг, саммаризация, фильтрация</text>
+  <text x="312" y="155" font-family="JetBrains Mono,monospace" font-size="10" fill="oklch(0.5 0.015 265)">Токенизация, эмбеддинги</text>
+
+  <!-- Arrow -->
+  <line x1="496" y1="125" x2="546" y2="125" stroke="oklch(0.88 0.19 128)" stroke-width="1.5"/>
+  <polygon points="548,125 540,119 540,131" fill="oklch(0.88 0.19 128)"/>
+
+  <!-- Stage 3 -->
+  <rect x="550" y="90" width="140" height="70" rx="8" fill="oklch(0.16 0.01 140)" stroke="oklch(0.88 0.19 128)" stroke-width="1.5"/>
+  <text x="620" y="120" font-family="Oswald,sans-serif" font-size="14" fill="oklch(0.94 0.006 100)" text-anchor="middle" font-weight="500">Подача</text>
+  <text x="620" y="146" font-family="Golos Text,sans-serif" font-size="11" fill="oklch(0.6 0.015 265)" text-anchor="middle">в контекст LLM</text>
+
+  <!-- Pipeline details -->
+  <rect x="40" y="200" width="650" height="110" rx="8" fill="oklch(0.16 0.01 265)" stroke="oklch(0.25 0.01 265)" stroke-width="1"/>
+  <text x="360" y="228" font-family="Oswald,sans-serif" font-size="14" fill="oklch(0.88 0.19 128)" text-anchor="middle" font-weight="500">ЧТО ПРОИСХОДИТ С ДАННЫМИ</text>
+
+  <rect x="60" y="244" width="140" height="50" rx="6" fill="oklch(0.18 0.008 265)" stroke="oklch(0.32 0.014 265)" stroke-width="1"/>
+  <text x="130" y="264" font-family="JetBrains Mono,monospace" font-size="11" fill="oklch(0.94 0.006 100)" text-anchor="middle">Сырой текст</text>
+  <text x="130" y="282" font-family="Golos Text,sans-serif" font-size="10" fill="oklch(0.55 0.015 265)" text-anchor="middle">50 000 токенов</text>
+
+  <line x1="200" y1="270" x2="242" y2="270" stroke="oklch(0.32 0.014 265)" stroke-width="1"/>
+  <polygon points="244,270 236,264 236,276" fill="oklch(0.32 0.014 265)"/>
+
+  <rect x="248" y="244" width="140" height="50" rx="6" fill="oklch(0.18 0.008 265)" stroke="oklch(0.32 0.014 265)" stroke-width="1"/>
+  <text x="318" y="264" font-family="JetBrains Mono,monospace" font-size="11" fill="oklch(0.94 0.006 100)" text-anchor="middle">Сжатый контекст</text>
+  <text x="318" y="282" font-family="Golos Text,sans-serif" font-size="10" fill="oklch(0.55 0.015 265)" text-anchor="middle">8 000 токенов (-84%)</text>
+
+  <line x1="388" y1="270" x2="430" y2="270" stroke="oklch(0.32 0.014 265)" stroke-width="1"/>
+  <polygon points="432,270 424,264 424,276" fill="oklch(0.32 0.014 265)"/>
+
+  <rect x="436" y="244" width="140" height="50" rx="6" fill="oklch(0.16 0.01 140)" stroke="oklch(0.88 0.19 128)" stroke-width="1"/>
+  <text x="506" y="264" font-family="JetBrains Mono,monospace" font-size="11" fill="oklch(0.94 0.006 100)" text-anchor="middle">Ранжированный вывод</text>
+  <text x="506" y="282" font-family="Golos Text,sans-serif" font-size="10" fill="oklch(0.55 0.015 265)" text-anchor="middle">релевантность > порога</text>
+
+  <!-- Sidebar: Comparison -->
+  <rect x="40" y="340" width="650" height="100" rx="8" fill="oklch(0.16 0.01 265)" stroke="oklch(0.25 0.01 265)" stroke-width="1"/>
+  <text x="60" y="368" font-family="Oswald,sans-serif" font-size="14" fill="oklch(0.94 0.006 100)" font-weight="500">CRUD vs Context Engineering</text>
+
+  <rect x="60" y="386" width="290" height="40" rx="6" fill="oklch(0.14 0.012 265)" stroke="oklch(0.32 0.014 265)" stroke-width="1"/>
+  <text x="205" y="411" font-family="Golos Text,sans-serif" font-size="13" fill="oklch(0.6 0.01 265)" text-anchor="middle">CRUD: управляем записями</text>
+
+  <rect x="380" y="386" width="290" height="40" rx="6" fill="oklch(0.16 0.01 140)" stroke="oklch(0.88 0.19 128)" stroke-width="1"/>
+  <text x="525" y="411" font-family="Golos Text,sans-serif" font-size="13" fill="oklch(0.94 0.006 100)" text-anchor="middle">Context Engineering: управляем вниманием</text>
+</svg>

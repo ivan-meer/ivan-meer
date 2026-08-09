@@ -182,7 +182,7 @@
   }
 
   // Загрузка статей
-  fetch('blog/articles.json')
+  fetch('/ivan-meer/blog/articles.json')
     .then(r => r.json())
     .then(articles => {
       renderFilter(articles, 'all');

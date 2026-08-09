@@ -447,7 +447,7 @@ footer.site .bottom {
 .svc-svg {
   width: 100%;
   height: auto;
-  max-height: 300px;
+  max-height: 200px;
   object-fit: contain;
   border-radius: 6px;
   background: oklch(16% 0.01 265);

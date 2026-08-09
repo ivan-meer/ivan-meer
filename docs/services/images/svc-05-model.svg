@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" rx="8" fill="oklch(0.12 0.012 265)"/>
+  <text x="200" y="28" font-family="Oswald,sans-serif" font-size="13" fill="oklch(0.94 0.006 100)" text-anchor="middle" letter-spacing="2">ОПТИМИЗАЦИЯ ТОКЕНОВ</text>
+  <line x1="60" y1="38" x2="340" y2="38" stroke="oklch(0.25 0.01 265)" stroke-width="1"/>
+
+  <!-- Before bar -->
+  <rect x="130" y="220" width="40" height="24" rx="3" fill="oklch(0.88 0.19 128 / 0.6)" stroke="oklch(0.88 0.19 128)" stroke-width="1"/>
+  <text x="150" y="236" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.94 0.006 100)" text-anchor="middle">100%</text>
+  <text x="120" y="244" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.5 0.012 265)" text-anchor="middle">before</text>
+
+  <!-- After bar -->
+  <rect x="210" y="228" width="40" height="16" rx="3" fill="oklch(0.7 0.15 128 / 0.6)" stroke="oklch(0.7 0.15 128)" stroke-width="1"/>
+  <text x="230" y="239" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.94 0.006 100)" text-anchor="middle">−62%</text>
+  <text x="260" y="244" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.5 0.012 265)" text-anchor="middle">after</text>
+
+  <!-- Arrow -->
+  <line x1="175" y1="232" x2="205" y2="232" stroke="oklch(0.88 0.19 128 / 0.5)" stroke-width="1.5"/>
+  <polygon points="207,232 200,227 200,237" fill="oklch(0.88 0.19 128 / 0.5)"/>
+
+  <!-- Optimization method boxes -->
+  <rect x="40" y="70" width="150" height="32" rx="4" fill="oklch(0.16 0.01 140)" stroke="oklch(0.6 0.015 265 / 0.3)" stroke-width="1"/>
+  <text x="48" y="90" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.7 0.012 265)">Кэширование промптов</text>
+
+  <rect x="40" y="112" width="150" height="32" rx="4" fill="oklch(0.16 0.01 140)" stroke="oklch(0.6 0.015 265 / 0.3)" stroke-width="1"/>
+  <text x="48" y="132" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.7 0.012 265)">Сжатие контекста</text>
+
+  <rect x="40" y="154" width="150" height="32" rx="4" fill="oklch(0.16 0.01 140)" stroke="oklch(0.6 0.015 265 / 0.3)" stroke-width="1"/>
+  <text x="48" y="174" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.7 0.012 265)">Роутинг моделей</text>
+
+  <rect x="40" y="196" width="150" height="32" rx="4" fill="oklch(0.16 0.01 140)" stroke="oklch(0.6 0.015 265 / 0.3)" stroke-width="1"/>
+  <text x="48" y="216" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.7 0.012 265)">LoRA / файнтюнинг</text>
+
+  <!-- Cost tags -->
+  <text x="280" y="90" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.88 0.19 128)">−40%</text>
+  <text x="280" y="132" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.88 0.19 128)">−30%</text>
+  <text x="280" y="174" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.88 0.19 128)">−50%</text>
+  <text x="280" y="216" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.88 0.19 128)">−70%</text>
+
+  <!-- Lines from tags to boxes -->
+  <line x1="225" y1="86" x2="273" y2="88" stroke="oklch(0.88 0.19 128 / 0.15)" stroke-width="1"/>
+  <line x1="225" y1="128" x2="273" y2="130" stroke="oklch(0.88 0.19 128 / 0.15)" stroke-width="1"/>
+  <line x1="225" y1="170" x2="273" y2="172" stroke="oklch(0.88 0.19 128 / 0.15)" stroke-width="1"/>
+  <line x1="225" y1="212" x2="273" y2="214" stroke="oklch(0.88 0.19 128 / 0.15)" stroke-width="1"/>
+</svg>

@@ -166,14 +166,23 @@
         '</article>';
     }).join('');
 
-    // Trigger reveal animations
-    if (typeof revealElements === 'function') {
-      setTimeout(revealElements, 50);
+    // Сброс reveal-анимаций — [data-reveal] автоматом обрабатывается script.js
+    // через IntersectionObserver, повесьте новый batch-наблюдатель
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(26px)';
+    });
+    // Дозапускаем IntersectionObserver на новых элементах
+    if (window.__revealObserver) {
+      document.querySelectorAll('[data-reveal]:not(._reveal-watched)').forEach(el => {
+        el.classList.add('_reveal-watched');
+        window.__revealObserver.observe(el);
+      });
     }
   }
 
   // Загрузка статей
-  fetch('/ivan-meer/blog/articles.json')
+  fetch('articles.json')
     .then(r => r.json())
     .then(articles => {
       renderFilter(articles, 'all');

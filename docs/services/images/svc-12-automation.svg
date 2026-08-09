@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" rx="8" fill="oklch(0.12 0.012 265)"/>
+  <text x="200" y="28" font-family="Oswald,sans-serif" font-size="13" fill="oklch(0.94 0.006 100)" text-anchor="middle" letter-spacing="2">АВТОМАТИЗАЦИЯ</text>
+  <line x1="60" y1="38" x2="340" y2="38" stroke="oklch(0.25 0.01 265)" stroke-width="1"/>
+
+  <!-- Pipeline flow -->
+  <rect x="50" y="65" width="120" height="40" rx="6" fill="oklch(0.16 0.01 140)" stroke="oklch(0.6 0.015 265 / 0.4)" stroke-width="1"/>
+  <text x="110" y="82" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.7 0.012 265)" text-anchor="middle">INPUT</text>
+  <text x="110" y="94" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.5 0.012 265)" text-anchor="middle">data · docs · API</text>
+
+  <text x="177" y="88" font-family="JetBrains Mono,monospace" font-size="10" fill="oklch(0.88 0.19 128)">→</text>
+
+  <rect x="190" y="65" width="120" height="40" rx="6" fill="oklch(0.16 0.01 140)" stroke="oklch(0.88 0.19 128 / 0.5)" stroke-width="1"/>
+  <text x="250" y="82" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.7 0.012 265)" text-anchor="middle">PROCESS</text>
+  <text x="250" y="94" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.5 0.012 265)" text-anchor="middle">bot · RPA · pipeline</text>
+
+  <text x="317" y="88" font-family="JetBrains Mono,monospace" font-size="10" fill="oklch(0.88 0.19 128)">→</text>
+
+  <rect x="330" y="65" width="50" height="40" rx="6" fill="oklch(0.18 0.015 128)" stroke="oklch(0.88 0.19 128)" stroke-width="1"/>
+  <text x="355" y="85" font-family="JetBrains Mono,monospace" font-size="10" fill="oklch(0.88 0.19 128)" text-anchor="middle">✓</text>
+
+  <!-- Automation types -->
+  <rect x="60" y="140" width="120" height="32" rx="4" fill="oklch(0.14 0.01 265)" stroke="oklch(0.5 0.012 265 / 0.3)" stroke-width="1"/>
+  <text x="120" y="160" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.6 0.012 265)" text-anchor="middle">чат-боты</text>
+
+  <rect x="200" y="140" width="120" height="32" rx="4" fill="oklch(0.14 0.01 265)" stroke="oklch(0.5 0.012 265 / 0.3)" stroke-width="1"/>
+  <text x="260" y="160" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.6 0.012 265)" text-anchor="middle">RPA-сценарии</text>
+
+  <rect x="60" y="184" width="120" height="32" rx="4" fill="oklch(0.14 0.01 265)" stroke="oklch(0.5 0.012 265 / 0.3)" stroke-width="1"/>
+  <text x="120" y="204" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.6 0.012 265)" text-anchor="middle">сбор данных</text>
+
+  <rect x="200" y="184" width="120" height="32" rx="4" fill="oklch(0.14 0.01 265)" stroke="oklch(0.5 0.012 265 / 0.3)" stroke-width="1"/>
+  <text x="260" y="204" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.6 0.012 265)" text-anchor="middle">обработка docs</text>
+
+  <!-- Time saved -->
+  <text x="120" y="250" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.45 0.012 265)" text-anchor="middle">n8n · Airflow · Playwright · Python</text>
+  <text x="120" y="268" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.45 0.012 265)" text-anchor="middle">Zapier · Selenium · Bash</text>
+</svg>

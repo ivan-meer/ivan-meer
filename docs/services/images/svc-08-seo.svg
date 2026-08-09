@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" rx="8" fill="oklch(0.12 0.012 265)"/>
+  <text x="200" y="28" font-family="Oswald,sans-serif" font-size="13" fill="oklch(0.94 0.006 100)" text-anchor="middle" letter-spacing="2">SEO</text>
+  <line x1="60" y1="38" x2="340" y2="38" stroke="oklch(0.25 0.01 265)" stroke-width="1"/>
+
+  <!-- Traffic chart line -->
+  <polyline points="60,230 120,200 160,210 200,170 240,150 280,140 340,120" fill="none" stroke="oklch(0.88 0.19 128)" stroke-width="2"/>
+  <polyline points="60,230 120,215 160,220 200,195 240,185 280,175 340,165" fill="none" stroke="oklch(0.7 0.15 128 / 0.4)" stroke-width="1" stroke-dasharray="3 2"/>
+
+  <!-- Before/After labels -->
+  <text x="80" y="248" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.5 0.012 265)">before</text>
+  <text x="280" y="136" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.88 0.19 128)">+340%</text>
+
+  <!-- Search icon -->
+  <circle cx="80" cy="80" r="18" fill="none" stroke="oklch(0.6 0.012 265)" stroke-width="1.5"/>
+  <line x1="93" y1="93" x2="103" y2="103" stroke="oklch(0.6 0.012 265)" stroke-width="1.5"/>
+
+  <!-- Keyword tags -->
+  <rect x="120" y="65" width="80" height="22" rx="3" fill="oklch(0.16 0.01 140)" stroke="oklch(0.6 0.015 265 / 0.3)" stroke-width="1"/>
+  <text x="160" y="80" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.7 0.012 265)" text-anchor="middle">#ключи</text>
+
+  <rect x="215" y="65" width="80" height="22" rx="3" fill="oklch(0.16 0.01 140)" stroke="oklch(0.6 0.015 265 / 0.3)" stroke-width="1"/>
+  <text x="255" y="80" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.7 0.012 265)" text-anchor="middle">#tech</text>
+
+  <rect x="260" y="95" width="80" height="22" rx="3" fill="oklch(0.16 0.01 140)" stroke="oklch(0.6 0.015 265 / 0.3)" stroke-width="1"/>
+  <text x="300" y="110" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.7 0.012 265)" text-anchor="middle">#analytics</text>
+
+  <!-- Tools -->
+  <text x="60" y="275" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.45 0.012 265)">Ahrefs · GSC · Screaming Frog</text>
+</svg>

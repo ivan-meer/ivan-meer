@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" rx="8" fill="oklch(0.12 0.012 265)"/>
+  <text x="200" y="28" font-family="Oswald,sans-serif" font-size="13" fill="oklch(0.94 0.006 100)" text-anchor="middle" letter-spacing="2">ПАНЕЛИ УПРАВЛЕНИЯ</text>
+  <line x1="60" y1="38" x2="340" y2="38" stroke="oklch(0.25 0.01 265)" stroke-width="1"/>
+
+  <!-- Dashboard frame -->
+  <rect x="50" y="55" width="300" height="200" rx="6" fill="oklch(0.14 0.01 265)" stroke="oklch(0.3 0.01 265)" stroke-width="1"/>
+
+  <!-- Header bar -->
+  <rect x="50" y="55" width="300" height="30" rx="6" fill="oklch(0.18 0.01 265)"/>
+  <rect x="50" y="77" width="300" height="8" fill="oklch(0.18 0.01 265)"/>
+  <text x="65" y="73" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.6 0.012 265)">Dashboard</text>
+  <circle cx="320" cy="70" r="4" fill="oklch(0.88 0.19 128)"/>
+
+  <!-- Widget 1 -->
+  <rect x="65" y="95" width="125" height="60" rx="4" fill="oklch(0.16 0.01 140)" stroke="oklch(0.88 0.19 128 / 0.2)" stroke-width="1"/>
+  <text x="78" y="113" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.5 0.012 265)">Agents online</text>
+  <text x="78" y="135" font-family="Oswald,sans-serif" font-size="22" fill="oklch(0.88 0.19 128)">7/12</text>
+
+  <!-- Widget 2 -->
+  <rect x="210" y="95" width="125" height="60" rx="4" fill="oklch(0.16 0.01 140)" stroke="oklch(0.6 0.015 265 / 0.2)" stroke-width="1"/>
+  <text x="223" y="113" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.5 0.012 265)">Tokens today</text>
+  <text x="223" y="135" font-family="Oswald,sans-serif" font-size="22" fill="oklch(0.94 0.006 100)">142K</text>
+
+  <!-- Widget 3 -->
+  <rect x="65" y="168" width="125" height="60" rx="4" fill="oklch(0.16 0.01 140)" stroke="oklch(0.6 0.015 265 / 0.2)" stroke-width="1"/>
+  <text x="78" y="186" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.5 0.012 265)">Avg latency</text>
+  <text x="78" y="208" font-family="Oswald,sans-serif" font-size="22" fill="oklch(0.94 0.006 100)">1.2s</text>
+
+  <!-- Widget 4 -->
+  <rect x="210" y="168" width="125" height="60" rx="4" fill="oklch(0.16 0.01 140)" stroke="oklch(0.6 0.015 265 / 0.2)" stroke-width="1"/>
+  <text x="223" y="186" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.5 0.012 265)">Error rate</text>
+  <text x="223" y="208" font-family="Oswald,sans-serif" font-size="22" fill="oklch(0.88 0.19 128)">3.2%</text>
+
+  <text x="200" y="275" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.45 0.012 265)" text-anchor="middle">React · TypeScript · real-time</text>
+</svg>

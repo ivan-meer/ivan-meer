@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" rx="8" fill="oklch(0.12 0.012 265)"/>
+  <text x="200" y="28" font-family="Oswald,sans-serif" font-size="13" fill="oklch(0.94 0.006 100)" text-anchor="middle" letter-spacing="2">SMM</text>
+  <line x1="60" y1="38" x2="340" y2="38" stroke="oklch(0.25 0.01 265)" stroke-width="1"/>
+
+  <!-- Social media node layout -->
+  <circle cx="200" cy="120" r="22" fill="oklch(0.18 0.015 128)" stroke="oklch(0.88 0.19 128)" stroke-width="1.5"/>
+  <text x="200" y="117" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.88 0.19 128)" text-anchor="middle">SMM</text>
+  <text x="200" y="128" font-family="JetBrains Mono,monospace" font-size="6" fill="oklch(0.7 0.012 265)" text-anchor="middle">hub</text>
+
+  <!-- Connected platforms -->
+  <circle cx="80" cy="60" r="15" fill="oklch(0.14 0.01 265)" stroke="oklch(0.5 0.012 265)" stroke-width="1"/>
+  <text x="80" y="64" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.6 0.012 265)" text-anchor="middle">TG</text>
+  <line x1="92" y1="70" x2="180" y2="108" stroke="oklch(0.88 0.19 128 / 0.2)" stroke-width="1"/>
+
+  <circle cx="320" cy="60" r="15" fill="oklch(0.14 0.01 265)" stroke="oklch(0.5 0.012 265)" stroke-width="1"/>
+  <text x="320" y="64" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.6 0.012 265)" text-anchor="middle">FB</text>
+  <line x1="308" y1="70" x2="220" y2="108" stroke="oklch(0.88 0.19 128 / 0.2)" stroke-width="1"/>
+
+  <circle cx="80" cy="180" r="15" fill="oklch(0.14 0.01 265)" stroke="oklch(0.5 0.012 265)" stroke-width="1"/>
+  <text x="80" y="184" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.6 0.012 265)" text-anchor="middle">YT</text>
+  <line x1="92" y1="170" x2="180" y2="132" stroke="oklch(0.88 0.19 128 / 0.2)" stroke-width="1"/>
+
+  <circle cx="320" cy="180" r="15" fill="oklch(0.14 0.01 265)" stroke="oklch(0.5 0.012 265)" stroke-width="1"/>
+  <text x="320" y="184" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.6 0.012 265)" text-anchor="middle">IG</text>
+  <line x1="308" y1="170" x2="220" y2="132" stroke="oklch(0.88 0.19 128 / 0.2)" stroke-width="1"/>
+
+  <!-- Growth metrics -->
+  <text x="110" y="240" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.45 0.012 265)">аудитория →</text>
+  <text x="210" y="240" font-family="Oswald,sans-serif" font-size="18" fill="oklch(0.88 0.19 128)">+240%</text>
+  <text x="110" y="260" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.45 0.012 265)">контент-план →</text>
+  <text x="230" y="260" font-family="Oswald,sans-serif" font-size="18" fill="oklch(0.88 0.19 128)">×4</text>
+</svg>

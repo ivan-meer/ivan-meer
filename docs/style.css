@@ -431,6 +431,35 @@ footer.site .bottom {
 
 /* ── Services articles ── */
 .svc-article {
+  display: grid;
+  grid-template-columns: minmax(0,2fr) minmax(0,5fr);
+  gap: clamp(28px,4vw,80px);
+  padding: clamp(56px,7vw,96px) 0;
+  border-bottom: 1px solid oklch(26% 0.014 265);
+}
+
+.svc-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.svc-svg {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: oklch(16% 0.01 265);
+  border: 1px solid oklch(28% 0.01 265);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.svc-article:hover .svc-svg {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.15);
+}
+.svc-article {
   display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr);
   gap: clamp(28px,4vw,80px);
   padding: clamp(56px,7vw,96px) 0;

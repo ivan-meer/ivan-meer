@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" rx="8" fill="oklch(0.12 0.012 265)"/>
+  <text x="200" y="28" font-family="Oswald,sans-serif" font-size="13" fill="oklch(0.94 0.006 100)" text-anchor="middle" letter-spacing="2">МАРКЕТИНГ</text>
+  <line x1="60" y1="38" x2="340" y2="38" stroke="oklch(0.25 0.01 265)" stroke-width="1"/>
+
+  <!-- Content funnel -->
+  <polygon points="200,60 320,240 80,240" fill="none" stroke="oklch(0.88 0.19 128 / 0.3)" stroke-width="1"/>
+  <polygon points="200,85 290,230 110,230" fill="none" stroke="oklch(0.88 0.19 128 / 0.2)" stroke-width="1"/>
+  <polygon points="200,110 260,220 140,220" fill="none" stroke="oklch(0.88 0.19 128 / 0.15)" stroke-width="1"/>
+
+  <!-- Funnel labels -->
+  <text x="200" y="105" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.7 0.012 265)" text-anchor="middle">охват</text>
+  <text x="200" y="155" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.7 0.012 265)" text-anchor="middle">вовлечение</text>
+  <text x="200" y="205" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.7 0.012 265)" text-anchor="middle">конверсия</text>
+
+  <!-- Side metrics -->
+  <text x="38" y="80" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.45 0.012 265)">идеи</text>
+  <text x="38" y="120" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.45 0.012 265)">контент</text>
+  <text x="38" y="160" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.45 0.012 265)">A/B тест</text>
+  <text x="38" y="200" font-family="JetBrains Mono,monospace" font-size="7" fill="oklch(0.45 0.012 265)">email</text>
+
+  <line x1="58" y1="77" x2="196" y2="88" stroke="oklch(0.5 0.012 265 / 0.2)" stroke-width="1"/>
+  <line x1="58" y1="117" x2="196" y2="128" stroke="oklch(0.5 0.012 265 / 0.2)" stroke-width="1"/>
+  <line x1="58" y1="157" x2="196" y2="168" stroke="oklch(0.5 0.012 265 / 0.2)" stroke-width="1"/>
+  <line x1="58" y1="197" x2="196" y2="208" stroke="oklch(0.5 0.012 265 / 0.2)" stroke-width="1"/>
+
+  <!-- Result -->
+  <text x="200" y="260" font-family="JetBrains Mono,monospace" font-size="8" fill="oklch(0.88 0.19 128)" text-anchor="middle">стратегия → контент → рост</text>
+</svg>

@@ -1,0 +1,136 @@
+- generic [active] [ref=f2e1]:
+  - navigation [ref=f2e2]:
+    - generic [ref=f2e3]:
+      - link "Ivan Meer*" [ref=f2e4] [cursor=pointer]:
+        - /url: /ivan-meer/
+      - generic [ref=f2e5]:
+        - link "01 Главная" [ref=f2e6] [cursor=pointer]:
+          - /url: /ivan-meer/
+        - link "02 Услуги" [ref=f2e7] [cursor=pointer]:
+          - /url: /ivan-meer/services
+        - link "03 Журнал" [ref=f2e8] [cursor=pointer]:
+          - /url: /ivan-meer/blog
+        - link "04 Ресурсы" [ref=f2e9] [cursor=pointer]:
+          - /url: /ivan-meer/links
+        - link "Обсудить проект ↗" [ref=f2e10] [cursor=pointer]:
+          - /url: https://t.me/phuketguruadmin
+  - generic [ref=f2e12]:
+    - paragraph [ref=f2e13]: 03 / журнал — инженерные заметки
+    - heading "Инженерный журнал" [level=1] [ref=f2e14]
+    - paragraph [ref=f2e15]: "Пишу о том, что строю руками: агентные архитектуры, память, MCP, экономика токенов. С кодом, цифрами и без обещаний, что AI заменит всех к пятнице."
+  - generic [ref=f2e17]:
+    - generic [ref=f2e18]:
+      - button "Все" [ref=f2e19] [cursor=pointer]
+      - button "#AI engineering" [ref=f2e20] [cursor=pointer]
+      - button "#MCP" [ref=f2e21] [cursor=pointer]
+      - button "#RAG" [ref=f2e22] [cursor=pointer]
+      - button "#агенты" [ref=f2e23] [cursor=pointer]
+      - button "#архитектура" [ref=f2e24] [cursor=pointer]
+      - button "#интеграции" [ref=f2e25] [cursor=pointer]
+      - button "#оптимизация" [ref=f2e26] [cursor=pointer]
+      - button "#память" [ref=f2e27] [cursor=pointer]
+      - button "#экономика" [ref=f2e28] [cursor=pointer]
+    - generic [ref=f2e29]:
+      - article [ref=f2e30]:
+        - generic [ref=f2e31]:
+          - generic [ref=f2e32]:
+            - generic [ref=f2e33]: архитектура
+            - generic [ref=f2e34]: агенты
+          - heading [level=3] [ref=f2e35]:
+            - 'link "Скрипты не работают: почему AI-агентам нужна архитектура" [ref=f2e36] [cursor=pointer]':
+              - /url: /ivan-meer/blog/article.html?id=skripty-ne-rabotayut
+          - paragraph [ref=f2e37]: "Если ваша AI-автоматизация сломалась через неделю, а счёт за токены вырос втрое — это не невезение, это отсутствие харнесса. Разбираю разницу между «подключил API» и инженерным подходом: оркестрация, память, наблюдаемость. С кодом на Python, архитектурными схемами и готовыми паттернами."
+        - link [ref=f2e38] [cursor=pointer]:
+          - /url: /ivan-meer/blog/article.html?id=skripty-ne-rabotayut
+      - article [ref=f2e39]:
+        - generic [ref=f2e40]:
+          - generic [ref=f2e41]:
+            - generic [ref=f2e42]: память
+            - generic [ref=f2e43]: RAG
+            - generic [ref=f2e44]: архитектура
+          - heading [level=3] [ref=f2e45]:
+            - link "Проектируем систему памяти для AI-агента" [ref=f2e46] [cursor=pointer]:
+              - /url: /ivan-meer/blog/article.html?id=proektiruem-pamyat
+          - paragraph [ref=f2e47]: "Память — то, что отличает агента от чата. Разбираю трехуровневую архитектуру: краткосрочная (сессия), долгосрочная (RAG с гибридным поиском), семантическая (граф фактов). Стратегии чанкинга, векторные БД, реранжирование и забывание. С кодом, схемами и граблями."
+        - link [ref=f2e48] [cursor=pointer]:
+          - /url: /ivan-meer/blog/article.html?id=proektiruem-pamyat
+      - article [ref=f2e49]:
+        - generic [ref=f2e50]:
+          - generic [ref=f2e51]:
+            - generic [ref=f2e52]: экономика
+            - generic [ref=f2e53]: оптимизация
+          - heading [level=3] [ref=f2e54]:
+            - 'link "Оптимизация токенов: как срезать счёт на 40–70%" [ref=f2e55] [cursor=pointer]':
+              - /url: /ivan-meer/blog/article.html?id=optimizatsiya-tokenov
+          - paragraph [ref=f2e56]: Продакшен-система не обязана быть дорогой. Кэширование промптов, сжатие контекста, роутинг между моделями, файнтюнинг вместо few-shot — методики с замерами до и после на реальных логах. Сравнительные таблицы и конфиги.
+        - link [ref=f2e57] [cursor=pointer]:
+          - /url: /ivan-meer/blog/article.html?id=optimizatsiya-tokenov
+      - article [ref=f2e58]:
+        - generic [ref=f2e59]:
+          - generic [ref=f2e60]:
+            - generic [ref=f2e61]: MCP
+            - generic [ref=f2e62]: интеграции
+          - heading [level=3] [ref=f2e63]:
+            - 'link "MCP-сервер: с нуля до продакшена за вечер" [ref=f2e64] [cursor=pointer]':
+              - /url: /ivan-meer/blog/article.html?id=mcp-server-s-nulya
+          - paragraph [ref=f2e65]: "Model Context Protocol — самый короткий путь подключить ваши данные к AI-инструментам. Пошагово: проектирование, разработка на Python, tools/resources, авторизация, Docker-деплой и интеграция с Claude Code. С полным кодом сервера."
+        - link [ref=f2e66] [cursor=pointer]:
+          - /url: /ivan-meer/blog/article.html?id=mcp-server-s-nulya
+      - article [ref=f2e67]:
+        - generic [ref=f2e68]:
+          - generic [ref=f2e69]:
+            - generic [ref=f2e70]: AI engineering
+            - generic [ref=f2e71]: архитектура
+          - heading [level=3] [ref=f2e72]:
+            - link "Контекст — новая база данных" [ref=f2e73] [cursor=pointer]:
+              - /url: /ivan-meer/blog/article.html?id=kontekst-novaya-baza-dannyh
+          - paragraph [ref=f2e74]: "Почему управление контекстом становится важнее классических CRUD-операций. Контекстный пайплайн: извлечение → трансформация → подача в LLM. Sliding window, саммаризация, RAG, structured output. Сравнение CRUD vs Context Engineering."
+        - link [ref=f2e75] [cursor=pointer]:
+          - /url: /ivan-meer/blog/article.html?id=kontekst-novaya-baza-dannyh
+      - article [ref=f2e76]:
+        - generic [ref=f2e77]:
+          - generic [ref=f2e78]:
+            - generic [ref=f2e79]: ⏱ 6 мин
+            - generic [ref=f2e80]: MCP
+          - heading [level=3] [ref=f2e81]:
+            - link "MCP Server простыми словами" [ref=f2e82] [cursor=pointer]:
+              - /url: /ivan-meer/blog/article.html?id=mcp-server-prostymi-slovami
+          - paragraph [ref=f2e83]: Model Context Protocol — что это, зачем нужно и как устроен. MCP как USB-C для AI-инструментов. Аналогии, схема работы, сценарии использования. Без сложной теории, но с реальными примерами.
+        - link [ref=f2e84] [cursor=pointer]:
+          - /url: /ivan-meer/blog/article.html?id=mcp-server-prostymi-slovami
+  - generic [ref=f2e86]:
+    - paragraph [ref=f2e87]: // анонсы выходят в Telegram
+    - heading "Не хотите проверять вручную?" [level=2] [ref=f2e88]
+    - generic [ref=f2e89]:
+      - paragraph [ref=f2e90]: Напишите мне в Telegram — добавлю вас в список и пришлю первую статью, когда она выйдет.
+      - link "Написать в Telegram →" [ref=f2e91] [cursor=pointer]:
+        - /url: https://t.me/phuketguruadmin
+  - contentinfo [ref=f2e92]:
+    - generic [ref=f2e93]:
+      - generic [ref=f2e94]:
+        - generic [ref=f2e95]:
+          - paragraph [ref=f2e96]: Ivan Meer*
+          - paragraph [ref=f2e97]: AI-фабрика полного цикла. Системы, а не скрипты. Архитектура, а не заплатки.
+        - generic [ref=f2e98]:
+          - heading "Навигация" [level=4] [ref=f2e99]
+          - generic [ref=f2e100]:
+            - link "Главная" [ref=f2e101] [cursor=pointer]:
+              - /url: /ivan-meer/
+            - link "Услуги" [ref=f2e102] [cursor=pointer]:
+              - /url: /ivan-meer/services
+            - link "Инженерный журнал" [ref=f2e103] [cursor=pointer]:
+              - /url: /ivan-meer/blog
+            - link "Ресурсы" [ref=f2e104] [cursor=pointer]:
+              - /url: /ivan-meer/links
+        - generic [ref=f2e105]:
+          - heading "Контакты" [level=4] [ref=f2e106]
+          - generic [ref=f2e107]:
+            - link "GitHub ↗" [ref=f2e108] [cursor=pointer]:
+              - /url: https://github.com/ivan-meer
+            - link "LinkedIn ↗" [ref=f2e109] [cursor=pointer]:
+              - /url: https://linkedin.com/in/ivan-meer
+            - link "Telegram ↗" [ref=f2e110] [cursor=pointer]:
+              - /url: https://t.me/phuketguruadmin
+      - generic [ref=f2e111]:
+        - generic [ref=f2e112]: © 2026 Ivan Meer
+        - generic [ref=f2e113]: сделано руками и агентами

@@ -1,416 +1,201 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Услуги — Ivan Meer</title>
-<base href="/ivan-meer/">
-<meta name="description" content="AI-фабрика полного цикла: от AI-агентов и MCP-серверов до SEO, SMM, маркетинга, креатива и автоматизации. 12 направлений, 4 формата работы.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
-</head>
-<body>
-
-<nav>
-  <div class="nav-inner">
-    <a href="/ivan-meer/" class="nav-logo">Ivan Meer<span>*</span></a>
-    <div class="nav-links">
-      <a href="/ivan-meer/">01 Главная</a>
-      <a href="/ivan-meer/services" class="active">02 Услуги</a>
-      <a href="/ivan-meer/blog">03 Журнал</a>
-      <a href="/ivan-meer/links">04 Ресурсы</a>
-      <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener" data-magnet class="nav-cta">Обсудить проект ↗</a>
-    </div>
-  </div>
-</nav>
-
-<div class="page-header">
-  <div class="inner">
-    <p class="sub">02 / услуги — 12 направлений · 4 формата · AI-фабрика полного цикла</p>
-    <h1>AI-фабрика полного цикла —<br>что я делаю и что вы <span>получаете</span></h1>
-    <p class="desc">Не скрипты, не отдельные инструменты — фабрика решений: от проектирования AI-агентов и MCP-серверов до SEO, SMM, маркетинга и автоматизации. Каждая услуга описана одинаково честно: когда она нужна, что входит в работу и какой результат вы держите в руках в конце.</p>
-  </div>
-</div>
-
-<section>
-  <div class="wide">
-
-    <article data-reveal class="svc-article">
-      <div class="svc-left">
-        <img src="services/images/svc-01-agents.svg" alt="" class="svc-svg" loading="lazy">
-        <p class="svc-code">SVC-01 / AGENTS</p>
-      </div>
-      <div>
-        <h2>AI-агенты и мультиагентные системы</h2>
-        <p class="svc-intro">Автономные работники для конкретных процессов: от одного ассистента до команды агентов с ролями, инструментами и общей памятью.</p>
-        <div class="svc-cols">
-          <div>
-            <h4>Когда нужно</h4>
-            <ul><li>Рутину делают люди: разбор заявок, документов, переписки, отчётов</li><li>Пробовали «подключить ChatGPT» — работает нестабильно и без контекста</li><li>Нужен не чат, а исполнитель: получил задачу → сделал → отчитался</li></ul>
-          </div>
-          <div>
-            <h4>Что входит</h4>
-            <ul><li>Проектирование ролей, инструментов и границ ответственности агентов</li><li>Харнесс исполнения: ошибки, тайм-ауты, цепочки вызовов, guardrails</li><li>Подключение к вашим данным: CRM, базы, API, мессенджеры</li><li>Эскалация к человеку — агент знает, чего он не знает</li></ul>
-          </div>
-        </div>
-        <p class="svc-result"><b>Результат:</b> агент, который стабильно закрывает процесс, а не демо для презентации. С логами каждого шага и метриками качества.</p>
-      </div>
-    </article>
-
-    <article data-reveal class="svc-article">
-      <div class="svc-left">
-        <img src="services/images/svc-02-orch.svg" alt="" class="svc-svg" loading="lazy">
-        <p class="svc-code">SVC-02 / ORCH</p>
-      </div>
-      <div>
-        <h2>Оркестрация и наблюдаемость</h2>
-        <p class="svc-intro">Управляющий слой, который превращает набор агентов и автоматизаций в предсказуемую систему.</p>
-        <div class="svc-cols">
-          <div>
-            <h4>Когда нужно</h4>
-            <ul><li>Автоматизации «падают молча» — об ошибке узнаёте от клиентов</li><li>Агенты и скрипты конфликтуют за данные и дублируют работу</li><li>Никто не может сказать, сколько система тратит и на что</li></ul>
-          </div>
-          <div>
-            <h4>Что входит</h4>
-            <ul><li>Очереди задач, retry-политики, изоляция сбоев, приоритезация</li><li>Трейсинг каждого запуска: что агент думал, что вызвал, что получилось</li><li>Метрики и алерты: расход токенов, задержки, доля ошибок</li><li>Маршрутизация: дорогая модель только там, где оправдана</li></ul>
-          </div>
-        </div>
-        <p class="svc-result"><b>Результат:</b> система, за которой можно следить как за обычным сервисом — и которой можно доверить процесс без дежурного «оператора ChatGPT».</p>
-      </div>
-    </article>
-
-    <article data-reveal class="svc-article">
-      <div class="svc-left">
-        <img src="services/images/svc-03-memory.svg" alt="" class="svc-svg" loading="lazy">
-        <p class="svc-code">SVC-03 / MEMORY</p>
-      </div>
-      <div>
-        <h2>Системы памяти и RAG</h2>
-        <p class="svc-intro">Долгосрочная память для агентов и поиск по корпоративным знаниям, который отвечает по вашим документам, а не фантазирует.</p>
-        <div class="svc-cols">
-          <div>
-            <h4>Когда нужно</h4>
-            <ul><li>Агент каждый раз «знакомится заново» — не помнит клиента и договорённости</li><li>Знания разбросаны по вики, чатам и папкам</li><li>Готовые RAG-решения отвечают красиво, но мимо</li></ul>
-          </div>
-          <div>
-            <h4>Что входит</h4>
-            <ul><li>Архитектура памяти: что хранить, как искать, когда забывать</li><li>Векторный и гибридный поиск (pgvector, Qdrant), реранжирование</li><li>Чанкинг и подготовка документов под ваш тип контента</li><li>Оценка качества ответов на реальных вопросах</li></ul>
-          </div>
-        </div>
-        <p class="svc-result"><b>Результат:</b> агент с накопительным контекстом и база знаний, которой пользуются, потому что она отвечает точно и со ссылками на источники.</p>
-      </div>
-    </article>
-
-    <article data-reveal class="svc-article">
-      <div class="svc-left">
-        <img src="services/images/svc-04-mcp.svg" alt="" class="svc-svg" loading="lazy">
-        <p class="svc-code">SVC-04 / MCP</p>
-      </div>
-      <div>
-        <h2>MCP-серверы и интеграции</h2>
-        <p class="svc-intro">Ваши базы, CRM и внутренние API — как инструменты для любого AI-клиента, по открытому протоколу MCP.</p>
-        <div class="svc-cols">
-          <div>
-            <h4>Когда нужно</h4>
-            <ul><li>Команда работает в Claude/IDE-агентах, но корпоративные данные недоступны</li><li>Каждая новая интеграция пишется заново под каждый инструмент</li><li>Нужен контролируемый доступ AI к внутренним системам</li></ul>
-          </div>
-          <div>
-            <h4>Что входит</h4>
-            <ul><li>Проектирование и разработка MCP-серверов под ваши данные</li><li>Авторизация, ограничение прав, журналирование вызовов</li><li>Деплой: локально, в облаке или как edge-функции</li><li>Документация и примеры</li></ul>
-          </div>
-        </div>
-        <p class="svc-result"><b>Результат:</b> одна интеграция вместо пяти: инструменты доступны из Claude, Cursor, ваших агентов и всего, что говорит на MCP.</p>
-      </div>
-    </article>
-
-    <article data-reveal class="svc-article">
-      <div class="svc-left">
-        <img src="services/images/svc-05-model.svg" alt="" class="svc-svg" loading="lazy">
-        <p class="svc-code">SVC-05 / MODEL</p>
-      </div>
-      <div>
-        <h2>Файнтюнинг и оптимизация токенов</h2>
-        <p class="svc-intro">Модель, заточенная под ваш домен, и счёт за LLM, который перестал пугать.</p>
-        <div class="svc-cols">
-          <div>
-            <h4>Когда нужно</h4>
-            <ul><li>Расходы на API растут быстрее пользы</li><li>Универсальная модель ошибается в вашей терминологии</li><li>Длинные промпты с примерами повторяются в каждом запросе</li></ul>
-          </div>
-          <div>
-            <h4>Что входит</h4>
-            <ul><li>Аудит расхода: разбор реальных логов, карта затрат</li><li>Кэширование промптов, сжатие контекста, роутинг</li><li>Файнтюнинг и LoRA-адаптеры вместо few-shot промптов</li><li>Замеры до/после на ваших задачах</li></ul>
-          </div>
-        </div>
-        <p class="svc-result"><b>Результат:</b> снижение расходов на 40–70% и модель, которая говорит на языке вашего домена.</p>
-      </div>
-    </article>
-
-    <article data-reveal class="svc-article">
-      <div class="svc-left">
-        <img src="services/images/svc-06-ui.svg" alt="" class="svc-svg" loading="lazy">
-        <p class="svc-code">SVC-06 / UI</p>
-      </div>
-      <div>
-        <h2>Панели управления AI-системами</h2>
-        <p class="svc-intro">Интерфейс, в котором ваша команда видит и контролирует всё, что делают агенты.</p>
-        <div class="svc-cols">
-          <div>
-            <h4>Когда нужно</h4>
-            <ul><li>AI-система работает, но для бизнеса это чёрный ящик</li><li>Чтобы поправить или перезапустить, зовут разработчика</li><li>Отчётность собирается вручную из логов</li></ul>
-          </div>
-          <div>
-            <h4>Что входит</h4>
-            <ul><li>Дашборд: статусы агентов, очереди, история в реальном времени</li><li>Аналитика: расход токенов, качество, узкие места</li><li>Ручное управление: пауза, повтор, вмешательство</li><li>React/TypeScript — понятно без обучения</li></ul>
-          </div>
-        </div>
-        <p class="svc-result"><b>Результат:</b> команда управляет AI-системой сама. Разработчик нужен для развития.</p>
-      </div>
-    </article>
-
-    <article data-reveal class="svc-article">
-      <div class="svc-left">
-        <img src="services/images/svc-07-arch.svg" alt="" class="svc-svg" loading="lazy">
-        <p class="svc-code">SVC-07 / ARCH</p>
-      </div>
-      <div>
-        <h2>Архитектура и консалтинг</h2>
-        <p class="svc-intro">Анализ данных и процессов, проектирование архитектуры, выбор стека и смета.</p>
-        <div class="svc-cols">
-          <div>
-            <h4>Когда нужно</h4>
-            <ul><li>Нет понимания, как масштабировать систему</li><li>Нужно быстро оценить перспективы</li><li>Нужен чёткий план действий</li></ul>
-          </div>
-          <div>
-            <h4>Что входит</h4>
-            <ul><li>Анализ данных и процессов</li><li>Проектирование архитектуры</li><li>Выбор стека и смета</li><li>Дорожная карта</li></ul>
-          </div>
-        </div>
-        <p class="svc-result"><b>Результат:</b> чёткий план действий и смета, которая не будет пересчитана.</p>
-      </div>
-    </article>
-
-    <article data-reveal class="svc-article">
-      <div class="svc-left">
-        <img src="services/images/svc-08-seo.svg" alt="" class="svc-svg" loading="lazy">
-        <p class="svc-code">SVC-08 / SEO</p>
-      </div>
-      <div>
-        <h2>SEO и техническое продвижение</h2>
-        <p class="svc-intro">Анализ ниши, подбор ключей, оптимизация контента, техническое SEO, аналитика трафика.</p>
-        <div class="svc-cols">
-          <div>
-            <h4>Когда нужно</h4>
-            <ul><li>Сайт есть, но трафика нет</li><li>Конкуренты опережают вас в выдаче</li><li>Нужно быстро поднять видимость</li></ul>
-          </div>
-          <div>
-            <h4>Что входит</h4>
-            <ul><li>Анализ ниши и конкурентов</li><li>Подбор ключей и оптимизация контента</li><li>Техническое SEO: скорость, индексация, мобильность</li><li>Аналитика и отчётность</li></ul>
-          </div>
-        </div>
-        <p class="svc-result"><b>Результат:</b> сайт в топе поиска и с постоянным трафиком.</p>
-      </div>
-    </article>
-    <article data-reveal class="svc-article">
-      <div class="svc-left">
-        <img src="services/images/svc-09-smm.svg" alt="" class="svc-svg" loading="lazy">
-        <p class="svc-code">SVC-09 / SMM</p>
-      </div>
-      <div>
-        <h2>SMM и продвижение в соцсетях</h2>
-        <p class="svc-intro">Аудитория в соцсетях, контент-стратегия, таргетированная реклама, аналитика.</p>
-        <div class="svc-cols">
-          <div>
-            <h4>Когда нужно</h4>
-            <ul><li>Нет подписчиков и трафика в соцсетях</li><li>Конкуренты опережают вас в ленте</li><li>Нужно быстро привлечь аудиторию</li></ul>
-          </div>
-          <div>
-            <h4>Что входит</h4>
-            <ul><li>Анализ аудитории и конкурентов</li><li>Контент-стратегия и календарь постов</li><li>Таргетированная реклама: настройка, запуск, аналитика</li><li>Аналитика и отчётность</li></ul>
-          </div>
-        </div>
-        <p class="svc-result"><b>Результат:</b> аудитория в соцсетях и постоянный трафик.</p>
-      </div>
-    </article>
-    <article data-reveal class="svc-article">
-      <div class="svc-left">
-        <img src="services/images/svc-10-marketing.svg" alt="" class="svc-svg" loading="lazy">
-        <p class="svc-code">SVC-10 / MARKETING</p>
-      </div>
-      <div>
-        <h2>Маркетинг и стратегия контента</h2>
-        <p class="svc-intro">Стратегия контента, генерация идей, креативы для рекламы, email-маркетинг, A/B-тестирование.</p>
-        <div class="svc-cols">
-          <div>
-            <h4>Когда нужно</h4>
-            <ul><li>Нет стратегии контента и идей</li><li>Конкуренты опережают вас в ленте</li><li>Нужно быстро привлечь аудиторию</li></ul>
-          </div>
-          <div>
-            <h4>Что входит</h4>
-            <ul><li>Анализ ниши и конкурентов</li><li>Генерация идей и контент-стратегия</li><li>Креативы для рекламы и соцсетей</li><li>Email-маркетинг и A/B-тестирование</li></ul>
-          </div>
-        </div>
-        <p class="svc-result"><b>Результат:</b> аудитория и постоянный трафик.</p>
-      </div>
-    </article>
-    <article data-reveal class="svc-article">
-      <div class="svc-left">
-        <img src="services/images/svc-11-creative.svg" alt="" class="svc-svg" loading="lazy">
-        <p class="svc-code">SVC-11 / CREATIVE</p>
-      </div>
-      <div>
-        <h2>Креатив и дизайн</h2>
-        <p class="svc-intro">Логотипы, брендбуки, упаковки, рекламные креативы, иллюстрации, анимации.</p>
-        <div class="svc-cols">
-          <div>
-            <h4>Когда нужно</h4>
-            <ul><li>Нет уникального визуального стиля</li><li>Конкуренты опережают вас в ленте</li><li>Нужно быстро привлечь аудиторию</li></ul>
-          </div>
-          <div>
-            <h4>Что входит</h4>
-            <ul><li>Логотипы и брендбуки</li><li>Упаковки и рекламные креативы</li><li>Иллюстрации и анимации</li><li>Фотографии и видеоролики</li></ul>
-          </div>
-        </div>
-        <p class="svc-result"><b>Результат:</b> уникальный визуальный стиль и креативы, которые привлекают внимание.</p>
-      </div>
-    </article>
-    <article data-reveal class="svc-article" style="border-bottom:none;">
-      <div class="svc-left">
-        <img src="services/images/svc-12-automation.svg" alt="" class="svc-svg" loading="lazy">
-        <p class="svc-code">SVC-12 / AUTOMATION</p>
-      </div>
-      <div>
-        <h2>Автоматизация и RPA</h2>
-        <p class="svc-intro">Сбор данных, обработка документов, интеграция API, автоматизация рутины, чат-боты, RPA.</p>
-        <div class="svc-cols">
-          <div>
-            <h4>Когда нужно</h4>
-            <ul><li>Рутинные задачи занимают много времени</li><li>Ошибки в рутинных задачах</li><li>Нужно быстро автоматизировать процессы</li></ul>
-          </div>
-          <div>
-            <h4>Что входит</h4>
-            <ul><li>Сбор данных и обработка документов</li><li>Интеграция API и автоматизация рутины</li><li>Чат-боты и RPA</li><li>Аналитика и отчётность</li></ul>
-          </div>
-        </div>
-        <p class="svc-result"><b>Результат:</b> автоматизированные процессы и сэкономленное время.</p>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-<!-- Formats -->
-<section style="border-top:1px solid oklch(26% 0.014 265);background:oklch(17% 0.014 265);">
-  <div class="wide" style="padding:clamp(80px,10vw,140px) clamp(20px,4vw,48px);">
-    <div data-reveal class="section-h">
-      <h2>Форматы<br>работы</h2>
-      <p>Четыре формата под разную степень готовности.</p>
-    </div>
-    <div class="format-grid">
-      <div data-reveal class="format-card">
-        <span class="big">A</span>
-        <h3>Аудит</h3>
-        <span class="duration">1–2 недели</span>
-        <p>Разбор текущей системы или идеи: архитектура, расход токенов, риски. Отчёт с конкретными шагами — даже если дальше вы пойдёте без меня.</p>
-      </div>
-      <div data-reveal class="format-card">
-        <span class="big">B</span>
-        <h3>Прототип</h3>
-        <span class="duration">2–4 недели</span>
-        <p>Работающий вертикальный срез на ваших данных: один процесс, закрытый агентом от и до. Основание для решения о полной сборке.</p>
-      </div>
-      <div data-reveal class="format-card">
-        <span class="big">C</span>
-        <h3>Под ключ</h3>
-        <span class="duration">1–3 месяца</span>
-        <p>Полный цикл: архитектура, разработка, панель управления, наблюдаемость, документация и передача команде.</p>
-      </div>
-      <div data-reveal class="format-card">
-        <span class="big">D</span>
-        <h3>Сопровождение</h3>
-        <span class="duration">помесячно</span>
-        <p>Развитие живой системы: новые сценарии, смена моделей, оптимизация расходов. Фиксированные часы, приоритетная реакция.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section>
-  <div class="wide">
-    <div data-reveal class="section-h">
-      <h2>Частые<br>вопросы</h2>
-      <p>Короткие честные ответы. Остальное — при первом разговоре.</p>
-    </div>
-    <div class="faq-list">
-      <details class="faq-item" data-reveal>
-        <summary>Сколько это стоит?<span class="faq-icon">+</span></summary>
-        <p class="faq-answer">Зависит от масштаба, поэтому первым шагом я даю оценку по вилке — после короткого разговора о задаче, бесплатно. Аудит и прототип — фиксированная цена до старта. Система под ключ — по этапам, каждый этап с осязаемым результатом, за который вы платите отдельно.</p>
-      </details>
-      <details class="faq-item" data-reveal>
-        <summary>У нас уже есть разработчики. Как вы с ними работаете?<span class="faq-icon">+</span></summary>
-        <p class="faq-answer">Отлично работаю в связке: беру на себя AI-слой (агенты, память, оркестрация, экономика токенов), ваша команда — продукт и домен. Код, документация и схемы остаются у вас.</p>
-      </details>
-      <details class="faq-item" data-reveal>
-        <summary>Что если AI для нашей задачи — плохая идея?<span class="faq-icon">+</span></summary>
-        <p class="faq-answer">Скажу об этом на первом разговоре и объясню почему. Треть обращений закрывается советом «вам нужен обычный скрипт/справочник/человек» — это дешевле для вас и честнее для меня.</p>
-      </details>
-      <details class="faq-item" data-reveal>
-        <summary>С какими моделями и стеком вы работаете?<span class="faq-icon">+</span></summary>
-        <p class="faq-answer">Модели: Claude, GPT, Mistral, открытые веса — выбор от задачи и бюджета. Стек: Python, TypeScript, Supabase, векторные БД, MCP, React. Если у вас свой стек — адаптируюсь.</p>
-      </details>
-      <details class="faq-item" data-reveal>
-        <summary>Как передаются результаты?<span class="faq-icon">+</span></summary>
-        <p class="faq-answer">Код в вашем репозитории с первого дня, архитектурные решения — в документах, а не в голове. В конце — сессия передачи для команды.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<section class="cta-section">
-  <div class="cta-inner">
-    <p class="mini">// первый разговор и оценка — бесплатно</p>
-    <h2 data-reveal>Расскажите о задаче — я скажу, как её решить</h2>
-    <div class="cta-bottom">
-      <p>Два абзаца о процессе, который хотите улучшить, — и в ответ первые соображения по архитектуре и честная оценка перспектив.</p>
-      <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener" data-magnet class="cta-btn">Написать в Telegram →</a>
-    </div>
-  </div>
-</section>
-
-<footer class="site">
-  <div class="inner">
-    <div class="footer-grid">
-      <div class="footer-about">
-        <p class="logo-sm">Ivan Meer<span>*</span></p>
-        <p>AI-фабрика полного цикла. Системы, а не скрипты. Архитектура, а не заплатки.</p>
-      </div>
-      <div>
-        <h4>Навигация</h4>
-        <div class="links">
-          <a href="/ivan-meer/">Главная</a>
-          <a href="/ivan-meer/services">Услуги</a>
-          <a href="/ivan-meer/blog">Инженерный журнал</a>
-          <a href="/ivan-meer/links">Ресурсы</a>
-        </div>
-      </div>
-      <div>
-        <h4>Контакты</h4>
-        <div class="links">
-          <a href="https://github.com/ivan-meer" target="_blank" rel="noopener">GitHub ↗</a>
-          <a href="https://linkedin.com/in/ivan-meer" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener">Telegram ↗</a>
-        </div>
-      </div>
-    </div>
-    <div class="bottom">
-      <span>© 2026 Ivan Meer</span>
-      <span>сделано руками и агентами</span>
-    </div>
-  </div>
-</footer>
-
-</body>
-</html>
+- generic [active] [ref=f3e1]:
+  - navigation [ref=f3e2]:
+    - generic [ref=f3e3]:
+      - link "Ivan Meer*" [ref=f3e4] [cursor=pointer]:
+        - /url: /ivan-meer/
+      - generic [ref=f3e5]:
+        - link "01 Главная" [ref=f3e6] [cursor=pointer]:
+          - /url: /ivan-meer/
+        - link "02 Услуги" [ref=f3e7] [cursor=pointer]:
+          - /url: /ivan-meer/services
+        - link "03 Журнал" [ref=f3e8] [cursor=pointer]:
+          - /url: /ivan-meer/blog
+        - link "04 Ресурсы" [ref=f3e9] [cursor=pointer]:
+          - /url: /ivan-meer/links
+        - link "Обсудить проект ↗" [ref=f3e10] [cursor=pointer]:
+          - /url: https://t.me/phuketguruadmin
+  - generic [ref=f3e12]:
+    - paragraph [ref=f3e13]: 02 / услуги — 12 направлений · 4 формата · AI-фабрика полного цикла
+    - heading "AI-фабрика полного цикла — что я делаю и что вы получаете" [level=1] [ref=f3e14]: AI-фабрика полного цикла —что я делаю и что вы получаете
+    - paragraph [ref=f3e15]: "Не скрипты, не отдельные инструменты — фабрика решений: от проектирования AI-агентов и MCP-серверов до SEO, SMM, маркетинга и автоматизации. Каждая услуга описана одинаково честно: когда она нужна, что входит в работу и какой результат вы держите в руках в конце."
+  - generic [ref=f3e17]:
+    - article [ref=f3e18]:
+      - paragraph [ref=f3e20]: SVC-01 / AGENTS
+      - generic [ref=f3e21]:
+        - heading "AI-агенты и мультиагентные системы" [level=2] [ref=f3e22]
+        - paragraph [ref=f3e23]: "Автономные работники для конкретных процессов: от одного ассистента до команды агентов с ролями, инструментами и общей памятью."
+        - generic [ref=f3e24]:
+          - generic [ref=f3e25]
+          - generic [ref=f3e31]
+        - paragraph [ref=f3e38]: "Результат: агент, который стабильно закрывает процесс, а не демо для презентации. С логами каждого шага и метриками качества."
+    - article [ref=f3e39]:
+      - paragraph [ref=f3e41]: SVC-02 / ORCH
+      - generic [ref=f3e42]:
+        - heading "Оркестрация и наблюдаемость" [level=2] [ref=f3e43]
+        - paragraph [ref=f3e44]: Управляющий слой, который превращает набор агентов и автоматизаций в предсказуемую систему.
+        - generic [ref=f3e45]:
+          - generic [ref=f3e46]
+          - generic [ref=f3e52]
+        - paragraph [ref=f3e59]: "Результат: система, за которой можно следить как за обычным сервисом — и которой можно доверить процесс без дежурного «оператора ChatGPT»."
+    - article [ref=f3e60]:
+      - paragraph [ref=f3e62]: SVC-03 / MEMORY
+      - generic [ref=f3e63]:
+        - heading "Системы памяти и RAG" [level=2] [ref=f3e64]
+        - paragraph [ref=f3e65]: Долгосрочная память для агентов и поиск по корпоративным знаниям, который отвечает по вашим документам, а не фантазирует.
+        - generic [ref=f3e66]:
+          - generic [ref=f3e67]
+          - generic [ref=f3e73]
+        - paragraph [ref=f3e80]: "Результат: агент с накопительным контекстом и база знаний, которой пользуются, потому что она отвечает точно и со ссылками на источники."
+    - article [ref=f3e81]:
+      - paragraph [ref=f3e83]: SVC-04 / MCP
+      - generic [ref=f3e84]:
+        - heading "MCP-серверы и интеграции" [level=2] [ref=f3e85]
+        - paragraph [ref=f3e86]: Ваши базы, CRM и внутренние API — как инструменты для любого AI-клиента, по открытому протоколу MCP.
+        - generic [ref=f3e87]:
+          - generic [ref=f3e88]
+          - generic [ref=f3e94]
+        - paragraph [ref=f3e101]: "Результат: одна интеграция вместо пяти: инструменты доступны из Claude, Cursor, ваших агентов и всего, что говорит на MCP."
+    - article [ref=f3e102]:
+      - paragraph [ref=f3e104]: SVC-05 / MODEL
+      - generic [ref=f3e105]:
+        - heading "Файнтюнинг и оптимизация токенов" [level=2] [ref=f3e106]
+        - paragraph [ref=f3e107]: Модель, заточенная под ваш домен, и счёт за LLM, который перестал пугать.
+        - generic [ref=f3e108]:
+          - generic [ref=f3e109]
+          - generic [ref=f3e115]
+        - paragraph [ref=f3e122]: "Результат: снижение расходов на 40–70% и модель, которая говорит на языке вашего домена."
+    - article [ref=f3e123]:
+      - paragraph [ref=f3e125]: SVC-06 / UI
+      - generic [ref=f3e126]:
+        - heading "Панели управления AI-системами" [level=2] [ref=f3e127]
+        - paragraph [ref=f3e128]: Интерфейс, в котором ваша команда видит и контролирует всё, что делают агенты.
+        - generic [ref=f3e129]:
+          - generic [ref=f3e130]
+          - generic [ref=f3e136]
+        - paragraph [ref=f3e143]: "Результат: команда управляет AI-системой сама. Разработчик нужен для развития."
+    - article [ref=f3e144]:
+      - paragraph [ref=f3e146]: SVC-07 / ARCH
+      - generic [ref=f3e147]:
+        - heading "Архитектура и консалтинг" [level=2] [ref=f3e148]
+        - paragraph [ref=f3e149]: Анализ данных и процессов, проектирование архитектуры, выбор стека и смета.
+        - generic [ref=f3e150]:
+          - generic [ref=f3e151]
+          - generic [ref=f3e157]
+        - paragraph [ref=f3e164]: "Результат: чёткий план действий и смета, которая не будет пересчитана."
+    - article [ref=f3e165]:
+      - paragraph [ref=f3e167]: SVC-08 / SEO
+      - generic [ref=f3e168]:
+        - heading "SEO и техническое продвижение" [level=2] [ref=f3e169]
+        - paragraph [ref=f3e170]: Анализ ниши, подбор ключей, оптимизация контента, техническое SEO, аналитика трафика.
+        - generic [ref=f3e171]:
+          - generic [ref=f3e172]
+          - generic [ref=f3e178]
+        - paragraph [ref=f3e185]: "Результат: сайт в топе поиска и с постоянным трафиком."
+    - article [ref=f3e186]:
+      - paragraph [ref=f3e188]: SVC-09 / SMM
+      - generic [ref=f3e189]:
+        - heading "SMM и продвижение в соцсетях" [level=2] [ref=f3e190]
+        - paragraph [ref=f3e191]: Аудитория в соцсетях, контент-стратегия, таргетированная реклама, аналитика.
+        - generic [ref=f3e192]:
+          - generic [ref=f3e193]
+          - generic [ref=f3e199]
+        - paragraph [ref=f3e206]: "Результат: аудитория в соцсетях и постоянный трафик."
+    - article [ref=f3e207]:
+      - paragraph [ref=f3e209]: SVC-10 / MARKETING
+      - generic [ref=f3e210]:
+        - heading "Маркетинг и стратегия контента" [level=2] [ref=f3e211]
+        - paragraph [ref=f3e212]: Стратегия контента, генерация идей, креативы для рекламы, email-маркетинг, A/B-тестирование.
+        - generic [ref=f3e213]:
+          - generic [ref=f3e214]
+          - generic [ref=f3e220]
+        - paragraph [ref=f3e227]: "Результат: аудитория и постоянный трафик."
+    - article [ref=f3e228]:
+      - paragraph [ref=f3e230]: SVC-11 / CREATIVE
+      - generic [ref=f3e231]:
+        - heading "Креатив и дизайн" [level=2] [ref=f3e232]
+        - paragraph [ref=f3e233]: Логотипы, брендбуки, упаковки, рекламные креативы, иллюстрации, анимации.
+        - generic [ref=f3e234]:
+          - generic [ref=f3e235]
+          - generic [ref=f3e241]
+        - paragraph [ref=f3e248]: "Результат: уникальный визуальный стиль и креативы, которые привлекают внимание."
+    - article [ref=f3e249]:
+      - paragraph [ref=f3e251]: SVC-12 / AUTOMATION
+      - generic [ref=f3e252]:
+        - heading "Автоматизация и RPA" [level=2] [ref=f3e253]
+        - paragraph [ref=f3e254]: Сбор данных, обработка документов, интеграция API, автоматизация рутины, чат-боты, RPA.
+        - generic [ref=f3e255]:
+          - generic [ref=f3e256]
+          - generic [ref=f3e262]
+        - paragraph [ref=f3e269]: "Результат: автоматизированные процессы и сэкономленное время."
+  - generic [ref=f3e271]:
+    - generic [ref=f3e272]:
+      - heading "Форматы работы" [level=2] [ref=f3e273]: Форматыработы
+      - paragraph [ref=f3e274]: Четыре формата под разную степень готовности.
+    - generic [ref=f3e275]:
+      - generic [ref=f3e276]:
+        - generic [ref=f3e277]: A
+        - heading "Аудит" [level=3] [ref=f3e278]
+        - generic [ref=f3e279]: 1–2 недели
+        - paragraph [ref=f3e280]: "Разбор текущей системы или идеи: архитектура, расход токенов, риски. Отчёт с конкретными шагами — даже если дальше вы пойдёте без меня."
+      - generic [ref=f3e281]:
+        - generic [ref=f3e282]: B
+        - heading "Прототип" [level=3] [ref=f3e283]
+        - generic [ref=f3e284]: 2–4 недели
+        - paragraph [ref=f3e285]: "Работающий вертикальный срез на ваших данных: один процесс, закрытый агентом от и до. Основание для решения о полной сборке."
+      - generic [ref=f3e286]:
+        - generic [ref=f3e287]: C
+        - heading "Под ключ" [level=3] [ref=f3e288]
+        - generic [ref=f3e289]: 1–3 месяца
+        - paragraph [ref=f3e290]: "Полный цикл: архитектура, разработка, панель управления, наблюдаемость, документация и передача команде."
+      - generic [ref=f3e291]:
+        - generic [ref=f3e292]: D
+        - heading "Сопровождение" [level=3] [ref=f3e293]
+        - generic [ref=f3e294]: помесячно
+        - paragraph [ref=f3e295]: "Развитие живой системы: новые сценарии, смена моделей, оптимизация расходов. Фиксированные часы, приоритетная реакция."
+  - generic [ref=f3e297]:
+    - generic [ref=f3e298]:
+      - heading "Частые вопросы" [level=2] [ref=f3e299]: Частыевопросы
+      - paragraph [ref=f3e300]: Короткие честные ответы. Остальное — при первом разговоре.
+    - generic [ref=f3e301]:
+      - group [ref=f3e302]:
+        - generic "Сколько это стоит? +" [ref=f3e303] [cursor=pointer]:
+          - text: Сколько это стоит?
+          - generic [ref=f3e304]: +
+      - group [ref=f3e305]:
+        - generic "У нас уже есть разработчики. Как вы с ними работаете? +" [ref=f3e306] [cursor=pointer]:
+          - text: У нас уже есть разработчики. Как вы с ними работаете?
+          - generic [ref=f3e307]: +
+      - group [ref=f3e308]:
+        - generic "Что если AI для нашей задачи — плохая идея? +" [ref=f3e309] [cursor=pointer]:
+          - text: Что если AI для нашей задачи — плохая идея?
+          - generic [ref=f3e310]: +
+      - group [ref=f3e311]:
+        - generic "С какими моделями и стеком вы работаете? +" [ref=f3e312] [cursor=pointer]:
+          - text: С какими моделями и стеком вы работаете?
+          - generic [ref=f3e313]: +
+      - group [ref=f3e314]:
+        - generic "Как передаются результаты? +" [ref=f3e315] [cursor=pointer]:
+          - text: Как передаются результаты?
+          - generic [ref=f3e316]: +
+  - generic [ref=f3e318]:
+    - paragraph [ref=f3e319]: // первый разговор и оценка — бесплатно
+    - heading "Расскажите о задаче — я скажу, как её решить" [level=2] [ref=f3e320]
+    - generic [ref=f3e321]:
+      - paragraph [ref=f3e322]: Два абзаца о процессе, который хотите улучшить, — и в ответ первые соображения по архитектуре и честная оценка перспектив.
+      - link "Написать в Telegram →" [ref=f3e323] [cursor=pointer]:
+        - /url: https://t.me/phuketguruadmin
+  - contentinfo [ref=f3e324]:
+    - generic [ref=f3e325]:
+      - generic [ref=f3e326]:
+        - generic [ref=f3e327]:
+          - paragraph [ref=f3e328]: Ivan Meer*
+          - paragraph [ref=f3e329]: AI-фабрика полного цикла. Системы, а не скрипты. Архитектура, а не заплатки.
+        - generic [ref=f3e330]:
+          - heading "Навигация" [level=4] [ref=f3e331]
+          - generic [ref=f3e332]
+        - generic [ref=f3e337]:
+          - heading "Контакты" [level=4] [ref=f3e338]
+          - generic [ref=f3e339]
+      - generic [ref=f3e343]:
+        - generic [ref=f3e344]: © 2026 Ivan Meer
+        - generic [ref=f3e345]: сделано руками и агентами

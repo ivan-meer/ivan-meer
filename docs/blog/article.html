@@ -1,155 +1,136 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="page-title">Статья — Ivan Meer</title>
-<base href="/ivan-meer/">
-<meta name="description" content="" id="page-desc">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="blog/style-article.css">
-<script src="script.js" defer></script>
-</head>
-<body>
-
-<nav>
-  <div class="nav-inner">
-    <a href="/ivan-meer/" class="nav-logo">Ivan Meer<span>*</span></a>
-    <div class="nav-links">
-      <a href="/ivan-meer/">01 Главная</a>
-      <a href="/ivan-meer/services">02 Услуги</a>
-      <a href="/ivan-meer/blog">03 Журнал</a>
-      <a href="/ivan-meer/links">04 Ресурсы</a>
-      <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener" data-magnet class="nav-cta">Обсудить проект ↗</a>
-    </div>
-  </div>
-</nav>
-
-<main class="article-wrap" id="article-root">
-  <!-- Сюда JS подгружает статью -->
-  <div id="article-placeholder" style="text-align:center;padding:4rem 0;color:#999;">
-    <p>Загрузка статьи…</p>
-  </div>
-</main>
-
-<section class="cta-section">
-  <div class="cta-inner">
-    <p class="mini">// анонсы выходят в Telegram</p>
-    <h2>Не хотите проверять вручную?</h2>
-    <div class="cta-bottom">
-      <p>Напишите мне в Telegram — добавлю вас в список и пришлю первую статью, когда она выйдет.</p>
-      <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener" data-magnet class="cta-btn">Написать в Telegram →</a>
-    </div>
-  </div>
-</section>
-
-<footer class="site">
-  <div class="inner">
-    <div class="footer-grid">
-      <div class="footer-about">
-        <p class="logo-sm">Ivan Meer<span>*</span></p>
-        <p>AI-фабрика полного цикла. Системы, а не скрипты. Архитектура, а не заплатки.</p>
-      </div>
-      <div>
-        <h4>Навигация</h4>
-        <div class="links">
-          <a href="/ivan-meer/">Главная</a>
-          <a href="/ivan-meer/services">Услуги</a>
-          <a href="/ivan-meer/blog">Инженерный журнал</a>
-          <a href="/ivan-meer/links">Ресурсы</a>
-        </div>
-      </div>
-      <div>
-        <h4>Контакты</h4>
-        <div class="links">
-          <a href="https://github.com/ivan-meer" target="_blank" rel="noopener">GitHub ↗</a>
-          <a href="https://linkedin.com/in/ivan-meer" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener">Telegram ↗</a>
-        </div>
-      </div>
-    </div>
-    <div class="bottom">
-      <span>© 2026 Ivan Meer</span>
-      <span>сделано руками и агентами</span>
-    </div>
-  </div>
-</footer>
-
-<script>
-// Загрузчик статьи
-(async function() {
-  const params = new URLSearchParams(window.location.search);
-  const articleId = params.get('id');
-  if (!articleId) {
-    document.getElementById('article-root').innerHTML = '<p style="text-align:center;padding:4rem 0;color:#999;">Статья не указана. <a href="/ivan-meer/blog">Вернуться в журнал</a>.</p>';
-    document.getElementById('article-placeholder').style.display = 'none';
-    return;
-  }
-
-  try {
-    // Загружаем метаданные
-    const metaRes = await fetch('/ivan-meer/blog/articles.json');
-    const articles = await metaRes.json();
-    const article = articles.find(a => a.id === articleId);
-
-    if (!article) {
-      document.getElementById('article-root').innerHTML = '<p style="text-align:center;padding:4rem 0;color:#999;">Статья не найдена. <a href="/ivan-meer/blog">Вернуться в журнал</a>.</p>';
-      return;
-    }
-
-    // Обновляем title и meta
-    document.title = article.title + ' — Инженерный журнал — Ivan Meer';
-    document.querySelector('#page-desc').setAttribute('content', article.desc);
-
-    // Загружаем контент: HTML-фрагмент
-    const contentRes = await fetch('/ivan-meer/blog/content/' + articleId + '.html');
-    if (!contentRes.ok) throw new Error('Content not found');
-    const contentHtml = await contentRes.text();
-
-    // Формируем мета-блок
-    const statusLabel = article.status === 'published' ? '' : '<span class="article-tag" style="background:rgba(187,187,51,0.12);color:#990;">в работе</span>';
-    const tagsHtml = article.tags.map(t => '<span class="article-tag">#' + t + '</span>').join(' ');
-    const heroHtml = article.heroImage
-      ? '<figure class="article-hero"><img src="' + article.heroImage + '" alt="' + article.title + '"><figcaption>иллюстрация</figcaption></figure>'
-      : '';
-
-    // Собираем страницу
-    document.getElementById('article-root').innerHTML =
-      '<a href="/ivan-meer/blog" class="article-back">← Назад к журналу</a>' +
-      '<div class="article-meta">' +
-        statusLabel +
-        '<span class="date">' + article.date + '</span>' +
-        '<span class="time">' + article.readingTime + ' мин · чтение</span>' +
-        '<div class="article-tags">' + tagsHtml + '</div>' +
-      '</div>' +
-      '<h1 class="article-title">' + article.title + '</h1>' +
-      heroHtml +
-      '<div class="article-body">' + contentHtml + '</div>' +
-      '<div class="article-footer">' +
-        '<div class="cta-box">' +
-          '<p>Понравилась статья? Напишите в Telegram — обсудим вашу задачу.</p>' +
-          '<a href="https://t.me/phuketguruadmin" target="_blank" rel="noopener">Написать в Telegram →</a>' +
-        '</div>' +
-      '</div>';
-
-    // Ленивая загрузка изображений в теле статьи (исключая hero-изображение для лучшего LCP)
-    document.querySelectorAll('#article-root .article-body img').forEach(img => { img.loading = 'lazy'; });
-
-    // Scroll reveal для новых элементов
-    if (typeof revealElements === 'function') {
-      revealElements();
-    }
-
-  } catch (e) {
-    document.getElementById('article-root').innerHTML =
-      '<p style="text-align:center;padding:4rem 0;color:#999;">Не удалось загрузить статью. <a href="/ivan-meer/blog">Вернуться в журнал</a>.</p>';
-    console.error('Article load error:', e);
-  }
-})();
-</script>
-
-</body>
-</html>
+- generic [active] [ref=f2e1] [box=0,0,914,2864]:
+  - navigation [ref=f2e2] [box=0,0,914,76]:
+    - generic [ref=f2e3] [box=0,0,914,75]:
+      - link "Ivan Meer*" [ref=f2e4] [cursor=pointer] [box=37,27,91,22]:
+        - /url: /ivan-meer/
+      - generic [ref=f2e5] [box=289,20,588,35]:
+        - link "01 Главная" [ref=f2e6] [cursor=pointer] [box=289,21,103,33]:
+          - /url: /ivan-meer/
+        - link "02 Услуги" [ref=f2e7] [cursor=pointer] [box=396,21,96,33]:
+          - /url: /ivan-meer/services
+        - link "03 Журнал" [ref=f2e8] [cursor=pointer] [box=495,21,96,33]:
+          - /url: /ivan-meer/blog
+        - link "04 Ресурсы" [ref=f2e9] [cursor=pointer] [box=595,21,103,33]:
+          - /url: /ivan-meer/links
+        - link "Обсудить проект ↗" [ref=f2e10] [cursor=pointer] [box=718,20,159,35]:
+          - /url: https://t.me/phuketguruadmin
+  - generic [ref=f2e12] [box=0,112,914,227]:
+    - paragraph [ref=f2e13] [box=37,112,840,17]: 03 / журнал — инженерные заметки
+    - heading "Инженерный журнал" [level=1] [ref=f2e14] [box=37,145,840,51]
+    - paragraph [ref=f2e15] [box=37,212,680,54]: "Пишу о том, что строю руками: агентные архитектуры, память, MCP, экономика токенов. С кодом, цифрами и без обещаний, что AI заменит всех к пятнице."
+  - generic [ref=f2e17] [box=0,483,914,1320]:
+    - generic [ref=f2e18] [box=37,483,840,80]:
+      - button "Все" [ref=f2e19] [cursor=pointer] [box=37,483,48,29]
+      - button "#AI engineering" [ref=f2e20] [cursor=pointer] [box=92,483,138,29]
+      - button "#MCP" [ref=f2e21] [cursor=pointer] [box=237,483,56,29]
+      - button "#RAG" [ref=f2e22] [cursor=pointer] [box=299,483,56,29]
+      - button "#агенты" [ref=f2e23] [cursor=pointer] [box=361,483,78,29]
+      - button "#архитектура" [ref=f2e24] [cursor=pointer] [box=446,483,116,29]
+      - button "#интеграции" [ref=f2e25] [cursor=pointer] [box=568,483,108,29]
+      - button "#оптимизация" [ref=f2e26] [cursor=pointer] [box=683,483,116,29]
+      - button "#память" [ref=f2e27] [cursor=pointer] [box=37,518,78,29]
+      - button "#экономика" [ref=f2e28] [cursor=pointer] [box=122,518,101,29]
+    - generic [ref=f2e29] [box=37,587,840,1217]:
+      - article [ref=f2e30] [box=37,613,840,211]:
+        - generic [ref=f2e31] [box=61,642,606,153]:
+          - generic [ref=f2e32] [box=61,642,606,14]:
+            - generic [ref=f2e33] [box=61,642,74,14]: архитектура
+            - generic [ref=f2e34] [box=146,642,40,14]: агенты
+          - heading [level=3] [ref=f2e35] [box=61,666,606,27]:
+            - 'link "Скрипты не работают: почему AI-агентам нужна архитектура" [ref=f2e36] [cursor=pointer] [box=61,663,507,32]':
+              - /url: /ivan-meer/blog/article.html?id=skripty-ne-rabotayut
+          - paragraph [ref=f2e37] [box=61,700,606,94]: "Если ваша AI-автоматизация сломалась через неделю, а счёт за токены вырос втрое — это не невезение, это отсутствие харнесса. Разбираю разницу между «подключил API» и инженерным подходом: оркестрация, память, наблюдаемость. С кодом на Python, архитектурными схемами и готовыми паттернами."
+        - link [ref=f2e38] [cursor=pointer] [box=691,642,162,106]:
+          - /url: /ivan-meer/blog/article.html?id=skripty-ne-rabotayut
+      - article [ref=f2e39] [box=37,824,840,210]:
+        - generic [ref=f2e40] [box=61,852,606,153]:
+          - generic [ref=f2e41] [box=61,852,606,14]:
+            - generic [ref=f2e42] [box=61,852,40,14]: память
+            - generic [ref=f2e43] [box=113,852,20,14]: RAG
+            - generic [ref=f2e44] [box=144,852,74,14]: архитектура
+          - heading [level=3] [ref=f2e45] [box=61,875,606,27]:
+            - link "Проектируем систему памяти для AI-агента" [ref=f2e46] [cursor=pointer] [box=61,872,365,32]:
+              - /url: /ivan-meer/blog/article.html?id=proektiruem-pamyat
+          - paragraph [ref=f2e47] [box=61,910,606,94]: "Память — то, что отличает агента от чата. Разбираю трехуровневую архитектуру: краткосрочная (сессия), долгосрочная (RAG с гибридным поиском), семантическая (граф фактов). Стратегии чанкинга, векторные БД, реранжирование и забывание. С кодом, схемами и граблями."
+        - link [ref=f2e48] [cursor=pointer] [box=691,852,162,106]:
+          - /url: /ivan-meer/blog/article.html?id=proektiruem-pamyat
+      - article [ref=f2e49] [box=37,1033,840,186]:
+        - generic [ref=f2e50] [box=61,1061,606,129]:
+          - generic [ref=f2e51] [box=61,1061,606,14]:
+            - generic [ref=f2e52] [box=61,1061,60,14]: экономика
+            - generic [ref=f2e53] [box=133,1061,74,14]: оптимизация
+          - heading [level=3] [ref=f2e54] [box=61,1085,606,27]:
+            - 'link "Оптимизация токенов: как срезать счёт на 40–70%" [ref=f2e55] [cursor=pointer] [box=61,1082,436,32]':
+              - /url: /ivan-meer/blog/article.html?id=optimizatsiya-tokenov
+          - paragraph [ref=f2e56] [box=61,1120,606,71]: Продакшен-система не обязана быть дорогой. Кэширование промптов, сжатие контекста, роутинг между моделями, файнтюнинг вместо few-shot — методики с замерами до и после на реальных логах. Сравнительные таблицы и конфиги.
+        - link [ref=f2e57] [cursor=pointer] [box=691,1061,162,106]:
+          - /url: /ivan-meer/blog/article.html?id=optimizatsiya-tokenov
+      - article [ref=f2e58] [box=37,1220,840,210]:
+        - generic [ref=f2e59] [box=61,1248,606,153]:
+          - generic [ref=f2e60] [box=61,1248,606,14]:
+            - generic [ref=f2e61] [box=61,1248,20,14]: MCP
+            - generic [ref=f2e62] [box=93,1248,67,14]: интеграции
+          - heading [level=3] [ref=f2e63] [box=61,1271,606,27]:
+            - 'link "MCP-сервер: с нуля до продакшена за вечер" [ref=f2e64] [cursor=pointer] [box=61,1268,377,32]':
+              - /url: /ivan-meer/blog/article.html?id=mcp-server-s-nulya
+          - paragraph [ref=f2e65] [box=61,1306,606,94]: "Model Context Protocol — самый короткий путь подключить ваши данные к AI-инструментам. Пошагово: проектирование, разработка на Python, tools/resources, авторизация, Docker-деплой и интеграция с Claude Code. С полным кодом сервера."
+        - link [ref=f2e66] [cursor=pointer] [box=691,1248,162,106]:
+          - /url: /ivan-meer/blog/article.html?id=mcp-server-s-nulya
+      - article [ref=f2e67] [box=37,1429,840,210]:
+        - generic [ref=f2e68] [box=61,1457,606,153]:
+          - generic [ref=f2e69] [box=61,1457,606,14]:
+            - generic [ref=f2e70] [box=61,1457,94,14]: AI engineering
+            - generic [ref=f2e71] [box=166,1457,74,14]: архитектура
+          - heading [level=3] [ref=f2e72] [box=61,1481,606,27]:
+            - link "Контекст — новая база данных" [ref=f2e73] [cursor=pointer] [box=61,1478,269,32]:
+              - /url: /ivan-meer/blog/article.html?id=kontekst-novaya-baza-dannyh
+          - paragraph [ref=f2e74] [box=61,1516,606,94]: "Почему управление контекстом становится важнее классических CRUD-операций. Контекстный пайплайн: извлечение → трансформация → подача в LLM. Sliding window, саммаризация, RAG, structured output. Сравнение CRUD vs Context Engineering."
+        - link [ref=f2e75] [cursor=pointer] [box=691,1457,162,106]:
+          - /url: /ivan-meer/blog/article.html?id=kontekst-novaya-baza-dannyh
+      - article [ref=f2e76] [box=37,1639,840,190]:
+        - generic [ref=f2e77] [box=61,1667,606,133]:
+          - generic [ref=f2e78] [box=61,1667,606,18]:
+            - generic [ref=f2e79] [box=61,1667,63,18]: ⏱ 6 мин
+            - generic [ref=f2e80] [box=137,1669,20,14]: MCP
+          - heading [level=3] [ref=f2e81] [box=61,1695,606,27]:
+            - link "MCP Server простыми словами" [ref=f2e82] [cursor=pointer] [box=61,1692,259,32]:
+              - /url: /ivan-meer/blog/article.html?id=mcp-server-prostymi-slovami
+          - paragraph [ref=f2e83] [box=61,1730,606,71]: Model Context Protocol — что это, зачем нужно и как устроен. MCP как USB-C для AI-инструментов. Аналогии, схема работы, сценарии использования. Без сложной теории, но с реальными примерами.
+        - link [ref=f2e84] [cursor=pointer] [box=691,1667,162,106]:
+          - /url: /ivan-meer/blog/article.html?id=mcp-server-prostymi-slovami
+  - generic [ref=f2e86] [box=0,2027,914,504]:
+    - paragraph [ref=f2e87] [box=37,2119,840,17]: // анонсы выходят в Telegram
+    - heading "Не хотите проверять вручную?" [level=2] [ref=f2e88] [box=37,2186,517,178]
+    - generic [ref=f2e89] [box=37,2376,840,62]:
+      - paragraph [ref=f2e90] [box=37,2382,485,56]: Напишите мне в Telegram — добавлю вас в список и пришлю первую статью, когда она выйдет.
+      - link "Написать в Telegram →" [ref=f2e91] [cursor=pointer] [box=603,2376,274,62]:
+        - /url: https://t.me/phuketguruadmin
+  - contentinfo [ref=f2e92] [box=0,2531,914,333]:
+    - generic [ref=f2e93] [box=0,2532,914,332]:
+      - generic [ref=f2e94] [box=37,2588,840,133]:
+        - generic [ref=f2e95] [box=37,2588,383,133]:
+          - paragraph [ref=f2e96] [box=37,2588,332,29]: Ivan Meer*
+          - paragraph [ref=f2e97] [box=37,2628,316,48]: AI-фабрика полного цикла. Системы, а не скрипты. Архитектура, а не заплатки.
+        - generic [ref=f2e98] [box=457,2588,191,133]:
+          - heading "Навигация" [level=4] [ref=f2e99] [box=457,2588,191,15]
+          - generic [ref=f2e100] [box=457,2619,191,102]:
+            - link "Главная" [ref=f2e101] [cursor=pointer] [box=457,2619,191,18]:
+              - /url: /ivan-meer/
+            - link "Услуги" [ref=f2e102] [cursor=pointer] [box=457,2647,191,18]:
+              - /url: /ivan-meer/services
+            - link "Инженерный журнал" [ref=f2e103] [cursor=pointer] [box=457,2675,191,18]:
+              - /url: /ivan-meer/blog
+            - link "Ресурсы" [ref=f2e104] [cursor=pointer] [box=457,2703,191,18]:
+              - /url: /ivan-meer/links
+        - generic [ref=f2e105] [box=686,2588,191,133]:
+          - heading "Контакты" [level=4] [ref=f2e106] [box=686,2588,191,15]
+          - generic [ref=f2e107] [box=686,2619,191,80]:
+            - link "GitHub ↗" [ref=f2e108] [cursor=pointer] [box=686,2619,191,20]:
+              - /url: https://github.com/ivan-meer
+            - link "LinkedIn ↗" [ref=f2e109] [cursor=pointer] [box=686,2649,191,20]:
+              - /url: https://linkedin.com/in/ivan-meer
+            - link "Telegram ↗" [ref=f2e110] [cursor=pointer] [box=686,2679,191,20]:
+              - /url: https://t.me/phuketguruadmin
+      - generic [ref=f2e111] [box=37,2767,840,41]:
+        - generic [ref=f2e112] [box=37,2792,115,16]: © 2026 Ivan Meer
+        - generic [ref=f2e113] [box=697,2792,180,16]: сделано руками и агентами

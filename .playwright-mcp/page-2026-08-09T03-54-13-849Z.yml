@@ -1,0 +1,235 @@
+- generic [active] [ref=f1e1]:
+  - navigation [ref=f1e2]:
+    - generic [ref=f1e3]:
+      - link "Ivan Meer*" [ref=f1e4] [cursor=pointer]:
+        - /url: /ivan-meer/
+      - generic [ref=f1e5]:
+        - link "01 Главная" [ref=f1e6] [cursor=pointer]:
+          - /url: /ivan-meer/
+        - link "02 Услуги" [ref=f1e7] [cursor=pointer]:
+          - /url: /ivan-meer/services
+        - link "03 Журнал" [ref=f1e8] [cursor=pointer]:
+          - /url: /ivan-meer/blog
+        - link "04 Ресурсы" [ref=f1e9] [cursor=pointer]:
+          - /url: /ivan-meer/links
+        - link "Обсудить проект ↗" [ref=f1e10] [cursor=pointer]:
+          - /url: https://t.me/phuketguruadmin
+  - banner [ref=f1e11]:
+    - generic [ref=f1e12]:
+      - paragraph [ref=f1e13]: открыт к проектам — Q3 2026 · AI-фабрика полного цикла
+      - heading "AI-системы, которые доживают до продакшена" [level=1] [ref=f1e15]:
+        - generic [ref=f1e16]: AI-системы,
+        - generic [ref=f1e18]: которые доживают
+        - generic [ref=f1e20]: до продакшена
+      - generic [ref=f1e22]:
+        - paragraph [ref=f1e23]: "Не скрипты, а фабрика AI-решений: от проектирования до обслуживания. Агенты, оркестрация, MCP, панели управления — всё, чтобы система жила годами, а не неделями."
+        - generic [ref=f1e24]:
+          - link "Услуги и форматы →" [ref=f1e25] [cursor=pointer]:
+            - /url: /ivan-meer/services
+          - link "Telegram" [ref=f1e26] [cursor=pointer]:
+            - /url: https://t.me/phuketguruadmin
+    - paragraph [ref=f1e29]: fig. 01 — оркестрация агентов · живая схема
+  - generic [ref=f1e31]:
+    - generic [ref=f1e32]: агенты · оркестрация · память · RAG · MCP · LoRA · наблюдаемость · экономика токенов ·
+    - generic [ref=f1e33]: агенты · оркестрация · память · RAG · MCP · LoRA · наблюдаемость · экономика токенов ·
+  - generic [ref=f1e35]:
+    - paragraph [ref=f1e36]: Большинство AI-внедрений — скрипты, которые ломаются через неделю. Я строю фабрики.
+    - generic [ref=f1e37]:
+      - generic [ref=f1e38]:
+        - paragraph [ref=f1e39]: // скрипт
+        - paragraph [ref=f1e40]: Отвечает на запрос, пока всё идёт по плану. Молча падает на нестандартном входе, теряет контекст между сессиями и незаметно съедает бюджет на повторных вызовах. Через месяц его боятся трогать, через три — выключают.
+      - generic [ref=f1e41]:
+        - paragraph [ref=f1e42]: // фабрика
+        - paragraph [ref=f1e43]: Система с оркестрацией, памятью, наблюдаемостью и панелью управления. Переживает смену модели, рост нагрузки и передачу другой команде. Работает годами, а не неделями.
+  - generic [ref=f1e45]:
+    - generic [ref=f1e46]:
+      - heading "Стек и процессы" [level=2] [ref=f1e47]
+      - paragraph [ref=f1e48]: Технологии и подходы, которые я использую, чтобы система работала в продакшене.
+    - generic [ref=f1e49]:
+      - generic [ref=f1e50]:
+        - button "STACK-01 AI-инженерия +" [ref=f1e51] [cursor=pointer]:
+          - generic [ref=f1e52]: STACK-01
+          - heading "AI-инженерия" [level=3] [ref=f1e53]
+          - generic [ref=f1e54]: +
+        - generic [ref=f1e59]:
+          - paragraph [ref=f1e60]: Агенты, оркестрация, память, MCP-серверы, экономика токенов, панели управления.
+          - paragraph [ref=f1e61]: Claude · GPT · Mistral · Supabase · pgvector · MCP · React · TypeScript · Python
+      - generic [ref=f1e62]:
+        - button "STACK-02 SEO и SMM +" [ref=f1e63] [cursor=pointer]:
+          - generic [ref=f1e64]: STACK-02
+          - heading "SEO и SMM" [level=3] [ref=f1e65]
+          - generic [ref=f1e66]: +
+        - generic [ref=f1e69]:
+          - paragraph [ref=f1e70]: Анализ ниши, подбор ключей, оптимизация контента, техническое SEO, продвижение в соцсетях, аналитика трафика.
+          - paragraph [ref=f1e71]: Ahrefs · SEMrush · Google Analytics · Screaming Frog · Telegram Ads · Meta Ads
+      - generic [ref=f1e72]:
+        - button "STACK-03 Маркетинг и креатив +" [ref=f1e73] [cursor=pointer]:
+          - generic [ref=f1e74]: STACK-03
+          - heading "Маркетинг и креатив" [level=3] [ref=f1e75]
+          - generic [ref=f1e76]: +
+        - generic [ref=f1e79]:
+          - paragraph [ref=f1e80]: Стратегия контента, генерация идей, креативы для рекламы, email-маркетинг, A/B-тестирование, анализ конкурентов.
+          - paragraph [ref=f1e81]: MidJourney · Figma · Canva · Mailchimp · HubSpot · Notion
+      - generic [ref=f1e82]:
+        - button "STACK-04 Автоматизация +" [ref=f1e83] [cursor=pointer]:
+          - generic [ref=f1e84]: STACK-04
+          - heading "Автоматизация" [level=3] [ref=f1e85]
+          - generic [ref=f1e86]: +
+        - generic [ref=f1e89]:
+          - paragraph [ref=f1e90]: Сбор данных, обработка документов, интеграция API, автоматизация рутины, чат-боты, RPA.
+          - paragraph [ref=f1e91]: Playwright · Selenium · n8n · Zapier · Airflow · Python · Bash
+      - generic [ref=f1e92]:
+        - button "STACK-05 Архитектура и консалтинг +" [ref=f1e93] [cursor=pointer]:
+          - generic [ref=f1e94]: STACK-05
+          - heading "Архитектура и консалтинг" [level=3] [ref=f1e95]
+          - generic [ref=f1e96]: +
+        - generic [ref=f1e99]:
+          - paragraph [ref=f1e100]: Проектирование систем, выбор стека, оценка стоимости, дорожные карты, аудит существующих решений.
+          - paragraph [ref=f1e101]: Python · TypeScript · PostgreSQL · Docker · Cloud · MCP · RAG · Observability
+  - generic [ref=f1e103]:
+    - generic [ref=f1e104]:
+      - heading "Что я делаю" [level=2] [ref=f1e105]
+      - paragraph [ref=f1e106]: 7 направлений AI-инженерии и маркетинга. Каждое — с осязаемым результатом.
+    - generic [ref=f1e107]:
+      - generic [ref=f1e108]:
+        - generic [ref=f1e109]: SVC-01
+        - heading "AI-агенты и мультиагентные системы" [level=3] [ref=f1e110]
+        - paragraph [ref=f1e111]: "Автономные работники для процессов: от одного ассистента до команды агентов с ролями и общей памятью."
+        - generic [ref=f1e112]: подробнее
+      - generic [ref=f1e113]:
+        - generic [ref=f1e114]: SVC-02
+        - heading "Оркестрация и наблюдаемость" [level=3] [ref=f1e115]
+        - paragraph [ref=f1e116]: Управляющий слой, который превращает набор агентов в предсказуемую систему с метриками и алертами.
+        - generic [ref=f1e117]: подробнее
+      - generic [ref=f1e118]:
+        - generic [ref=f1e119]: SVC-03
+        - heading "Системы памяти и RAG" [level=3] [ref=f1e120]
+        - paragraph [ref=f1e121]: Долгосрочная память для агентов и корпоративный поиск, который отвечает точно и со ссылками на источники.
+        - generic [ref=f1e122]: подробнее
+      - generic [ref=f1e123]:
+        - generic [ref=f1e124]: SVC-04
+        - heading "MCP-серверы и интеграции" [level=3] [ref=f1e125]
+        - paragraph [ref=f1e126]: "Ваши данные как инструменты для AI-клиентов: CRM, БД, API — доступны из Claude, Cursor и ваших агентов."
+        - generic [ref=f1e127]: подробнее
+      - generic [ref=f1e128]:
+        - generic [ref=f1e129]: SVC-05
+        - heading "Файнтюнинг и оптимизация токенов" [level=3] [ref=f1e130]
+        - paragraph [ref=f1e131]: Модель, заточенная под ваш домен, и счёт за LLM, который перестал пугать. Экономия 40–70%.
+        - generic [ref=f1e132]: подробнее
+      - generic [ref=f1e133]:
+        - generic [ref=f1e134]: SVC-06
+        - heading "SEO и SMM" [level=3] [ref=f1e135]
+        - paragraph [ref=f1e136]: Анализ ниши, подбор ключей, оптимизация контента, техническое SEO, продвижение в соцсетях, аналитика трафика.
+        - generic [ref=f1e137]: скоро
+      - generic [ref=f1e138]:
+        - generic [ref=f1e139]: SVC-07
+        - heading "Маркетинг и креатив" [level=3] [ref=f1e140]
+        - paragraph [ref=f1e141]: Стратегия контента, генерация идей, креативы для рекламы, email-маркетинг, A/B-тестирование.
+        - generic [ref=f1e142]: скоро
+    - link "Все услуги и форматы →" [ref=f1e144] [cursor=pointer]:
+      - /url: /ivan-meer/services
+  - generic [ref=f1e146]:
+    - generic [ref=f1e147]:
+      - heading "Избранные проекты" [level=2] [ref=f1e148]: Избранныепроекты
+      - paragraph [ref=f1e149]: Собственные продукты и открытый код — то, на чём я проверяю подход, прежде чем предлагать его клиентам.
+    - generic [ref=f1e150]:
+      - generic [ref=f1e151]:
+        - generic [ref=f1e152]: P-01
+        - heading "AdminHero" [level=3] [ref=f1e153]
+        - paragraph [ref=f1e154]: "Командный центр для AI-агентов и бизнес-операций: оркестрация, мониторинг, управление задачами — в одной панели."
+        - generic [ref=f1e155]: в разработке
+      - link "P-02 AI MusicVerse ↗ Платформа генерации музыки с агентными пайплайнами. Работающий демо-бот в Telegram. живой бот" [ref=f1e156] [cursor=pointer]:
+        - /url: https://t.me/AIMusicVerse
+        - generic [ref=f1e157]: P-02
+        - heading "AI MusicVerse ↗" [level=3] [ref=f1e158]
+        - paragraph [ref=f1e159]: Платформа генерации музыки с агентными пайплайнами. Работающий демо-бот в Telegram.
+        - generic [ref=f1e160]: живой бот
+      - 'link "P-03 Mistral OCR ↗ Распознавание документов на vision-моделях Mistral AI: из PDF и сканов — в структурированные данные. open source" [ref=f1e161] [cursor=pointer]':
+        - /url: https://github.com/ivan-meer/mistral-ocr-app
+        - generic [ref=f1e162]: P-03
+        - heading "Mistral OCR ↗" [level=3] [ref=f1e163]
+        - paragraph [ref=f1e164]: "Распознавание документов на vision-моделях Mistral AI: из PDF и сканов — в структурированные данные."
+        - generic [ref=f1e165]: open source
+      - link "P-04 Claude Code Custom ↗ Плагины, конфигурации и расширения для Claude Code CLI — инструменты, которые экономят часы разработки каждый день. open source" [ref=f1e166] [cursor=pointer]:
+        - /url: https://github.com/ivan-meer/claude-code-custom
+        - generic [ref=f1e167]: P-04
+        - heading "Claude Code Custom ↗" [level=3] [ref=f1e168]
+        - paragraph [ref=f1e169]: Плагины, конфигурации и расширения для Claude Code CLI — инструменты, которые экономят часы разработки каждый день.
+        - generic [ref=f1e170]: open source
+  - generic [ref=f1e172]:
+    - generic [ref=f1e173]:
+      - heading "Цифры, а не обещания" [level=2] [ref=f1e174]: Цифры,а не обещания
+      - paragraph [ref=f1e175]: Каждый кейс — с замерами до и после. Раздел пополняется по мере снятия NDA-ограничений.
+    - generic [ref=f1e176]:
+      - generic [ref=f1e177]:
+        - generic [ref=f1e178]: CASE-01 · оптимизация
+        - generic [ref=f1e179]: −62%
+        - paragraph [ref=f1e180]: расходов на токены после аудита и роутинга моделей
+        - generic [ref=f1e181]: кейс в подготовке
+      - generic [ref=f1e182]:
+        - generic [ref=f1e183]: CASE-02 · агенты
+        - generic [ref=f1e184]: 4×
+        - paragraph [ref=f1e185]: быстрее обработка заявок после внедрения агентной системы
+        - generic [ref=f1e186]: кейс в подготовке
+      - generic [ref=f1e187]:
+        - generic [ref=f1e188]: CASE-03 · RAG
+        - generic [ref=f1e189]: 92%
+        - paragraph [ref=f1e190]: точность ответов базы знаний на контрольных вопросах
+        - generic [ref=f1e191]: кейс в подготовке
+  - generic [ref=f1e193]:
+    - generic [ref=f1e194]:
+      - heading "Как устроена работа" [level=2] [ref=f1e195]: Как устроенаработа
+      - paragraph [ref=f1e196]: Четыре шага от первого разговора до системы в продакшене. На каждом шаге — осязаемый результат.
+    - generic [ref=f1e197]:
+      - generic [ref=f1e198]:
+        - text: "01"
+        - heading "Погружение" [level=3] [ref=f1e199]
+        - paragraph [ref=f1e200]: Разбираю задачу, данные и процессы. Формулирую, где AI реально даст эффект, а где честнее обойтись без него. Результат — короткий документ с постановкой.
+      - generic [ref=f1e201]:
+        - text: "02"
+        - heading "Архитектура" [level=3] [ref=f1e202]
+        - paragraph [ref=f1e203]: "Проектирую систему: слои, модели, память, интеграции, оценка стоимости токенов. Вы видите схему и смету до первой строки кода."
+      - generic [ref=f1e204]:
+        - text: "03"
+        - heading "Прототип" [level=3] [ref=f1e205]
+        - paragraph [ref=f1e206]: За 2–4 недели — работающий вертикальный срез на реальных данных. Его можно потрогать, показать команде и принять решение о полной сборке.
+      - generic [ref=f1e207]:
+        - text: "04"
+        - heading "Продакшен" [level=3] [ref=f1e208]
+        - paragraph [ref=f1e209]: Наблюдаемость, обработка сбоев, панель управления, документация и передача команде. Дальше — сопровождение по договорённости.
+  - generic [ref=f1e211]:
+    - paragraph [ref=f1e212]: // свободные слоты на этот квартал — есть
+    - heading "Есть задача под AI? Спроектируем систему" [level=2] [ref=f1e213]
+    - generic [ref=f1e214]:
+      - paragraph [ref=f1e215]: Опишите задачу в двух абзацах — отвечу в течение дня с первыми соображениями по архитектуре и честной оценкой, стоит ли вообще браться.
+      - link "Написать в Telegram →" [ref=f1e216] [cursor=pointer]:
+        - /url: https://t.me/phuketguruadmin
+  - contentinfo [ref=f1e217]:
+    - generic [ref=f1e218]:
+      - generic [ref=f1e219]:
+        - generic [ref=f1e220]:
+          - paragraph [ref=f1e221]: Ivan Meer*
+          - paragraph [ref=f1e222]: AI-фабрика полного цикла. Системы, а не скрипты. Архитектура, а не заплатки.
+        - generic [ref=f1e223]:
+          - heading "Навигация" [level=4] [ref=f1e224]
+          - generic [ref=f1e225]:
+            - link "Главная" [ref=f1e226] [cursor=pointer]:
+              - /url: /ivan-meer/
+            - link "Услуги" [ref=f1e227] [cursor=pointer]:
+              - /url: /ivan-meer/services
+            - link "Инженерный журнал" [ref=f1e228] [cursor=pointer]:
+              - /url: /ivan-meer/blog
+            - link "Ресурсы" [ref=f1e229] [cursor=pointer]:
+              - /url: /ivan-meer/links
+        - generic [ref=f1e230]:
+          - heading "Контакты" [level=4] [ref=f1e231]
+          - generic [ref=f1e232]:
+            - link "GitHub ↗" [ref=f1e233] [cursor=pointer]:
+              - /url: https://github.com/ivan-meer
+            - link "LinkedIn ↗" [ref=f1e234] [cursor=pointer]:
+              - /url: https://linkedin.com/in/ivan-meer
+            - link "Telegram ↗" [ref=f1e235] [cursor=pointer]:
+              - /url: https://t.me/phuketguruadmin
+      - generic [ref=f1e236]:
+        - generic [ref=f1e237]: © 2026 Ivan Meer
+        - generic [ref=f1e238]: сделано руками и агентами

@@ -1,0 +1,347 @@
+- generic [active] [ref=f3e1]:
+  - navigation [ref=f3e2]:
+    - generic [ref=f3e3]:
+      - link "Ivan Meer*" [ref=f3e4] [cursor=pointer]:
+        - /url: /ivan-meer/
+      - generic [ref=f3e5]:
+        - link "01 Главная" [ref=f3e6] [cursor=pointer]:
+          - /url: /ivan-meer/
+        - link "02 Услуги" [ref=f3e7] [cursor=pointer]:
+          - /url: /ivan-meer/services
+        - link "03 Журнал" [ref=f3e8] [cursor=pointer]:
+          - /url: /ivan-meer/blog
+        - link "04 Ресурсы" [ref=f3e9] [cursor=pointer]:
+          - /url: /ivan-meer/links
+        - link "Обсудить проект ↗" [ref=f3e10] [cursor=pointer]:
+          - /url: https://t.me/phuketguruadmin
+  - generic [ref=f3e12]:
+    - paragraph [ref=f3e13]: 02 / услуги — 12 направлений · 4 формата · AI-фабрика полного цикла
+    - heading "AI-фабрика полного цикла — что я делаю и что вы получаете" [level=1] [ref=f3e14]: AI-фабрика полного цикла —что я делаю и что вы получаете
+    - paragraph [ref=f3e15]: "Не скрипты, не отдельные инструменты — фабрика решений: от проектирования AI-агентов и MCP-серверов до SEO, SMM, маркетинга и автоматизации. Каждая услуга описана одинаково честно: когда она нужна, что входит в работу и какой результат вы держите в руках в конце."
+  - generic [ref=f3e17]:
+    - article [ref=f3e18]:
+      - paragraph [ref=f3e20]: SVC-01 / AGENTS
+      - generic [ref=f3e21]:
+        - heading "AI-агенты и мультиагентные системы" [level=2] [ref=f3e22]
+        - paragraph [ref=f3e23]: "Автономные работники для конкретных процессов: от одного ассистента до команды агентов с ролями, инструментами и общей памятью."
+        - generic [ref=f3e24]:
+          - generic [ref=f3e25]:
+            - heading "Когда нужно" [level=4] [ref=f3e26]
+            - list [ref=f3e27]:
+              - listitem [ref=f3e28]: "— Рутину делают люди: разбор заявок, документов, переписки, отчётов"
+              - listitem [ref=f3e29]: — Пробовали «подключить ChatGPT» — работает нестабильно и без контекста
+              - listitem [ref=f3e30]: "— Нужен не чат, а исполнитель: получил задачу → сделал → отчитался"
+          - generic [ref=f3e31]:
+            - heading "Что входит" [level=4] [ref=f3e32]
+            - list [ref=f3e33]:
+              - listitem [ref=f3e34]: — Проектирование ролей, инструментов и границ ответственности агентов
+              - listitem [ref=f3e35]: "— Харнесс исполнения: ошибки, тайм-ауты, цепочки вызовов, guardrails"
+              - listitem [ref=f3e36]: "— Подключение к вашим данным: CRM, базы, API, мессенджеры"
+              - listitem [ref=f3e37]: — Эскалация к человеку — агент знает, чего он не знает
+        - paragraph [ref=f3e38]: "Результат: агент, который стабильно закрывает процесс, а не демо для презентации. С логами каждого шага и метриками качества."
+    - article [ref=f3e39]:
+      - paragraph [ref=f3e41]: SVC-02 / ORCH
+      - generic [ref=f3e42]:
+        - heading "Оркестрация и наблюдаемость" [level=2] [ref=f3e43]
+        - paragraph [ref=f3e44]: Управляющий слой, который превращает набор агентов и автоматизаций в предсказуемую систему.
+        - generic [ref=f3e45]:
+          - generic [ref=f3e46]:
+            - heading "Когда нужно" [level=4] [ref=f3e47]
+            - list [ref=f3e48]:
+              - listitem [ref=f3e49]: — Автоматизации «падают молча» — об ошибке узнаёте от клиентов
+              - listitem [ref=f3e50]: — Агенты и скрипты конфликтуют за данные и дублируют работу
+              - listitem [ref=f3e51]: — Никто не может сказать, сколько система тратит и на что
+          - generic [ref=f3e52]:
+            - heading "Что входит" [level=4] [ref=f3e53]
+            - list [ref=f3e54]:
+              - listitem [ref=f3e55]: — Очереди задач, retry-политики, изоляция сбоев, приоритезация
+              - listitem [ref=f3e56]: "— Трейсинг каждого запуска: что агент думал, что вызвал, что получилось"
+              - listitem [ref=f3e57]: "— Метрики и алерты: расход токенов, задержки, доля ошибок"
+              - listitem [ref=f3e58]: "— Маршрутизация: дорогая модель только там, где оправдана"
+        - paragraph [ref=f3e59]: "Результат: система, за которой можно следить как за обычным сервисом — и которой можно доверить процесс без дежурного «оператора ChatGPT»."
+    - article [ref=f3e60]:
+      - paragraph [ref=f3e62]: SVC-03 / MEMORY
+      - generic [ref=f3e63]:
+        - heading "Системы памяти и RAG" [level=2] [ref=f3e64]
+        - paragraph [ref=f3e65]: Долгосрочная память для агентов и поиск по корпоративным знаниям, который отвечает по вашим документам, а не фантазирует.
+        - generic [ref=f3e66]:
+          - generic [ref=f3e67]:
+            - heading "Когда нужно" [level=4] [ref=f3e68]
+            - list [ref=f3e69]:
+              - listitem [ref=f3e70]: — Агент каждый раз «знакомится заново» — не помнит клиента и договорённости
+              - listitem [ref=f3e71]: — Знания разбросаны по вики, чатам и папкам
+              - listitem [ref=f3e72]: — Готовые RAG-решения отвечают красиво, но мимо
+          - generic [ref=f3e73]:
+            - heading "Что входит" [level=4] [ref=f3e74]
+            - list [ref=f3e75]:
+              - listitem [ref=f3e76]: "— Архитектура памяти: что хранить, как искать, когда забывать"
+              - listitem [ref=f3e77]: — Векторный и гибридный поиск (pgvector, Qdrant), реранжирование
+              - listitem [ref=f3e78]: — Чанкинг и подготовка документов под ваш тип контента
+              - listitem [ref=f3e79]: — Оценка качества ответов на реальных вопросах
+        - paragraph [ref=f3e80]: "Результат: агент с накопительным контекстом и база знаний, которой пользуются, потому что она отвечает точно и со ссылками на источники."
+    - article [ref=f3e81]:
+      - paragraph [ref=f3e83]: SVC-04 / MCP
+      - generic [ref=f3e84]:
+        - heading "MCP-серверы и интеграции" [level=2] [ref=f3e85]
+        - paragraph [ref=f3e86]: Ваши базы, CRM и внутренние API — как инструменты для любого AI-клиента, по открытому протоколу MCP.
+        - generic [ref=f3e87]:
+          - generic [ref=f3e88]:
+            - heading "Когда нужно" [level=4] [ref=f3e89]
+            - list [ref=f3e90]:
+              - listitem [ref=f3e91]: — Команда работает в Claude/IDE-агентах, но корпоративные данные недоступны
+              - listitem [ref=f3e92]: — Каждая новая интеграция пишется заново под каждый инструмент
+              - listitem [ref=f3e93]: — Нужен контролируемый доступ AI к внутренним системам
+          - generic [ref=f3e94]:
+            - heading "Что входит" [level=4] [ref=f3e95]
+            - list [ref=f3e96]:
+              - listitem [ref=f3e97]: — Проектирование и разработка MCP-серверов под ваши данные
+              - listitem [ref=f3e98]: — Авторизация, ограничение прав, журналирование вызовов
+              - listitem [ref=f3e99]: "— Деплой: локально, в облаке или как edge-функции"
+              - listitem [ref=f3e100]: — Документация и примеры
+        - paragraph [ref=f3e101]: "Результат: одна интеграция вместо пяти: инструменты доступны из Claude, Cursor, ваших агентов и всего, что говорит на MCP."
+    - article [ref=f3e102]:
+      - paragraph [ref=f3e104]: SVC-05 / MODEL
+      - generic [ref=f3e105]:
+        - heading "Файнтюнинг и оптимизация токенов" [level=2] [ref=f3e106]
+        - paragraph [ref=f3e107]: Модель, заточенная под ваш домен, и счёт за LLM, который перестал пугать.
+        - generic [ref=f3e108]:
+          - generic [ref=f3e109]:
+            - heading "Когда нужно" [level=4] [ref=f3e110]
+            - list [ref=f3e111]:
+              - listitem [ref=f3e112]: — Расходы на API растут быстрее пользы
+              - listitem [ref=f3e113]: — Универсальная модель ошибается в вашей терминологии
+              - listitem [ref=f3e114]: — Длинные промпты с примерами повторяются в каждом запросе
+          - generic [ref=f3e115]:
+            - heading "Что входит" [level=4] [ref=f3e116]
+            - list [ref=f3e117]:
+              - listitem [ref=f3e118]: "— Аудит расхода: разбор реальных логов, карта затрат"
+              - listitem [ref=f3e119]: — Кэширование промптов, сжатие контекста, роутинг
+              - listitem [ref=f3e120]: — Файнтюнинг и LoRA-адаптеры вместо few-shot промптов
+              - listitem [ref=f3e121]: — Замеры до/после на ваших задачах
+        - paragraph [ref=f3e122]: "Результат: снижение расходов на 40–70% и модель, которая говорит на языке вашего домена."
+    - article [ref=f3e123]:
+      - paragraph [ref=f3e125]: SVC-06 / UI
+      - generic [ref=f3e126]:
+        - heading "Панели управления AI-системами" [level=2] [ref=f3e127]
+        - paragraph [ref=f3e128]: Интерфейс, в котором ваша команда видит и контролирует всё, что делают агенты.
+        - generic [ref=f3e129]:
+          - generic [ref=f3e130]:
+            - heading "Когда нужно" [level=4] [ref=f3e131]
+            - list [ref=f3e132]:
+              - listitem [ref=f3e133]: — AI-система работает, но для бизнеса это чёрный ящик
+              - listitem [ref=f3e134]: — Чтобы поправить или перезапустить, зовут разработчика
+              - listitem [ref=f3e135]: — Отчётность собирается вручную из логов
+          - generic [ref=f3e136]:
+            - heading "Что входит" [level=4] [ref=f3e137]
+            - list [ref=f3e138]:
+              - listitem [ref=f3e139]: "— Дашборд: статусы агентов, очереди, история в реальном времени"
+              - listitem [ref=f3e140]: "— Аналитика: расход токенов, качество, узкие места"
+              - listitem [ref=f3e141]: "— Ручное управление: пауза, повтор, вмешательство"
+              - listitem [ref=f3e142]: — React/TypeScript — понятно без обучения
+        - paragraph [ref=f3e143]: "Результат: команда управляет AI-системой сама. Разработчик нужен для развития."
+    - article [ref=f3e144]:
+      - paragraph [ref=f3e146]: SVC-07 / ARCH
+      - generic [ref=f3e147]:
+        - heading "Архитектура и консалтинг" [level=2] [ref=f3e148]
+        - paragraph [ref=f3e149]: Анализ данных и процессов, проектирование архитектуры, выбор стека и смета.
+        - generic [ref=f3e150]:
+          - generic [ref=f3e151]:
+            - heading "Когда нужно" [level=4] [ref=f3e152]
+            - list [ref=f3e153]:
+              - listitem [ref=f3e154]: — Нет понимания, как масштабировать систему
+              - listitem [ref=f3e155]: — Нужно быстро оценить перспективы
+              - listitem [ref=f3e156]: — Нужен чёткий план действий
+          - generic [ref=f3e157]:
+            - heading "Что входит" [level=4] [ref=f3e158]
+            - list [ref=f3e159]:
+              - listitem [ref=f3e160]: — Анализ данных и процессов
+              - listitem [ref=f3e161]: — Проектирование архитектуры
+              - listitem [ref=f3e162]: — Выбор стека и смета
+              - listitem [ref=f3e163]: — Дорожная карта
+        - paragraph [ref=f3e164]: "Результат: чёткий план действий и смета, которая не будет пересчитана."
+    - article [ref=f3e165]:
+      - paragraph [ref=f3e167]: SVC-08 / SEO
+      - generic [ref=f3e168]:
+        - heading "SEO и техническое продвижение" [level=2] [ref=f3e169]
+        - paragraph [ref=f3e170]: Анализ ниши, подбор ключей, оптимизация контента, техническое SEO, аналитика трафика.
+        - generic [ref=f3e171]:
+          - generic [ref=f3e172]:
+            - heading "Когда нужно" [level=4] [ref=f3e173]
+            - list [ref=f3e174]:
+              - listitem [ref=f3e175]: — Сайт есть, но трафика нет
+              - listitem [ref=f3e176]: — Конкуренты опережают вас в выдаче
+              - listitem [ref=f3e177]: — Нужно быстро поднять видимость
+          - generic [ref=f3e178]:
+            - heading "Что входит" [level=4] [ref=f3e179]
+            - list [ref=f3e180]:
+              - listitem [ref=f3e181]: — Анализ ниши и конкурентов
+              - listitem [ref=f3e182]: — Подбор ключей и оптимизация контента
+              - listitem [ref=f3e183]: "— Техническое SEO: скорость, индексация, мобильность"
+              - listitem [ref=f3e184]: — Аналитика и отчётность
+        - paragraph [ref=f3e185]: "Результат: сайт в топе поиска и с постоянным трафиком."
+    - article [ref=f3e186]:
+      - paragraph [ref=f3e188]: SVC-09 / SMM
+      - generic [ref=f3e189]:
+        - heading "SMM и продвижение в соцсетях" [level=2] [ref=f3e190]
+        - paragraph [ref=f3e191]: Аудитория в соцсетях, контент-стратегия, таргетированная реклама, аналитика.
+        - generic [ref=f3e192]:
+          - generic [ref=f3e193]:
+            - heading "Когда нужно" [level=4] [ref=f3e194]
+            - list [ref=f3e195]:
+              - listitem [ref=f3e196]: — Нет подписчиков и трафика в соцсетях
+              - listitem [ref=f3e197]: — Конкуренты опережают вас в ленте
+              - listitem [ref=f3e198]: — Нужно быстро привлечь аудиторию
+          - generic [ref=f3e199]:
+            - heading "Что входит" [level=4] [ref=f3e200]
+            - list [ref=f3e201]:
+              - listitem [ref=f3e202]: — Анализ аудитории и конкурентов
+              - listitem [ref=f3e203]: — Контент-стратегия и календарь постов
+              - listitem [ref=f3e204]: "— Таргетированная реклама: настройка, запуск, аналитика"
+              - listitem [ref=f3e205]: — Аналитика и отчётность
+        - paragraph [ref=f3e206]: "Результат: аудитория в соцсетях и постоянный трафик."
+    - article [ref=f3e207]:
+      - paragraph [ref=f3e209]: SVC-10 / MARKETING
+      - generic [ref=f3e210]:
+        - heading "Маркетинг и стратегия контента" [level=2] [ref=f3e211]
+        - paragraph [ref=f3e212]: Стратегия контента, генерация идей, креативы для рекламы, email-маркетинг, A/B-тестирование.
+        - generic [ref=f3e213]:
+          - generic [ref=f3e214]:
+            - heading "Когда нужно" [level=4] [ref=f3e215]
+            - list [ref=f3e216]:
+              - listitem [ref=f3e217]: — Нет стратегии контента и идей
+              - listitem [ref=f3e218]: — Конкуренты опережают вас в ленте
+              - listitem [ref=f3e219]: — Нужно быстро привлечь аудиторию
+          - generic [ref=f3e220]:
+            - heading "Что входит" [level=4] [ref=f3e221]
+            - list [ref=f3e222]:
+              - listitem [ref=f3e223]: — Анализ ниши и конкурентов
+              - listitem [ref=f3e224]: — Генерация идей и контент-стратегия
+              - listitem [ref=f3e225]: — Креативы для рекламы и соцсетей
+              - listitem [ref=f3e226]: — Email-маркетинг и A/B-тестирование
+        - paragraph [ref=f3e227]: "Результат: аудитория и постоянный трафик."
+    - article [ref=f3e228]:
+      - paragraph [ref=f3e230]: SVC-11 / CREATIVE
+      - generic [ref=f3e231]:
+        - heading "Креатив и дизайн" [level=2] [ref=f3e232]
+        - paragraph [ref=f3e233]: Логотипы, брендбуки, упаковки, рекламные креативы, иллюстрации, анимации.
+        - generic [ref=f3e234]:
+          - generic [ref=f3e235]:
+            - heading "Когда нужно" [level=4] [ref=f3e236]
+            - list [ref=f3e237]:
+              - listitem [ref=f3e238]: — Нет уникального визуального стиля
+              - listitem [ref=f3e239]: — Конкуренты опережают вас в ленте
+              - listitem [ref=f3e240]: — Нужно быстро привлечь аудиторию
+          - generic [ref=f3e241]:
+            - heading "Что входит" [level=4] [ref=f3e242]
+            - list [ref=f3e243]:
+              - listitem [ref=f3e244]: — Логотипы и брендбуки
+              - listitem [ref=f3e245]: — Упаковки и рекламные креативы
+              - listitem [ref=f3e246]: — Иллюстрации и анимации
+              - listitem [ref=f3e247]: — Фотографии и видеоролики
+        - paragraph [ref=f3e248]: "Результат: уникальный визуальный стиль и креативы, которые привлекают внимание."
+    - article [ref=f3e249]:
+      - paragraph [ref=f3e251]: SVC-12 / AUTOMATION
+      - generic [ref=f3e252]:
+        - heading "Автоматизация и RPA" [level=2] [ref=f3e253]
+        - paragraph [ref=f3e254]: Сбор данных, обработка документов, интеграция API, автоматизация рутины, чат-боты, RPA.
+        - generic [ref=f3e255]:
+          - generic [ref=f3e256]:
+            - heading "Когда нужно" [level=4] [ref=f3e257]
+            - list [ref=f3e258]:
+              - listitem [ref=f3e259]: — Рутинные задачи занимают много времени
+              - listitem [ref=f3e260]: — Ошибки в рутинных задачах
+              - listitem [ref=f3e261]: — Нужно быстро автоматизировать процессы
+          - generic [ref=f3e262]:
+            - heading "Что входит" [level=4] [ref=f3e263]
+            - list [ref=f3e264]:
+              - listitem [ref=f3e265]: — Сбор данных и обработка документов
+              - listitem [ref=f3e266]: — Интеграция API и автоматизация рутины
+              - listitem [ref=f3e267]: — Чат-боты и RPA
+              - listitem [ref=f3e268]: — Аналитика и отчётность
+        - paragraph [ref=f3e269]: "Результат: автоматизированные процессы и сэкономленное время."
+  - generic [ref=f3e271]:
+    - generic [ref=f3e272]:
+      - heading "Форматы работы" [level=2] [ref=f3e273]: Форматыработы
+      - paragraph [ref=f3e274]: Четыре формата под разную степень готовности.
+    - generic [ref=f3e275]:
+      - generic [ref=f3e276]:
+        - generic [ref=f3e277]: A
+        - heading "Аудит" [level=3] [ref=f3e278]
+        - generic [ref=f3e279]: 1–2 недели
+        - paragraph [ref=f3e280]: "Разбор текущей системы или идеи: архитектура, расход токенов, риски. Отчёт с конкретными шагами — даже если дальше вы пойдёте без меня."
+      - generic [ref=f3e281]:
+        - generic [ref=f3e282]: B
+        - heading "Прототип" [level=3] [ref=f3e283]
+        - generic [ref=f3e284]: 2–4 недели
+        - paragraph [ref=f3e285]: "Работающий вертикальный срез на ваших данных: один процесс, закрытый агентом от и до. Основание для решения о полной сборке."
+      - generic [ref=f3e286]:
+        - generic [ref=f3e287]: C
+        - heading "Под ключ" [level=3] [ref=f3e288]
+        - generic [ref=f3e289]: 1–3 месяца
+        - paragraph [ref=f3e290]: "Полный цикл: архитектура, разработка, панель управления, наблюдаемость, документация и передача команде."
+      - generic [ref=f3e291]:
+        - generic [ref=f3e292]: D
+        - heading "Сопровождение" [level=3] [ref=f3e293]
+        - generic [ref=f3e294]: помесячно
+        - paragraph [ref=f3e295]: "Развитие живой системы: новые сценарии, смена моделей, оптимизация расходов. Фиксированные часы, приоритетная реакция."
+  - generic [ref=f3e297]:
+    - generic [ref=f3e298]:
+      - heading "Частые вопросы" [level=2] [ref=f3e299]: Частыевопросы
+      - paragraph [ref=f3e300]: Короткие честные ответы. Остальное — при первом разговоре.
+    - generic [ref=f3e301]:
+      - group [ref=f3e302]:
+        - generic "Сколько это стоит? +" [ref=f3e303] [cursor=pointer]:
+          - text: Сколько это стоит?
+          - generic [ref=f3e304]: +
+      - group [ref=f3e305]:
+        - generic "У нас уже есть разработчики. Как вы с ними работаете? +" [ref=f3e306] [cursor=pointer]:
+          - text: У нас уже есть разработчики. Как вы с ними работаете?
+          - generic [ref=f3e307]: +
+      - group [ref=f3e308]:
+        - generic "Что если AI для нашей задачи — плохая идея? +" [ref=f3e309] [cursor=pointer]:
+          - text: Что если AI для нашей задачи — плохая идея?
+          - generic [ref=f3e310]: +
+      - group [ref=f3e311]:
+        - generic "С какими моделями и стеком вы работаете? +" [ref=f3e312] [cursor=pointer]:
+          - text: С какими моделями и стеком вы работаете?
+          - generic [ref=f3e313]: +
+      - group [ref=f3e314]:
+        - generic "Как передаются результаты? +" [ref=f3e315] [cursor=pointer]:
+          - text: Как передаются результаты?
+          - generic [ref=f3e316]: +
+  - generic [ref=f3e318]:
+    - paragraph [ref=f3e319]: // первый разговор и оценка — бесплатно
+    - heading "Расскажите о задаче — я скажу, как её решить" [level=2] [ref=f3e320]
+    - generic [ref=f3e321]:
+      - paragraph [ref=f3e322]: Два абзаца о процессе, который хотите улучшить, — и в ответ первые соображения по архитектуре и честная оценка перспектив.
+      - link "Написать в Telegram →" [ref=f3e323] [cursor=pointer]:
+        - /url: https://t.me/phuketguruadmin
+  - contentinfo [ref=f3e324]:
+    - generic [ref=f3e325]:
+      - generic [ref=f3e326]:
+        - generic [ref=f3e327]:
+          - paragraph [ref=f3e328]: Ivan Meer*
+          - paragraph [ref=f3e329]: AI-фабрика полного цикла. Системы, а не скрипты. Архитектура, а не заплатки.
+        - generic [ref=f3e330]:
+          - heading "Навигация" [level=4] [ref=f3e331]
+          - generic [ref=f3e332]:
+            - link "Главная" [ref=f3e333] [cursor=pointer]:
+              - /url: /ivan-meer/
+            - link "Услуги" [ref=f3e334] [cursor=pointer]:
+              - /url: /ivan-meer/services
+            - link "Инженерный журнал" [ref=f3e335] [cursor=pointer]:
+              - /url: /ivan-meer/blog
+            - link "Ресурсы" [ref=f3e336] [cursor=pointer]:
+              - /url: /ivan-meer/links
+        - generic [ref=f3e337]:
+          - heading "Контакты" [level=4] [ref=f3e338]
+          - generic [ref=f3e339]:
+            - link "GitHub ↗" [ref=f3e340] [cursor=pointer]:
+              - /url: https://github.com/ivan-meer
+            - link "LinkedIn ↗" [ref=f3e341] [cursor=pointer]:
+              - /url: https://linkedin.com/in/ivan-meer
+            - link "Telegram ↗" [ref=f3e342] [cursor=pointer]:
+              - /url: https://t.me/phuketguruadmin
+      - generic [ref=f3e343]:
+        - generic [ref=f3e344]: © 2026 Ivan Meer
+        - generic [ref=f3e345]: сделано руками и агентами

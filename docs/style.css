@@ -432,7 +432,7 @@ footer.site .bottom {
 /* ── Services articles ── */
 .svc-article {
   display: grid;
-  grid-template-columns: minmax(0,2fr) minmax(0,5fr);
+  grid-template-columns: minmax(0,5fr) minmax(0,7fr);
   gap: clamp(28px,4vw,80px);
   padding: clamp(56px,7vw,96px) 0;
   border-bottom: 1px solid oklch(26% 0.014 265);

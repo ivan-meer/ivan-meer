@@ -182,7 +182,7 @@
   }
 
   // Загрузка статей
-  fetch('articles.json')
+  fetch('blog/articles.json')
     .then(r => r.json())
     .then(articles => {
       renderFilter(articles, 'all');

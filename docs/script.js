@@ -1,8 +1,9 @@
 // ── Shared JS for ivan-meer.github.io/ivan-meer/ ──
 
-// Nav border & hide on scroll
+// Nav border & hide on scroll + parallax hero
 (function() {
   const nav = document.querySelector('nav');
+  const heroWrap = document.querySelector('.orchestra-wrap');
   if (!nav) return;
   let lastScroll = 0;
   const onScroll = () => {
@@ -11,6 +12,12 @@
     if (y > lastScroll && y > 200) nav.classList.add('hidden');
     else nav.classList.remove('hidden');
     lastScroll = y;
+
+    // Parallax hero canvas
+    if (heroWrap) {
+      const speed = y < window.innerHeight ? 0.15 : 0;
+      heroWrap.style.transform = `translateY(${y * speed}px)`;
+    }
   };
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
@@ -19,23 +26,32 @@
 (function() {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced) return;
-  const els = [...document.querySelectorAll('[data-reveal]')];
-  if (!els.length) return;
-  els.forEach(el => {
+
+  const revealElements = [...document.querySelectorAll('[data-reveal]')];
+  if (!revealElements.length) return;
+
+  // Set initial styles with staggered delays
+  revealElements.forEach((el, index) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(26px)';
-    el.style.transition = 'opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1)';
+    el.style.transition = `opacity 0.8s cubic-bezier(0.22,1,0.36,1) ${index * 0.1}s, transform 0.8s cubic-bezier(0.22,1,0.36,1) ${index * 0.1}s`;
   });
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'none';
-        io.unobserve(e.target);
+
+  // Intersection Observer with staggered reveals
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        // Add delay based on position in the array
+        setTimeout(() => {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'none';
+          io.unobserve(entry.target);
+        }, index * 100); // 100ms delay per element
       }
     });
   }, { threshold: 0.08 });
-  els.forEach(el => io.observe(el));
+
+  revealElements.forEach(el => io.observe(el));
 })();
 
 // Accordion
@@ -62,7 +78,8 @@
   document.querySelectorAll('[data-magnet]').forEach(btn => {
     const mv = e => {
       const r = btn.getBoundingClientRect();
-      const dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+      const dx = e.clientX - (r.left + r.width / 2),
+            dy = e.clientY - (r.top + r.height / 2);
       btn.style.transform = `translate(${dx * 0.12}px, ${dy * 0.18}px)`;
     };
     const out = () => { btn.style.transform = 'none'; };

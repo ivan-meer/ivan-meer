@@ -17,7 +17,6 @@
 ![Perplexity](https://img.shields.io/badge/perplexity-000000?style=for-the-badge&logo=perplexity&logoColor=088F8F)
 ![Ollama](https://img.shields.io/badge/ollama-%23000000.svg?style=for-the-badge&logo=ollama&logoColor=white)
 
-
 > Большинство AI-внедрений — скрипты, которые ломаются через неделю.
 > Я строю **системы**: с памятью, оркестрацией и наблюдаемостью.
 
@@ -25,7 +24,7 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/ivan-meer)
 [![Telegram](https://img.shields.io/badge/Telegram-0088cc?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/phuketguruadmin)
 
-[![GitHub Streak](https://streak-stats.demolab.com?user=ivan-meer&theme=dark&border_radius=40&locale=ru&date_format=n%2Fj%5B%2FY%5D&card_width=550&background=46%2C1D1A61%2C000000&border=00C9FF&stroke=34608972&ring=EB7000&fire=FF1818&sideNums=FFFFFF&currStreakLabel=EBEBEB&sideLabels=B2B2B2C4&dates=DADEFF60)](https://git.io/streak-stats)
+[![GitHub Streak](https://streak-stats.demolab.com?user=ivan-meer&theme=dark&border_radius=40&locale=ru&date_format=n%2Fj%5B%2FY%5D&card_width=550&background=46%2C1D1A61%2C000000&border=00C9FF&stroke=34608972&ring=EB7000&fire=FF1818&sideNums=FFFFFF&currStreakLabel=EBEBEB&sideLabels=B2B2C4&dates=DADEFF60)](https://git.io/streak-stats)
 
 </div>
 
@@ -65,7 +64,7 @@
 ### AI MusicVerse
 
 <p align="center">
-  <img src="aimusicverse.svg" width="800" alt="AI MusicVerse Banner"/>
+  <a href="https://github.com/HOW2AI-AGENCY/aimusicverse"><img src="aimusicverse-banner.svg" width="800" alt="AI MusicVerse Banner"/></a>
 </p>
 
 AI-платформа генерации музыки с агентными пайплайнами. Живой демо-бот: [@AIMusicVerse](https://t.me/AIMusicVerse)
@@ -74,7 +73,7 @@ AI-платформа генерации музыки с агентными па
 ### Mistral OCR App
 
 <p align="center">
-  <img src="mistral-ocr.svg" width="800" alt="Mistral OCR App Banner"/>
+  <a href="https://github.com/ivan-meer/mistral-ocr-app"><img src="mistral-ocr-banner.svg" width="800" alt="Mistral OCR App Banner"/></a>
 </p>
 
 Распознавание документов на vision-моделях Mistral AI: из PDF и сканов — в структурированные данные.
@@ -83,18 +82,29 @@ AI-платформа генерации музыки с агентными па
 ### AdminHero
 
 <p align="center">
-  <img src="adminhero.svg" width="800" alt="AdminHero Banner"/>
+  <a href="https://github.com/HOW2AI-AGENCY/cc-tma-adminhero"><img src="adminhero-banner.svg" width="800" alt="AdminHero Banner"/></a>
 </p>
+
+AdminHero — панель управления AI‑агентами и бизнес‑операциями.
+[`HOW2AI-AGENCY/cc-tma-adminhero`](https://github.com/HOW2AI-AGENCY/cc-tma-adminhero) — *AdminHero · Панель управления*
 
 ### Claude Code Custom
 
 <p align="center">
-  <img src="github-brand.svg" width="800" alt="github-brand Banner"/>
+  <a href="https://github.com/ivan-meer/github-brand"><img src="github-brand-banner.svg" width="800" alt="GitHub Brand Banner"/></a>
 </p>
 
 A single command that turns any GitHub repo into a professional-looking project page.
-
 [`ivan-meer/github-brand`](https://github.com/ivan-meer/github-brand) — *Claude Code · DevTools · TypeScript*
+
+### Phuket 3D Map
+
+<p align="center">
+  <a href="https://github.com/HOW2AI-AGENCY/terrrain-3d-globe-trotter-narrative-scape"><img src="phuket3d-hero-banner.png" width="800" alt="Phuket 3D Map Banner"/></a>
+</p>
+
+Phuket 3D Map — интерактивный визуальный проект, показывающий карту Пхукета в 3D.
+[`HOW2AI-AGENCY/terrrain-3d-globe-trotter-narrative-scape`](https://github.com/HOW2AI-AGENCY/terrrain-3d-globe-trotter-narrative-scape) — *Phuket 3D · Геовизуализация*
 
 ---
 

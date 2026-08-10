@@ -64,7 +64,7 @@
 ### AI MusicVerse
 
 <p align="center">
-  <a href="https://github.com/HOW2AI-AGENCY/aimusicverse"><img src="aimusicverse-banner.svg" width="800" alt="AI MusicVerse Banner"/></a>
+  <a href="https://github.com/HOW2AI-AGENCY/aimusicverse"><img src="aimusicverse.svg" width="800" alt="AI MusicVerse Banner"/></a>
 </p>
 
 AI-платформа генерации музыки с агентными пайплайнами. Живой демо-бот: [@AIMusicVerse](https://t.me/AIMusicVerse)
@@ -73,7 +73,7 @@ AI-платформа генерации музыки с агентными па
 ### Mistral OCR App
 
 <p align="center">
-  <a href="https://github.com/ivan-meer/mistral-ocr-app"><img src="mistral-ocr-banner.svg" width="800" alt="Mistral OCR App Banner"/></a>
+  <a href="https://github.com/ivan-meer/mistral-ocr-app"><img src="mistral-ocr.svg" width="800" alt="Mistral OCR App Banner"/></a>
 </p>
 
 Распознавание документов на vision-моделях Mistral AI: из PDF и сканов — в структурированные данные.
@@ -82,7 +82,7 @@ AI-платформа генерации музыки с агентными па
 ### AdminHero
 
 <p align="center">
-  <a href="https://github.com/HOW2AI-AGENCY/cc-tma-adminhero"><img src="adminhero-banner.svg" width="800" alt="AdminHero Banner"/></a>
+  <a href="https://github.com/HOW2AI-AGENCY/cc-tma-adminhero"><img src="adminhero.svg" width="800" alt="AdminHero Banner"/></a>
 </p>
 
 AdminHero — панель управления AI‑агентами и бизнес‑операциями.
@@ -91,7 +91,7 @@ AdminHero — панель управления AI‑агентами и биз�
 ### Claude Code Custom
 
 <p align="center">
-  <a href="https://github.com/ivan-meer/github-brand"><img src="github-brand-banner.svg" width="800" alt="GitHub Brand Banner"/></a>
+  <a href="https://github.com/ivan-meer/github-brand"><img src="github-brand.svg" width="800" alt="GitHub Brand Banner"/></a>
 </p>
 
 A single command that turns any GitHub repo into a professional-looking project page.

@@ -92,8 +92,9 @@ AI-платформа генерации музыки с агентными па
   <img src="github-brand.svg" width="800" alt="github-brand Banner"/>
 </p>
 
-Плагины, конфигурации и расширения для Claude Code CLI — инструменты, которые экономят часы каждый день.
-[`ivan-meer/claude-code-custom`](https://github.com/ivan-meer/claude-code-custom) — *Claude Code · DevTools · TypeScript*
+A single command that turns any GitHub repo into a professional-looking project page.
+
+[`ivan-meer/github-brand`](https://github.com/ivan-meer/github-brand) — *Claude Code · DevTools · TypeScript*
 
 ---
 
